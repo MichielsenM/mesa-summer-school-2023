@@ -1,2 +1,2 @@
-# Tutorial given at the 2022 MESA Summer School on using GYRE
-Tutorial on asteroseismology of early type star, using [MESA](https://docs.mesastar.org/en/latest/) and standalone [GYRE](https://gyre.readthedocs.io/en/stable/).
+# Asteroseismology of early type stars
+Tutorial given at the MESA summer school of 2023 on asteroseismology of early type star, using [MESA](https://docs.mesastar.org/en/latest/) and standalone [GYRE](https://gyre.readthedocs.io/en/stable/).

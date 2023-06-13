@@ -75,17 +75,19 @@ Once the main-sequence evolution is running, we will keep modifying inlist_proje
 The parameters that need to be added in <math>inlist_project</math> are <code>change_net</code> and <code>new_net_name</code>. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <math>inlist_pgstar</math>.
 </p></details>
 
+#TODO FIX THE REFERENCE
 <task>
 <b>Task3:</b> Make the following additional changes to <math>inlist_project</math>. The text in the parenthesis indicate where in the <math>inlist_project</math> file the required changes have to be made.
 
-- Change the initial mass to 4M<sub>sun</sub> (<math>&controls</math>).  
-- Change the output LOGS directory to LOGS/4Msun\_0fov (<math>&controls</math>). 
-- Relax the composition to X=0.71, Y=0.276, and Z=0.014 (<math>&star_job</math>, <math>&kap</math>, and <math>&controls</math>). In <math>&controls</math> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. 
-- Use the OP opacity tables for the [Asplund2009](https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A) metal mixture (<math>&kap</math>). 
-- Likewise, set initial metal mass fraction distribution to the one of [Asplund2009](https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A) (<math>&star_job</math>).
-- Set <math>pgstar</math> to pause before terminating (<math>&star_job</math>). 
-- Output history data at every time step instead of every fifth time step (<math>&controls</math>).
-
+<ul>
+<li> Change the initial mass to 4M<sub>sun</sub> (<math>&controls</math>).  </li>
+<li> Change the output LOGS directory to LOGS/4Msun\_0fov (<math>&controls</math>). </li>
+<li> Relax the composition to X=0.71, Y=0.276, and Z=0.014 (<math>&star_job</math>, <math>&kap</math>, and <math>&controls</math>). In <math>&controls</math> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. </li>
+<li> Use the OP opacity tables for the [Asplund2009](https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A) metal mixture (<math>&kap</math>). </li>
+<li> Likewise, set initial metal mass fraction distribution to the one of [Asplund2009](https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A) (<math>&star_job</math>).</li>
+<li> Set <math>pgstar</math> to pause before terminating (<math>&star_job</math>). </li>
+<li> Output history data at every time step instead of every fifth time step (<math>&controls</math>).</li>
+</ul>
 </task>
 
 <details>
@@ -101,26 +103,26 @@ The parameters that need to be added in <math>&controls</math> are: <code>log_di
 <details>
 <summary> Hint </summary>
 <p>
-The parameters that need to be changed in <math>&controls</math> are: \texttt{initial\_mass} and \texttt{initial\_z}. The latter one has to be commented out, or \texttt{MESA} will start complaining.
+The parameters that need to be changed in <math>&controls</math> are: <math>initial_mass</math> and <math>initial_z</math>. The latter one has to be commented out, or <math>MESA</math> will start complaining.
 vscode find and replace
 </p></details>
 <details>
 <summary> Hint </summary>
 <p>
-In \texttt{\&kap} the parameter \texttt{kap\_file\_prefix} has to be added while \texttt{Zbase} has to be changed to match the new metal mass fraction.}\\
+In <math>&kap</math> the parameter <math>kap_file_prefix</math> has to be added while <math>Zbase</math> has to be changed to match the new metal mass fraction.}\\
 </p></details>
 <details>
 <summary> Hint </summary>
 <p>
-Concerning figuring out how to set the \texttt{kap\_file\_prefix} parameter, you might notice if you look up this parameter on the \texttt{MESA} documentation website that the following options are listed: \texttt{gn93}, \texttt{gs98}, \texttt{a09}, \texttt{OP\_gs98}, and \texttt{OP\_a09\_nans\_removed\_by\_hand}. However, no explanation is given as to what these parameters actually stand for. From the naming of the parameters you might be able to guess which one you have to use, but if you want to be sure then one way to do this is to go to your \texttt{\$MESA\_DIR/data/kap\_data/} directory and look at the files there. In the file names, everything before \texttt{\_z\#.\#\_x\#.\#.data} corresponds to the input options for the \texttt{kap\_file\_prefix} parameter. If you choose one of the files there and open it, then the first line of the file will give you the explanation and reference to the table.
+Concerning figuring out how to set the <math>kap_file_prefix</math> parameter, you might notice if you look up this parameter on the <math>MESA</math> documentation website that the following options are listed: <math>gn93</math>, <math>gs98</math>, <math>a09</math>, <math>OP\_gs98</math>, and <math>OP\_a09\_nans\_removed\_by\_hand</math>. However, no explanation is given as to what these parameters actually stand for. From the naming of the parameters you might be able to guess which one you have to use, but if you want to be sure then one way to do this is to go to your <math>$MESA_DIR/data/kap_data/</math> directory and look at the files there. In the file names, everything before <math>_z#.#_x#.#.data</math> corresponds to the input options for the <math>kap_file_prefix</math> parameter. If you choose one of the files there and open it, then the first line of the file will give you the explanation and reference to the table.
 </p></details>
 <details>
 <summary> Hint </summary>
 <p>
-Concerning figuring out how to set the \texttt{initial\_zfracs} parameter, the \texttt{MESA} documentation website will let you know that the eight possible options are defined in the \texttt{\$MESA\_DIR/chem/public/chem\_def.f90} file. If you look from line number 299 and beyond, then you should be able to compare the references to the different metal mixtures.
+Concerning figuring out how to set the <math>initial_zfracs}</math> parameter, the <math>MESA</math> documentation website will let you know that the eight possible options are defined in the <math>$MESA_DIR/chem/public/chem_def.f90</math> file. If you look from line number 299 and beyond, then you should be able to compare the references to the different metal mixtures.
 </p></details>
 
-Once you have implemented the changes above, try to run \texttt{MESA} and see if all the implemented changes work as they should. If you tried to change the two parameters \texttt{initial\_z} and \texttt{initial\_y} to match the new compositions, you will see that \texttt{MESA} starts to complain and gives you the message:
+Once you have implemented the changes above, try to run <math>MESA</math> and see if all the implemented changes work as they should. If you tried to change the two parameters <math>initial_z</math> and <math>initial_y</math> to match the new compositions, you will see that <math>MESA</math> starts to complain and gives you the message:
 
 ```
  WARNING: requested initial_z does not match zams file initial_z.
@@ -153,53 +155,55 @@ Error termination. Backtrace:
 ```
 
 
-This is because \texttt{MESA} only has initial ZAMS starting models available for \texttt{initial\_z = 0.02} and \texttt{initial\_y = 0.28} (see \texttt{\$MESA\_DIR/data/star\_data/zams\_models/zams\_z2m2\_y28.data}) and therefore does not known what to do if you try to change these initial compositions. One option is create such starting ZAMS models of different composition, and another is to start from one of these predefined ZAMS models and relax the composition to the one that you want. For this exercise we did the latter of the two options.
+This is because <math>MESA</math> only has initial ZAMS starting models available for <math>initial_z = 0.02</math> and <math>initial_y = 0.28</math> (see <math>$MESA_DIR/data/star_data/zams_models/zams_z2m2_y28.data</math>) and therefore does not known what to do if you try to change these initial compositions. One option is create such starting ZAMS models of different composition, and another is to start from one of these predefined ZAMS models and relax the composition to the one that you want. For this exercise we did the latter of the two options.
 
-Once your new \texttt{inlist\_project} is working, the next step is to start including convective boundary mixing. Before doing so, lets adjust the plotting window of the \texttt{pgstar} HR diagram and include one additional \texttt{pgstar} plotting windows showing the mixing profile.
+Once your new <math>inlist_project</math> is working, the next step is to start including convective boundary mixing. Before doing so, lets adjust the plotting window of the <math>pgstar</math> HR diagram and include one additional <math>pgstar</math> plotting windows showing the mixing profile.
 
 
-<task><b>Task4:</b> Zoom in on the MS evolutionary track of the start in the \texttt{pgstar} HR window and include an additional \texttt{pgstar} window showing the mixing profile. </task>
+<task><b>Task4:</b> Zoom in on the MS evolutionary track of the start in the <math>pgstar</math> HR window and include an additional <math>pgstar</math> window showing the mixing profile. </task>
 
 <details>
 <summary> Hint </summary>
 <p>
-Modify the four input parameters \texttt{HR\_logT\_min}, \texttt{HR\_logT\_max}, \texttt{HR\_logL\_min}, and \texttt{HR\_logL\_max} in \texttt{inlist\_pgstar}. You can do this on the fly while \texttt{MESA} is running. Look up "Mixing window" in the \texttt{MESA} \texttt{pgstar} documentation. The parameter you want to add to \texttt{inlist\_pgstar} is \texttt{Mixing\_win\_flag}.
+Modify the four input parameters <math>HR_logT_min</math>, <math>HR_logT_max</math>, <math>HR_logL_min</math>, and <math>HR_logL_max</math> in <math>inlist_pgstar</math>. You can do this on the fly while <math>MESA</math> is running. Look up "Mixing window" in the <math>MESA</math> <math>pgstar</math> documentation. The parameter you want to add to <math>inlist_pgstar</math> is <math>Mixing_win_flag</math>.
 </p></details>
 
-The final input parameters we want to add to \texttt{inlist\_project} is convective boundary mixing. For this exercise we will only consider exponential diffusive overshoot on top of the hydrogen burning convective core: 
+The final input parameters we want to add to <math>inlist_project</math> is convective boundary mixing. For this exercise we will only consider exponential diffusive overshoot on top of the hydrogen burning convective core: 
 
 #TODO INSERT EQUATION
 
-This type of mixing is one out of two overshoot mixing schemes that have been implemented in \texttt{MESA}. $D_0$ is the diffusive mixing coefficient at $r_0 = r_{\rm cc} - f_0 H_{\rm p, cc}$, i.e. at a step of $f_0 H_{\rm p, cc}$ inside the convective core boundary at radius coordinate $r_{\rm cc}$, $H_{\rm p, 0}$ is the pressure scale height at $r_0$, $H_{\rm p, cc}$ is the pressure scale height at $r_{\rm cc}$, and $f_{\rm ov}$ is the overshoot parameter. For this exercise, we will fix $f_0 = 0.002$ and vary $f_{\rm ov}$ from 0.005 to 0.04.
+This type of mixing is one out of two overshoot mixing schemes that have been implemented in <math>MESA</math>. <i>D</i><sub>0</sub> is the diffusive mixing coefficient at <i>r</i><sub>0</sub> = <i>r</i><sub>cc</sub> - <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub>, i.e. at a step of <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub> inside the convective core boundary at radius coordinate <i>r</i><sub>cc</sub>, <i>H</i><sub>p, 0</sub> is the pressure scale height at <i>r</i><sub>0</sub>, <i>H</i><sub>p, cc</sub> is the pressure scale height at <i>r</i><sub>cc</sub>, and <i>f</i><sub>ov</sub> is the overshoot parameter. For this exercise, we will fix <i>f</i><sub>0</sub> = 0.002 and vary <i>f</i><sub>ov</sub> from 0.005 to 0.04.
 
 
 <task>
-<b>Task 5:</b> Look up the parameters required to include convective boundary mixing (overshoot) in \texttt{MESA}. Include these parameters in \texttt{inlist\_project} (\texttt{\&controls}), replace the (:) with (1), set the overshoot scheme to exponential on top of the core during hydrogen burning, set $f_0 = 0.002$, and choose a value for $f_{\rm ov}$ between 0.005 to 0.04. Run \texttt{MESA}. Change the name of your output LOGS directory \texttt{LOGS/4Msun\_\#fov} so that \# corresponds to your choice of $f_{\rm ov}$. What happens to the \texttt{pgstar} mixing and HR windows? Note that models with a higher $f_{\rm ov}$ parameter will take longer to run, so if your laptop is slow make sure to choose a low value and have someone else at your table choose a high value.
+<b>Task 5:</b> Look up the parameters required to include convective boundary mixing (overshoot) in <math>MESA</math>. Include these parameters in <math>inlist_project</math> (<math>&controls</math>), replace the (:) with (1), set the overshoot scheme to exponential on top of the core during hydrogen burning, set <i>D</i><sub>0</sub> = 0.002, and choose a value for <i>f</i><sub>ov</sub> between 0.005 to 0.04. Run <math>MESA</math>. Change the name of your output LOGS directory <math>LOGS/4Msun_#fov</math> so that <math>#</math> corresponds to your choice of <i>f</i><sub>ov</sub>. What happens to the <math>pgstar</math> mixing and HR windows? Note that models with a higher <i>f</i><sub>ov</sub> parameter will take longer to run, so if your laptop is slow make sure to choose a low value and have someone else at your table choose a high value.
 </task>
 
 <details>
 <summary> Hint </summary>
 <p>
-The parameters to be added to \texttt{\&controls} in \texttt{inlist\_project} are: \texttt{overshoot\_scheme(1)}, \texttt{overshoot\_zone\_type(1)}, \texttt{overshoot\_zone\_loc(1)}, \texttt{overshoot\_bdy\_loc(1)}, \texttt{overshoot\_f(1)}, and \texttt{overshoot\_f0(1) = 0.002}. \texttt{overshoot\_f(1)} is the overshooting parameter that you will be varying.
+The parameters to be added to <math>&controls</math> in <math>inlist_project</math> are: <math>overshoot_scheme(1)</math>, <math>overshoot_zone_type(1)</math>, <math>overshoot_zone_loc(1)</math>, <math>overshoot_bdy_loc(1)</math>, <math>overshoot_f(1)</math>, and <math>overshoot_f0(1) = 0.002</math>. <math>overshoot_f(1)</math> is the overshooting parameter that you will be varying.
 </p></details>
 
 <task>
-<b>Task 6:</b> Include \texttt{overshoot\_D\_min = 1d-2} in \texttt{inlist\_project} (\texttt{\&controls}). What happens to the mixing profile shown in your mixing window? What is the default value of \texttt{overshoot\_D\_min}?
+<b>Task 6:</b> Include <math>overshoot_D_min = 1d-2</math> in <math>inlist_project</math> (<math>&controls</math>). What happens to the mixing profile shown in your mixing window? What is the default value of <math>overshoot_D_min</math>?
 </task>
 
-Now that we have the desired physics included in our \texttt{MESA} inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass ($m_{\rm cc}$), the helium core mass obtained that the TAMS ($m_{\rm He,core}$), the age of the star at the TAMS ($\tau_{\rm TAMS}$), the $^{14}$N mass fraction at the surface ($X(^{14}{\rm N})_{\rm surf}$), and the asymptotic period spacing of $\ell=1$ g-modes ($\Pi_{\ell=1}$). To do so, we first have to make sure that these are included as part of the history output.
+Now that we have the desired physics included in our <math>MESA</math> inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass (<i>m</i><sub>cc</sub>), the helium core mass obtained that the TAMS (<i>m</i><sub>He, core</sub>), the age of the star at the TAMS (&tau;<sub>TAMS</sub>), the <sup>14</sup>N mass fraction at the surface (<i>X</i>(<sup>14</sup>N)<sub>surf</sub>), and the asymptotic period spacing of &#8467;=1 g-modes (&Pi;<sub>&#8467;=1</sub>). To do so, we first have to make sure that these are included as part of the history output.
 
 <task>
-<b>Task 7:</b> Copy \texttt{history\_columns.list} from \texttt{\$MESA\_DIR/star/defaults} to \texttt{SPB\_minilab\_1}. Make sure that the following parameters are included in \texttt{history\_columns.list}: convective core mass, helium core mass, star age, surface $^{14}$N mass fraction, center $^{1}$H mass fraction, and asymptotic g-mode period spacing for $\ell=1$ modes. Run \texttt{MESA} and answer/do the following:
+<b>Task 7:</b> Copy <math>history_columns.list</math> from <math>$MESA_DIR/star/defaults</math> to <math>SPB_minilab_1</math>. Make sure that the following parameters are included in <math>history_columns.list</math>: convective core mass, helium core mass, star age, surface <sup>14</sup>N mass fraction, center <sup>1</sup>H mass fraction, and asymptotic g-mode period spacing for &#8467;=1 modes. Run <math>MESA</math> and answer/do the following:
 
-- In the Google spreadsheet (to be made with link) note down your $m_{\rm He,core}$, $\tau_{\rm TAMS}$, and $X(^{14}{\rm N})_{\rm surf}$ at TAMS. 
-- Find the value of $\Pi_{\ell=1}$ and $m_{\rm cc}$ at \texttt{center\_h1}$\sim 0.35$ (i.e. halfway through core hydrogen burning) and add these to the Google spreadsheet.
-- How do these values change for different values of $f_{\rm ov}$?
+<ul>
+<li> In the Google spreadsheet (to be made with link) note down your <i>m</i><sub>He, core</sub>, &tau;<sub>TAMS</sub>, and <i>X</i>(<sup>14</sup>N)<sub>surf</sub> at TAMS. </li>
+<li> Find the value of &Pi;<sub>&#8467;=1</sub> and <i>m</i><sub>cc</sub> at <math>center_h1 &sim; 0.35</math> (i.e. halfway through core hydrogen burning) and add these to the Google spreadsheet.</li>
+<li> How do these values change for different values of <i>f</i><sub>ov</sub>?</li>
+</ul>
 </task>
 
 
 <details>
 <summary> Hint </summary>
 <p>
-The convective core mass (\texttt{mass\_conv\_core}), helium core mass (\texttt{he\_core\_mass}), star age (\texttt{star\_age}), and center $^{1}$H mass fraction (\texttt{center h1}) parameters are already included in the history output by default. The only additional ones you have to add are \texttt{surface n14} and \texttt{delta\_Pg}.
+The convective core mass (<math>mass_conv_core</math>), helium core mass (<math>he_core_mass</math>), star age (<math>star_age</math>), and center <sup>1</sup>H mass fraction (<math>center h1</math>) parameters are already included in the history output by default. The only additional ones you have to add are <math>surface n14</math> and <math>delta_Pg</math>.
 </p></details>

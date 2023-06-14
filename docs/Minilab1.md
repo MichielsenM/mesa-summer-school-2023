@@ -79,8 +79,7 @@ The parameters that need to be added in <math>inlist_project</math> are <code>ch
 <task><details>
 <summary>Task 3</summary><p>
 Make the following additional changes to <math>inlist_project</math>. The text in the parenthesis indicate where in the <math>inlist_project</math> file the required changes have to be made.
-
-
+</p>
 <ul>
 <li> Change the initial mass to 4M<sub>sun</sub> (<math>&controls</math>).  </li>
 <li> Change the output LOGS directory to LOGS/4Msun\_0fov (<math>&controls</math>). </li>
@@ -90,7 +89,7 @@ Make the following additional changes to <math>inlist_project</math>. The text i
 <li> Set <math>pgstar</math> to pause before terminating (<math>&star_job</math>). </li>
 <li> Output history data at every time step instead of every fifth time step (<math>&controls</math>).</li>
 </ul>
-</p></details></task>
+</details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
@@ -198,13 +197,13 @@ Now that we have the desired physics included in our <math>MESA</math> inlists, 
 <task><details>
 <summary>Task 7</summary><p>
 Copy <math>history_columns.list</math> from <math>$MESA_DIR/star/defaults</math> to <math>SPB_minilab_1</math>. Make sure that the following parameters are included in <math>history_columns.list</math>: convective core mass, helium core mass, star age, surface <sup>14</sup>N mass fraction, center <sup>1</sup>H mass fraction, and asymptotic g-mode period spacing for &#8467;=1 modes. Run <math>MESA</math> and answer/do the following:
-
+</p>
 <ul>
 <li> In the Google spreadsheet (to be made with link) note down your <i>m</i><sub>He, core</sub>, &tau;<sub>TAMS</sub>, and <i>X</i>(<sup>14</sup>N)<sub>surf</sub> at TAMS. </li>
 <li> Find the value of &Pi;<sub>&#8467;=1</sub> and <i>m</i><sub>cc</sub> at <math>center_h1 &sim; 0.35</math> (i.e. halfway through core hydrogen burning) and add these to the Google spreadsheet.</li>
 <li> How do these values change for different values of <i>f</i><sub>ov</sub>?</li>
 </ul>
-</p></details></task>
+</details></task>
 
 
 <hint><details>

@@ -6,7 +6,8 @@ permalink: /
 
 # Before getting started
 
-In the following <math>MESA</math> lab exercises, you will see different text boxes and colours appearing at different times. Text boxes with black background will provide either some terminal commands or terminal output from your <math>MESA</math> and <math>GYRE</math> runs.
+In the following <math>MESA</math> lab exercises, you will see different text boxes and colours appearing at different times. <br>
+Text boxes with black background will provide either some terminal commands or terminal output from your <math>MESA</math> and <math>GYRE</math> runs.
 
 
 <div class="terminal">
@@ -25,7 +26,7 @@ Aside from the two types of text boxes, there are three different types of colou
 <task><details>
 <summary>Task 0</summary><p>
 This is an example of how a specific task will show up in the following <math>MESA</math> labs.
-</details></task>
+</p></details></task>
 
 
 <hint><details>

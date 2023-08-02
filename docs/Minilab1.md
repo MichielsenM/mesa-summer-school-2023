@@ -8,15 +8,16 @@ In this Minilab 1, we will start constructing the `inlist` we need to study peri
 
 
 <div class="terminal">
-  <p>cp -r $MESA_DIR/star/work SPB_minilab_1</p>
-  <p>cd SPB_minilab_1</p>
+  <p>cp -r $MESA_DIR/star/work SPB_minilab_1 <br>
+  cd SPB_minilab_1</p>
 </div>
 
 For good measure, let's make sure that the standard <math>MESA</math> inlist runs
-```
-./clean & ./mk
-./rn
-```
+<div class="terminal">
+  <p>./clean & ./mk <br>
+  ./rn</p>
+</div>
+
 
 Let it run until the <math>pgstar</math> window shows up, then terminate the run using `ctrl + c`. 
 
@@ -124,35 +125,35 @@ Concerning figuring out how to set the <math>initial_zfracs}</math> parameter, t
 
 Once you have implemented the changes above, try to run <math>MESA</math> and see if all the implemented changes work as they should. If you tried to change the two parameters <math>initial_z</math> and <math>initial_y</math> to match the new compositions, you will see that <math>MESA</math> starts to complain and gives you the message:
 
-```
- WARNING: requested initial_z does not match zams file initial_z.
-                                    zams file initial_z    2.0000000000000000D-02
-                                    requested initial_z    1.4000000000000000D-02
+<div class="terminal">
+ WARNING: requested initial_z does not match zams file initial_z. <br>
+                                    zams file initial_z    2.0000000000000000D-02 <br>
+                                    requested initial_z    1.4000000000000000D-02 <br>
 
 
 
- failed in read_zams_header
-File: ../private/init_model.f90, Line:  194, Message: get1_zams_model
-ERROR STOP 1
+ failed in read_zams_header <br>
+File: ../private/init_model.f90, Line:  194, Message: get1_zams_model <br>
+ERROR STOP 1 <br>
 
-Error termination. Backtrace:
-#0  0x13a91e147
-#1  0x13a91ecf7
-#2  0x13a91ffb3
-#3  0x102af7c83
-#4  0x102682d5f
-#5  0x102683ea7
-#6  0x10268f9eb
-#7  0x10269088f
-#8  0x1026cb017
-#9  0x1026de7ff
-#10  0x1026e7b03
-#11  0x1026e8a9b
-#12  0x1026e8c5b
-#13  0x102138ff7
-#14  0x102139093
-#15  0x1021390d3
-```
+Error termination. Backtrace: <br>
+#0  0x13a91e147 <br>
+#1  0x13a91ecf7 <br>
+#2  0x13a91ffb3 <br>
+#3  0x102af7c83 <br>
+#4  0x102682d5f <br>
+#5  0x102683ea7 <br>
+#6  0x10268f9eb <br>
+#7  0x10269088f <br>
+#8  0x1026cb017 <br>
+#9  0x1026de7ff <br>
+#10  0x1026e7b03 <br>
+#11  0x1026e8a9b <br>
+#12  0x1026e8c5b <br>
+#13  0x102138ff7 <br>
+#14  0x102139093 <br>
+#15  0x1021390d3 <br>
+</div>
 
 
 This is because <math>MESA</math> only has initial ZAMS starting models available for <math>initial_z = 0.02</math> and <math>initial_y = 0.28</math> (see <math>$MESA_DIR/data/star_data/zams_models/zams_z2m2_y28.data</math>) and therefore does not known what to do if you try to change these initial compositions. One option is create such starting ZAMS models of different composition, and another is to start from one of these predefined ZAMS models and relax the composition to the one that you want. For this exercise we did the latter of the two options.

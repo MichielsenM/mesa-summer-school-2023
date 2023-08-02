@@ -126,10 +126,9 @@ Concerning figuring out how to set the <math>initial_zfracs}</math> parameter, t
 Once you have implemented the changes above, try to run <math>MESA</math> and see if all the implemented changes work as they should. If you tried to change the two parameters <math>initial_z</math> and <math>initial_y</math> to match the new compositions, you will see that <math>MESA</math> starts to complain and gives you the message:
 
 <div class="terminal">
-<pre>
  WARNING: requested initial_z does not match zams file initial_z.
-                                    zams file initial_z    2.0000000000000000D-02 
-                                    requested initial_z    1.4000000000000000D-02 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  zams file initial_z    2.0000000000000000D-02 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  requested initial_z    1.4000000000000000D-02 
 
 
 
@@ -154,7 +153,6 @@ Error termination. Backtrace:
 #13  0x102138ff7 
 #14  0x102139093 
 #15  0x1021390d3 
-</pre>
 </div>
 
 

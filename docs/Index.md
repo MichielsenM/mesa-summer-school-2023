@@ -34,10 +34,8 @@ This is an example of how hints to different tasks will show up in the text.
 </p></details></hint>
 
 
-Don't hesitate to use these hints if you get stuck at any point during the lab exercises or feel like you are falling behind!
-
+Don't hesitate to use these hints if you get stuck at any point during the lab exercises or feel like you are falling behind!<br>
 Finally, today's round of <math>MESA</math> lab exercises consists of two minilabs and one maxilab, which will take you through the following: <br>
-
 
 [Minilab 1](./Minilab1.md): Building your starting <math>MESA</math> inlist and running <math>MESA</math> from a precomputed model.<br>
 

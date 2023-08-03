@@ -164,7 +164,7 @@ Once we have our numerics and model specifications, we now want to tell <math>GY
 <summary>Task 6</summary><p>
 In the `&mode` namelist section, include the parameters:<br> 
 <code>l = 1</code><br> 
-<code>m = 1`<br> 
+<code>m = 1</code><br> 
 <code>n_pg_min = -80</code><br> 
 <code>n_pg_max = -1</code>.
 </p></details></task>

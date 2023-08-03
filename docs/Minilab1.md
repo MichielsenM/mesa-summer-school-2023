@@ -6,13 +6,14 @@ title: Minilab 1
 
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing &Pi;<sub>0</sub>, the convective core mass <i>m</i><sub>cc</sub>, and the helium core mass <i>m</i><sub>He, core</sub> obtained at the terminal-age main-sequence (TAMS). As a first step, when starting a new project with <math>MESA</math>, we copy and rename the `$MESA_DIR/star/work` directory
 
-
+<div class="terminal-title"> Terminal commands </div> 
 <div class="terminal">
   <p>cp -r $MESA_DIR/star/work SPB_minilab_1 <br>
   cd SPB_minilab_1</p>
 </div>
 
 For good measure, let's make sure that the standard <math>MESA</math> inlist runs
+<div class="terminal-title"> Terminal commands </div> 
 <div class="terminal">
   <p>./clean & ./mk <br>
   ./rn</p>
@@ -21,9 +22,17 @@ For good measure, let's make sure that the standard <math>MESA</math> inlist run
 
 Let it run until the <math>pgstar</math> window shows up, then terminate the run using `ctrl + c`. 
 
+<task><details>
+<summary>Task 0</summary><p>
+Copy and rename the <code>$MESA\_DIR/star/work</code> directory as demonstrated above, then compile and run <math>MESA</math> to check that everything is running as it should.
+</p></details></task>
+
+As <math>MESA</math> is running, you will notice that two <math>pgstar</math> windows show up...
+
 If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your <math>MESA</math> inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. To begin with, we will focus on the <math>inlist_project</math> file. Usually, we want to start the evolution from the pre-main-sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age-mains-sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both <math>&star_job</math> and <math>&controls</math>
 
-```
+<div class="filetext-title"> inlist_project </div> 
+<div class="filetext"><p><pre class="pre-filetext">
 &star_job
   ...
 
@@ -51,8 +60,9 @@ If everything is running as it should (if not, ask your TA for help!) then it is
   ...
 
 / ! end of controls namelist
-```
+</pre></p></div>
 
+You can find the <math>&star_job</math> documentation [here](https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html), while the corresponding documentation website for the <math>&controls</math> parameters are located [here](https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html).
 
 <task><details>
 <summary>Task 1</summary><p>
@@ -76,7 +86,12 @@ What is the default nuclear network used by <math>MESA</math>? Change this in th
 The parameters that need to be added in <math>inlist_project</math> are <code>change_net</code> and <code>new_net_name</code>. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <math>inlist_pgstar</math>.
 </p></details></hint>
 
-#TODO FIX THE REFERENCE
+<hint><details>
+<summary> Hint </summary><p>
+Prior to changing the network, you can find out what the name of the default nuclear network is by running \texttt{MESA} and looking at the terminal output. Alternatively, you can look at the parameter <math>default_net_name</math> in the <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html#nuclear-reaction-controls">nuclear networks controls</a>  section of the <math>controls</math> documentation webpage.
+</p></details></hint>
+
+
 <task><details>
 <summary>Task 3</summary><p>
 Make the following additional changes to <math>inlist_project</math>. The text in the parenthesis indicate where in the <math>inlist_project</math> file the required changes have to be made.
@@ -85,8 +100,8 @@ Make the following additional changes to <math>inlist_project</math>. The text i
 <li> Change the initial mass to 4M<sub>sun</sub> (<math>&controls</math>).  </li>
 <li> Change the output LOGS directory to LOGS/4Msun\_0fov (<math>&controls</math>). </li>
 <li> Relax the composition to X=0.71, Y=0.276, and Z=0.014 (<math>&star_job</math>, <math>&kap</math>, and <math>&controls</math>). In <math>&controls</math> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. </li>
-<li> Use the OP opacity tables for the [Asplund2009](https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A) metal mixture (<math>&kap</math>). </li>
-<li> Likewise, set initial metal mass fraction distribution to the one of [Asplund2009](https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A) (<math>&star_job</math>).</li>
+<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund2009</a>  metal mixture (<math>&kap</math>). </li>
+<li> Likewise, set initial metal mass fraction distribution to the one of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund2009</a>  (<math>&star_job</math>).</li>
 <li> Set <math>pgstar</math> to pause before terminating (<math>&star_job</math>). </li>
 <li> Output history data at every time step instead of every fifth time step (<math>&controls</math>).</li>
 </ul>
@@ -125,35 +140,19 @@ Concerning figuring out how to set the <math>initial_zfracs}</math> parameter, t
 
 Once you have implemented the changes above, try to run <math>MESA</math> and see if all the implemented changes work as they should. If you tried to change the two parameters <math>initial_z</math> and <math>initial_y</math> to match the new compositions, you will see that <math>MESA</math> starts to complain and gives you the message:
 
-<div class="terminal">
- WARNING: requested initial_z does not match zams file initial_z.<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  zams file initial_z    2.0000000000000000D-02 <br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  requested initial_z    1.4000000000000000D-02 <br>
-<br>
-<br>
-<br>
- failed in read_zams_header <br>
-File: ../private/init_model.f90, Line:  194, Message: get1_zams_model <br>
-ERROR STOP 1 <br>
-<br>
-Error termination. Backtrace: <br>
-#0  0x13a91e147 <br>
-#1  0x13a91ecf7 <br>
-#2  0x13a91ffb3 <br>
-#3  0x102af7c83 <br>
-#4  0x102682d5f <br>
-#5  0x102683ea7 <br>
-#6  0x10268f9eb <br>
-#7  0x10269088f <br>
-#8  0x1026cb017 <br>
-#9  0x1026de7ff <br>
-#10  0x1026e7b03 <br>
-#11  0x1026e8a9b <br>
-#12  0x1026e8c5b <br>
-#13  0x102138ff7 <br>
-#14  0x102139093 <br>
-#15  0x1021390d3 <br>
-</div>
+<div class="terminal-title"> Terminal output </div> 
+<div class="terminal"><pre class="pre-terminal">
+ ___________  ...  ___________   ...	_________ ...
+
+       step   ...  Mass          ...	Y_surf    ...
+  lg_dt_yrs   ...  lg_Mdot       ...	Z_surf    ...
+    age_yrs   ...  lg_Dsurf      ...	Z_cntr    ...
+ ___________  ...  ___________   ...	_________ ...
+ 
+        240   ...  4.000000      ...	0.280000  ...
+ 6.3041E+00   ...  -99.000000    ...	0.020000  ...
+ 1.0143E+08   ...  -9.311364     ...	0.019646  ...
+</pre></div>
 
 
 This is because <math>MESA</math> only has initial ZAMS starting models available for <math>initial_z = 0.02</math> and <math>initial_y = 0.28</math> (see <math>$MESA_DIR/data/star_data/zams_models/zams_z2m2_y28.data</math>) and therefore does not known what to do if you try to change these initial compositions. One option is create such starting ZAMS models of different composition, and another is to start from one of these predefined ZAMS models and relax the composition to the one that you want. For this exercise we did the latter of the two options.

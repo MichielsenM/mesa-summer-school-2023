@@ -195,12 +195,12 @@ Run <math>MESA</math> and answer/do the following:
 
 <hint><details>
 <summary> Hint </summary><p>
-The convective core mass (<math>mass_conv_core</math>), helium core mass (<math>he_core_mass</math>), star age (<math>star_age</math>), and center <sup>1</sup>H mass fraction (<math>center h1</math>) parameters are already included in the history output by default. The only additional ones you have to add are <math>surface n14</math> and <math>delta_Pg</math>.
+The convective core mass (<math>mass_conv_core</math>), helium core mass (<math>he_core_mass</math>), star age (<math>star_age</math>), and center <sup>1</sup>H mass fraction (<math>center_h1</math>) parameters are already included in the history output by default. The only additional ones you have to add are <math>surface_n14</math> and <math>delta_Pg</math>.
 </p></details></hint>
 
 <hint><details>
 <summary> Hint </summary><p>
-When finding the values at <math>center_h1</math>~0.35 just select the ones that are closest to this value.
+When finding the values at <math>center_h1 &sim; 0.35</math> just select the ones that are closest to this value.
 </p></details></hint>
 
 ## Bonus exercise!

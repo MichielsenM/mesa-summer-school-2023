@@ -16,7 +16,7 @@ The <math>GYRE</math> directory that has to be set is `$MESA_DIR/gyre/gyre`. So 
 
 
 <div class="filetext-title"> .zshrc or .bashrc </div> 
-<div class="filetext"><p>
+<div class="filetext"><p><pre class="pre-filetext">
 export OMP_NUM_THREADS=4
 
 export MESA_DIR=/Users/mped4857/Software/MESA/mesa-r23.05.1
@@ -25,7 +25,7 @@ export MESASDK_ROOT=/Applications/mesasdk
 source $MESASDK_ROOT/bin/mesasdk_init.sh
 
 export GYRE_DIR=/Users/mped4857/Software/MESA/mesa-r23.05.1/gyre/gyre
-</p></div>
+</pre></p></div>
 
 
 As long as the path to your <math>GYRE</math> directory (<math>GYRE_DIR</math>) is set after the path to your <math>MESA</math> directory (<math>MESA_DIR</math>), you can also just add `export GYRE_DIR=$MESA_DIR/gyre/gyre` to your shell-startup file.
@@ -69,13 +69,13 @@ Add the following asteroseismology inlist parameters to <math>&controls</math>:
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that have to be added are: `write_pulse_data_with_profile = .true.` and `pulse_data_format = 'GYRE'`
+The parameters that have to be added are: <code>write_pulse_data_with_profile = .true.</code> and <code>pulse_data_format = 'GYRE'</code>
 </p></details></hint>
 
 
 <task><details>
 <summary>Task 2</summary><p>
-Amongst the people at your table, distribute the following values for the overshooting parameter `overshoot_f(1)` and use that in your <math>inlist_project</math>: 0.01, 0.02, 0.03, and 0.04. Likewise change your `log_directory` parameter `LOGS/4Msun_#fov` to match the new value of the overshooting parameter. Then run <math>MESA</math>.
+Amongst the people at your table, distribute the following values for the overshooting parameter `overshoot_f(1)` and use that in your <math>inlist_project</math>: 0.01, 0.02, 0.03, and 0.04. Likewise change your <code>log_directory</code> parameter <code>LOGS/4Msun_#fov</code> to match the new value of the overshooting parameter. Then run <math>MESA</math>.
 </p></details></task>
 
 When <math>MESA</math> is done running you should see that you now have additional output files in your LOGS directory with a `GYRE' extension, one for each of your <math>MESA</math> output <math>profile#.data</math> files of the format <math>profile#.data.GYRE</math>. It is these <math>profile#.data.GYRE</math> files that we need to use as input for the <math>GYRE</math> computations, where we use <math>GYRE</math> to calculate the associated theoretical oscillations for our <math>profile#.data</math> model. 
@@ -143,7 +143,10 @@ Now that we have included the relevant namelist sections for this <math>MESA</ma
 
 <task><details>
 <summary>Task 4</summary><p>
-In the `&model` namelist section, include the parameters:<br> `file = './LOGS/4Msun_#fov/profile2.data.GYRE'`<br> `model_type = 'EVOL'`<br> `file_format = 'MESA'`
+In the `&model` namelist section, include the parameters:<br> 
+<code>file = './LOGS/4Msun_#fov/profile2.data.GYRE'</code><br> 
+<code>model_type = 'EVOL'</code><br> 
+<code>file_format = 'MESA'</code>
 </p></details></task>
 
 Make sure you use your chosen value of _f_<sub>ov</sub> in place of #. Other possible options for how to set these parameters as well as which additional parameters you can add to the `&model` section are listed under [Stellar Model Parameters](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/model-params.html).
@@ -152,37 +155,53 @@ Next, lets setup the [&osc](https://gyre.readthedocs.io/en/stable/ref-guide/inpu
 
 <task><details>
 <summary>Task 5</summary><p>
-In the `&osc` namelist section set the outer boundary parameter `outer_bound` to `'VACUUM'` and the inner boundary parameter `inner_bound` to `'REGULAR'`. These determine the outer and inner boundary conditions of the model when calculating the oscillations. In `&num` tell <math>GYRE</math> to use the 4th-order Gauss-Legendre Magnus solver for initial-value integrations `'MAGNUS_GL4'` using the `diff_scheme` parameter.
+In the `&osc` namelist section set the outer boundary parameter <code>outer_bound</code> to <code>'VACUUM'</code> and the inner boundary parameter <code>inner_bound</code> to <code>'REGULAR'</code>. These determine the outer and inner boundary conditions of the model when calculating the oscillations. In `&num` tell <math>GYRE</math> to use the 4th-order Gauss-Legendre Magnus solver for initial-value integrations <code>'MAGNUS_GL4'</code> using the <code>diff_scheme</code> parameter.
 </p></details></task>
 
 Once we have our numerics and model specifications, we now want to tell <math>GYRE</math> which oscillations to compute. We will do so using the two namelist sections [&mode](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/mode-params.html) and [&scan](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/scan-params.html). For this <math>MESA</math> lab we will focus on dipole prograde (&#8467;=1, _m_=1) modes with radial orders between -1 and -80. Note that by convention, we use negative radial orders for g-modes and positive radial orders for p-modes. In principle, it doesn't matter what we are setting _m_ to be as long as we are fulfilling _m_ = -&#8467;, ..., &#8467;. This is because we are currently not including rotation in our <math>GYRE</math> computations, so all of the _m_ = -&#8467;, ..., &#8467; modes for the same &#8467; and _n_ value would have the same frequency. To include rotation, we would have to include another namelist section in our <math>GYRE</math> inlist file called [&rot](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/rot-params.html). You will see more on this during the <math>MESA</math> lab sessions on Thursday.<br>
 
 <task><details>
 <summary>Task 6</summary><p>
-In the `&mode` namelist section, include the parameters:<br> `l = 1`<br> `m = 1`<br> `n_pg_min = -80`<br> `n_pg_max = -1`.
+In the `&mode` namelist section, include the parameters:<br> 
+<code>l = 1</code><br> 
+<code>m = 1`<br> 
+<code>n_pg_min = -80</code><br> 
+<code>n_pg_max = -1</code>.
 </p></details></task>
 
 The relevant frequency range to consider of g-modes in SPB stars is between 0.05d<sup>-1</sup> and 5d<sup>-1</sup>. We will tell <math>GYRE</math> to split this range into 400 bins that are equally spaced in period rather than frequency. This is because the g-modes are equally spaced in period contrary to p-modes that are equally spaced in frequency. Finally, we want the oscillation frequencies to be calculated in the inertial (i.e. observer) frame of reference. For recommendations on how to set up your [Frequency Grid](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/frequency-grids.html#frequency-units) you can check out the [Understanding Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids.html) section on the <math>GYRE</math> documentation website.<br>
 
 <task><details>
 <summary>Task 7</summary><p>
-In the `&scan` namelist section, include the parameters:<br> `grid_type = 'INVERSE'`<br> `freq_frame = 'INERTIAL'`<br> `freq_min = 0.05`<br> `freq_max = 5`<br> `freq_min_units = 'CYC_PER_DAY'`<br> `freq_max_units = 'CYC_PER_DAY'`<br> `n_freq = 400`
+In the `&scan` namelist section, include the parameters:<br> 
+<code>grid_type = 'INVERSE'</code><br> 
+<code>freq_frame = 'INERTIAL'</code><br> 
+<code>freq_min = 0.05</code><br> 
+<code>freq_max = 5</code><br> 
+<code>freq_min_units = 'CYC_PER_DAY'</code><br> 
+<code>freq_max_units = 'CYC_PER_DAY'</code><br> 
+<code>n_freq = 400</code>
 </p></details></task>
 
 When computing the oscillations we want to make sure that we have a high resolution in the spatial grid where large variations in &xi are occurring. We do so by adding three additional parameters to [&grid](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/grid-params.html) which are described in detail in [Spatial Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/spatial-grids.html#spatial-grids) section on the <math>GYRE</math> documentation website.<br>
 
 <task><details>
 <summary>Task 8</summary><p>
-In the `&grid` namelist section, include the parameters:<br> `w_osc = 10`<br> `w_exp = 2`<br> `w_ctr = 10`.
+In the `&grid` namelist section, include the parameters:<br> 
+<code>w_osc = 10</code><br> 
+<code>w_exp = 2</code><br> 
+<code>w_ctr = 10</code>.
 </p></details></task>
 
 Now our last step is to tell <math>GYRE</math> what to output using [&ad_output](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html). There are two types of output files to consider: the [summary](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files) and [detail](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html) output files. The `summary` files provides an overview of the <math>GYRE</math> calculations for all considered modes, such as their frequencies, &#8467;, and _m_ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial (&xi<sup>r</sup>) and horizontal (&xi<sup>h</sup>) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <math>MESA</math> lab, we are only interested in the `summary` files.<br>
 
 <task><details>
 <summary>Task 8</summary><p>
-In the `&ad_output` namelist section, include the parameters:<br> `summary_file = './LOGS/4Msun_#fov/profile2_summary.txt'`<br>
-`summary_file_format = 'TXT'`<br>
-`summary_item_list = 'l,m,n_p,n_g,n_pg,freq'`<br> `freq_units = 'CYC_PER_DAY'`
+In the `&ad_output` namelist section, include the parameters:<br> 
+<code>summary_file = './LOGS/4Msun_#fov/profile2_summary.txt'</code><br>
+<code>summary_file_format = 'TXT'</code><br>
+<code>summary_item_list = 'l,m,n_p,n_g,n_pg,freq'</code><br> 
+<code>freq_units = 'CYC_PER_DAY'</code>
 </p></details></task>
 
 Did you notice that we will only be asking <math>GYRE</math> to output the adiabatic solutions (`&ad_output`) to the oscillation equations? We choose to do so here for a couple of reasons. The first and most important one is because it is faster and for this <math>MESA</math> lab, we are not going to look into which modes are excited which would require us to find the non-adiabatic solutions (`&nad_output`). The second reason is that we generally observe more modes that what are predicted to be excited by the standard opacity tables in <math>MESA</math>. We note that changing from adiabatic to nonadiabatic calculations will not result in any significant changes to the output oscillation frequencies, but is required in order to determine which modes are predicted to be excited.
@@ -336,17 +355,17 @@ Ideally when you are comparing period spacing patterns you want to make sure tha
 
 <task><details>
 <summary>Task 11</summary><p>
-In your <math>inlist_project</math> file specify under `&star_job` that <math>MESA</math> has to output a profile when it terminates and name this profile `final_profile.data`. Under <math>&controls</math>, add the following two parameters: `delta_lg_XH_cntr_max = -1` and `delta_lg_XH_cntr_limit = 0.05`. Run <math>MESA</math> again.
+In your <math>inlist_project</math> file specify under `&star_job` that <math>MESA</math> has to output a profile when it terminates and name this profile `final_profile.data`. Under <math>&controls</math>, add the following two parameters: <code>delta_lg_XH_cntr_max = -1</code> and <code>delta_lg_XH_cntr_limit = 0.05</code>. Run <math>MESA</math> again.
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-The two parameters you have to add in `&star_job` are: `write_profile_when_terminate = .true.` and `filename_for_profile_when_terminate = 'LOGS/4Msun_#fov/final_profile.data'`.
+The two parameters you have to add in `&star_job` are: <code>write_profile_when_terminate = .true.</code> and <code>filename_for_profile_when_terminate = 'LOGS/4Msun_#fov/final_profile.data'</code>.
 </p></details></hint>
 
 <task><details>
 <summary>Task 12</summary><p>
-Modify the two parameters `file` and `summary_file` in your <math>gyre.in</math> file to use your new `final_profile.data` file and rename the output summary file `final_summary_#fov.txt`. Also set `n_freq = 1000`. Then rerun <math>GYRE</math>.
+Modify the two parameters `file` and `summary_file` in your <math>gyre.in</math> file to use your new <code>final_profile.data</code> file and rename the output summary file <code>final_summary_#fov.txt</code>. Also set <code>n_freq = 1000</code>. Then rerun <math>GYRE</math>.
 </p></details></task>
 
 Once you have your `final_summary_#fov.txt` share it with your TA. They have a `python` script available to plot all of the period spacing patterns together and just need your `final_summary_#fov.txt` file. If you want to have a go at using these scripts to plot it yourself, you can get them from [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0). Make sure to check out the `notes.txt` file first.<br> 
@@ -362,37 +381,38 @@ Currently, when you run <math>GYRE</math> you should see that all modes have &#x
 
 <task><details>
 <summary>Task B1.1</summary><p>
-Change your parameter `n_freq` to 10, 50, 100, 200, 400, and 600. What happens to the number of output frequencies and time it takes for <math>GYRE</math> to finish its calculations? What is the minimum value for `n_freq` that you need to get all modes from _n_<sub>g</sub> = 9 to 80?
+Change your parameter <code>n_freq</code> to 10, 50, 100, 200, 400, and 600. What happens to the number of output frequencies and time it takes for <math>GYRE</math> to finish its calculations? What is the minimum value for `n_freq` that you need to get all modes from _n_<sub>g</sub> = 9 to 80?
 </p></details></task>
 
 
 <task><details>
 <summary>Task B1.2</summary><p>
-Play around with the two parameters `freq_min` and `freq_max`. What values do you need to use to get the full list of (&#8467;, _m_) = (1,1) from _n_<sub>pg</sub> = -1 to -80?
+Play around with the two parameters <code>freq_min</code> and <code>freq_max</code>. What values do you need to use to get the full list of (&#8467;, _m_) = (1,1) from _n_<sub>pg</sub> = -1 to -80?
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-You may need to increase `n_freq` as well.
+You may need to increase <code>n_freq</code> as well.
 </p></details></hint>
 
 <task><details>
 <summary>Task B1.3</summary><p>
-Change the parameter `grid_type` to `'LINEAR'` then run <math>GYRE</math>. What happens to your output? What value do you need to use for `n_freq` to get the same output as before?
+Change the parameter <code>grid_type</code> to <code>'LINEAR'</code> then run <math>GYRE</math>. What happens to your output? What value do you need to use for `n_freq` to get the same output as before?
 </p></details></task>
 
 <task><details>
 <summary>Task B1.4</summary><p>
-Have a look at the possible [summary file output](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files) on the <math>GYRE</math> documentation website. Find the parameter for the stellar mass as well as the effective temperature perturbation amplitude and phase and included them as output for your <math>GYRE</math> computations. Run <math>GYRE</math> to make sure everything works.
+Have a look at the possible 
+<a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files">summary file output</a> on the <math>GYRE</math> documentation website. Find the parameter for the stellar mass as well as the effective temperature perturbation amplitude and phase and included them as output for your <math>GYRE</math> computations. Run <math>GYRE</math> to make sure everything works.
 </p></details></task>
 
 Now before moving on to the next exercises, make sure you reset the parameters in your <math>gyre.in</math> file to the initial ones, i.e.<br>
 
-`freq_min = 0.05`<br>
-`freq_max = 5.0`<br>
-`n_freq = 1000`<br>
-`grid_type = 'INVERSE'`<br>
-`summary_item_list = 'l,m,n_p,n_g,n_pg,freq'`
+<code>freq_min = 0.05</code><br>
+<code>freq_max = 5.0</code><br>
+<code>n_freq = 1000</code><br>
+<code>grid_type = 'INVERSE'</code><br>
+<code>summary_item_list = 'l,m,n_p,n_g,n_pg,freq'</code>
 
 ## Bonus exercise 2: Resolution impact on period spacing patterns
 
@@ -407,36 +427,55 @@ Copy `profile_columns.list` from `$MESA_DIR/star/defaults/` to your `SPB_minilab
 
 <task><details>
 <summary>Task B2.2</summary><p>
-Add the following to `inlist_pgstar`:<br> `Profile_Panels1_win_flag = .true.`<br> `Profile_Panels1_num_panels = 2`<br> `Profile_Panels1_yaxis_name(1) = 'brunt_N2'`<br>
-`Profile_Panels1_other_yaxis_name(1) = ''`<br>
-`Profile_Panels1_yaxis_name(2) = 'brunt_N2_structure_term'`<br>
-`Profile_Panels1_other_yaxis_name(2) = 'brunt_N2_composition_term'`<br> 
-`Profile_Panels1_file_flag = .true.`<br> 
-`Profile_Panels1_file_dir = 'png'`<br>
-`Profile_Panels1_file_prefix = 'profile_panels1_1.0mdc_1.0tdc_'`<br>
-`Profile_Panels1_file_width = 12`<br>
-`Profile_Panels1_file_aspect_ratio = 0.75`
+Add the following to `inlist_pgstar`:<br> 
+<code>Profile_Panels1_win_flag = .true.</code><br> 
+<code>Profile_Panels1_num_panels = 2</code>br> 
+<code>Profile_Panels1_yaxis_name(1) = 'brunt_N2'</code><br>
+<code>Profile_Panels1_other_yaxis_name(1) = ''</code><br>
+<code>Profile_Panels1_yaxis_name(2) = 'brunt_N2_structure_term'</code><br>
+<code>Profile_Panels1_other_yaxis_name(2) = 'brunt_N2_composition_term'</code><br> 
+<code>Profile_Panels1_file_flag = .true.</code><br> 
+<code>Profile_Panels1_file_dir = 'png'</code><br>
+<code>Profile_Panels1_file_prefix = 'profile_panels1_1.0mdc_1.0tdc_'</code><br>
+<code>Profile_Panels1_file_width = 12</code><br>
+<code>Profile_Panels1_file_aspect_ratio = 0.75</code>
 </p></details></task>
 
 This will save the `pgstar` window showing the `Profile_Panels1` plot to the png directory. We will need those for comparisons later.<br> 
 
 <task><details>
 <summary>Task B2.3</summary><p>
-Include the two parameters `mesh_delta_coeff = 1.0` and `time_delta_coeff = 1.0` in your <math>inlist_project</math> under <math>&controls</math>. Change your output LOGS directory to `log_directory = 'LOGS/4Msun_#fov_1.0mdc_1.0tdc'`. Likewise make sure to change `filename_for_profile_when_terminate = 'LOGS/4Msun_#fov_1.0mdc_1.0tdc/final_profile.data'`. Then run <math>MESA</math>.
+Include the two parameters <code>mesh_delta_coeff = 1.0</code> and <code>time_delta_coeff = 1.0</code> in your <math>inlist_project</math> under <math>&controls</math>. Change your output LOGS directory to <code>log_directory = 'LOGS/4Msun_#fov_1.0mdc_1.0tdc'</code>. Likewise make sure to change <code>filename_for_profile_when_terminate = 'LOGS/4Msun_#fov_1.0mdc_1.0tdc/final_profile.data'</code>. Then run <math>MESA</math>.
 </p></details></task>
 
 Take note of the output to the png directory. Is the Brunt-Vaisala frequency profile looking smooth?<br>
 
 <task><details>
 <summary>Task B2.4</summary><p>
-Now change the `mesh_delta_coeff` and `time_delta_coeff` parameters to match the combinations listed in the table below. Remember to also change `log_directory`, `filename_for_profile_when_terminate`, and `Profile_Panels1_file_prefix` accordingly to not overwrite your previous saved files. Then rerun <math>MESA</math> and look at how your saved profile plots of the Brunt-Vaisala frequency profile. Do they change as you change the mesh and time resolution? If so, in what way?
+Now change the <code>mesh_delta_coeff</code> and <code>time_delta_coeff</code> parameters to match the combinations listed in the table below. Remember to also change <code>log_directory</code>, <code>filename_for_profile_when_terminate</code>, and <code>Profile_Panels1_file_prefix</code> accordingly to not overwrite your previous saved files. Then rerun <math>MESA</math> and look at how your saved profile plots of the Brunt-Vaisala frequency profile. Do they change as you change the mesh and time resolution? If so, in what way?
 
- |  `mesh_delta_coeff (mdc)`  | `time_delta_coeff (tdc)` |
- |:---:|:---:|
- | 1.0 | 1.0 | 
- | 1.0 | 0.5 | 
- | 0.5 | 1.0 | 
- | 0.5 | 0.5 | 
+ <table>
+  <tr>
+    <th>`mesh_delta_coeff (mdc)`</th>
+    <th>`time_delta_coeff (tdc)`</th>
+  </tr>
+  <tr>
+    <td>1.0</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>1.0</td>
+    <td>0.5</td>
+  </tr>    
+  <tr>
+    <td>0.5</td>
+    <td>1.0</td>
+  </tr>
+  <tr>
+    <td>0.5</td>
+    <td>0.5</td>
+  </tr>
+</table>
 
 If you also run <math>GYRE</math> for each one of these configurations, you can check how the period spacing patterns are changing as well.
 

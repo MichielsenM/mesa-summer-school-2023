@@ -32,7 +32,7 @@ As long as the path to your <math>GYRE</math> directory (<math>GYRE_DIR</math>) 
 
 Once the path to <math>GYRE</math> has been set, we need to first source our bash shell-startup file
 
-<div class="terminal-title"> Terminal command example </div> 
+<div class="terminal-title"> Terminal commands - example </div> 
 <div class="terminal"><p>
 source $HOME/.zshrc
 </p></div>
@@ -249,7 +249,7 @@ If you have done everything correctly, then your <math>gyre.in</math> file shoul
 
 With our <math>gyre.in</math> file now setup and ready we can now run <math>GYRE</math>!
 
-<div class="terminal-title"> Terminal command to run </div> 
+<div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
 $GYRE_DIR/bin/gyre gyre.in
 </p></div>

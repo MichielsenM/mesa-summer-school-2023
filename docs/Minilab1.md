@@ -28,7 +28,7 @@ Let it run until the `pgstar` window shows up, then terminate the run using `ctr
 
 <task><details>
 <summary>Task 0</summary><p>
-Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated above, then compile and run `MESA` to check that everything is running as it should.
+Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated above, then compile and run <code>MESA</code> to check that everything is running as it should.
 </p></details></task>
 
 As `MESA` is running, you will notice that two `pgstar` windows show up...
@@ -70,12 +70,12 @@ You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/r
 
 <task><details>
 <summary>Task 1</summary><p>
-Modify the `&star_job` and `&controls` sections of `inlist_project` to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a 4M<sub>sun</sub> star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the `pgstar` output, then try to evolve the star.
+Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a 4M<sub>sun</sub> star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <code>pgstar</code> output, then try to evolve the star.
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (`&star_job`) and <code>stop_near_zams</code>(`&controls`), while two additional parameters (<code>load_saved_model(</code> and <code>load_model_filename</code>) have to be included in `&star_job` to load the `SPB_ZAMS_Y0.28_Z0.02.mod` file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to `inlist_pgstar`.
+The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (<code>&star_job</code>) and <code>stop_near_zams</code>(<code>&controls</code>), while two additional parameters (<code>load_saved_model(</code> and <code>load_model_filename</code>) have to be included in <code>&star_job</code> to load the <code>SPB_ZAMS_Y0.28_Z0.02.mod</code> file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <code>inlist_pgstar</code>.
 </p></details></hint>
 
 If you want to have a look at the inlist used to create this starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0).

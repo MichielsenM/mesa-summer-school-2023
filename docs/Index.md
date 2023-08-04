@@ -30,7 +30,7 @@ Aside from the two types of text boxes, there are three different types of colou
 
 <task><details>
 <summary>Task 0</summary><p>
-This is an example of how a specific task will show up in the following `MESA`labs.
+This is an example of how a specific task will show up in the following <code>MESA</code> labs.
 </p></details></task>
 
 

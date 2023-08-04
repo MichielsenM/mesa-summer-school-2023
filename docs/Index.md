@@ -54,9 +54,9 @@ We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
 **<span style="font-family: Georgia">run_star_extras.f90</span>, `run_star_extras.f90`, <span style="font-family: Amerian Typewriter">run_star_extras.f90</span>, <span style="font-family: Menlo">run_star_extras.f90</span>, <span style="font-family: Palatino">run_star_extras.f90</span>, <span style="font-family: Consolas">run_star_extras.f90</span>**
 
-<span style="font-family: teletypefont ">run_star_extras.f90</span>, <span style="font-family: teletypefont ">MESA</span>, <span style="font-family: teletypefont ">python</span>
+<span style="font-family: Menlo ">run_star_extras.f90</span>, <span style="font-family: Menlo ">MESA</span>, <span style="font-family: Menlo ">python</span>
 
-**<span style="font-family: teletypefont ">run_star_extras.f90</span>, <span style="font-family: teletypefont ">MESA</span>, <span style="font-family: teletypefont ">python</span>**
+**<span style="font-family: Menlo ">run_star_extras.f90</span>, <span style="font-family: Menlo ">MESA</span>, <span style="font-family: Menlo ">python</span>**
 
 <span style="font-family: Menlo">run_star_extras.f90</span>, <span style="font-family: Menlo">MESA</span>, <span style="font-family: Menlo">python</span>, <span style="font-family: Menlo">GYRE</span>
 

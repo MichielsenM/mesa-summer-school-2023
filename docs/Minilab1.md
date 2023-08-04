@@ -4,7 +4,7 @@ title: Minilab 1
 ---
 # Minilab 1
 
-In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass <i>m</i><sub>cc</sub>, and the helium core mass <i>m</i><sub>He, core</sub> obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with <math>MESA</math>, we copy and rename the `$MESA_DIR/star/work` directory
+In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass <i>m</i><sub>cc</sub>, and the helium core mass <i>m</i><sub>He, core</sub> obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal">
@@ -24,12 +24,12 @@ Let it run until the <math>pgstar</math> window shows up, then terminate the run
 
 <task><details>
 <summary>Task 0</summary><p>
-Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated above, then compile and run <math>MESA</math> to check that everything is running as it should.
+Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated above, then compile and run `MESA` to check that everything is running as it should.
 </p></details></task>
 
-As <math>MESA</math> is running, you will notice that two <math>pgstar</math> windows show up...
+As `MESA` is running, you will notice that two `pgstar` windows show up...
 
-If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your <math>MESA</math> inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. To begin with, we will focus on the <math>inlist_project</math> file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both <math>&star_job</math> and <math>&controls</math>
+If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your `MESA` inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. To begin with, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`
 
 <div class="filetext-title"> inlist_project </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -62,20 +62,20 @@ If everything is running as it should (if not, ask your TA for help!) then it is
 / ! end of controls namelist
 </pre></p></div>
 
-You can find the <math>&star_job</math> documentation [here](https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html), while the corresponding documentation website for the <math>&controls</math> parameters are located [here](https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html).
+You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html), while the corresponding documentation website for the `&controls` parameters are located [here](https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html).
 
 <task><details>
 <summary>Task 1</summary><p>
-Modify the <math>&star_job</math> and <math>&controls</math> sections of <math>inlist_project</math> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a 4M<sub>sun</sub> star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <math>pgstar</math> output, then try to evolve the star.
+Modify the `&star_job` and `&controls` sections of `inlist_project` to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a 4M<sub>sun</sub> star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the `pgstar` output, then try to evolve the star.
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (<math>&star_job</math>) and <code>stop_near_zams</code>(<math>&controls</math>), while two additional parameters (<code>load_saved_model(</code> and <code>load_model_filename</code>) have to be included in <math>\&star_job</math> to load the <math>SPB_ZAMS_Y0.28_Z0.02.mod</math> file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <math>inlist_pgstar</math>.
+The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (`&star_job`) and <code>stop_near_zams</code>(`&controls`), while two additional parameters (<code>load_saved_model(</code> and <code>load_model_filename</code>) have to be included in `&star_job` to load the `SPB_ZAMS_Y0.28_Z0.02.mod` file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to `inlist_pgstar`.
 </p></details></hint>
 
 If you want to have a look at the inlist used to create this starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0).
-Once the main-sequence evolution is running, we will keep modifying <math>inlist_project</math>.
+Once the main-sequence evolution is running, we will keep modifying `inlist_project`.
 
 <task><details>
 <summary>Task 2</summary><p>
@@ -159,7 +159,7 @@ The final input parameters we want to add to <math>inlist_project</math> is conv
 
 <img src="./images/equation_overshoot.png" alt="Equation mixing" >
 
-$$x \times y$$
+$$`x \times y`$$
 
 This type of mixing is one out of two overshoot mixing schemes that have been implemented in <math>MESA</math>. <i>D</i><sub>0</sub> is the diffusive mixing coefficient at <i>r</i><sub>0</sub> = <i>r</i><sub>cc</sub> - <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub>, i.e. at a step of <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub> inside the convective core boundary at radius coordinate <i>r</i><sub>cc</sub>, <i>H</i><sub>p, 0</sub> is the pressure scale height at <i>r</i><sub>0</sub>, <i>H</i><sub>p, cc</sub> is the pressure scale height at <i>r</i><sub>cc</sub>, and <i>f</i><sub>ov</sub> is the overshoot parameter. For this exercise, we will fix <i>f</i><sub>0</sub> = 0.002 and vary <i>f</i><sub>ov</sub> from 0.005 to 0.04.
 

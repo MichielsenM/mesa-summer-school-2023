@@ -159,6 +159,8 @@ The final input parameters we want to add to <math>inlist_project</math> is conv
 
 <img src="./images/equation_overshoot.png" alt="Equation mixing" >
 
+$$x \times y$$
+
 This type of mixing is one out of two overshoot mixing schemes that have been implemented in <math>MESA</math>. <i>D</i><sub>0</sub> is the diffusive mixing coefficient at <i>r</i><sub>0</sub> = <i>r</i><sub>cc</sub> - <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub>, i.e. at a step of <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub> inside the convective core boundary at radius coordinate <i>r</i><sub>cc</sub>, <i>H</i><sub>p, 0</sub> is the pressure scale height at <i>r</i><sub>0</sub>, <i>H</i><sub>p, cc</sub> is the pressure scale height at <i>r</i><sub>cc</sub>, and <i>f</i><sub>ov</sub> is the overshoot parameter. For this exercise, we will fix <i>f</i><sub>0</sub> = 0.002 and vary <i>f</i><sub>ov</sub> from 0.005 to 0.04.
 
 
@@ -181,7 +183,7 @@ Now that we have the desired physics included in our <math>MESA</math> inlists, 
 
 <task><details>
 <summary>Task 7</summary><p>
-Copy <math>history_columns.list</math> from <math>$MESA_DIR/star/defaults</math> to <math>SPB_minilab_1</math>. Make sure that the following parameters are included in <math>history_columns.list</math>: <math>mass_conv_core</math>, <math>he_core_mass</math>, <math>surface n14</math>, <math>center h1</math>,
+Copy <math>history_columns.list</math> from <math>$MESA_DIR/star/defaults</math> to <math>SPB_minilab_1</math>. Make sure that the following parameters are included in <math>history_columns.list</math>: <math>mass_conv_core</math>, <math>he_core_mass</math>, <math>surface_n14</math>, <math>center_h1</math>,
 and <math>delta_Pg</math>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> to your <math>inlist_project</math> file under <math>\&controls</math>.
 Run <math>MESA</math> and answer/do the following:
 </p>

@@ -170,7 +170,7 @@ Notice that we a running a <code>do</code> loop from the outermost cell (<code>k
 
 <task><details>
 <summary>Task 5</summary><p>
-Implement the changes to your <code>my_other_D_mix</code> subroutine listed above and set the diffusive mixing coefficient <code>D_mix</code> to be $10^4$ throughout the star. Recompile and run <code>MESA</code>. What happens to your <code>pgstar</code> mixing window?
+Implement the changes to your <code>my_other_D_mix</code> subroutine listed above and set the diffusive mixing coefficient <code>D_mix</code> to be 10<sup>4</sup> throughout the star. Recompile and run <code>MESA</code>. What happens to your <code>pgstar</code> mixing window?
 </p></details></task>
 
 Currently, it looks like the diffusive mixing coefficient is only being changed inside the convective core and the overshooting region, and is now constant in both regions. Let's double check if anything is happening to the profile in the radiative envelope.<br>
@@ -298,11 +298,11 @@ Additional useful comparison operators are given in the table below
 
 Knowing these will be useful in the following steps as well and whenever you want to add things to your <code>run_star_extras.f90</code> in general. 
 
-Notice that right now there is a discontinuity in our mixing profile when we go from overshoot to minimum mixing. We want to get rid of this discontinuity by modifying our <code>my_other_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to $10^4$ when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
+Notice that right now there is a discontinuity in our mixing profile when we go from overshoot to minimum mixing. We want to get rid of this discontinuity by modifying our <code>my_other_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
 
 <task><details>
 <summary>Task 9</summary><p>
-Declare a new integer parameter <code>k0</code> inside your <code>my_other_D_mix</code> subroutine. This parameter will define the first cell number where <code>D_mix < $10^4$</code> when going from the core to the surface. Add an additional <code>do</code>-loop before your first one and use an <code>if</code> statement to find the value of <code>k0</code>. Then modify your second <code>do</code>-loop to run to <code>k0</code> instead of <code>s% nz</code> and change the diffusive mixing coefficient to $10^4$ if the region is not convective. Likewise set the <code>mixing_type=7</code>.
+Declare a new integer parameter <code>k0</code> inside your <code>my_other_D_mix</code> subroutine. This parameter will define the first cell number where <code>D_mix < 10<sup>4</sup></code> when going from the core to the surface. Add an additional <code>do</code>-loop before your first one and use an <code>if</code> statement to find the value of <code>k0</code>. Then modify your second <code>do</code>-loop to run to <code>k0</code> instead of <code>s% nz</code> and change the diffusive mixing coefficient to 10<sup>4</sup> if the region is not convective. Likewise set the <code>mixing_type=7</code>.
 </p></details></task>
 
 <hint><details>
@@ -312,7 +312,7 @@ Use the ``<code>if</code> condition then do something and exit <code>do</code>-l
 
 <task><details>
 <summary>Task 10</summary><p>
-As a bonus, look up what the inlist control parameter <code>x_ctrl</code> does. Use this to set $10^4$ value in the envelope inside your <code>inlist_project</code> instead of <code>run_star_extras.f90</code>. This will allow us to vary this parameter without having to change <code>run_star_extras.f90</code> every time.
+As a bonus, look up what the inlist control parameter <code>x_ctrl</code> does. Use this to set 10<sup>4</sup> value in the envelope inside your <code>inlist_project</code> instead of <code>run_star_extras.f90</code>. This will allow us to vary this parameter without having to change <code>run_star_extras.f90</code> every time.
 </p></details></task>
 
 <hint><details>
@@ -361,11 +361,11 @@ With the current version of our <code>my_other_D_mix</code> subroutine we could 
     \label{Eq:D_env}
 \end{equation}
 
-In this equation $D_{\rm env, 0}$ corresponds to <code>x_ctrl(1)</code>. $n$ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. $\rho (r)$ is the density and $\rho_{0}$ is the density at <code>k0</code>. <br>
+In this equation <i>D</i><sub>env, 0</sub> corresponds to <code>x_ctrl(1)</code>. _n_ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. &rho;(r) is the density and &rho;<sub>0</sub> is the density at <code>k0</code>. <br>
 
 <task><details>
 <summary>Task 11</summary><p>
-Set $n = \frac{1}{2}$ and $D_{\rm env, 0} = 100$, then implement Eq.~(\ref{Eq:D_env}) in your <code>my_other_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
+Set <i>n</i> = 0.5 and <i>D</i><sub>env, 0</sub> = 100, then implement Eq.~(\ref{Eq:D_env}) in your <code>my_other_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
 </p></details></task>
 
 <hint><details>
@@ -376,7 +376,7 @@ To figure out what parameter <code>MESA</code> is using for the density have a l
 
 <hint><details>
 <summary> Hint </summary><p>
-Use the parameter <code>x_ctrl(2)</code> to set $n$ in <code>inlist_project</code>.
+Use the parameter <code>x_ctrl(2)</code> to set <i>n</i> in <code>inlist_project</code>.
 </p></details></hint>
 
 <hint><details>
@@ -399,7 +399,7 @@ To do this, we are going to modify four separate parts of the <code>run_star_ext
     <li> Name and assign the extra history output data in the subroutine <code>data_for_extra_history_columns</code>. </li>
 </ul>
 
-Let's start by using $^4$He as an example. We want to save the initial ZAMS value of $^4$He at the surface of the star so it does not get overwritten at each time step when we run <code>MESA</code>. We will call this parameter <code>initial_surface_he4</code> and define it at the top of our <code>run_star_extras.f90</code> file right after the line <code>implicit none</code>. We want to declare this parameter as a real number with double precision.
+Let's start by using <sup>4</sup>He as an example. We want to save the initial ZAMS value of <sup>4</sup>He at the surface of the star so it does not get overwritten at each time step when we run <code>MESA</code>. We will call this parameter <code>initial_surface_he4</code> and define it at the top of our <code>run_star_extras.f90</code> file right after the line <code>implicit none</code>. We want to declare this parameter as a real number with double precision.
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -423,7 +423,7 @@ contains
 ...
 </pre></p></div>
 
-In this way, <code>run_star_extras.f90</code> will recognise this parameter everywhere without us having to declare it again. Currently we haven't given this new parameter <code>initial_surface_he4</code> a value. To do so, we want to get the initial surface $^4$He value before <code>MESA</code> starts taking any time steps. We can do so in the subroutine <code>extras_startup</code>
+In this way, <code>run_star_extras.f90</code> will recognise this parameter everywhere without us having to declare it again. Currently we haven't given this new parameter <code>initial_surface_he4</code> a value. To do so, we want to get the initial surface <sup>4</sup>He value before <code>MESA</code> starts taking any time steps. We can do so in the subroutine <code>extras_startup</code>
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -441,9 +441,9 @@ subroutine extras_startup(id, restart, ierr)
 end subroutine extras_startup
 </pre></p></div>
 
-Note that while the parameter for the surface $^4$He mass fraction is called <code>surface he4</code> in your <code>history_columns.list</code> file, it is called <code>surface_he4</code> internally in <code>MESA</code>.
+Note that while the parameter for the surface <sup>4</sup>He mass fraction is called <code>surface he4</code> in your <code>history_columns.list</code> file, it is called <code>surface_he4</code> internally in <code>MESA</code>.
 
-Now that we have saved the initial surface $^4$He mass fraction, our next steps are to tell <code>MESA</code> how many extra history output columns we want to add to our <code>history.data</code> output file. We do so inside the function <code>how_many_extra_history_columns</code> by modifying the parameter by the same name.
+Now that we have saved the initial surface <sup>4</sup>He mass fraction, our next steps are to tell <code>MESA</code> how many extra history output columns we want to add to our <code>history.data</code> output file. We do so inside the function <code>how_many_extra_history_columns</code> by modifying the parameter by the same name.
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -465,7 +465,7 @@ Note that if you compile and run <code>MESA</code> now before assigning the extr
 Warning empty history name for extra_history_column            1
 </p></div>
 
-Now, to give the extra history column a name and a value we need to add the parameters <code>names(n)</code> and <code>vals(n)</code> to the subroutine <code>data_for_extra_history_columns</code>. Here <code>n</code> is the number of the added history column. So if you want to add two extra history columns you need to assign both <code>names(1)</code> and <code>vals(1)</code> as well as <code>names(2)</code> and <code>vals(2)</code>. To calculate the ratio between the current surface $^4$He mass fraction and the initial ZAMS value, we can now do so by using our two parameters <code>s% surface_he4</code> and <code>initial_surface_he4</code>. We will call this ratio <code>current_to_zams_surf_he4</code>.
+Now, to give the extra history column a name and a value we need to add the parameters <code>names(n)</code> and <code>vals(n)</code> to the subroutine <code>data_for_extra_history_columns</code>. Here <code>n</code> is the number of the added history column. So if you want to add two extra history columns you need to assign both <code>names(1)</code> and <code>vals(1)</code> as well as <code>names(2)</code> and <code>vals(2)</code>. To calculate the ratio between the current surface <sup>4</sup>He mass fraction and the initial ZAMS value, we can now do so by using our two parameters <code>s% surface_he4</code> and <code>initial_surface_he4</code>. We will call this ratio <code>current_to_zams_surf_he4</code>.
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -491,7 +491,7 @@ end subroutine data_for_extra_history_columns
 
 <task><details>
 <summary>Task 12</summary><p>
-Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of $^4$He, <sup>12</sup>C, <sup>14</sup>N, and $^{16}$O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.
+Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.
 </p></details></task>
 
 Once you have updated your <code>run_star_extras.f90</code> you can also keep track of how these ratios change throughout the evolution of the star by including a [history panels <code>pgstar</code>](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#history-panels) window.<br>
@@ -513,13 +513,11 @@ Now we have our <code>MESA</code> setup done for the Maxilab and it is time to v
 <summary>Task 14</summary><p>
 In this final task of the Maxilab, there are four of your inlist parameters that you will have to change/vary. Those are: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. The steps you have to take are as follows:
 
-
 <ul>
- <li>
-    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left most column. </li>
+    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148">Google spreadsheet</a> and claim a <i>D</i><sub>env, 0</sub> and <i>n</i> value by putting your name down in the left most column. </li>
     <li> Change <code>log_directory</code> to be of the format <code>'LOGS/4Msun_0.01fov_#Denv0_#n'</code> and also change the parameter <code>filename_for_profile_when_terminate</code> accordingly. </li>
     <li> Set <code>overshoot_f(1) = 0.01</code> </li>
-    <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen $D_{\rm env,0}$ and $n$. </li>
+    <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen <i>D</i><sub>env, 0</sub> and <i>n</i>. </li>
     <li> Run <code>MESA</code> then <code>GYRE</code>. </li>
     <li> Check your output <code>history.data</code> file and note down the last recorded value of <code>current_to_zams_surf_he4</code>, <code>current_to_zams_surf_c12</code>, <code>current_to_zams_surf_n14</code>, and <code>current_to_zams_surf_o16</code> in the corresponding columns <code>tams_to_zams_surface_he4</code>, <code>tams_to_zams_surface_c12</code>, <code>tams_to_zams_surface_n14</code>, and <code>tams_to_zams_surface_o16</code> in the Google spreadsheet. </li>
     <li> Have your TA plot the corresponding period spacing pattern. </li>
@@ -531,4 +529,4 @@ In this final task of the Maxilab, there are four of your inlist parameters that
 Remember that you will also have you update your <code>gyre.in</code> file for the new LOGS directory names.
 </p></details></hint>
 
-As you are adding in your parameters in the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of $D_{\rm env,0}$ do you start to see a change in the surface abundances? How does this depend on the choice of $n$?
+As you are adding in your parameters in the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of  <i>D</i><sub>env, 0</sub> do you start to see a change in the surface abundances? How does this depend on the choice of _n_?

@@ -62,6 +62,8 @@ We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
 **<span style="font-family: Menlo">run_star_extras.f90</span>, <span style="font-family: Menlo">MESA</span>, <span style="font-family: Menlo">python</span>, <span style="font-family: Menlo">GYRE</span>**
 
+\textcolor{red}{<span style="font-family: Menlo">run_star_extras.f90</span>}, <span style="color:#e377c2"><span style="font-family: Menlo">run_star_extras.f90</span></span>
+
 # For the TAs
 For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the GYRE output summary files that the students create. The students are more than welcome to try this out themselves as well, but as a baseline the TAs should be able to do this for them to avoid wasting too much time getting the tools to work. The plotting tools that we are providing for this are written for python. There are two options for how to plot the patterns. You can either use a provided **Jupyter Notebook** or command line **python script**. Jupyter notebook and python script for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.
 

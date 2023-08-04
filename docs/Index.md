@@ -49,5 +49,6 @@ Finally, today's round of <math>MESA</math> lab exercises consists of two minila
 We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
 # For the TAs
+For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the GYRE output summary files that the students create.
 Jupyter notebook for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.
 

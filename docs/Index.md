@@ -48,19 +48,9 @@ Finally, today's round of <math>MESA</math> lab exercises consists of two minila
 
 We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
-**<span style="font-family: Georgia">MESA</span>, `MESA`, <span style="font-family: Amerian Typewriter">MESA</span>, <span style="font-family: Menlo">MESA</span>, <span style="font-family: Palatino">MESA</span>, <span style="font-family: Consolas">MESA</span>**
+`run_star_extras.f90`
 
-**<span style="font-family: Georgia">python</span>, `python`, <span style="font-family: Amerian Typewriter">python</span>, <span style="font-family: Menlo">python</span>, <span style="font-family: Palatino">python</span>, <span style="font-family: Consolas">python</span>**
-
-**<span style="font-family: Georgia">run_star_extras.f90</span>, `run_star_extras.f90`, <span style="font-family: Amerian Typewriter">run_star_extras.f90</span>, <span style="font-family: Menlo">run_star_extras.f90</span>, <span style="font-family: Palatino">run_star_extras.f90</span>, <span style="font-family: Consolas">run_star_extras.f90</span>**
-
-<span style="font-family: Menlo ">run_star_extras.f90</span>, <span style="font-family: Menlo ">MESA</span>, <span style="font-family: Menlo ">python</span>
-
-**<span style="font-family: Menlo ">run_star_extras.f90</span>, <span style="font-family: Menlo ">MESA</span>, <span style="font-family: Menlo ">python</span>**
-
-<span style="font-family: Menlo">run_star_extras.f90</span>, <span style="font-family: Menlo">MESA</span>, <span style="font-family: Menlo">python</span>, <span style="font-family: Menlo">GYRE</span>
-
-**<span style="font-family: Menlo">run_star_extras.f90</span>, <span style="font-family: Menlo">MESA</span>, <span style="font-family: Menlo">python</span>, <span style="font-family: Menlo">GYRE</span>**
+<span style="font-family: Menlo">run_star_extras.f90</span>, **<span style="font-family: Menlo">run_star_extras.f90</span>**
 
 <span style="color:#DC62E7"><span style="font-family: Menlo">run_star_extras.f90</span></span>, **<span style="color:#DC62E7"><span style="font-family: Menlo">run_star_extras.f90</span></span>**
 
@@ -68,6 +58,8 @@ We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
 <span style="color:#934B9A"><span style="font-family: Menlo">run_star_extras.f90</span></span>, **<span style="color:#934B9A"><span style="font-family: Menlo">run_star_extras.f90</span></span>**
 
+<span style="color:#934B9A, font-family: Menlo">run_star_extras.f90</span>
+
 # For the TAs
-For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the GYRE output summary files that the students create. The students are more than welcome to try this out themselves as well, but as a baseline the TAs should be able to do this for them to avoid wasting too much time getting the tools to work. The plotting tools that we are providing for this are written for python. There are two options for how to plot the patterns. You can either use a provided **Jupyter Notebook** or command line **python script**. Jupyter notebook and python script for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.
+For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the GYRE output summary files that the students create. The students are more than welcome to try this out themselves as well, but as a baseline the TAs should be able to do this for them to avoid wasting too much time getting the tools to work. The plotting tools that we are providing for this are written for <span style="color:#AC2AB8"><span style="font-family: Menlo">python</span></span>. There are two options for how to plot the patterns. You can either use a provided **Jupyter Notebook** or command line **python script**. Jupyter notebook and python script for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.
 

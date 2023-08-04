@@ -181,7 +181,7 @@ Now that we have the desired physics included in our <math>MESA</math> inlists, 
 
 <task><details>
 <summary>Task 7</summary><p>
-Copy <math>history_columns.list</math> from <math>$MESA_DIR/star/defaults</math> to <math>SPB_minilab_1</math>. Make sure that the following parameters are included in <math>history_columns.list</math>: <math>mass_conv_core</math>, <math>he_core_mass</math>, <math>surface n14</math>, <math>center h1</math>,
+Copy <math>history_columns.list</math> from <math>$MESA_DIR/star/defaults</math> to <math>SPB_minilab_1</math>. Make sure that the following parameters are included in <math>history_columns.list</math>: <math>mass_conv_core</math>, <math>he_core_mass</math>, <math>surface_n14</math>, <math>center_h1</math>,
 and <math>delta_Pg</math>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> to your <math>inlist_project</math> file under <math>\&controls</math>.
 Run <math>MESA</math> and answer/do the following:
 </p>

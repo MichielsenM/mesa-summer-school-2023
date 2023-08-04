@@ -78,7 +78,7 @@ The parameters that have to be added are: <code>write_pulse_data_with_profile = 
 Amongst the people at your table, distribute the following values for the overshooting parameter <code>overshoot_f(1)</code> and use that in your <math>inlist_project</math>: 0.01, 0.02, 0.03, and 0.04. Likewise change your <code>log_directory</code> parameter <code>LOGS/4Msun_#fov</code> to match the new value of the overshooting parameter. Then run <math>MESA</math>.
 </p></details></task>
 
-When <math>MESA</math> is done running you should see that you now have additional output files in your LOGS directory with a `GYRE' extension, one for each of your <math>MESA</math> output <math>profile#.data</math> files of the format <math>profile#.data.GYRE</math>. It is these <math>profile#.data.GYRE</math> files that we need to use as input for the <math>GYRE</math> computations, where we use <math>GYRE</math> to calculate the associated theoretical oscillations for our <math>profile#.data</math> model. 
+When <math>MESA</math> is done running you should see that you now have additional output files in your LOGS directory with a 'GYRE' extension, one for each of your <math>MESA</math> output <math>profile#.data</math> files of the format <math>profile#.data.GYRE</math>. It is these <math>profile#.data.GYRE</math> files that we need to use as input for the <math>GYRE</math> computations, where we use <math>GYRE</math> to calculate the associated theoretical oscillations for our <math>profile#.data</math> model. 
 
 Just like <math>MESA</math>, <math>GYRE</math> also has an inlist file that we have to either create or modify. Information on how to construct such a file is given on the
 [<math>GYRE</math> documentation website](https://gyre.readthedocs.io/en/stable/). As a starting point, lets create an empty <math>GYRE</math> input file called <math>gyre.in</math> inside our <math>MESA</math> work directory using your favourite text editor.
@@ -143,7 +143,7 @@ Now that we have included the relevant namelist sections for this <math>MESA</ma
 
 <task><details>
 <summary>Task 4</summary><p>
-In the `&model` namelist section, include the parameters:<br> 
+In the <math>&model</math> namelist section, include the parameters:<br> 
 <code>file = './LOGS/4Msun_#fov/profile2.data.GYRE'</code><br> 
 <code>model_type = 'EVOL'</code><br> 
 <code>file_format = 'MESA'</code>
@@ -155,14 +155,14 @@ Next, lets setup the [&osc](https://gyre.readthedocs.io/en/stable/ref-guide/inpu
 
 <task><details>
 <summary>Task 5</summary><p>
-In the `&osc` namelist section set the outer boundary parameter <code>outer_bound = 'VACUUM'</code> and the inner boundary parameter <code>inner_bound = 'REGULAR'</code>. These determine the outer and inner boundary conditions of the model when calculating the oscillations. In `&num` tell <math>GYRE</math> to use the 4th-order Gauss-Legendre Magnus solver for initial-value integrations <code>'MAGNUS_GL4'</code> using the <code>diff_scheme</code> parameter.
+In the <math>&osc</math> namelist section set the outer boundary parameter <code>outer_bound = 'VACUUM'</code> and the inner boundary parameter <code>inner_bound = 'REGULAR'</code>. These determine the outer and inner boundary conditions of the model when calculating the oscillations. In <math>&num</math> tell <math>GYRE</math> to use the 4th-order Gauss-Legendre Magnus solver for initial-value integrations <code>'MAGNUS_GL4'</code> using the <code>diff_scheme</code> parameter.
 </p></details></task>
 
 Once we have our numerics and model specifications, we now want to tell <math>GYRE</math> which oscillations to compute. We will do so using the two namelist sections [&mode](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/mode-params.html) and [&scan](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/scan-params.html). For this <math>MESA</math> lab we will focus on dipole prograde (&#8467;=1, _m_=1) modes with radial orders between -1 and -80. Note that by convention, we use negative radial orders for g-modes and positive radial orders for p-modes. In principle, it doesn't matter what we are setting _m_ to be as long as we are fulfilling _m_ = -&#8467;, ..., &#8467;. This is because we are currently not including rotation in our <math>GYRE</math> computations, so all of the _m_ = -&#8467;, ..., &#8467; modes for the same &#8467; and _n_ value would have the same frequency. To include rotation, we would have to include another namelist section in our <math>GYRE</math> inlist file called [&rot](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/rot-params.html). You will see more on this during the <math>MESA</math> lab sessions on Thursday.<br>
 
 <task><details>
 <summary>Task 6</summary><p>
-In the `&mode` namelist section, include the parameters:<br> 
+In the <math>&mode</math> namelist section, include the parameters:<br> 
 <code>l = 1</code><br> 
 <code>m = 1</code><br> 
 <code>n_pg_min = -80</code><br> 
@@ -173,7 +173,7 @@ The relevant frequency range to consider of g-modes in SPB stars is between 0.05
 
 <task><details>
 <summary>Task 7</summary><p>
-In the `&scan` namelist section, include the parameters:<br> 
+In the <math>&scan</math> namelist section, include the parameters:<br> 
 <code>grid_type = 'INVERSE'</code><br> 
 <code>freq_frame = 'INERTIAL'</code><br> 
 <code>freq_min = 0.05</code><br> 
@@ -187,7 +187,7 @@ When computing the oscillations we want to make sure that we have a high resolut
 
 <task><details>
 <summary>Task 8</summary><p>
-In the `&grid` namelist section, include the parameters:<br> 
+In the <math>&grid</math> namelist section, include the parameters:<br> 
 <code>w_osc = 10</code><br> 
 <code>w_exp = 2</code><br> 
 <code>w_ctr = 10</code>
@@ -197,7 +197,7 @@ Now our last step is to tell <math>GYRE</math> what to output using [&ad_output]
 
 <task><details>
 <summary>Task 8</summary><p>
-In the `&ad_output` namelist section, include the parameters:<br> 
+In the <math>&ad_output</math> namelist section, include the parameters:<br> 
 <code>summary_file = './LOGS/4Msun_#fov/profile2_summary.txt'</code><br>
 <code>summary_file_format = 'TXT'</code><br>
 <code>summary_item_list = 'l,m,n_p,n_g,n_pg,freq'</code><br> 
@@ -355,12 +355,12 @@ Ideally when you are comparing period spacing patterns you want to make sure tha
 
 <task><details>
 <summary>Task 11</summary><p>
-In your <math>inlist_project</math> file specify under `&star_job` that <math>MESA</math> has to output a profile when it terminates and name this profile `final_profile.data`. Under <math>&controls</math>, add the following two parameters: <code>delta_lg_XH_cntr_max = -1</code> and <code>delta_lg_XH_cntr_limit = 0.05</code>. Run <math>MESA</math> again.
+In your <math>inlist_project</math> file specify under <math>&star_job</math> that <math>MESA</math> has to output a profile when it terminates and name this profile `final_profile.data`. Under <math>&controls</math>, add the following two parameters: <code>delta_lg_XH_cntr_max = -1</code> and <code>delta_lg_XH_cntr_limit = 0.05</code>. Run <math>MESA</math> again.
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-The two parameters you have to add in `&star_job` are: <code>write_profile_when_terminate = .true.</code> and <code>filename_for_profile_when_terminate = 'LOGS/4Msun_#fov/final_profile.data'</code>.
+The two parameters you have to add in <math>&star_job</math> are: <code>write_profile_when_terminate = .true.</code> and <code>filename_for_profile_when_terminate = 'LOGS/4Msun_#fov/final_profile.data'</code>.
 </p></details></hint>
 
 <task><details>
@@ -422,12 +422,12 @@ For this bonus exercise we are going to play around with the two parameters `mes
 
 <task><details>
 <summary>Task B2.1</summary><p>
-Copy `profile_columns.list` from `$MESA_DIR/star/defaults/` to your `SPB_minilab_2` work directory. Make sure that `brunt_N2`, `brunt_N2_structure_term`, and `brunt_N2_composition_term` are included as output.
+Copy <math>profile_columns.list</math> from <code>$MESA_DIR/star/defaults/</code> to your <math>SPB_minilab_2</math> work directory. Make sure that <math>brunt_N2</math>, <math>brunt_N2_structure_term</math>, and <math>brunt_N2_composition_term</math> are included as output.
 </p></details></task>
 
 <task><details>
 <summary>Task B2.2</summary><p>
-Add the following to `inlist_pgstar`:<br> 
+Add the following to <math>inlist_pgstar</math>:<br> 
 <code>Profile_Panels1_win_flag = .true.</code><br> 
 <code>Profile_Panels1_num_panels = 2</code><br> 
 <code>Profile_Panels1_yaxis_name(1) = 'brunt_N2'</code><br>
@@ -456,8 +456,8 @@ Now change the <code>mesh_delta_coeff</code> and <code>time_delta_coeff</code> p
 
  <table>
   <tr>
-    <th>`mesh_delta_coeff (mdc)`</th>
-    <th>`time_delta_coeff (tdc)`</th>
+    <th><math>mesh_delta_coeff</math> (mdc)</th>
+    <th><math>time_delta_coeff</math> (tdc)</th>
   </tr>
   <tr>
     <td>1.0</td>

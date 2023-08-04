@@ -4,6 +4,9 @@ title: Home
 permalink: /
 ---
 
+
+<img src="./images/OB_star_interior.001.png" alt="OB_interior" >
+
 # Before getting started
 
 In the following `MESA` lab exercises, you will see different text boxes and colours appearing at different times. <br>

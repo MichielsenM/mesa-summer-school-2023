@@ -130,7 +130,7 @@ grep -rI D_mix star/private
 When typing in these commands, you should eventually see the following output 
 
 <div class="terminal-title"> Terminal output </div> 
-<div class="terminal"><p></pre class="pre-terminal">
+<div class="terminal"><p><pre class="pre-terminal">
 ...
 star/private/mix_info.f90:  s% D_mix(k) = 0d0
 star/private/mix_info.f90:  s% D_mix(k) = s% conv_vel(k)*s% mixing_length_alpha*s% Hp_face(k)/3d0

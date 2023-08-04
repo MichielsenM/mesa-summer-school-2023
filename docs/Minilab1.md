@@ -159,7 +159,7 @@ The final input parameters we want to add to <math>inlist_project</math> is conv
 
 <img src="./images/equation_overshoot.png" alt="Equation mixing" >
 
-$$x \times y$$
+$$`x \times y`$$
 
 This type of mixing is one out of two overshoot mixing schemes that have been implemented in <math>MESA</math>. <i>D</i><sub>0</sub> is the diffusive mixing coefficient at <i>r</i><sub>0</sub> = <i>r</i><sub>cc</sub> - <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub>, i.e. at a step of <i>f</i><sub>0</sub> <i>H</i><sub>p, cc</sub> inside the convective core boundary at radius coordinate <i>r</i><sub>cc</sub>, <i>H</i><sub>p, 0</sub> is the pressure scale height at <i>r</i><sub>0</sub>, <i>H</i><sub>p, cc</sub> is the pressure scale height at <i>r</i><sub>cc</sub>, and <i>f</i><sub>ov</sub> is the overshoot parameter. For this exercise, we will fix <i>f</i><sub>0</sub> = 0.002 and vary <i>f</i><sub>ov</sub> from 0.005 to 0.04.
 

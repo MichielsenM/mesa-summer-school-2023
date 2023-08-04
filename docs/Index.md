@@ -6,8 +6,8 @@ permalink: /
 
 # Before getting started
 
-In the following <math>MESA</math> lab exercises, you will see different text boxes and colours appearing at different times. <br>
-Text boxes with black background will provide either some terminal commands or terminal output from your <math>MESA</math> and <math>GYRE</math> runs.
+In the following `MESA` <span style="color:#AC2AB8"><span style=" font-family: American Typewriter">MESA</span></span>  <span style="color:#AC2AB8"><span style=" font-family: Consalos">MESA</span></span>  lab exercises, you will see different text boxes and colours appearing at different times. <br>
+Text boxes with black background will provide either some terminal commands or terminal output from your `MESA` and `GYRE` runs.
 
 <div class="terminal-title"> Terminal commands or output </div> 
 <div class="terminal"><p>
@@ -15,7 +15,7 @@ A terminal command or output will appear here
 </p></div>
 
 
-The second type of text box has a white background, and lists example contents of different files that you need to use/modify or <math>fortran</math> coding examples.
+The second type of text box has a white background, and lists example contents of different files that you need to use/modify or `fortran` coding examples.
 
 <div class="filetext-title"> File name or type of fortran commands </div> 
 <div class="filetext"><p>
@@ -27,7 +27,7 @@ Aside from the two types of text boxes, there are three different types of colou
 
 <task><details>
 <summary>Task 0</summary><p>
-This is an example of how a specific task will show up in the following <math>MESA</math> labs.
+This is an example of how a specific task will show up in the following `MESA`labs.
 </p></details></task>
 
 
@@ -38,27 +38,17 @@ This is an example of how hints to different tasks will show up in the text.
 
 
 Don't hesitate to use these hints if you get stuck at any point during the lab exercises or feel like you are falling behind!<br>
-Finally, today's round of <math>MESA</math> lab exercises consists of two minilabs and one maxilab, which will take you through the following: <br>
+Finally, today's round of `MESA` lab exercises consists of two minilabs and one maxilab, which will take you through the following: <br>
 
-[Minilab 1](./Minilab1.md): Building your starting <math>MESA</math> inlist and running <math>MESA</math> from a precomputed model.<br>
+[Minilab 1](./Minilab1.md): Building your starting `MESA` inlist and running `MESA` from a precomputed model.<br>
 
-[Minilab 2](./Minilab2.md): Compiling and running <math>GYRE</math> outside of <math>MESA</math>.<br>
+[Minilab 2](./Minilab2.md): Compiling and running `GYRE` outside of `MESA`.<br>
 
-[Maxilab](./Maxilab.md): Implementing a different mixing profile in <math>MESA</math> using the <math>other_D_mix</math> hook inside <math>run_star_extras.f90</math> and including additional history output.<br>
+[Maxilab](./Maxilab.md): Implementing a different mixing profile in `MESA` using the `other_D_mix` hook inside `run_star_extras.f90`and including additional history output.<br>
 
 We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
-`run_star_extras.f90`
 
-<span style="font-family: Menlo">run_star_extras.f90</span>, **<span style="font-family: Menlo">run_star_extras.f90</span>**
-
-<span style="color:#DC62E7"><span style="font-family: Menlo">run_star_extras.f90</span></span>, **<span style="color:#DC62E7"><span style="font-family: Menlo">run_star_extras.f90</span></span>**
-
-<span style="color:#AC2AB8"><span style="font-family: Menlo">run_star_extras.f90</span></span>, **<span style="color:#AC2AB8"><span style="font-family: Menlo">run_star_extras.f90</span></span>**
-
-<span style="color:#934B9A"><span style="font-family: Menlo">run_star_extras.f90</span></span>, **<span style="color:#934B9A"><span style="font-family: Menlo">run_star_extras.f90</span></span>**
-
-<span style="color:#934B9A, font-family: Menlo">run_star_extras.f90</span>
 
 # For the TAs
 For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the <span style="color:#AC2AB8"><span style=" font-family: Menlo">GYRE</span></span> output summary files that the students create. The students are more than welcome to try this out themselves as well, but as a baseline the TAs should be able to do this for them to avoid wasting too much time getting the tools to work. The plotting tools that we are providing for this are written for <span style="color:#AC2AB8"><span style="font-family: Menlo">python</span></span>. There are two options for how to plot the patterns. You can either use a provided **<span style="color:#AC2AB8"><span style="font-family: Menlo">Jupyter Notebook</span></span>** or command line **<span style="color:#AC2AB8"><span style="font-family: Menlo">python</span></span> script**. Jupyter notebook and python script for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.

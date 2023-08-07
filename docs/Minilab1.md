@@ -8,7 +8,7 @@ Some basic introduction to the physics goes here...
 
 # Minilab 1
 
-In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$<i>m</i><sub>He, core</sub> obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
+In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal">
@@ -122,7 +122,7 @@ Make the following additional changes to <code>inlist_project</code>. The text i
 </p>
 <ul>
 <li> Change the output LOGS directory to LOGS/4Msun_0fov (<code>&controls</code>). </li>
-<li> Relax the composition to <i>X</i>=0.71, <i>Y</i>=0.276, and <i>Z</i>=0.014 (<code>&star_job</code>, <code>&kap</code>, and <code>&controls</code>). In <code>&controls</code> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. These latter two parameters determine how quickly the composition is relaxed to the new desired values of <i>Y</i> and <i>Z</i>. </li>
+<li> Relax the composition to $X=0.71$, $Y=0.276$, and $Z=0.014$ <i>X</i>=0.71, <i>Y</i>=0.276, and <i>Z</i>=0.014 (<code>&star_job</code>, <code>&kap</code>, and <code>&controls</code>). In <code>&controls</code> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. These latter two parameters determine how quickly the composition is relaxed to the new desired values of <i>Y</i> and <i>Z</i>. </li>
 <li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund2009</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>) equal to 0.014 so the base metallicity of the opacity tables match the new value of <i>Z</i>. </li>
 <li> Set <code>pgstar</code> to pause before terminating (<code>&star_job</code>). </li>
 <li> Output history data at every time step instead of every fifth time step (<code>&controls</code>).</li>

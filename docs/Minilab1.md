@@ -201,8 +201,7 @@ The parameters to be added to <code>&controls</code> in <code>inlist_project</co
 Include <code>overshoot_D_min = 1d-2</code> in <code>inlist_project</code> (<code>&controls</code>). What happens to the mixing profile shown in your mixing window? What is the default value of <code>overshoot_D_min</code>?
 </p></details></task>
 
-Now that we have the desired physics included in our `MESA` inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass ($m_{\rm cc}$), the helium core mass obtained that the TAMS ($m_{\rm He, core}$), the age of the star at the TAMS ($\tau_{\rm TAMS}$), the <sup>14</sup>N mass fraction at the surface ($X\left(^{14}{\rm N}\right)_{\rm surf}$), 
-and the asymptotic period spacing of $\ell =1$ g-modes ($\Pi_{\ell=1}$ &Pi;<sub>&#8467;=1</sub>). To do so, we first have to make sure that these are included as part of the history output.
+Now that we have the desired physics included in our `MESA` inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass ($m_{\rm cc}$), the helium core mass obtained that the TAMS ($m_{\rm He, core}$), the age of the star at the TAMS ($\tau_{\rm TAMS}$), the <sup>14</sup>N mass fraction at the surface (), and the asymptotic period spacing of $\ell =1$ g-modes ($\Pi_{\ell=1}$ &Pi;<sub>&#8467;=1</sub>). To do so, we first have to make sure that these are included as part of the history output.
 
 <task><details>
 <summary>Task 9</summary><p>

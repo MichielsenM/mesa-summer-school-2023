@@ -183,7 +183,7 @@ In the <code>&scan</code> namelist section, include the parameters:<br>
 <code>n_freq = 400</code>
 </p></details></task>
 
-When computing the oscillations we want to make sure that we have a high resolution in the spatial grid where large variations in &xi are occurring. We do so by adding three additional parameters to [&grid](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/grid-params.html) which are described in detail in [Spatial Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/spatial-grids.html#spatial-grids) section on the <code>GYRE</code> documentation website.<br>
+When computing the oscillations we want to make sure that we have a high resolution in the spatial grid where large variations in $\xi$ are occurring. We do so by adding three additional parameters to [&grid](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/grid-params.html) which are described in detail in [Spatial Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/spatial-grids.html#spatial-grids) section on the <code>GYRE</code> documentation website.<br>
 
 <task><details>
 <summary>Task 8</summary><p>
@@ -193,7 +193,7 @@ In the <code>&grid</code> namelist section, include the parameters:<br>
 <code>w_ctr = 10</code>
 </p></details></task>
 
-Now our last step is to tell <code>GYRE</code> what to output using [&ad_output](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html). There are two types of output files to consider: the [summary](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files) and [detail](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html) output files. The `summary` files provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, &#8467;, and _m_ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial (&xi<sup>r</sup>) and horizontal (&xi<sup>h</sup>) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
+Now our last step is to tell <code>GYRE</code> what to output using [&ad_output](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html). There are two types of output files to consider: the [summary](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files) and [detail](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html) output files. The `summary` files provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, &#8467;, and _m_ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial ($\xi^r$) and horizontal ($\xi^h$) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
 
 <task><details>
 <summary>Task 8</summary><p>

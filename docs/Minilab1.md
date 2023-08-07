@@ -46,7 +46,9 @@ Modify your <code>inlist_pgstar</code> file until you are satisfied with the siz
 
 <hint><details>
 <summary> Hint </summary><p>
-The two `pgstar` plotting windows are called `HR window` ([documentation](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window)) and `TRho Profile Window` ([documentation](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window)). The names of the parameters that you should be varying are: `HR_win_width`, `HR_win_aspect_ratio`, `TRho_Profile_win_width`, and `TRho_Profile_win_aspect_ratio`. These are already included in `inlist_pgstar` by default.
+The two <code>pgstar</code> plotting windows are called <code>HR window</code> 
+(<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window">documentation</a>) and <code>TRho Profile Window</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window">documentation</a>)
+. The names of the parameters that you should be varying are: <code>HR_win_width</code>, <code>HR_win_aspect_ratio</code>, <code>TRho_Profile_win_width</code>, and <code>TRho_Profile_win_aspect_ratio</code>. These are already included in <code>inlist_pgstar</code> by default.
 </p></details></hint>
 
 

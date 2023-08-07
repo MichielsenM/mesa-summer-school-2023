@@ -89,7 +89,7 @@ You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/r
 
 <task><details>
 <summary>Task 3</summary><p>
-Modify the `&star_job` and `&controls` sections of `inlist_project` to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a 4M<sub>sun</sub> star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the `pgstar` output, then try to evolve the star.
+Modify the `&star_job` and `&controls` sections of `inlist_project` to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the `pgstar` output, then try to evolve the star.
 </p></details></task>
 
 <hint><details>
@@ -123,7 +123,7 @@ Make the following additional changes to <code>inlist_project</code>. The text i
 <ul>
 <li> Change the output LOGS directory to <code>LOGS/4Msun_0fov</code> (<code>&controls</code>). </li>
 <li> Relax the composition to $X=0.71$, $Y=0.276$, and $Z=0.014$ (<code>&star_job</code>, <code>&kap</code>, and <code>&controls</code>). In <code>&controls</code> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. These latter two parameters determine how quickly the composition is relaxed to the new desired values of $Y$ and $Z$. </li>
-<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund2009</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>) equal to 0.014 so the base metallicity of the opacity tables match the new value of $Z$. </li>
+<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>) equal to 0.014 so the base metallicity of the opacity tables match the new value of $Z$. </li>
 <li> Set <code>pgstar</code> to pause before terminating (<code>&star_job</code>). </li>
 <li> Output history data at every time step instead of every fifth time step (<code>&controls</code>).</li>
 </ul>
@@ -184,12 +184,12 @@ The final input parameters we want to add to `inlist_project` is convective boun
 
 $$`x \times y`$$
 
-This type of mixing is one out of two overshoot mixing schemes that have been implemented in `MESA`. $D_0$ is the diffusive mixing coefficient at $r_0 = r_{\rm cc} - f_0 H_{\rm p,cc}$ , i.e. at a step of $f_0 H_{\rm p,cc}$  inside the convective core boundary at radius coordinate $r_{\rm cc}$, $H_{\rm p,0}$ is the pressure scale height at $r_0$, $H_{\rm p, cc}$ is the pressure scale height at $r_{\rm cc}$, and $f_{\rm ov}$ is the overshoot parameter. For this exercise, we will fix $f_0 = 0.002$  and vary $f_{\rm ov}$ from 0.005 to 0.04.
+This type of mixing is one out of two overshoot mixing schemes that have been implemented in `MESA`. $D_0$ is the diffusive mixing coefficient at $r_0 = r_{\rm cc} - f_0 H_{\rm p,cc}$ , i.e. at a step of $f_0 H_{\rm p,cc}$  inside the convective core boundary at radius coordinate $r_{\rm cc}$. This step is required because the diffusive mixing coefficient for the convective zone approaches zero at the core boundary. $H_{\rm p,0}$ is the pressure scale height at $r_0$, $H_{\rm p, cc}$ is the pressure scale height at $r_{\rm cc}$, and $f_{\rm ov}$ is the overshoot parameter. For this exercise, we will fix $f_0 = 0.002$  and vary $f_{\rm ov}$ from 0.005 to 0.04.
 
 
 <task><details>
 <summary>Task 7</summary><p>
-Look up the parameters required to include convective boundary mixing (overshoot) in <code>MESA</code>. Include these parameters in <code>inlist_project</code> (<code>&controls</code>), replace the (:) with (1), set the overshoot scheme to exponential on top of the core during hydrogen burning, set <i>D</i><sub>0</sub> = 0.002, and choose a value for <i>f</i><sub>ov</sub> between 0.005 to 0.04. Run <code>MESA</code>. Change the name of your output LOGS directory <code>LOGS/4Msun_#fov</code> so that <code>#</code> corresponds to your choice of <i>f</i><sub>ov</sub>. What happens to the <code>pgstar</code> mixing and HR windows? Note that models with a higher <i>f</i><sub>ov</sub> parameter will take longer to run, so if your laptop is slow make sure to choose a low value and have someone else at your table choose a high value.
+Look up the parameters required to include convective boundary mixing (overshoot) in <code>MESA</code>. Include these parameters in <code>inlist_project</code> (<code>&controls</code>), replace the (:) with (1), set the overshoot scheme to exponential on top of the core during hydrogen burning, set $f_0 = 0.002$, and choose a value for $f_{\rm ov}$ between 0.005 to 0.04. Run <code>MESA</code>. Change the name of your output LOGS directory <code>LOGS/4Msun_#fov</code> so that <code>#</code> corresponds to your choice of $f_{\rm ov}$. What happens to the <code>pgstar</code> mixing and HR windows? Note that models with a higher $f_{\rm ov}$ parameter will take longer to run, so if your laptop is slow make sure to choose a low value and have someone else at your table choose a high value.
 </p></details></task>
 
 <hint><details>

@@ -47,8 +47,7 @@ Modify your <code>inlist_pgstar</code> file until you are satisfied with the siz
 <hint><details>
 <summary> Hint </summary><p>
 The two <code>pgstar</code> plotting windows are called <code>HR window</code> 
-(<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window">documentation</a>) and <code>TRho Profile Window</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window">documentation</a>)
-. The names of the parameters that you should be varying are: <code>HR_win_width</code>, <code>HR_win_aspect_ratio</code>, <code>TRho_Profile_win_width</code>, and <code>TRho_Profile_win_aspect_ratio</code>. These are already included in <code>inlist_pgstar</code> by default.
+(<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window">documentation</a>) and <code>TRho Profile Window</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window">documentation</a>). The names of the parameters that you should be varying are: <code>HR_win_width</code>, <code>HR_win_aspect_ratio</code>, <code>TRho_Profile_win_width</code>, and <code>TRho_Profile_win_aspect_ratio</code>. These are already included in <code>inlist_pgstar</code> by default.
 </p></details></hint>
 
 
@@ -94,7 +93,7 @@ Modify the `&star_job` and `&controls` sections of `inlist_project` to start the
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (`&star_job`) and <code>stop_near_zams</code>(`&controls`), while two additional parameters (<code>load_saved_model(</code> and <code>load_model_filename</code>) have to be included in `&star_job` to load the `SPB_ZAMS_Y0.28_Z0.02.mod` file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to `inlist_pgstar`.
+The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (`&star_job`) and <code>stop_near_zams</code>(`&controls`), while two additional parameters (<code>load_saved_model</code> and <code>load_model_filename</code>) have to be included in `&star_job` to load the `SPB_ZAMS_Y0.28_Z0.02.mod` file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to `inlist_pgstar`.
 </p></details></hint>
 
 If you want to have a look at the inlist used to create this starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0).

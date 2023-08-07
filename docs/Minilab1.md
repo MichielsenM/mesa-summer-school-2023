@@ -27,17 +27,30 @@ For good measure, let's make sure that the standard `MESA` inlist runs
 Let it run until the `pgstar` window shows up, then terminate the run using `ctrl + c`. 
 
 <task><details>
-<summary>Task 0</summary><p>
+<summary>Task 1</summary><p>
 Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated above, then compile and run `MESA` to check that everything is running as it should.
 </p></details></task>
+
+If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your `MESA` inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. 
 
 As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile on the star, indicating also convective and other (non-)mixing regions, where nuclear burning is taking place, etc.
 
 <img src="./images/hr_000205.png" width="500" alt="HR" > <img src="./images/trho_profile_000205.png" width="500" alt="Htrho_profileR" >
 
-Both of these `pgstar` windows are the default windows being shown in `MESA`. Depending on your laptop/desktop. These windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. 
+Both of these `pgstar` windows are the default windows being shown in `MESA`. Depending on your laptop/desktop. These windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found [here](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#). 
 
-If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your `MESA` inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. To begin with, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`
+<task><details>
+<summary>Task 2</summary><p>
+Modify your <code>inlist_pgstar</code> file until you are satisfied with the sizes of your <code>pgstar</code> windows. Note that any changes that you make to <code>inlist_pgstar</code> and save while <code>MESA</code> is running are automatically updated on the fly.
+</p></details></task>
+
+<hint><details>
+<summary> Hint </summary><p>
+The two `pgstar` plotting windows are called `HR window` ([documentation](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window)) and `TRho Profile Window` ([documentation](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window)). The names of the parameters that you should be varying are: `HR_win_width`, `HR_win_aspect_ratio`, `TRho_Profile_win_width`, and `TRho_Profile_win_aspect_ratio`. These are already included in `inlist_pgstar` by default.
+</p></details></hint>
+
+
+Now that the `pgstar` windows are on the right scale, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`
 
 <div class="filetext-title"> inlist_project </div> 
 <div class="filetext"><p><pre class="pre-filetext">

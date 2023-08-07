@@ -33,6 +33,8 @@ Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated a
 
 As `MESA` is running, you will notice that two `pgstar` windows show up...
 
+<img src="./images/hr_000205.png" alt="HR" > <img src="./images/trho_profile_000205.png" alt="Htrho_profileR" >
+
 If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your `MESA` inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. To begin with, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`
 
 <div class="filetext-title"> inlist_project </div> 

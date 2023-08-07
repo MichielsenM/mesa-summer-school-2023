@@ -8,7 +8,7 @@ Some basic introduction to the physics goes here...
 
 # Minilab 1
 
-In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass <i>m</i><sub>cc</sub>, and the helium core mass <i>m</i><sub>He, core</sub> obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
+In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$ <i>m</i><sub>cc</sub>, and the helium core mass <i>m</i><sub>He, core</sub> obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal">
@@ -196,6 +196,7 @@ Look up the parameters required to include convective boundary mixing (overshoot
 <summary> Hint </summary><p>
 The parameters to be added to <code>&controls</code> in <code>inlist_project</code> are: <code>overshoot_scheme(1)</code>, <code>overshoot_zone_type(1)</code>, <code>overshoot_zone_loc(1)</code>, <code>overshoot_bdy_loc(1)</code>, <code>overshoot_f(1)</code>, and <code>overshoot_f0(1) = 0.002</code>. <code>overshoot_f(1)</code> is the overshooting parameter that you will be varying.
 </p></details></hint>
+<br>
 
 <task><details>
 <summary>Task 8</summary><p>

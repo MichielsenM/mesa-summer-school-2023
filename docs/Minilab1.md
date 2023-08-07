@@ -33,7 +33,7 @@ Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated a
 
 As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile on the star, indicating also convective and other (non-)mixing regions, where nuclear burning is taking place, etc.
 
-<img src="./images/hr_000205.png" width="200" alt="HR" > <img src="./images/trho_profile_000205.png" width="200" alt="Htrho_profileR" >
+<img src="./images/hr_000205.png" width="500" alt="HR" > <img src="./images/trho_profile_000205.png" width="500" alt="Htrho_profileR" >
 
 Both of these `pgstar` windows are the default windows being shown in `MESA`. Depending on your laptop/desktop. These windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. 
 

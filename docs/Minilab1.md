@@ -89,7 +89,7 @@ You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/r
 
 <task><details>
 <summary>Task 3</summary><p>
-Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the `pgstar` output, then try to evolve the star.
+Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <code>pgstar</code> output, then try to evolve the star.
 </p></details></task>
 
 <hint><details>
@@ -182,7 +182,7 @@ The final input parameters we want to add to `inlist_project` is convective boun
 
 <img src="./images/equation_overshoot.png" alt="Equation mixing" >
 
-$$`x \times y`$$
+$$D_{\rm ov} (r) = D_0 \exp \left(\frac{-2 \left[r-r_0\right]}{f_{\rm ov} H_{\rm p,0}} \right)$$
 
 This type of mixing is one out of two overshoot mixing schemes that have been implemented in `MESA`. $D_0$ is the diffusive mixing coefficient at $r_0 = r_{\rm cc} - f_0 H_{\rm p,cc}$ , i.e. at a step of $f_0 H_{\rm p,cc}$  inside the convective core boundary at radius coordinate $r_{\rm cc}$. This step is required because the diffusive mixing coefficient for the convective zone approaches zero at the core boundary. $H_{\rm p,0}$ is the pressure scale height at $r_0$, $H_{\rm p, cc}$ is the pressure scale height at $r_{\rm cc}$, and $f_{\rm ov}$ is the overshoot parameter. For this exercise, we will fix $f_0 = 0.002$  and vary $f_{\rm ov}$ from 0.005 to 0.04.
 

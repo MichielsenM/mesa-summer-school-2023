@@ -175,12 +175,10 @@ Zoom in on the MS evolutionary track of the start in the <code>pgstar</code> HR 
 
 <hint><details>
 <summary> Hint </summary><p>
-Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</code>, <code>HR_logL_min</code>, and <code>HR_logL_max</code> in <code>inlist_pgstar</code>. You can do this on the fly while <code>MESA</code> is running. Look up "Mixing window" in the <code>MESA</code> <code>pgstar</code> documentation. The parameter you want to add to <code>inlist_pgstar</code> is <code>Mixing_win_flag</code>.
+Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</code>, <code>HR_logL_min</code>, and <code>HR_logL_max</code> in <code>inlist_pgstar</code>. You can do this on the fly while <code>MESA</code> is running. Look up "Mixing window" in the <code>MESA</code> <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#mixing-window">documentation</a>. The parameter you want to add to <code>inlist_pgstar</code> is <code>Mixing_win_flag</code>.
 </p></details></hint>
 
 The final input parameters we want to add to `inlist_project` is convective boundary mixing. For this exercise we will only consider exponential diffusive overshoot on top of the hydrogen burning convective core: 
-
-<img src="./images/equation_overshoot.png" alt="Equation mixing" >
 
 $$D_{\rm ov} (r) = D_0 \exp \left(\frac{-2 \left[r-r_0\right]}{f_{\rm ov} H_{\rm p,0}} \right)$$
 
@@ -203,7 +201,7 @@ The parameters to be added to <code>&controls</code> in <code>inlist_project</co
 Include <code>overshoot_D_min = 1d-2</code> in <code>inlist_project</code> (<code>&controls</code>). What happens to the mixing profile shown in your mixing window? What is the default value of <code>overshoot_D_min</code>?
 </p></details></task>
 
-Now that we have the desired physics included in our `MESA` inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass (<i>m</i><sub>cc</sub>), the helium core mass obtained that the TAMS (<i>m</i><sub>He, core</sub>), the age of the star at the TAMS (&tau;<sub>TAMS</sub>), the <sup>14</sup>N mass fraction at the surface (<i>X</i>(<sup>14</sup>N)<sub>surf</sub>), and the asymptotic period spacing of &#8467;=1 g-modes (&Pi;<sub>&#8467;=1</sub>). To do so, we first have to make sure that these are included as part of the history output.
+Now that we have the desired physics included in our `MESA` inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass ($m_{\rm cc}$), the helium core mass obtained that the TAMS ($m_{\rm He, core}$), the age of the star at the TAMS ($\tau_{\rm TAMS}$), the <sup>14</sup>N mass fraction at the surface ($X(^{14}{\rm N})_{\rm surf}$ <i>X</i>(<sup>14</sup>N)<sub>surf</sub>), and the asymptotic period spacing of $\ell =1$ &#8467;=1 g-modes ($\Pi_{\ell=1}$ &Pi;<sub>&#8467;=1</sub>). To do so, we first have to make sure that these are included as part of the history output.
 
 <task><details>
 <summary>Task 9</summary><p>
@@ -212,9 +210,9 @@ and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20<
 Run <code>MESA</code> and answer/do the following:
 </p>
 <ul>
-<li> In the  <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=713862144">Google spreadsheet</a> note down your name and choice of <i>f</i><sub>ov</sub>, as well as <i>m</i><sub>He, core</sub>, &tau;<sub>TAMS</sub>, and <i>X</i>(<sup>14</sup>N)<sub>surf</sub> at TAMS. </li>
-<li> Find the value of &Pi;<sub>&#8467;=1</sub> and <i>m</i><sub>cc</sub> at <code>center_h1 &sim; 0.35</code> (i.e. halfway through core hydrogen burning) and add these to the Google spreadsheet.</li>
-<li> How do these values change for different values of <i>f</i><sub>ov</sub>?</li>
+<li> In the  <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=713862144">Google spreadsheet</a> note down your name and choice of $f_{\rm ov}$, as well as $m_{\rm He, core}$, $\tau_{\rm TAMS}$, and $X(^{14}{\rm N})_{\rm surf}$ <i>X</i>(<sup>14</sup>N)<sub>surf</sub> at TAMS. </li>
+<li> Find the value of $\Pi_{\ell=1}$ &Pi;<sub>&#8467;=1</sub> and $m_{\rm cc}$ <i>m</i><sub>cc</sub> at <code>center_h1 &sim; 0.35</code> (i.e. halfway through core hydrogen burning) and add these to the Google spreadsheet.</li>
+<li> How do these values change for different values of $f_{\rm ov}$?</li>
 </ul>
 </details></task>
 

@@ -6,6 +6,11 @@ title: Minilab 1
 
 Some basic introduction to the physics goes here...
 
+<div style="align: left; text-align:center;">
+    <img src="images/CBM_gradT_4panels.png" width="800" /> 
+    <div class="caption" style="width: 600"> Example internal mixing profiles (top) and corresponding temperature gradients (bottom) for four different choices of covection boundary mixing (CBM): (a) Exponential diffusive overshoot, (b) step overshoot, (c) convective penetration, and (d) extended convective penetration. In the top panel, convective mixing is shown in grey, CBM is indicated in blue, while envelope mixing is shown in green. In the bottom panel the corresponding temperature gradients used by MESA ($\nabla_T$, orange) along with the adiabatic ($\nabla_{\rm ad}$, green) and radiative ($\nabla_{\rm rad}$, blue) are shown, with the convective core indicated by the grey region for reference. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2023Galax..11...56A/abstract">Anders & Pedersen (2023)</a>.</div>
+</div>
+
 # Minilab 1
 
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory

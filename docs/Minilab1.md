@@ -99,7 +99,9 @@ The parameters that need to be changed are <code>create_pre_main_sequence_model<
 
 As `MESA` is running, you should now see a third `pgstar` window appear, showing the abundance profiles as a function of mass. The x-axis is color coded according to the internal mixing taking place in different regions of the star, and matches that being shown in the `TRho_profile` window. If you are unhappy with the size of this window, you can change in the size and aspect ratios of it in `inlist_pgstar` using the parameters `Abundance_win_width` and `Abundance_win_aspect_ratio`. 
 
-<img src="./images/abund_000255.png" width="700" alt="abundance profile" >
+<div style="align: left; text-align:center;">
+    <img src="images/abund_000255.png" width="700" /> 
+</div>
 
 You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4\$M$_\odot\$ star instead of the default $15\$M$_\odot\$ star, and we are focusing only on the main-sequence evolution. 
 

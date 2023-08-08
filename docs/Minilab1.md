@@ -162,7 +162,7 @@ Concerning figuring out how to set the <code>kap_file_prefix</code> parameter, y
 
 Once you have implemented the changes above, try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you will see that `MESA` starts to complain and gives you the message:
 
-Once you have implemented the changes above, try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you will see in the terminal output that `MESA` is ignoring these changes. You may also see that although the parameter `initial_mass = 15` is still set in the `inlist_project` file, then this choice of initial mass is also being ignored. The mass of the loaded model is $4$\,M$_\odot$.
+Once you have implemented the changes above, try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you will see in the terminal output that `MESA` is ignoring these changes. You may also see that although the parameter `initial_mass = 15` is still set in the `inlist_project` file, then this choice of initial mass is also being ignored. The mass of the loaded model is $4$M$_\odot$.
 
 <div class="terminal-title"> Terminal output </div> 
 <div class="terminal"><pre class="pre-terminal">

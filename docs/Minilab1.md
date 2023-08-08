@@ -108,11 +108,11 @@ You may also notice that the evolutionary track showing up in the `HR window` on
 <div style="align: left; text-align:center;">
     <div class="column">
       <img src="images/hr_v2_000285.png" width="500" />
-      <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+      <div class="caption" style="width: 50%"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
     </div>
     <div class="column">
       <img src="images/hr_v2_000285.png" width="500" />
-      <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+      <div class="caption" style="width: 50%"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
     </div>
 </div>
 

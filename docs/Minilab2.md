@@ -39,11 +39,11 @@ Once the path to <code>GYRE</code> has been set, we need to first source our bas
 source $HOME/.zshrc
 </p></div>
 
-Then the next step is to compile <code>GYRE</code>. To do so, we have to go to the <code>GYRE</code> directory and use the <code>make</code> command:
+When initally installing MESA, the GYRE code should also have been compiled automatically. However, if this turns out not to be the case for you (will become clear once you start trying to run GYRE) then you will have to complete the following two steps in your terminal to compile GYRE using `make` inside your GYRE directory. 
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
-cd $GYRE_DIR
+cd $GYRE_DIR<br>
 make
 </p></div>
 

@@ -294,7 +294,7 @@ Add the relevant inlist settings to <code>inlist_pgstar</code> to create a grid 
 
 <hint><details>
 <summary> Hint </summary><p>
-You'll find the relevant settings under the `Grid` section of the `pgstar` <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#grid">documentation</a>.
+You'll find the relevant settings under the <code>Grid</code> section of the <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#grid">documentation</a>.
 </p></details></hint>
 <br>
 

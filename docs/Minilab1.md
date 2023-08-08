@@ -282,4 +282,51 @@ The convective core mass (<code>mass_conv_core</code>), helium core mass (<code>
 When finding the values at <code>center_h1 &sim; 0.35</code> just select the ones that are closest to this value.
 </p></details></hint>
 
-## Bonus exercise!
+## Bonus exercise: Combining multiple pgstar plots in one window
+
+Currently, when running MESA you have four `pgstar` windows open at once. This is starting to get a bit busy! MESA actually has options for including multiple `pgstar` plots in the same window! For this bonus exercise, we will do just that. To get our (currently) four `pgstar` windows into one window, we'll make use of a so-called grid. You can activate a total of nine such grids, and each grid can contain multiple plots. Today, we'll only use one grid.
+<br>
+
+<task><details>
+<summary>Task B1</summary><p>
+Add the relevant inlist settings to <code>inlist_pgstar</code> to create a grid with 2 rows, 2 columns and 4 plots, and start the run. Don't worry about trying to include your individual <code>pgstar</code> plots in the grid just yet. 
+</p></details></task>
+
+<hint><details>
+<summary> Hint </summary><p>
+You'll find the relevant settings under the `Grid` section of the `pgstar` <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#grid">documentation</a>.
+</p></details></hint>
+<br>
+
+When running the model, you'll see a fifth `pgstar` window appear, in which the central $T\text{--}\rho$ evolution is shown again. We obviously want to get rid of the individual windows first and then start filling our grid.
+
+<br>
+<task><details>
+<summary>Task B2</summary><p>
+Disable the individual <code>pgstar</code> windows. Afterwards, add them to the grid instead. You can do this using the <code>Grid1_plot_name(:)</code> array by replacing the <code>:</code> with 1, 2, 3 and 4, respectively. Do not remove the other inlist settings such as <code>HR_logT_min</code> and <code>show_TRho_Profile_legend = .true.</code>. They will still apply to our plots, even though they live in the grid now.
+</p></details></task>
+
+<hint><details>
+<summary> Hint </summary><p>
+The names required to add the desired plots to the grid are the same as those used for the individual <code>pgstar</code> windows. For example: to add the $T\text{--}\rho$-profile (previously enabled by <code>TRho_Profile_win_flag = .true.</code>), the name should be <code>TRho_profile<code>.
+</p></details></hint>
+<br>
+
+What we want to do next, before running our model again, is assign each of our four plots to a location on the grid. We can do this by specifying the row and column number. We also want to make sure each plot only takes up the width and height of one column and row, respectively.
+
+<br>
+<task><details>
+<summary>Task B3</summary><p>
+Find the inlist settings to assign each plot (<code>HR</code>, <code>TRho_profile</code>, <code>Abundance</code> and <code>Mixing</code>) to a location in the grid, and make sure they only span one column width and row height. You can choose for yourself where in the grid you want which plot. After you've done this, run the model again.
+</p></details></task>
+
+<hint><details>
+<summary> Hint </summary><p>
+Just as for the <code>Grid1_plot_name(:)</code>, the row(span)/column(span) settings are handled by an array.
+</p></details></hint>
+
+<hint><details>
+<summary> Hint </summary><p>
+The row/column indices in our $2\times 2$ grid are $[1,\,2]$.
+</p></details></hint>
+<br>

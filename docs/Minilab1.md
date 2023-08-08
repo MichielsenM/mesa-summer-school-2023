@@ -106,13 +106,17 @@ As `MESA` is running, you should now see a third `pgstar` window appear, showing
 You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4{\rm M}_\odot\$ star instead of the default $15{\rm M}_\odot$ star, and we are focusing only on the main-sequence evolution. 
 
 <div style="align: left; text-align:center;">
-    <img src="images/hr_v2_000285.png" width="500" />
-    <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
-    img src="images/hr_v2_000285.png" width="500" />
-    <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+    <div class="column">
+      <img src="images/hr_v2_000285.png" width="500" />
+      <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+    </div>
+    <div class="column">
+      <img src="images/hr_v2_000285.png" width="500" />
+      <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+    </div>
 </div>
 
-
+<br>
 Once the main-sequence evolution is running, we will keep modifying `inlist_project`.
 
 <task><details>

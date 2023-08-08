@@ -357,7 +357,6 @@ If all went well, your `inlist_pgstar` should look something like the one below.
 <div class="filetext-title"> inlist_pgstar</div> 
 <div class="filetext"><p><pre class="pre-filetext">
 &pgstar
-...
 
 ! Grid window settings
   Grid1_win_flag = .true.

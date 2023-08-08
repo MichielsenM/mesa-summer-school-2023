@@ -38,10 +38,10 @@ As `MESA` is running, you will notice that two `pgstar` windows show up. One is 
 <div class="row">
   <div style="align: left; text-align:center;">
       <div class="column">
-        <img src="images/hr_000205.png" width="600" />
+        <img src="images/hr_000205.png" width="500" />
       </div>
       <div class="column">
-        <img src="images/trho_profile_000205.png" width="600" />
+        <img src="images/trho_profile_000205.png" width="500" />
       </div>
   </div>
 </div>
@@ -136,7 +136,7 @@ The choice of opacity tables and metal mixtures is particularly important when w
 
 <div style="align: left; text-align:center;">
     <img src="images/opacities.jpeg" width="600" /> 
-    <div class="caption" style="width: 600"> *Example Rosseland opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the metal mixture of iron (red dashed) and both iron and nickle (full black) clearly show an increase in the opacity in the partial ionization zone of iron at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a>*</div>
+    <div class="caption" style="width: 600"> Example Rosseland opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the metal mixture of iron (red dashed) and both iron and nickle (full black) clearly show an increase in the opacity in the partial ionization zone of iron at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a></div>
 </div>
 
 <br>
@@ -167,6 +167,7 @@ The parameters that need to be added in <code>&controls</code> are: <code>log_di
 <summary> Hint </summary><p>
 Concerning figuring out how to set the <code>kap_file_prefix</code> parameter, you might notice if you look up this parameter on the <code>MESA</code> documentation website that the following options are listed: <code>gn93</code>, <code>gs98</code>, <code>a09</code>, <code>OP_gs98</code>, and <code>OP_a09_nans_removed_by_hand</code>. However, no explanation is given as to what these parameters actually stand for. From the naming of the parameters you might be able to guess which one you have to use, but if you want to be sure then one way to do this is to go to your <code>$MESA_DIR/data/kap_data/</code> directory and look at the files there. In the file names, everything before <code>_z#.#_x#.#.data</code> corresponds to the input options for the <code>kap_file_prefix</code> parameter. If you choose one of the files there and open it, then the first line of the file will give you the explanation and reference to the table.
 </p></details></hint>
+<br>
 
 Once you have implemented the changes above, try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you will see in the terminal output that `MESA` is ignoring these changes. You may also see that although the parameter `initial_mass = 15` is still set in the `inlist_project` file, then this choice of initial mass is also being ignored. As a reminder, the mass of the loaded model is $4M_\odot$.
 
@@ -201,7 +202,7 @@ Once your new `inlist_project` is working, the next step is to start including c
       </div>
   </div>
 </div>
-
+<br>
 
 <task><details>
 <summary>Task 6</summary><p>

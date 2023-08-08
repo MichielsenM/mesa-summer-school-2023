@@ -136,7 +136,7 @@ The choice of opacity tables and metal mixtures is particularly important when w
 
 <div style="align: left; text-align:center;">
     <img src="images/opacities.jpeg" width="600" /> 
-    <div class="caption" style="width: 600"> Example Rosseland opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the metal mixture of iron (red dashed) and both iron and nickle (full black) clearly show an increase in the opacity in the partial ionization zone of iron at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a></div>
+    <div class="caption" style="width: 600"> Example Rosseland opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the metal mixture of iron (red dashed) and both iron and nickle (full black) clearly show an increase in the opacity in the partial ionization zone of iron at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a>.</div>
 </div>
 
 <br>
@@ -147,7 +147,7 @@ Make the following additional changes to <code>inlist_project</code>. The text i
 <ul>
 <li> Change the output LOGS directory to <code>LOGS/4Msun_0fov</code> (<code>&controls</code>). </li>
 <li> Relax the composition to $X=0.71$, $Y=0.276$, and $Z=0.014$ (<code>&star_job</code>, <code>&kap</code>, and <code>&controls</code>). In <code>&controls</code> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. These latter two parameters determine how quickly the composition is relaxed to the new desired values of $Y$ and $Z$. </li>
-<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>) equal to 0.014 so the base metallicity of the opacity tables match the new value of $Z$. </li>
+<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>, <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/kap.html">documentation</a>) equal to 0.014 so the base metallicity of the opacity tables match the new value of $Z$. </li>
 <li> Set <code>pgstar</code> to pause before terminating (<code>&star_job</code>). </li>
 <li> Output history data at every time step instead of every fifth time step (<code>&controls</code>).</li>
 </ul>
@@ -213,8 +213,9 @@ Zoom in on the MS evolutionary track of the start in the <code>pgstar</code> HR 
 <summary> Hint </summary><p>
 Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</code>, <code>HR_logL_min</code>, and <code>HR_logL_max</code> in <code>inlist_pgstar</code>. You can do this on the fly while <code>MESA</code> is running. Look up "Mixing window" in the <code>MESA</code> <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#mixing-window">documentation</a>. The parameter you want to add to <code>inlist_pgstar</code> is <code>Mixing_win_flag</code>.
 </p></details></hint>
+<br>
 
-The final input parameters we want to add to `inlist_project` is convective boundary mixing. For this exercise we will only consider exponential diffusive overshoot on top of the hydrogen burning convective core: 
+The final input parameters we want to add to `inlist_project` are related to the convective boundary mixing. For this exercise we will only consider exponential diffusive overshoot on top of the hydrogen burning convective core: 
 
 $$D_{\rm ov} (r) = D_0 \exp \left(\frac{-2 \left[r-r_0\right]}{f_{\rm ov} H_{\rm p,0}} \right)$$
 
@@ -236,6 +237,14 @@ The parameters to be added to <code>&controls</code> in <code>inlist_project</co
 <summary>Task 8</summary><p>
 Include <code>overshoot_D_min = 1d-2</code> in <code>inlist_project</code> (<code>&controls</code>). What happens to the mixing profile shown in your mixing window? What is the default value of <code>overshoot_D_min</code>?
 </p></details></task>
+<br>
+
+Your final `pgstar` mixing window should end up looking something like this depending on your choice of $f_{\rm ov}$:
+
+<div style="align: left; text-align:center;">
+    <img src="images/mixing_000255.png" width="500" /> 
+</div>
+<br>
 
 Now that we have the desired physics included in our `MESA` inlists, it is time to see how exponential diffusive overshooting impacts the convective core mass ($m_{\rm cc}$), the helium core mass obtained that the TAMS ($m_{\rm He, core}$), the age of the star at the TAMS ($\tau_{\rm TAMS}$), the <sup>14</sup>N mass fraction at the surface <i>X</i>(<sup>14</sup>N)<sub>surf</sub>, and the asymptotic period spacing of $\ell =1$ g-modes ($\Pi_{\ell=1}$). To do so, we first have to make sure that these are included as part of the history output.
 

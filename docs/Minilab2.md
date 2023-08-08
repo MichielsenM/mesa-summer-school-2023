@@ -49,11 +49,11 @@ make
 
 If the installation went smoothly, then now we should be able to run <code>GYRE</code> outside of <code>MESA</code>!<br>
 
-Let's start by creating a new <code>MESA</code> work directory by copying the one we created for Minilab 1. If you were unable to complete Minilab 1, then you can download the solution from here **(include link with solution)**.  <!-- TODO -->
+Let's start by creating a new <code>MESA</code> work directory by copying the one we created for Minilab 1. If you were unable to complete Minilab 1, then you can download the solution from [here](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0).
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
-cp -r SPB_minilab_1 SPB_minilab_2
+cp -r SPB_minilab_1 SPB_minilab_2 <br>
 cd SPB_minilab_2
 </p></div>
 

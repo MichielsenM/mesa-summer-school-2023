@@ -428,5 +428,5 @@ If all went well, your `inlist_pgstar` should look something like the one below.
 The corresponding `pgstar` grid window should look something like this.
 
 <div style="align: left; text-align:center;">
-    <img src="images/grid1000280.png" width="700" /> 
+    <img src="images/grid1000280.png" width="900" /> 
 </div>

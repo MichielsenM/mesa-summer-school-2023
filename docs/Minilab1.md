@@ -289,7 +289,7 @@ Currently, when running MESA you have four `pgstar` windows open at once. This i
 
 <task><details>
 <summary>Task B1</summary><p>
-Add the relevant inlist settings to <code>inlist_pgstar</code> to create a grid with 2 rows, 2 columns and 4 plots, and start the run. Don't worry about trying to include your individual <code>pgstar</code> plots in the grid just yet. 
+Add the relevant inlist settings to <code>inlist_pgstar</code> to create a grid with 2 rows, 2 columns and 4 plots. Don't worry about trying to include your individual <code>pgstar</code> plots in the grid just yet. Also make sure to include the two parameters <code>log_center_T</code> and <code>log_center_Rho</code> in your <code>history_columns.list</code> file, otherwise MESA will give an error right after relaxing the composition. Then run MESA. 
 </p></details></task>
 
 <hint><details>
@@ -307,7 +307,7 @@ Disable the individual <code>pgstar</code> windows. Afterwards, add them to the 
 
 <hint><details>
 <summary> Hint </summary><p>
-The names required to add the desired plots to the grid are the same as those used for the individual <code>pgstar</code> windows. For example: to add the $T\text{--}\rho$-profile (previously enabled by <code>TRho_Profile_win_flag = .true.</code>), the name should be <code>TRho_profile</code>.
+The names required to add the desired plots to the grid are the same as those used for the individual <code>pgstar</code> windows. For example: to add the $T\text{-}\rho$-profile (previously enabled by <code>TRho_Profile_win_flag = .true.</code>), the name should be <code>TRho_profile</code>.
 </p></details></hint>
 <br>
 
@@ -355,72 +355,71 @@ The <code>pgstar</code> parameters you need to add and vary are:
 If all went well, your `inlist_pgstar` should look something like the one below. In the next labs, you will need to add additional `pgstar` plots. If you have time left, you can always try to add them to the grid you just made! 
 
 <div class="filetext-title"> inlist_pgstar</div> 
-<div class="filetext"><p>
+<div class="filetext"><p><pre class="pre-filetext">
 &pgstar
 ...
 
-
 ! Grid window settings
-Grid1_win_flag = .true.
-Grid1_win_width = 18
-Grid1_win_aspect_ratio = 0.65
-Grid1_num_cols = 2
-Grid1_num_rows = 2
-Grid1_num_plots = 4
+  Grid1_win_flag = .true.
+  Grid1_win_width = 18
+  Grid1_win_aspect_ratio = 0.65
+  Grid1_num_cols = 2
+  Grid1_num_rows = 2
+  Grid1_num_plots = 4
 
 ! HRD
-Grid1_plot_name(1) = 'HR'
-Grid1_plot_row(1) = 1
-Grid1_plot_rowspan(1) = 1
-Grid1_plot_col(1) = 1
-Grid1_plot_colspan(1) = 1
-Grid1_plot_pad_left(1) = 0.0
-Grid1_plot_pad_right(1) = 0.05
-Grid1_plot_pad_top(1) = 0.0
-Grid1_plot_pad_bot(1) = 0.05
-Grid1_txt_scale_factor(1) = 0.7
-HR_logT_min = 4.0
-HR_logT_max = 4.25
-HR_logL_min = 2.1
-HR_logL_max = 3.0
+  Grid1_plot_name(1) = 'HR'
+  Grid1_plot_row(1) = 1
+  Grid1_plot_rowspan(1) = 1
+  Grid1_plot_col(1) = 1
+  Grid1_plot_colspan(1) = 1
+  Grid1_plot_pad_left(1) = 0.0
+  Grid1_plot_pad_right(1) = 0.05
+  Grid1_plot_pad_top(1) = 0.0
+  Grid1_plot_pad_bot(1) = 0.05
+  Grid1_txt_scale_factor(1) = 0.7
+  HR_logT_min = 4.0
+  HR_logT_max = 4.25
+  HR_logL_min = 2.1
+  HR_logL_max = 3.0
 
 ! Temperature-density profile
-Grid1_plot_name(2) = 'TRho_profile'
-Grid1_plot_row(2) = 1
-Grid1_plot_rowspan(2) = 1
-Grid1_plot_col(2) = 2
-Grid1_plot_colspan(2) = 1
-Grid1_plot_pad_left(2) = 0.05
-Grid1_plot_pad_right(2) = 0.0
-Grid1_plot_pad_top(2) = 0.0
-Grid1_plot_pad_bot(2) = 0.05
-Grid1_txt_scale_factor(2) = 0.7
-show_TRho_Profile_legend = .true.
-show_TRho_Profile_text_info = .true.
+  Grid1_plot_name(2) = 'TRho_profile'
+  Grid1_plot_row(2) = 1
+  Grid1_plot_rowspan(2) = 1
+  Grid1_plot_col(2) = 2
+  Grid1_plot_colspan(2) = 1
+  Grid1_plot_pad_left(2) = 0.05
+  Grid1_plot_pad_right(2) = 0.0
+  Grid1_plot_pad_top(2) = 0.0
+  Grid1_plot_pad_bot(2) = 0.05
+  Grid1_txt_scale_factor(2) = 0.7
+  show_TRho_Profile_legend = .true.
+  show_TRho_Profile_text_info = .true.
 
 ! Abundances
-Grid1_plot_name(3) = 'Abundance'
-Grid1_plot_row(3) = 2
-Grid1_plot_rowspan(3) = 1
-Grid1_plot_col(3) = 1
-Grid1_plot_colspan(3) = 1
-Grid1_plot_pad_left(3) = 0.0
-Grid1_plot_pad_right(3) = 0.1
-Grid1_plot_pad_top(3) = 0.075
-Grid1_plot_pad_bot(3) = 0.0
-Grid1_txt_scale_factor(3) = 0.7
+  Grid1_plot_name(3) = 'Abundance'
+  Grid1_plot_row(3) = 2
+  Grid1_plot_rowspan(3) = 1
+  Grid1_plot_col(3) = 1
+  Grid1_plot_colspan(3) = 1
+  Grid1_plot_pad_left(3) = 0.0
+  Grid1_plot_pad_right(3) = 0.1
+  Grid1_plot_pad_top(3) = 0.075
+  Grid1_plot_pad_bot(3) = 0.0
+  Grid1_txt_scale_factor(3) = 0.7
 
 ! Mixing
-Grid1_plot_name(4) = 'Mixing'
-Grid1_plot_row(4) = 2
-Grid1_plot_rowspan(4) = 1
-Grid1_plot_col(4) = 2
-Grid1_plot_colspan(4) = 1
-Grid1_plot_pad_left(4) = 0.05
-Grid1_plot_pad_right(4) = 0.05
-Grid1_plot_pad_top(4) = 0.075
-Grid1_plot_pad_bot(4) = 0.0
-Grid1_txt_scale_factor(4) = 0.7
+  Grid1_plot_name(4) = 'Mixing'
+  Grid1_plot_row(4) = 2
+  Grid1_plot_rowspan(4) = 1
+  Grid1_plot_col(4) = 2
+  Grid1_plot_colspan(4) = 1
+  Grid1_plot_pad_left(4) = 0.05
+  Grid1_plot_pad_right(4) = 0.05
+  Grid1_plot_pad_top(4) = 0.075
+  Grid1_plot_pad_bot(4) = 0.0
+  Grid1_txt_scale_factor(4) = 0.7
 
 / ! end of pgstar namelist
-</p></div>
+</pre></p></div>

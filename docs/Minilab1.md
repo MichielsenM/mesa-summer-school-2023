@@ -19,6 +19,8 @@ Some basic introduction to the physics goes here...
 
 # Minilab 1
 
+**Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0).
+
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 
 <div class="terminal-title"> Terminal commands </div> 

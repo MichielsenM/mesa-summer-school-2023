@@ -35,15 +35,13 @@ If everything is running as it should (if not, ask your TA for help!) then it is
 
 As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile of the star, indicating also convective and other (non-)mixing regions by the colour of the profile, at what combined central densities and temperatures nuclear burning is taking place (part of the white dashed lines), the amount of generated energy (yellow, orange, and red outline of the profile), etc.
 
-<img src="./images/hr_000205.png" width="500" alt="HR" > <img src="./images/trho_profile_000205.png" width="500" alt="Htrho_profileR" >
-
 <div class="row">
   <div style="align: left; text-align:center;">
       <div class="column">
-        <img src="images/hr_000205.png" width="500" />
+        <img src="images/hr_000205.png" width="600" />
       </div>
       <div class="column">
-        <img src="images/trho_profile_000205.png" width="500" />
+        <img src="images/trho_profile_000205.png" width="600" />
       </div>
   </div>
 </div>
@@ -130,7 +128,7 @@ You may also notice that the evolutionary track showing up in the `HR window` on
 </div>
 
 <br>
-Once the main-sequence evolution is running, we will keep modifying `inlist_project`.
+Once the main-sequence evolution is running, we will keep modifying `inlist_project`. First we change the nuclear network to include additional reactions and isotopes relevant for the CNO-cycle. A list of default nuclear networks options availble in `MESA` are listed in the `$MESA_DIR/data/net_data/nets` directory. We refer to the `MESA` labs tomorrow for more details on nuclear networks. 
 
 <task><details>
 <summary>Task 4</summary><p>
@@ -146,7 +144,8 @@ The parameters that need to be added in <code>inlist_project</code> are <code>ch
 <summary> Hint </summary><p>
 Prior to changing the network, you can find out what the name of the default nuclear network is by running <code>MESA</code> and looking at the terminal output. Alternatively, you can look at the parameter <code>default_net_name</code> in the <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html#nuclear-reaction-controls">nuclear networks controls</a> section of the <code>controls</code> documentation webpage.
 </p></details></hint>
-<br>
+
+Next we are going to change the name of the `LOGS` directory where the `MESA` output `history.data` and `profile#.data` gets saved in preparation of varying the convective boundary mixing of the star without overwriting previous `MESA` calculations. We will also relax the composition of the star to match the Galactic standard measured from B-type stars in the solar neighbourhood (<a href="https://ui.adsabs.harvard.edu/abs/2012A%26A...539A.143N/abstract">Nieve & Przybilla 2012;</a>, <a href="https://ui.adsabs.harvard.edu/abs/2013EAS....63...13P/abstract">Przybilla et al. 2013;</a>), change the opacity tables to the OP tables calculate for the metal mixture of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a> to match the initial metal mixture used in our starting model `SPB_ZAMS_Y0.28_Z0.02.mod`, and increase the frequency at which the `history.data` is saved. 
 
 <task><details>
 <summary>Task 5</summary><p>

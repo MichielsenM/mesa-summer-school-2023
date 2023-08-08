@@ -4,7 +4,9 @@ title: Maxilab
 ---
 # Maxilab
 
-For this Maxilab we will now start digging into our <code>run_star_extras.f90</code> file and make changes both to the <code>MESA</code> output as well as change the mixing profile used in the radiative envelope. Once again we will start by copying and renaming our Minilab 2 work directory. If you were unable to complete Minilab 2, then you can download the solution from here **(include link with solution)**.
+**Maxilab solution:** [download](https://www.dropbox.com/scl/fi/fdrzlew1682ftzypn0rl0/SPB_maxilab_solutions.zip?rlkey=o1nex44icnqvfv0oxj1pp2kp3&dl=0)
+
+For this Maxilab we will now start digging into our <code>run_star_extras.f90</code> file and make changes both to the <code>MESA</code> output as well as change the mixing profile used in the radiative envelope. Once again we will start by copying and renaming our Minilab 2 work directory. If you were unable to complete Minilab 2, then you can download the solution from [here](https://www.dropbox.com/scl/fi/lqdxtngsl5wa14m1afntl/SPB_minilab2_solutions.zip?rlkey=qayxo5g5tdk7wm014tstw5npe&dl=0).
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>

@@ -307,8 +307,120 @@ Disable the individual <code>pgstar</code> windows. Afterwards, add them to the 
 
 <hint><details>
 <summary> Hint </summary><p>
-The names required to add the desired plots to the grid are the same as those used for the individual <code>pgstar</code> windows. For example: to add the $T\text{--}\rho$-profile (previously enabled by <code>TRho_Profile_win_flag = .true.</code>), the name should be <code>TRho_profile<code>.
+The names required to add the desired plots to the grid are the same as those used for the individual <code>pgstar</code> windows. For example: to add the $T\text{--}\rho$-profile (previously enabled by <code>TRho_Profile_win_flag = .true.</code>), the name should be <code>TRho_profile</code>.
 </p></details></hint>
 <br>
 
 What we want to do next, before running our model again, is assign each of our four plots to a location on the grid. We can do this by specifying the row and column number. We also want to make sure each plot only takes up the width and height of one column and row, respectively.
+
+<task><details>
+<summary>Task B3</summary><p>
+Find the inlist settings to assign each plot (<code>HR</code>, <code>TRho_profile</code>, <code>Abundance</code> and <code>Mixing</code>) to a location in the grid, and make sure they only span one column width and row height. You can choose for yourself where in the grid you want which plot. After you've done this, run the model again.
+</p></details></task>
+
+<hint><details>
+<summary> Hint </summary><p>
+Just as for the <code>Grid1_plot_name(:)</code>, the row(span)/column(span) settings are handled by an array.
+</p></details></hint>
+
+<hint><details>
+<summary> Hint </summary><p>
+The row/column indices in our $2\times 2$ grid are $[1,\,2]$.
+</p></details></hint>
+<br>
+
+If you've run the model, chances are that the `pgstar` window looks quite horrible now, with overlapping plots etc. To make the window prettier, we're going to have to play with some of the window dimensions, individual plot padding, and scaling settings. Now for some good news and some bad news. The bad news is that these settings depend on what kind of screen you're working on. The specific settings in the solution below work for the laptop of the person writing this, but not necessarily for yours. The good news is that you can adjust the inlist settings during the run. Simply saving `inlist_pgstar` will apply your settings to the `pgstar` window while MESA is running.
+
+<task><details>
+<summary>Task B4</summary><p>
+Adjust the settings for the grid window dimensions, padding for the individual plots, and text scale factors to make each plot fit nicely in the <code>pgstar</code> window. Run the model until you're satisfied with how the <code>pgstar</code> window is looking.
+</p></details></task>
+
+
+<hint><details>
+<summary> Hint </summary><p>
+The <code>pgstar</code> parameters you need to add and vary are:
+<ul>
+ <li><code>Grid1_win_width</code> </li>
+ <li><code>Grid1_win_aspect_ratio</code> </li>
+ <li><code>Grid1_plot_pad_left(:)</code> </li>
+ <li><code>Grid1_plot_pad_right(:)</code> </li>
+ <li><code>Grid1_plot_pad_top(:)</code> </li>
+ <li><code>Grid1_plot_pad_bot(:)</code> </li>
+ <li><code>Grid1_txt_scale_factor(:)</code> </li>
+</ul>
+</p></details></hint>
+<br>
+
+If all went well, your `inlist_pgstar` should look something like the one below. In the next labs, you will need to add additional `pgstar` plots. If you have time left, you can always try to add them to the grid you just made! 
+
+<div class="filetext-title"> inlist_pgstar</div> 
+<div class="filetext"><p>
+&pgstar
+...
+
+
+! Grid window settings
+Grid1_win_flag = .true.
+Grid1_win_width = 18
+Grid1_win_aspect_ratio = 0.65
+Grid1_num_cols = 2
+Grid1_num_rows = 2
+Grid1_num_plots = 4
+
+! HRD
+Grid1_plot_name(1) = 'HR'
+Grid1_plot_row(1) = 1
+Grid1_plot_rowspan(1) = 1
+Grid1_plot_col(1) = 1
+Grid1_plot_colspan(1) = 1
+Grid1_plot_pad_left(1) = 0.0
+Grid1_plot_pad_right(1) = 0.05
+Grid1_plot_pad_top(1) = 0.0
+Grid1_plot_pad_bot(1) = 0.05
+Grid1_txt_scale_factor(1) = 0.7
+HR_logT_min = 4.0
+HR_logT_max = 4.25
+HR_logL_min = 2.1
+HR_logL_max = 3.0
+
+! Temperature-density profile
+Grid1_plot_name(2) = 'TRho_profile'
+Grid1_plot_row(2) = 1
+Grid1_plot_rowspan(2) = 1
+Grid1_plot_col(2) = 2
+Grid1_plot_colspan(2) = 1
+Grid1_plot_pad_left(2) = 0.05
+Grid1_plot_pad_right(2) = 0.0
+Grid1_plot_pad_top(2) = 0.0
+Grid1_plot_pad_bot(2) = 0.05
+Grid1_txt_scale_factor(2) = 0.7
+show_TRho_Profile_legend = .true.
+show_TRho_Profile_text_info = .true.
+
+! Abundances
+Grid1_plot_name(3) = 'Abundance'
+Grid1_plot_row(3) = 2
+Grid1_plot_rowspan(3) = 1
+Grid1_plot_col(3) = 1
+Grid1_plot_colspan(3) = 1
+Grid1_plot_pad_left(3) = 0.0
+Grid1_plot_pad_right(3) = 0.1
+Grid1_plot_pad_top(3) = 0.075
+Grid1_plot_pad_bot(3) = 0.0
+Grid1_txt_scale_factor(3) = 0.7
+
+! Mixing
+Grid1_plot_name(4) = 'Mixing'
+Grid1_plot_row(4) = 2
+Grid1_plot_rowspan(4) = 1
+Grid1_plot_col(4) = 2
+Grid1_plot_colspan(4) = 1
+Grid1_plot_pad_left(4) = 0.05
+Grid1_plot_pad_right(4) = 0.05
+Grid1_plot_pad_top(4) = 0.075
+Grid1_plot_pad_bot(4) = 0.0
+Grid1_txt_scale_factor(4) = 0.7
+
+/ ! end of pgstar namelist
+</p></div>

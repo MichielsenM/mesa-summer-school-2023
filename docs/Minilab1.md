@@ -37,6 +37,17 @@ As `MESA` is running, you will notice that two `pgstar` windows show up. One is 
 
 <img src="./images/hr_000205.png" width="500" alt="HR" > <img src="./images/trho_profile_000205.png" width="500" alt="Htrho_profileR" >
 
+<div class="row">
+  <div style="align: left; text-align:center;">
+      <div class="column">
+        <img src="images/hr_000205.png" width="500" />
+      </div>
+      <div class="column">
+        <img src="images/trho_profile_000205.png" width="500" />
+      </div>
+  </div>
+</div>
+
 Both of these `pgstar` windows are the default windows being shown in `MESA` when you copy the `$MESA_DIR/star/work` directory. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found [here](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#). 
 
 <task><details>
@@ -103,7 +114,7 @@ As `MESA` is running, you should now see a third `pgstar` window appear, showing
     <img src="images/abund_000255.png" width="700" /> 
 </div>
 
-You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4M_\odot$ star instead of the default $15M_\odot$ star, and we are focusing only on the main-sequence evolution. 
+You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4M_\odot$ star instead of the default $15M_\odot$ star, and we are focusing only on the main-sequence evolution. Optionally, you can change the axes limits of `HR window` using the parameters `HR_logT_min`, `HR_logT_max`, `HR_logL_min`, and `HR_logL_max` which are already included in your `inlist_pgstar` file.
 
 <div class="row">
   <div style="align: left; text-align:center;">
@@ -113,7 +124,7 @@ You may also notice that the evolutionary track showing up in the `HR window` on
       </div>
       <div class="column">
         <img src="images/hr_v3_000285.png" width="500" />
-        <div class="caption" style="width: 500"> New <code>HR window</code> after modifying x- and y-axes limits.</div>
+        <div class="caption" style="width: 500"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
       </div>
   </div>
 </div>

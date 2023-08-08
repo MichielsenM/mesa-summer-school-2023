@@ -33,11 +33,11 @@ Copy and rename the <code>$MESA_DIR/star/work</code> directory as demonstrated a
 
 If everything is running as it should (if not, ask your TA for help!) then it is now time to start modifying your `MESA` inlists. We will be using the same inlists throughout Minilab 1, Minilab 2, and the Maxilab and keep adding things to them as we go along. 
 
-As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile of the star, indicating also convective and other (non-)mixing regions, where nuclear burning is taking place, etc.
+As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile of the star, indicating also convective and other (non-)mixing regions by the colour of the profile, at what combined central densities and temperatures nuclear burning is taking place (part of the white dashed lines), the amount of generated energy (yellow, orange, and red outline of the profile), etc.
 
 <img src="./images/hr_000205.png" width="500" alt="HR" > <img src="./images/trho_profile_000205.png" width="500" alt="Htrho_profileR" >
 
-Both of these `pgstar` windows are the default windows being shown in `MESA`. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found [here](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#). 
+Both of these `pgstar` windows are the default windows being shown in `MESA` when you copy the `$MESA_DIR/star/work` directory. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found [here](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#). 
 
 <task><details>
 <summary>Task 2</summary><p>
@@ -52,7 +52,7 @@ The two <code>pgstar</code> plotting windows are called <code>HR window</code>
 
 While we don't recommend using figures generated with `pgstar` in papers, these figures are very useful both for troubleshooting and making sure that `MESA` is doing what we expect it to do. This will become more clear in the Maxilab once we start to include our own custom mixing profiles in `MESA`. 
 
-Now that the `pgstar` windows are on the right scale, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`
+Now that the `pgstar` windows are on the right scale, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) using a pre-generated starting model (<a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a>) for a $4\,$M$_\odot$ star and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`. 
 
 <div class="filetext-title"> inlist_project </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -85,7 +85,7 @@ Now that the `pgstar` windows are on the right scale, we will focus on the `inli
 / ! end of controls namelist
 </pre></p></div>
 
-You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html), while the corresponding documentation website for the `&controls` parameters are located [here](https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html).
+You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html), while the corresponding documentation website for the `&controls` parameters are located [here](https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html). If you want to have a look at the inlist used to create the starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0), but you don't need it to do these `MESA` labs.
 
 <task><details>
 <summary>Task 3</summary><p>
@@ -94,10 +94,17 @@ Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>i
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (<code>&star_job</code>) and <code>stop_near_zams</code>(<code>&controls</code>), while two additional parameters (<code>load_saved_model</code> and <code>load_model_filename</code>) have to be included in <code>&star_job</code> to load the <code>SPB_ZAMS_Y0.28_Z0.02.mod</code> file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <code>inlist_pgstar</code>.
+The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (<code>&star_job</code>) and <code>stop_near_zams</code>(<code>&controls</code>), while two additional parameters (<code>load_saved_model</code> and <code>load_model_filename</code>) have to be included in <code>&star_job</code> to load the <code>SPB_ZAMS_Y0.28_Z0.02.mod</code> file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <code>inlist_pgstar</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#abundance-window">documentation</a>).
 </p></details></hint>
 
-If you want to have a look at the inlist used to create this starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0).
+As `MESA` is running, you should now see a third `pgstar` window appear, showing the abundance profiles as a function of mass. The x-axis is color coded according to the internal mixing taking place in different regions of the star, and matches that being shown in the `TRho_profile` window. If you are unhappy with the size of this window, you can change in the size and aspect ratios of it in `inlist_pgstar` using the parameters `Abundance_win_width` and `Abundance_win_aspect_ratio`. 
+
+<img src="./images/abund_000255.png" width="700" alt="abundance profile" >
+
+You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4\,{\rm M}_\odot$ star instead of a $15\,{\rm M}_\odot$ star, and we are focusing only on the main-sequence evolution. 
+
+<img src="./images/hr_v2_000285.png" width="500" alt="HR2" class="center">
+
 Once the main-sequence evolution is running, we will keep modifying `inlist_project`.
 
 <task><details>

@@ -13,7 +13,7 @@ Some basic introduction to the physics goes here...
 
 # Aims
 
-**MESA aims:** In this Minilab you will learn how to look up relevant parameters to include in your MESA `inlist`, how to load a starting model and whether or not it cares about the initial mass and chemical composition, and how to use `pgstar`.
+**MESA aims:** In this Minilab you will learn how to look up relevant parameters to include in your MESA `inlist`, how to load a starting model and whether or not it cares about the initial mass and chemical composition that you use in your inlist, and how to use `pgstar`.
 
 **Science aims:** To get an understanding how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and the g-mode asymptotic period spacing, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
 

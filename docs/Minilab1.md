@@ -237,12 +237,11 @@ The parameters to be added to <code>&controls</code> in <code>inlist_project</co
 <summary>Task 8</summary><p>
 Include <code>overshoot_D_min = 1d-2</code> in <code>inlist_project</code> (<code>&controls</code>). What happens to the mixing profile shown in your mixing window? What is the default value of <code>overshoot_D_min</code>?
 </p></details></task>
-<br>
 
 Your final `pgstar` mixing window should end up looking something like this depending on your choice of $f_{\rm ov}$:
 
 <div style="align: left; text-align:center;">
-    <img src="images/mixing_000255.png" width="500" /> 
+    <img src="images/mixing_000255.png" width="700" /> 
 </div>
 <br>
 
@@ -251,7 +250,7 @@ Now that we have the desired physics included in our `MESA` inlists, it is time 
 <task><details>
 <summary>Task 9</summary><p>
 Copy <code>history_columns.list</code> from <code>$MESA_DIR/star/defaults</code> to <code>SPB_minilab_1</code>. Make sure that the following parameters are included in <code>history_columns.list</code>: <code>mass_conv_core</code>, <code>he_core_mass</code>, <code>surface_n14</code>, <code>center_h1</code>,
-and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> to your <code>inlist_project</code> file under <code>\&controls</code>.
+and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> to your <code>inlist_project</code> file under <code>&controls</code>.
 Run <code>MESA</code> and answer/do the following:
 </p>
 <ul>

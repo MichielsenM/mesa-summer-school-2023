@@ -61,7 +61,7 @@ The two <code>pgstar</code> plotting windows are called <code>HR window</code>
 
 While we don't recommend using figures generated with `pgstar` in papers, these figures are very useful both for troubleshooting and making sure that `MESA` is doing what we expect it to do. This will become more clear in the Maxilab once we start to include our own custom mixing profiles in `MESA`. 
 
-Now that the `pgstar` windows are on the right scale, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) using a pre-generated starting model (<a href="https://www.dropbox.com/s/o3djdn8d98rlln1/SPB_ZAMS_Y0.28_Z0.02.mod?dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a>) for a $4\,$M$_\odot$ star and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`. 
+Now that the `pgstar` windows are on the right scale, we will focus on the `inlist_project` file. Usually, we want to start the evolution from the pre-main sequence, however, in an effort to save time for these labs we will instead start the evolution at the zero-age main sequence (ZAMS) using a pre-generated starting model for a $4M_\odot$ star and evolve the star until core hydrogen exhaustion. To do this, we have to modify both `&star_job` and `&controls`. 
 
 <div class="filetext-title"> inlist_project </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -112,21 +112,6 @@ As `MESA` is running, you should now see a third `pgstar` window appear, showing
     <img src="images/abund_000255.png" width="700" /> 
 </div>
 
-You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4M_\odot$ star instead of the default $15M_\odot$ star, and we are focusing only on the main-sequence evolution. Optionally, you can change the axes limits of `HR window` using the parameters `HR_logT_min`, `HR_logT_max`, `HR_logL_min`, and `HR_logL_max` which are already included in your `inlist_pgstar` file.
-
-<div class="row">
-  <div style="align: left; text-align:center;">
-      <div class="column">
-        <img src="images/hr_v2_000285.png" width="500" />
-        <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
-      </div>
-      <div class="column">
-        <img src="images/hr_v3_000285.png" width="500" />
-        <div class="caption" style="width: 500"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
-      </div>
-  </div>
-</div>
-
 <br>
 Once the main-sequence evolution is running, we will keep modifying `inlist_project`. First we change the nuclear network to include additional reactions and isotopes relevant for the CNO-cycle. A list of default nuclear networks options availble in `MESA` are listed in the `$MESA_DIR/data/net_data/nets` directory. We refer to the `MESA` labs tomorrow for more details on nuclear networks. 
 
@@ -147,11 +132,11 @@ Prior to changing the network, you can find out what the name of the default nuc
 
 Next we are going to change the name of the `LOGS` directory where the `MESA` output `history.data` and `profile#.data` files gets saved in preparation of varying the convective boundary mixing of the star without overwriting previous `MESA` calculations. We will also relax the composition of the star to match the Galactic standard measured from B-type stars in the solar neighbourhood (<a href="https://ui.adsabs.harvard.edu/abs/2012A%26A...539A.143N/abstract">Nieve & Przybilla 2012</a>; <a href="https://ui.adsabs.harvard.edu/abs/2013EAS....63...13P/abstract">Przybilla et al. 2013</a>), change the opacity tables to the OP tables calculate for the metal mixture of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a> to match the initial metal mixture used in our starting model `SPB_ZAMS_Y0.28_Z0.02.mod` for the sake of consistency, and increase the frequency at which the history output is saved to the `history.data` file. 
 
-The choice of opacity tables and metal mixtures is particularly important when we try to predict which oscillations get excited by the $\kappa$-mechanism (i.e. opacity or heat mechanism) operating in partial ionization zones. This is the mechanism operating in the iron partial inizatio zone, also known as the iron opacity bump, is responsible for exciting the gravity mode pulsations found in SPB stars. The choice of the metal mixture determines how the mass fractions of the metal isotopes (i.e. anything other than hydrogen and helium) are distributed, and highly impacts the opacities in the iron pratial ionization zone as demonstrated in the figure below. Furthermore, the choice of opacities and metal mixtures will also modify the predicted oscillation frequencies (see, e.g., Figure 3 of <a href="https://ui.adsabs.harvard.edu/abs/2015A%26A...580A..27M/abstract">Morraveji et al. (2015)</a>). Studying mode excitation is outside the scope of these `MESA` labs and we refer instead to previous `MESA` labs by Rich Townsend and Radek Smolec from the [2019](https://cococubed.com/mesa_summer_schools/mesa_summer_school_2019/) and [2021](https://cococubed.com/mesa_summer_schools/mesa_summer_school_2021/index.html) MESA Summer Schools.
+The choice of opacity tables and metal mixtures is particularly important when we try to predict which oscillations get excited by the $\kappa$-mechanism (i.e. opacity or heat mechanism) operating in partial ionization zones. This the mechanism operating in partial inization zone of iron, also known as the iron opacity bump, is responsible for exciting the gravity mode pulsations found in SPB stars. The choice of the metal mixture determines how the mass fractions of the metal isotopes (i.e. anything other than hydrogen and helium) are distributed, and highly impacts the opacities in the iron pratial ionization zone as demonstrated in the figure below. Furthermore, the choice of opacities and metal mixtures will also modify the predicted oscillation frequencies (see, e.g., Figure 3 of <a href="https://ui.adsabs.harvard.edu/abs/2015A%26A...580A..27M/abstract">Morraveji et al. (2015)</a>). Studying mode excitation is outside the scope of these `MESA` labs and we refer instead to previous `MESA` labs by Rich Townsend and Radek Smolec from the [2019](https://cococubed.com/mesa_summer_schools/mesa_summer_school_2019/) and [2021](https://cococubed.com/mesa_summer_schools/mesa_summer_school_2021/index.html) MESA Summer Schools.
 
 <div style="align: left; text-align:center;">
     <img src="images/opacities.jpeg" width="600" /> 
-    <div class="caption" style="width: 600"> Example Rosseland opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the metal mixture of iron (red dashed) and both iron and nickle (full black) clearly show an increase in the opacity in the partial ionization zone of iron at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a></div>
+    <div class="caption" style="width: 600"> *Example Rosseland opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the metal mixture of iron (red dashed) and both iron and nickle (full black) clearly show an increase in the opacity in the partial ionization zone of iron at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a>*</div>
 </div>
 
 <br>
@@ -170,12 +155,12 @@ Make the following additional changes to <code>inlist_project</code>. The text i
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be added in <code>&star_job</code> are: <code>&relax_Y</code>, <code>&new_Y</code>, <code>&relax_Z</code>, <code>&new_Z</code>, <code>initial_zfracs</code>, and <code>pause_before_terminate</code>.
+The parameters that need to be added in <code>&star_job</code> are: <code>relax_Y</code>, <code>new_Y</code>, <code>relax_Z</code>, <code>new_Z</code>, and <code>pause_before_terminate</code>.
 </p></details></hint>
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be added in <code>&controls</code> are: <code>log_directory</code>, <code>&relax_dY = 0.001</code>, <code>&relax_dlnZ = 1d-2</code>, and <code>history_interval=1</code>.
+The parameters that need to be added in <code>&controls</code> are: <code>log_directory</code>, <code>relax_dY = 0.001</code>, <code>relax_dlnZ = 1d-2</code>, and <code>history_interval</code>.
 </p></details></hint>
 
 <hint><details>
@@ -183,7 +168,7 @@ The parameters that need to be added in <code>&controls</code> are: <code>log_di
 Concerning figuring out how to set the <code>kap_file_prefix</code> parameter, you might notice if you look up this parameter on the <code>MESA</code> documentation website that the following options are listed: <code>gn93</code>, <code>gs98</code>, <code>a09</code>, <code>OP_gs98</code>, and <code>OP_a09_nans_removed_by_hand</code>. However, no explanation is given as to what these parameters actually stand for. From the naming of the parameters you might be able to guess which one you have to use, but if you want to be sure then one way to do this is to go to your <code>$MESA_DIR/data/kap_data/</code> directory and look at the files there. In the file names, everything before <code>_z#.#_x#.#.data</code> corresponds to the input options for the <code>kap_file_prefix</code> parameter. If you choose one of the files there and open it, then the first line of the file will give you the explanation and reference to the table.
 </p></details></hint>
 
-Once you have implemented the changes above, try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you will see in the terminal output that `MESA` is ignoring these changes. You may also see that although the parameter `initial_mass = 15` is still set in the `inlist_project` file, then this choice of initial mass is also being ignored. The mass of the loaded model is $4M_\odot$.
+Once you have implemented the changes above, try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you will see in the terminal output that `MESA` is ignoring these changes. You may also see that although the parameter `initial_mass = 15` is still set in the `inlist_project` file, then this choice of initial mass is also being ignored. As a reminder, the mass of the loaded model is $4M_\odot$.
 
 <div class="terminal-title"> Terminal output </div> 
 <div class="terminal"><pre class="pre-terminal">
@@ -202,7 +187,20 @@ Once you have implemented the changes above, try to run `MESA` and see if all th
 
 This is because the initial mass and composition have already been set by the input `MESA` model `SPB_ZAMS_Y0.28_Z0.02.mod`, which we are telling `MESA` to load. If we wanted to change these values, then we can relax the composition of the input model (as we are doing in this minilab) and likewise we can relax the inital mass of the model.
 
-Once your new `inlist_project` is working, the next step is to start including convective boundary mixing. Before doing so, lets adjust the plotting window of the `pgstar` HR diagram and include one additional `pgstar` plotting window showing the mixing profile.
+Once your new `inlist_project` is working, the next step is to start including convective boundary mixing. Before doing so, lets adjust the plotting window of the `pgstar` HR diagram and include one additional `pgstar` plotting window showing the mixing profile. You may also notice that the evolutionary track showing up in the `HR window` only takes up a small part of the `pgstar` plot. This is because we are now considering a $4M_\odot$ star instead of the default $15M_\odot$ star, and we are focusing only on the main-sequence evolution. An example comparion of the `HR window` before and after zooming in on the evolutionary track is shown below. 
+
+<div class="row">
+  <div style="align: left; text-align:center;">
+      <div class="column">
+        <img src="images/hr_v2_000285.png" width="500" />
+        <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+      </div>
+      <div class="column">
+        <img src="images/hr_v3_000285.png" width="500" />
+        <div class="caption" style="width: 500"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
+      </div>
+  </div>
+</div>
 
 
 <task><details>

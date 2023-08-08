@@ -284,7 +284,7 @@ When finding the values at <code>center_h1 &sim; 0.35</code> just select the one
 
 ## Bonus exercise: Combining multiple pgstar plots in one window
 
-Currently, when running MESA you have four `pgstar` windows open at once. This is starting to get a bit busy! MESA actually has options for including multiple `pgstar` plots in the same window! For this bonus exercise, we will do just that. To get our (currently) four `pgstar` windows into one window, we'll make use of a so-called grid. You can activate a total of nine such grids, and each grid can contain multiple plots. Today, we'll only use one grid.
+Currently, when running MESA you have four `pgstar` windows open at once. This is starting to get a bit busy. MESA actually has options for including multiple `pgstar` plots in the same window! For this bonus exercise, we will do just that. To get our (currently) four `pgstar` windows into one window, we'll make use of a so-called grid. You can activate a total of nine such grids, and each grid can contain multiple plots. Today, we'll only use one grid.
 <br>
 
 <task><details>
@@ -423,3 +423,10 @@ If all went well, your `inlist_pgstar` should look something like the one below.
 
 / ! end of pgstar namelist
 </pre></p></div>
+<br>
+
+The corresponding `pgstar` grid window should look something like this.
+
+<div style="align: left; text-align:center;">
+    <img src="images/grid1000280.png" width="700" /> 
+</div>

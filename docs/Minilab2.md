@@ -389,7 +389,7 @@ Compare the period spacing patterns for the four different overshooting paramete
 
 ## Bonus exercise 1: Varying GYRE input parameters
 
-Currently, when you run <code>GYRE</code> you should see that all modes have $\left| n_{\rm pg} \right| = n_{\rm g}$ &#x7C; _n_<sub>pg</sub> &#x7C; = _n_<sub>g</sub> and all g-modes between $n_{\rm g} = 3$ _n_<sub>g</sub> = 3 and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
+Currently, when you run <code>GYRE</code> you should see that all modes have $n_{\rm pg}  = -n_{\rm g}$ &#x7C; _n_<sub>pg</sub> &#x7C; = _n_<sub>g</sub> and all g-modes between $n_{\rm g} = 3$ _n_<sub>g</sub> = 3 and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
 
 <task><details>
 <summary>Task B1.1</summary><p>

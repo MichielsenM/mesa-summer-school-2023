@@ -2,6 +2,16 @@
 layout: default
 title: Maxilab
 ---
+# Introduction
+(Work in progress)
+
+# Aims
+
+**MESA + GYRE aims:** In this `MESA` lab you will learn how implement your own mixing profile in `MESA` using the `other_D_mix` hook in `run_star_extras.f90`, as well has how to add additional output to your `history.data` file that is not available as a default option in `history_columns.list`.
+
+**Science aims:** In this Maxilab, you will learn how different shapes on the envelope mixing profiles from internal gravity waves impacts both the period spacing patterns on SPB stars and their surface abundances.
+
+
 # Maxilab
 
 **Minilab 2 solution:** [download](https://www.dropbox.com/scl/fi/lqdxtngsl5wa14m1afntl/SPB_minilab2_solutions.zip?rlkey=qayxo5g5tdk7wm014tstw5npe&dl=0)<br>

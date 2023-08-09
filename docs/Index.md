@@ -100,3 +100,5 @@ Once you are done with the all of the plotting, you can deactivate the conda env
 <div class="terminal">
   <p>conda deactivate</p>
 </div>
+
+For sharing the `GYRE` summary files within your group we recommend creating a separate chat in the MESA Summer School 2023 Slack workspace with the members in your group/table.

@@ -39,9 +39,6 @@ source $MESASDK_ROOT/bin/mesasdk_init.sh
 export GYRE_DIR=$MESA_DIR/gyre/gyre
 </pre></p></div>
 
-
-As long as the path to your <code>GYRE</code> directory (<code>GYRE_DIR</code>) is set after the path to your <code>MESA</code> directory (<code>MESA_DIR</code>), you can also just add `export GYRE_DIR=$MESA_DIR/gyre/gyre` to your shell-startup file.
-
 Once the path to <code>GYRE</code> has been set, we need to first source our bash shell-startup file
 
 <div class="terminal-title"> Terminal commands - example </div> 
@@ -182,7 +179,7 @@ In the <code>&mode</code> namelist section, include the parameters:<br>
 <code>n_pg_max = -1</code>
 </p></details></task>
 
-The relevant frequency range to consider of g-modes in SPB stars is between 0.05d<sup>-1</sup> and 5d<sup>-1</sup>. We will tell <code>GYRE</code> to split this range into 400 bins that are equally spaced in period rather than frequency. This is because the g-modes are equally spaced in period contrary to p-modes that are equally spaced in frequency. Finally, we want the oscillation frequencies to be calculated in the inertial (i.e. observer) frame of reference. For recommendations on how to set up your [Frequency Grid](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/frequency-grids.html#frequency-units) you can check out the [Understanding Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids.html) section on the <code>GYRE</code> documentation website.<br>
+The relevant frequency range to consider of g-modes in SPB stars is between $0.05 {\rm d}^{-1}$0.05d<sup>-1</sup> and $5 {\rm d}^{-1}$ 5d<sup>-1</sup>. We will tell <code>GYRE</code> to split this range into 400 bins that are equally spaced in period rather than frequency. This is because the g-modes are approximately equally spaced in period contrary to p-modes that are equally spaced in frequency. Finally, we want the oscillation frequencies to be calculated in the inertial (i.e. observer) frame of reference. For recommendations on how to set up your [Frequency Grid](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/frequency-grids.html) you can check out the [Understanding Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids.html) section on the <code>GYRE</code> documentation website.<br>
 
 <task><details>
 <summary>Task 7</summary><p>
@@ -196,7 +193,7 @@ In the <code>&scan</code> namelist section, include the parameters:<br>
 <code>n_freq = 400</code>
 </p></details></task>
 
-When computing the oscillations we want to make sure that we have a high resolution in the spatial grid where large variations in $\xi$ are occurring. We do so by adding three additional parameters to [&grid](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/grid-params.html) which are described in detail in [Spatial Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/spatial-grids.html#spatial-grids) section on the <code>GYRE</code> documentation website.<br>
+When computing the oscillations we want to make sure that we have a high resolution in the spatial grid where large variations in the displacement perturbation $\xi$ are occurring. We do so by adding three additional parameters to [&grid](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/grid-params.html) which are described in detail in [Spatial Grids](https://gyre.readthedocs.io/en/stable/user-guide/understanding-grids/spatial-grids.html#spatial-grids) section on the <code>GYRE</code> documentation website.<br>
 
 <task><details>
 <summary>Task 8</summary><p>
@@ -206,7 +203,7 @@ In the <code>&grid</code> namelist section, include the parameters:<br>
 <code>w_ctr = 10</code>
 </p></details></task>
 
-Now our last step is to tell <code>GYRE</code> what to output using [&ad_output](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html). There are two types of output files to consider: the [summary](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files) and [detail](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html) output files. The `summary` files provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, &#8467;, and _m_ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial ($\xi^r$) and horizontal ($\xi^h$) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
+Now our last step is to tell <code>GYRE</code> what to output using [&ad_output](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html). There are two types of output files to consider: the [summary](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files) and [detail](https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html) output files. The `summary` files provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, degree $\ell$, and azimuthal order $m$ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial ($\xi_r$) and horizontal ($\xi_h$) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
 
 <task><details>
 <summary>Task 8</summary><p>
@@ -281,14 +278,14 @@ If you have done everything correctly, then your <code>gyre.in</code> file shoul
 
 With our <code>gyre.in</code> file now setup and ready we can now run <code>GYRE</code>!
 
-<div class="terminal-title"> Terminal commands </div> 
+<div class="terminal-title"> Terminal command for running `GYRE` </div> 
 <div class="terminal"><p>
 $GYRE_DIR/bin/gyre gyre.in
 </p></div>
 
 If everything is running correctly, then this should give you output of the following format
 
-<div class="terminal-title"> Terminal output </div> 
+<div class="terminal-title"> Terminal output from `GYRE` </div> 
 <div class="terminal"><p><pre class="pre-terminal">
 gyre [7.0]
 ----------

@@ -46,7 +46,7 @@ Once the path to <code>GYRE</code> has been set, we need to first source our bas
 source $HOME/.zshrc
 </p></div>
 
-When initally installing MESA, the GYRE code should also have been compiled automatically. However, if this turns out not to be the case for you (will become clear once you start trying to run GYRE) then you will have to complete the following two steps in your terminal to compile GYRE using `make` inside your GYRE directory. 
+When initally installing `MESA`, the `GYRE` code should also have been compiled automatically. However, if this turns out not to be the case for you (will become clear once you start trying to run `GYRE`) then you will have to complete the following two steps in your terminal to compile `GYRE` using `make` inside your `GYRE` directory. 
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
@@ -360,7 +360,7 @@ Check what value of <code>center_h1</code> that your <code>profile2.data</code> 
 Look for the value of <code>center_h1</code> in the header at the top of your <code>profile2.data</code> file.
 </p></details></hint>
 
-Ideally when you are comparing period spacing patterns you want to make sure that you are comparing them for the same core hydrogen mass fraction $X_{\rm c}$ X<sub>c</sub>. You can do so by decreasing the <code>MESA</code> time step around a specific value of $X_{\rm c}$ X<sub>c</sub> that you are interested in and then tell <code>MESA</code> to save a profile when you get close to this value. This is something you would do inside your `run_star_extras.f90`. For now we will take a simpler approach, and instead decrease the time step as we approach core hydrogen exhaustion and then save a profile when <code>MESA</code> is terminated. <br>
+Ideally when you are comparing period spacing patterns you want to make sure that you are comparing them for the same core hydrogen mass fraction $X_{\rm c}$. You can do so by decreasing the <code>MESA</code> time step around a specific value of $X_{\rm c}$ that you are interested in and then tell <code>MESA</code> to save a profile when you get close to this value. This is something you would do inside your `run_star_extras.f90`. For now we will take a simpler approach, and instead decrease the time step as we approach core hydrogen exhaustion and then save a profile when <code>MESA</code> is terminated. <br>
 
 <task><details>
 <summary>Task 11</summary><p>
@@ -389,13 +389,13 @@ Compare the period spacing patterns for the four different overshooting paramete
 
 ## Bonus exercise 1: Varying GYRE input parameters
 
-Currently, when you run <code>GYRE</code> you should see that all modes have &#x7C; _n_<sub>pg</sub> &#x7C; = _n_<sub>g</sub> and all g-modes between _n_<sub>g</sub> = 3 and 80 are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
+Currently, when you run <code>GYRE</code> you should see that all modes have $\left| n_{\rm pg} \right| = n_{\rm g}$ &#x7C; _n_<sub>pg</sub> &#x7C; = _n_<sub>g</sub> and all g-modes between $n_{\rm g} = 3$ _n_<sub>g</sub> = 3 and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
 
 <task><details>
 <summary>Task B1.1</summary><p>
-Change your parameter <code>n_freq</code> to 10, 50, 100, 200, 400, and 600. What happens to the number of output frequencies and time it takes for <code>GYRE</code> to finish its calculations? What is the minimum value for `n_freq` that you need to get all modes from <i>n</i><sub>g</sub> = 9 to 80?
+Change your parameter <code>n_freq</code> to 10, 50, 100, 200, 400, and 600. What happens to the number of output frequencies and time it takes for <code>GYRE</code> to finish its calculations? What is the minimum value for <code>n_freq</code> that you need to get all modes from $n_{\rm g} = 5$ to $80$ <i>n</i><sub>g</sub> = 9 to 80?
 </p></details></task>
-
+<br>
 
 <task><details>
 <summary>Task B1.2</summary><p>
@@ -406,17 +406,20 @@ Play around with the two parameters <code>freq_min</code> and <code>freq_max</co
 <summary> Hint </summary><p>
 You may need to increase <code>n_freq</code> as well.
 </p></details></hint>
+<br>
 
 <task><details>
 <summary>Task B1.3</summary><p>
-Change the parameter <code>grid_type</code> to <code>'LINEAR'</code> then run <code>GYRE</code>. What happens to your output? What value do you need to use for `n_freq` to get the same output as before?
+Change the parameter <code>grid_type</code> to <code>'LINEAR'</code> then run <code>GYRE</code>. What happens to your output? What value do you need to use for <code>n_freq</code> to get the same output as before?
 </p></details></task>
+<br>
 
 <task><details>
 <summary>Task B1.4</summary><p>
 Have a look at the possible 
 <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files">summary file output</a> on the <code>GYRE</code> documentation website. Find the parameter for the stellar mass as well as the effective temperature perturbation amplitude and phase and included them as output for your <code>GYRE</code> computations. Run <code>GYRE</code> to make sure everything works.
 </p></details></task>
+<br>
 
 Now before moving on to the next exercises, make sure you reset the parameters in your <code>gyre.in</code> file to the initial ones, i.e.<br>
 
@@ -436,6 +439,7 @@ For this bonus exercise we are going to play around with the two parameters `mes
 <summary>Task B2.1</summary><p>
 Copy <code>profile_columns.list</code> from <code>$MESA_DIR/star/defaults/</code> to your <code>SPB_minilab_2</code> work directory. Make sure that <code>brunt_N2</code>, <code>brunt_N2_structure_term</code>, and <code>brunt_N2_composition_term</code> are included as output.
 </p></details></task>
+<br>
 
 <task><details>
 <summary>Task B2.2</summary><p>
@@ -452,6 +456,7 @@ Add the following to <code>inlist_pgstar</code>:<br>
 <code>Profile_Panels1_file_width = 12</code><br>
 <code>Profile_Panels1_file_aspect_ratio = 0.75</code>
 </p></details></task>
+<br>
 
 This will save the `pgstar` window showing the `Profile_Panels1` plot to the png directory. We will need those for comparisons later.<br> 
 
@@ -459,6 +464,7 @@ This will save the `pgstar` window showing the `Profile_Panels1` plot to the png
 <summary>Task B2.3</summary><p>
 Include the two parameters <code>mesh_delta_coeff = 1.0</code> and <code>time_delta_coeff = 1.0</code> in your <code>inlist_project</code> under <code>&controls</code>. Change your output LOGS directory to <code>log_directory = 'LOGS/4Msun_#fov_1.0mdc_1.0tdc'</code>. Likewise make sure to change <code>filename_for_profile_when_terminate = 'LOGS/4Msun_#fov_1.0mdc_1.0tdc/final_profile.data'</code>. Then run <code>MESA</code>.
 </p></details></task>
+<br>
 
 Take note of the output to the png directory. Is the Brunt-Vaisala frequency profile looking smooth?<br>
 
@@ -488,6 +494,7 @@ Now change the <code>mesh_delta_coeff</code> and <code>time_delta_coeff</code> p
     <td>0.5</td>
   </tr>
 </table>
+<br>
 
 If you also run <code>GYRE</code> for each one of these configurations, you can check how the period spacing patterns are changing as well.
 

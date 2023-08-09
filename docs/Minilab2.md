@@ -389,17 +389,17 @@ Compare the period spacing patterns for the four different overshooting paramete
 
 ## Bonus exercise 1: Varying GYRE input parameters
 
-Currently, when you run <code>GYRE</code> you should see that all modes have $n_{\rm pg}  = -n_{\rm g}$ &#x7C; _n_<sub>pg</sub> &#x7C; = _n_<sub>g</sub> and all g-modes between $n_{\rm g} = 3$ _n_<sub>g</sub> = 3 and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
+Currently, when you run <code>GYRE</code> you should see that all modes have $n_{\rm pg} = -n_{\rm g}$  and all g-modes between $n_{\rm g} = 3$ and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
 
 <task><details>
 <summary>Task B1.1</summary><p>
-Change your parameter <code>n_freq</code> to 10, 50, 100, 200, 400, and 600. What happens to the number of output frequencies and time it takes for <code>GYRE</code> to finish its calculations? What is the minimum value for <code>n_freq</code> that you need to get all modes from $n_{\rm g} = 5$ to $80$ <i>n</i><sub>g</sub> = 9 to 80?
+Change your parameter <code>n_freq</code> to 10, 50, 100, 200, 400, and 600. What happens to the number of output frequencies and time it takes for <code>GYRE</code> to finish its calculations? What is the minimum value for <code>n_freq</code> that you need to get all modes from $n_{\rm g} = 5$ to $80$?
 </p></details></task>
 <br>
 
 <task><details>
 <summary>Task B1.2</summary><p>
-Play around with the two parameters <code>freq_min</code> and <code>freq_max</code>. What values do you need to use to get the full list of (&#8467;, <i>m</i>) = (1,1) from <i>n</i><sub>pg</sub> = -1 to -80?
+Play around with the two parameters <code>freq_min</code> and <code>freq_max</code>. What values do you need to use to get the full list of ($\ell, m$) = ($1,1$) from $n_{\rm pg} = -1$ to $-80$?
 </p></details></task>
 
 <hint><details>
@@ -470,7 +470,7 @@ Take note of the output to the png directory. Is the Brunt-Vaisala frequency pro
 
 <task><details>
 <summary>Task B2.4</summary><p>
-Now change the <code>mesh_delta_coeff</code> and <code>time_delta_coeff</code> parameters to match the combinations listed in the table below. Remember to also change <code>log_directory</code>, <code>filename_for_profile_when_terminate</code>, and <code>Profile_Panels1_file_prefix</code> accordingly to not overwrite your previous saved files. Then rerun <code>MESA</code> and look at how your saved profile plots of the Brunt-Vaisala frequency profile. Do they change as you change the mesh and time resolution? If so, in what way?
+Now change the <code>mesh_delta_coeff</code> and <code>time_delta_coeff</code> parameters to match the combinations listed in the table below. Remember to also change <code>log_directory</code>, <code>filename_for_profile_when_terminate</code>, and <code>Profile_Panels1_file_prefix</code> accordingly to not overwrite your previous saved files. Then rerun <code>MESA</code> and look at how your saved profile plots of the Brunt-Vaisala frequency profile compare to each other. Do they change as you change the mesh and time resolution? If so, in what way?
 
  <table>
   <tr>

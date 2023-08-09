@@ -92,6 +92,20 @@ A quicker way of plotting the patterns is to use the script `plot_pattern_script
   <p>python plot_pattern_script.py example_period_spacing_patterns.png example_gyre_file.txt example_gyre_file2.txt</p>
 </div>
 
+For this particular example the generated figure should look like this
+
+<div style="align: left; text-align:center;">
+    <img src="images/example_period_spacing_patterns.png" width="700" /> 
+</div>
+<br>
+
+whereas if you also include the third example pattern `example_gyre_file2.txt` then the figure should look like this:
+
+<div style="align: left; text-align:center;">
+    <img src="images/example_period_spacing_patterns_v2.png" width="700" /> 
+</div>
+<br>
+
 For sharing the `GYRE` summary files within your group we recommend creating a separate chat in the MESA Summer School 2023 Slack workspace with the members in your group/table.
 
 Once you are done with the all of the plotting, you can deactivate the conda environment using:
@@ -100,5 +114,3 @@ Once you are done with the all of the plotting, you can deactivate the conda env
 <div class="terminal">
   <p>conda deactivate</p>
 </div>
-
-For sharing the `GYRE` summary files within your group we recommend creating a separate chat in the MESA Summer School 2023 Slack workspace with the members in your group/table.

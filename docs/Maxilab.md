@@ -124,13 +124,15 @@ Next we need to tell <code>MESA</code> to use our new subroutine <code>my_other_
 <summary>Task 3</summary><p>
 In <code>inlist_project</code> add the line  <code>use_other_D_mix = .true.</code> under the <code>&controls</code> section. In <code>run_star_extras.f90</code> add the line <code>s% other_D_mix => my_other_D_mix</code> at the end of the <code>extras_controls</code> subroutine. Then compile (<code>./mk</code>) and run (<code>./rn</code>) <code>MESA</code>. Does anything happen to your mixing <code>pgstar</code> window?
 </p></details></task>
+<br>
 
 Currently, nothing new is actually happening to the mixing profile in <code>MESA</code> because we haven't asked <code>MESA</code> to change it yet. This makes it difficult to tell if <code>MESA</code> is actually calling our new subroutine <code>my_other_D_mix</code>. To check this, we can add a print statement to <code>my_other_D_mix</code>.<br> 
 
 <task><details>
 <summary>Task 4</summary><p>
-Add the line<br> <code>print *, 'I am using my_other_D_mix'</code><br> to your <code>my_other_D_mix</code> subroutine inside <code>run_star_extras.f90</code>. Recompile and run <code>MESA</code>, then check the terminal output to see if the line <code>'I am using my_other_D_mix'</code> starts to show up.
+Add the line <code>print *, 'I am using my_other_D_mix'</code> to your <code>my_other_D_mix</code> subroutine inside <code>run_star_extras.f90</code>. Recompile and run <code>MESA</code>, then check the terminal output to see if the line <code>'I am using my_other_D_mix'</code> starts to show up.
 </p></details></task>
+<br>
 
 Now that we know that <code>MESA</code> is actually calling our <code>my_other_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Lets try to see if this is a parameter that actually exists in <code>MESA</code>.
 
@@ -157,7 +159,7 @@ star/private/mix_info.f90:  s% D_mix(k) = s% min_D_mix
 ...
 </pre></p></div>
 
-As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Lets try to use this in our <code>my_other_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. In order to do so, we first have to let our <code>my_other_D_mix</code> subroutine have access to the information in <code>star_info</code> and define an integer <code>k</code> for run a do loop over. In order for this to work, your <code>my_other_D_mix</code> subroutine should look something like this
+As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Lets try to use this in our <code>my_other_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. In order to do so, we first have to let our <code>my_other_D_mix</code> subroutine have access to the information in <code>star_info</code> and define an integer <code>k</code> for run a `do loop` over. In order for this to work, your <code>my_other_D_mix</code> subroutine should look something like this
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -197,7 +199,7 @@ If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code
 <code>Profile_Panels1_yaxis_name(1) = 'brunt_N2'</code><br>
 <code>Profile_Panels1_other_yaxis_name(1) = ''</code><br>
 <code>Profile_Panels1_yaxis_name(2) = 'brunt_N2_structure_term'</code><br> <code>Profile_Panels1_other_yaxis_name(2) = 'brunt_N2_composition_term'</code><br> 
-<code>Profile_Panels1_yaxis_name(3) = 'log_D_mix</code><br> <code>Profile_Panels1_other_yaxis_name(3) = ''</code><br> <code>Profile_Panels1_file_flag = .true.</code><br> <code>Profile_Panels1_file_dir = 'png'</code><br>
+<code>Profile_Panels1_yaxis_name(3) = 'log_D_mix'</code><br> <code>Profile_Panels1_other_yaxis_name(3) = ''</code><br> <code>Profile_Panels1_file_flag = .true.</code><br> <code>Profile_Panels1_file_dir = 'png'</code><br>
 <code>Profile_Panels1_file_prefix = 'profile_panels1_1.0mdc_1.0tdc_'</code><br>
 <code>Profile_Panels1_file_width = 12</code><br>
 <code>Profile_Panels1_file_aspect_ratio = 0.75</code>

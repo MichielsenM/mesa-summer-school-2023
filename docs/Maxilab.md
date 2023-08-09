@@ -425,7 +425,7 @@ With the current version of our <code>my_other_D_mix</code> subroutine we could 
     \label{Eq:D_env}
 \end{equation}
 
-In this equation <i>D</i><sub>env, 0</sub> corresponds to <code>x_ctrl(1)</code>. _n_ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. &rho;(r) is the density and &rho;<sub>0</sub> is the density at <code>k0</code>. <br>
+In this equation $D_{\rm env, 0}$ <i>D</i><sub>env, 0</sub> corresponds to <code>x_ctrl(1)</code>. _n_ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. &rho;(r) is the density and &rho;<sub>0</sub> is the density at <code>k0</code>. <br>
 
 <task><details>
 <summary>Task 11</summary><p>

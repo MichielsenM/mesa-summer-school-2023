@@ -360,7 +360,7 @@ Declare a new integer parameter <code>k0</code> inside your <code>my_other_D_mix
 
 <hint><details>
 <summary> Hint </summary><p>
-Use the ``<code>if</code> condition then do something and exit <code>do</code>-loop'' example given above for the first <code>do</code>-loop and set <code>(a condition)</code> to <code>(s% D_mix(s% nz - k) .lt. 1d4)</code> and the <code>Do something</code> to <code>k0 = s% nz - k</code>. Then in the second <code>do</code>-loop change <code>do k=1, s% nz</code> to <code>do k=1, k0</code>.
+Use the "<code>if</code> condition then do something and exit <code>do</code>-loop" example given above for the first <code>do</code>-loop and set <code>(a condition)</code> to <code>(s% D_mix(s% nz - k) .lt. 1d4)</code> and the <code>Do something</code> to <code>k0 = s% nz - k</code>. Then in the second <code>do</code>-loop change <code>do k=1, s% nz</code> to <code>do k=1, k0</code>.
 </p></details></hint>
 <br>
 
@@ -408,6 +408,15 @@ subroutine my_other_D_mix(id, ierr)
          
 end subroutine my_other_D_mix
 </pre></p></div>
+<br>
+
+The corresponding `pgstar` mixing window should look like this:
+
+<div style="align: left; text-align:center;">
+    <img src="images/mixing_env_v5_000250.png" width="100%" /> 
+</div>
+<br>
+
 
 With the current version of our <code>my_other_D_mix</code> subroutine we could achieve the exact same result by just varying the parameter <code>min_D_mix</code> inside <code>inlist_project</code>. Now as a final step, we are going to change the envelope mixing profile to be a function of the density profile using 
 

@@ -387,6 +387,14 @@ Compare the period spacing patterns for the four different overshooting paramete
 </p></details></task>
 <br>
 
+As an example of what the period spacing patterns might look like we show below the period spacing patterns calculated from the `final_summary_0.01fov.txt` (blue) and `profile2_summary.txt` (orange) files assuming $f_{\rm ov} = 0.01$.
+
+<div style="align: left; text-align:center;">
+    <img src="images/example_patterns.png" width="100%" /> 
+</div>
+<br>
+
+
 ## Bonus exercise 1: Varying GYRE input parameters
 
 Currently, when you run <code>GYRE</code> you should see that all modes have $n_{\rm pg} = -n_{\rm g}$  and all g-modes between $n_{\rm g} = 3$ and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>

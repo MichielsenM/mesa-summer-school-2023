@@ -36,7 +36,7 @@ export MESA_DIR=/Users/mped4857/Software/MESA/mesa-r23.05.1
 export MESASDK_ROOT=/Applications/mesasdk
 source $MESASDK_ROOT/bin/mesasdk_init.sh
 
-export GYRE_DIR=/Users/mped4857/Software/MESA/mesa-r23.05.1/gyre/gyre
+export GYRE_DIR=$MESA_DIR/gyre/gyre
 </pre></p></div>
 
 
@@ -64,7 +64,8 @@ Let's start by creating a new <code>MESA</code> work directory by copying the on
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
 cp -r SPB_minilab_1 SPB_minilab_2 <br>
-cd SPB_minilab_2
+cd SPB_minilab_2<br>
+./clean & ./mk
 </p></div>
 
 
@@ -81,16 +82,16 @@ Add the following asteroseismology inlist parameters to <code>&controls</code>:
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that have to be added are: <code>write_pulse_data_with_profile = .true.</code> and <code>pulse_data_format = 'GYRE'</code>
+The parameters that have to be added are: <code>write_pulse_data_with_profile</code> and <code>pulse_data_format</code>
 </p></details></hint>
-
+<br>
 
 <task><details>
 <summary>Task 2</summary><p>
 Amongst the people at your table, distribute the following values for the overshooting parameter <code>overshoot_f(1)</code> and use that in your <code>inlist_project</code>: 0.01, 0.02, 0.03, and 0.04. Likewise change your <code>log_directory</code> parameter <code>LOGS/4Msun_#fov</code> to match the new value of the overshooting parameter. Then run <code>MESA</code>.
 </p></details></task>
 
-When <code>MESA</code> is done running you should see that you now have additional output files in your LOGS directory with a 'GYRE' extension, one for each of your <code>MESA</code> output <code>profile#.data</code> files of the format <code>profile#.data.GYRE</code>. It is these <code>profile#.data.GYRE</code> files that we need to use as input for the <code>GYRE</code> computations, where we use <code>GYRE</code> to calculate the associated theoretical oscillations for our <code>profile#.data</code> model. 
+When <code>MESA</code> is done running you should see that you now have additional output files in your `<code>LOGS/4Msun_#fov</code>` directory with a 'GYRE' extension, one for each of your <code>MESA</code> output <code>profile#.data</code> files of the format <code>profile#.data.GYRE</code>. It is these <code>profile#.data.GYRE</code> files that we need to use as input for the <code>GYRE</code> computations, where we use <code>GYRE</code> to calculate the associated theoretical oscillations for our <code>profile#.data</code> model. We note that as an alternative, the `GSM` format is another pulsation data format that is written specifically for `GYRE` and uses a `HDF5-based format` instead of the `plain-text format` that we get by using `'GYRE'` for the `pulse_data_format` parameter in `inlist_project`.  
 
 Just like <code>MESA</code>, <code>GYRE</code> also has an inlist file that we have to either create or modify. Information on how to construct such a file is given on the
 [<code>GYRE</code> documentation website](https://gyre.readthedocs.io/en/stable/). As a starting point, lets create an empty <code>GYRE</code> input file called <code>gyre.in</code> inside our <code>MESA</code> work directory using your favourite text editor.

@@ -585,6 +585,19 @@ Add the following to your <code>inlist_pgstar</code> file:<br>
 </p></details></task>
 <br>
 
+Your final `pgstar` `mixing` and `History_Panels1` windows should look something like this
+
+<div class="row">
+  <div style="align: left; text-align:center;">
+      <div class="column">
+        <img src="images/mixing_env_v6_000250.png" width="100%" />
+      </div>
+      <div class="column">
+        <img src="images/History_Panels1_000250.png" width="100%" />
+      </div>
+  </div>
+</div>
+
 Now we have our <code>MESA</code> setup done for the Maxilab and it is time to vary some parameters and investigate the effect of envelope mixing on both the period spacing patterns and the surface abundances.<br>
 
 <task><details>

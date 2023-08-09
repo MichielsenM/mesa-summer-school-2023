@@ -344,7 +344,14 @@ Additional useful comparison operators are given in the table below.
 
 Knowing these will be useful in the following steps as well and whenever you want to add things to your <code>run_star_extras.f90</code> in general. 
 
-Notice that right now there is a discontinuity in our mixing profile when we go from overshoot to minimum mixing. We want to get rid of this discontinuity by modifying our <code>my_other_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
+Notice that right now there is a discontinuity in our mixing profile when we go from overshoot to minimum mixing. 
+
+<div style="align: left; text-align:center;">
+    <img src="images/mixing_env_v4_000250.png" width="100%" /> 
+</div>
+<br>
+
+We want to get rid of this discontinuity by modifying our <code>my_other_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
 
 <task><details>
 <summary>Task 9</summary><p>

@@ -203,7 +203,14 @@ Currently, it looks like the diffusive mixing coefficient is only being changed 
 If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code>profile_columns.list</code> from <code>$MESA_DIR/star/defaults/</code> to your <code>SPB_maxilab</code> work directory. Make sure that <code>brunt_N2</code>, <br> <code>brunt_N2_structure_term</code>, <code>brunt_N2_composition_term</code>, and <code>log_D_mix</code> are included as output. Then add the following to <code>inlist_pgstar</code>:
 
 <code>Profile_Panels1_win_flag = .true.</code><br> 
-<code>Profile_Panels1_num_panels = 3</code><br> 
+<code>Profile_Panels1_num_panels = 3</code><br>
+<code>Profile_Panels1_win_width = 6</code><br>
+<code>Profile_Panels1_win_aspect_ratio = 1.8</code><br>
+<code>Profile_Panels1_ytop = 0.95</code><br>
+<code>Profile_Panels1_ybot = 0.1</code><br>
+<code>Profile_Panels1_xright = 0.8</code><br>
+<code>Profile_Panels1_xleft = 0.2</code><br>
+<br>
 <code>Profile_Panels1_yaxis_name(1) = 'brunt_N2'</code><br>
 <code>Profile_Panels1_other_yaxis_name(1) = ''</code><br>
 <code>Profile_Panels1_yaxis_name(2) = 'brunt_N2_structure_term'</code><br> <code>Profile_Panels1_other_yaxis_name(2) = 'brunt_N2_composition_term'</code><br> 
@@ -212,6 +219,13 @@ If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code
 <code>Profile_Panels1_file_width = 12</code><br>
 <code>Profile_Panels1_file_aspect_ratio = 0.75</code>
 </p></details></task>
+<br>
+
+Your `Profile_Panels1` `pgstar` window should look something like this:
+
+<div style="align: left; text-align:center;">
+    <img src="images/profile_panels1_1.0mdc_1.0tdc_env_v2_000250.png" width="100%" /> 
+</div>
 <br>
 
 When you now run <code>MESA</code>, you should see that although nothing seems to be happening in the envelope according to the <code>pgstar</code> mixing window, then the mixing profile is indeed constant throughout the star. In other words, <code>MESA</code> is doing what we are telling it to do. This is because our ``new'' mixing profile has not been assigned a mixing type. For an overview of what different types are available, have a look at <code>$MESA_DIR/const/public/const_def.f90</code>.

@@ -89,7 +89,7 @@ A quicker way of plotting the patterns is to use the script `plot_pattern_script
 
 <div class="terminal-title"> Example use of <code>plot_pattern_script.py</code> </div> 
 <div class="terminal">
-  <p>python plot_pattern_script.py example_period_spacing_patterns.png example_gyre_file.txt example_gyre_file2.txt example_gyre_file3.txt</p>
+  <p>python plot_pattern_script.py example_period_spacing_patterns.png example_gyre_file.txt example_gyre_file2.txt</p>
 </div>
 
 For sharing the `GYRE` summary files within your group we recommend creating a separate chat in the MESA Summer School 2023 Slack workspace with the members in your group/table.

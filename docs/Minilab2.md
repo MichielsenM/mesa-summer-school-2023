@@ -461,7 +461,7 @@ Add the following to <code>inlist_pgstar</code>:<br>
 This will save the `pgstar` window showing the `Profile_Panels1` plot to the png directory. We will need those for comparisons later. An example of what this `pgstar` window looks like is shown below.<br>
 
 <div style="align: left; text-align:center;">
-    <img src="images/profile_panels1_1.0mdc_1.0tdc_000250.png" width="700" /> 
+    <img src="images/profile_panels1_1.0mdc_1.0tdc_000250.png" width="100%" /> 
 </div>
 <br>
 

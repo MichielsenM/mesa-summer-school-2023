@@ -83,11 +83,20 @@ Afterwards you can activate the `Jupyter Notebook` through the terminal using
   <p>jupyter notebook</p>
 </div>
 
-This should automatically open a new tab in your browser where you just have to click on the file `Plotting period spacing patterns.ipynb` to look at and modify the notebook.
+after navigating to where you saved the files in the link. This should automatically open a new tab in your browser where you just have to click on the file `Plotting period spacing patterns.ipynb` to look at and modify the notebook. 
 
-A quicker way of plotting the patterns is to use the script `plot_pattern_script.py` which requires the same `conda` environment to be activated. Remember that you only need to activate the `conda` environment once. The script takes as input first a name for the saved figure and then up to 10 gyre summary files. In other words the structure for running the script in the terminal is as follows: `python plot_pattern_script.py my_figure_file_name.png summary_file1.txt summary_file2.txt`. You can plot a specific example using the provided files in the same link using the following
+A quicker way of plotting the patterns is to use the script `plot_pattern_script.py` which requires the same `conda` environment to be activated. Remember that you only need to activate the `conda` environment once. The script takes as input first a name for the saved figure and then up to 10 GYRE summary files. In other words the structure for running the script in the terminal is as follows: `python plot_pattern_script.py my_figure_file_name.png summary_file1.txt summary_file2.txt`. You can plot a specific example using the provided files in the same link using the following
 
 <div class="terminal-title"> Example use of <code>plot_pattern_script.py</code> </div> 
 <div class="terminal">
-  <p>python plot_pattern_script.py 'example_period_spacing_patterns.png' example_gyre_file.txt example_gyre_file2.txt example_gyre_file3.txt</p>
+  <p>python plot_pattern_script.py example_period_spacing_patterns.png example_gyre_file.txt example_gyre_file2.txt example_gyre_file3.txt</p>
+</div>
+
+For sharing the `GYRE` summary files within your group we recommend creating a separate chat in the MESA Summer School 2023 Slack workspace with the members in your group/table.
+
+Once you are done with the all of the plotting, you can deactivate the conda environment using:
+
+<div class="terminal-title"> Deactivating the conda environment <code>patterns_py</code> </div> 
+<div class="terminal">
+  <p>conda deactivate</p>
 </div>

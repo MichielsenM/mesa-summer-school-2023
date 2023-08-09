@@ -7,7 +7,7 @@ title: Minilab 2
 (Work in progress)
 
 <div style="align: left; text-align:center;">
-    <img src="images/HRD_X_dP.png" width="100%" /> 
+    <img src="images/HRD_X_dP.png" width="900" /> 
     <div class="caption" style="width: 800"> Comparison between the hydrogen mass fraction profiles (b) and period spacing patterns (c) obtained at three different main-sequence evolutionary stages as indicated by the three round symbols on the evolutionary track in panel (a). Credit: May G. Pedersen. </div>
 </div>
 

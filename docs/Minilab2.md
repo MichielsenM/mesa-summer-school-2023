@@ -2,10 +2,19 @@
 layout: default
 title: Minilab 2
 ---
+# Introductions
+
+# Aims
+
+**MESA/GYRE aims:** In this MESA lab you will learn what additional parameters are needed in your MESA `inlist` to generate files needed as input in GYRE, how to run GYRE outside of MESA, and how to construct a GYRE inlist. 
+
+**Science aims:** Understanding what effect convective boundary mixing has on period spacing patterns of SPB stars.
+
 # Minilab 2
 
 **Minilab 1 solution:** [download](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0)<br>
 **Minilab 2 solution:** [download](https://www.dropbox.com/scl/fi/lqdxtngsl5wa14m1afntl/SPB_minilab2_solutions.zip?rlkey=qayxo5g5tdk7wm014tstw5npe&dl=0)<br>
+**For the TAs:** Additional instructions for plotting period spacing patterns are available at the bottom of the [home page](https://michielsenm.github.io/mesa-summer-school-2023/).
 
 The first step of this minilab is making sure that we can run <code>GYRE</code> as a standalone module outside of <code>MESA</code>. In order to be able to do so, we have to set the path to the <code>GYRE</code> directory in your shell-startup file, just like how you had to do so when installing <code>MESA</code>. Depending on your operating system this is likely to either `$HOME/.bashrc` or `$HOME/.zshrc`, but you can also check this using the command:
 

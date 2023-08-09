@@ -187,6 +187,14 @@ Notice that we a running a <code>do</code> loop from the outermost cell (<code>k
 <summary>Task 5</summary><p>
 Implement the changes to your <code>my_other_D_mix</code> subroutine listed above and set the diffusive mixing coefficient <code>D_mix</code> to be 10<sup>4</sup> throughout the star. Recompile and run <code>MESA</code>. What happens to your <code>pgstar</code> mixing window?
 </p></details></task>
+<br>
+
+At this stage, your `pgstar` mixing window should look like this:
+
+<div style="align: left; text-align:center;">
+    <img src="images/mixing_env_v2_000250.png" width="100%" /> 
+</div>
+<br>
 
 Currently, it looks like the diffusive mixing coefficient is only being changed inside the convective core and the overshooting region, and is now constant in both regions. Let's double check if anything is happening to the profile in the radiative envelope.<br>
 
@@ -204,8 +212,9 @@ If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code
 <code>Profile_Panels1_file_width = 12</code><br>
 <code>Profile_Panels1_file_aspect_ratio = 0.75</code>
 </p></details></task>
+<br>
 
-When you now run <code>MESA</code>, you should see that although nothing seems to be happening in the envelope according to the <code>pgstar</code> mixing window, then the mixing profile is indeed constant throughout the star. In other words, <code>MESA</code> is doing what we are telling it to do. This is because our ``new'' mixing profile has not been assigned a mixing type. For an overview of what different types are available, have a look <code>$MESA_DIR/const/public/const_def.f90</code>.
+When you now run <code>MESA</code>, you should see that although nothing seems to be happening in the envelope according to the <code>pgstar</code> mixing window, then the mixing profile is indeed constant throughout the star. In other words, <code>MESA</code> is doing what we are telling it to do. This is because our ``new'' mixing profile has not been assigned a mixing type. For an overview of what different types are available, have a look at <code>$MESA_DIR/const/public/const_def.f90</code>.
 
 <div class="filetext-title"> $MESA_DIR/const/public/const_def.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -237,6 +246,7 @@ In <code>inlist_project</code> set the parameter <code>set_min_D_mix = .true.</c
 <summary> Hint </summary><p>
 The parameter used to set the minimum mixing value is called <code>min_D_mix</code>.
 </p></details></hint>
+<br>
 
 You should now see the envelope mixing, i.e. minimum mixing, appears as an orange line in your <code>pgstar</code> mixing window. 
 

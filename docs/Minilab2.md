@@ -6,7 +6,7 @@ title: Minilab 2
 
 # Aims
 
-**MESA/GYRE aims:** In this MESA lab you will learn what additional parameters are needed in your MESA `inlist` to generate files needed as input in GYRE, how to run GYRE outside of MESA, and how to construct a GYRE inlist. 
+**MESA+GYRE aims:** In this MESA lab you will learn how to run GYRE outside of MESA, what additional parameters are needed in your MESA `inlist` to generate files needed as input in GYRE, and how to construct a GYRE inlist. 
 
 **Science aims:** Understanding what effect convective boundary mixing has on period spacing patterns of SPB stars.
 

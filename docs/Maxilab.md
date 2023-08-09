@@ -425,11 +425,11 @@ With the current version of our <code>my_other_D_mix</code> subroutine we could 
     \label{Eq:D_env}
 \end{equation}
 
-In this equation $D_{\rm env, 0}$ <i>D</i><sub>env, 0</sub> corresponds to <code>x_ctrl(1)</code>. _n_ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. &rho;(r) is the density and &rho;<sub>0</sub> is the density at <code>k0</code>. <br>
+In this equation $D_{\rm env, 0}$  corresponds to <code>x_ctrl(1)</code>. $n$ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. $\rho (r)$ is the density and $\rho_0$ is the density at <code>k0</code>. <br>
 
 <task><details>
 <summary>Task 11</summary><p>
-Set <i>n</i> = 0.5 and <i>D</i><sub>env, 0</sub> = 100, then implement Eq.~(\ref{Eq:D_env}) in your <code>my_other_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
+Set $n=0.5$  and $D_{\rm env, 0} = 100$, then implement the equation above in your <code>my_other_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
 </p></details></task>
 
 <hint><details>
@@ -440,13 +440,14 @@ To figure out what parameter <code>MESA</code> is using for the density have a l
 
 <hint><details>
 <summary> Hint </summary><p>
-Use the parameter <code>x_ctrl(2)</code> to set <i>n</i> in <code>inlist_project</code>.
+Use the parameter <code>x_ctrl(2)</code> to set $n$ in <code>inlist_project</code>.
 </p></details></hint>
 
 <hint><details>
 <summary> Hint </summary><p>
 While not required to implement the equation above, you can look up known <code>MESA</code> <code>Fortran</code> functions in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> which may be useful.
 </p></details></hint>
+<br>
 
 Now that we have the internal mixing profile setup, the final step is making sure that we have all of the output that we need for comparisons. We already have our setup for computing the <code>GYRE</code> models from minilab 2 to look at the impact on the period spacing patterns. In addition to this, we want to look at the impact on the surface abundances of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O. More specifically, we want to look at how different they are from their values at the ZAMS. We could just do this by looking at our standard history output and modify our <code>history_columns_list</code> file, but we can make things a bit easier for ourselves by including these as extra history output in <code>run_star_extras.f90</code>. The values that we want to look at are of the format
 
@@ -454,6 +455,7 @@ Now that we have the internal mixing profile setup, the final step is making sur
     \text{current to ZAMS }^4\text{He} = \frac{\text{current surface}\ ^4\text{He}}{\text{surface}\ ^4\text{He at ZAMS}}.
 \end{equation}
 
+<br>
 To do this, we are going to modify four separate parts of the <code>run_star_extras.f90</code> file: 
 
 <ul>
@@ -465,6 +467,7 @@ To do this, we are going to modify four separate parts of the <code>run_star_ext
 
 Let's start by using <sup>4</sup>He as an example. We want to save the initial ZAMS value of <sup>4</sup>He at the surface of the star so it does not get overwritten at each time step when we run <code>MESA</code>. We will call this parameter <code>initial_surface_he4</code> and define it at the top of our <code>run_star_extras.f90</code> file right after the line <code>implicit none</code>. We want to declare this parameter as a real number with double precision.
 
+<br>
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
 ...
@@ -486,9 +489,11 @@ contains
 
 ...
 </pre></p></div>
+<br>
 
 In this way, <code>run_star_extras.f90</code> will recognise this parameter everywhere without us having to declare it again. Currently we haven't given this new parameter <code>initial_surface_he4</code> a value. To do so, we want to get the initial surface <sup>4</sup>He value before <code>MESA</code> starts taking any time steps. We can do so in the subroutine <code>extras_startup</code>
 
+<br>
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
 subroutine extras_startup(id, restart, ierr)
@@ -504,11 +509,13 @@ subroutine extras_startup(id, restart, ierr)
                   
 end subroutine extras_startup
 </pre></p></div>
+<br>
 
 Note that while the parameter for the surface <sup>4</sup>He mass fraction is called <code>surface he4</code> in your <code>history_columns.list</code> file, it is called <code>surface_he4</code> internally in <code>MESA</code>.
 
 Now that we have saved the initial surface <sup>4</sup>He mass fraction, our next steps are to tell <code>MESA</code> how many extra history output columns we want to add to our <code>history.data</code> output file. We do so inside the function <code>how_many_extra_history_columns</code> by modifying the parameter by the same name.
 
+<br>
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
 integer function how_many_extra_history_columns(id)
@@ -521,16 +528,20 @@ integer function how_many_extra_history_columns(id)
     how_many_extra_history_columns = 1
 end function how_many_extra_history_columns
 </pre></p></div>
+<br>
 
 Note that if you compile and run <code>MESA</code> now before assigning the extra history column a name and value, then you will start to receive a warning in the terminal but it won't stop <code>MESA</code> from running. 
 
+<br>
 <div class="terminal-title"> Terminal output </div> 
 <div class="terminal"><p>
 Warning empty history name for extra_history_column            1
 </p></div>
+<br>
 
-Now, to give the extra history column a name and a value we need to add the parameters <code>names(n)</code> and <code>vals(n)</code> to the subroutine <code>data_for_extra_history_columns</code>. Here <code>n</code> is the number of the added history column. So if you want to add two extra history columns you need to assign both <code>names(1)</code> and <code>vals(1)</code> as well as <code>names(2)</code> and <code>vals(2)</code>. To calculate the ratio between the current surface <sup>4</sup>He mass fraction and the initial ZAMS value, we can now do so by using our two parameters <code>s% surface_he4</code> and <code>initial_surface_he4</code>. We will call this ratio <code>current_to_zams_surf_he4</code>.
+Now, to give the extra history column a name and a value we need to add the parameters <code>names(n)</code> and <code>vals(n)</code> to the subroutine <code>data_for_extra_history_columns</code>. Here <code>n</code> is the index of the added history column. So if you want to add two extra history columns you need to assign both <code>names(1)</code> and <code>vals(1)</code> as well as <code>names(2)</code> and <code>vals(2)</code>. To calculate the ratio between the current surface <sup>4</sup>He mass fraction and the initial ZAMS value, we can now do so by using our two parameters <code>s% surface_he4</code> and <code>initial_surface_he4</code>. We will call this ratio <code>current_to_zams_surf_he4</code>.
 
+<br>
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
 subroutine data_for_extra_history_columns(id, n, names, vals, ierr)
@@ -552,11 +563,13 @@ subroutine data_for_extra_history_columns(id, n, names, vals, ierr)
          
 end subroutine data_for_extra_history_columns
 </pre></p></div>
+<br>
 
 <task><details>
 <summary>Task 12</summary><p>
 Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.
 </p></details></task>
+<br>
 
 Once you have updated your <code>run_star_extras.f90</code> you can also keep track of how these ratios change throughout the evolution of the star by including a [history panels <code>pgstar</code>](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#history-panels) window.<br>
 
@@ -570,6 +583,7 @@ Add the following to your <code>inlist_pgstar</code> file:<br>
 <code>History_Panels1_yaxis_name(2) = 'current_to_zams_surf_c12'</code><br> 
 <code>History_Panels1_other_yaxis_name(2) = 'current_to_zams_surf_o16'</code><br> 
 </p></details></task>
+<br>
 
 Now we have our <code>MESA</code> setup done for the Maxilab and it is time to vary some parameters and investigate the effect of envelope mixing on both the period spacing patterns and the surface abundances.<br>
 
@@ -578,10 +592,10 @@ Now we have our <code>MESA</code> setup done for the Maxilab and it is time to v
 In this final task of the Maxilab, there are four of your inlist parameters that you will have to change/vary. Those are: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. The steps you have to take are as follows:
 
 <ul>
-    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148">Google spreadsheet</a> and claim a <i>D</i><sub>env, 0</sub> and <i>n</i> value by putting your name down in the left most column. </li>
+    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left most column. </li>
     <li> Change <code>log_directory</code> to be of the format <code>'LOGS/4Msun_0.01fov_#Denv0_#n'</code> and also change the parameter <code>filename_for_profile_when_terminate</code> accordingly. </li>
     <li> Set <code>overshoot_f(1) = 0.01</code> </li>
-    <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen <i>D</i><sub>env, 0</sub> and <i>n</i>. </li>
+    <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen $D_{\rm env,0}$ and $n$. </li>
     <li> Run <code>MESA</code> then <code>GYRE</code>. </li>
     <li> Check your output <code>history.data</code> file and note down the last recorded value of <code>current_to_zams_surf_he4</code>, <code>current_to_zams_surf_c12</code>, <code>current_to_zams_surf_n14</code>, and <code>current_to_zams_surf_o16</code> in the corresponding columns <code>tams_to_zams_surface_he4</code>, <code>tams_to_zams_surface_c12</code>, <code>tams_to_zams_surface_n14</code>, and <code>tams_to_zams_surface_o16</code> in the Google spreadsheet. </li>
     <li> Have your TA plot the corresponding period spacing pattern. </li>
@@ -592,5 +606,6 @@ In this final task of the Maxilab, there are four of your inlist parameters that
 <summary> Hint </summary><p>
 Remember that you will also have you update your <code>gyre.in</code> file for the new LOGS directory names.
 </p></details></hint>
+<br>
 
-As you are adding in your parameters in the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of  <i>D</i><sub>env, 0</sub> do you start to see a change in the surface abundances? How does this depend on the choice of _n_?
+As you are adding in your parameters in the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of $D_{\rm env,0}$ do you start to see a change in the surface abundances? How does this depend on the choice of $n$?

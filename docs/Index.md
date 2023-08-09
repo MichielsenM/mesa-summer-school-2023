@@ -92,7 +92,7 @@ A quicker way of plotting the patterns is to use the script `plot_pattern_script
   <p>python plot_pattern_script.py example_period_spacing_patterns.png example_gyre_file.txt example_gyre_file2.txt </p>
 </div>
 
-For this particular example the generated figure should look like this
+For this particular example the generated figure `example_period_spacing_patterns.png` should look like this
 
 <div style="align: left; text-align:center;">
     <img src="images/example_period_spacing_patterns.png" width="700" /> 

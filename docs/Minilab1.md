@@ -2,7 +2,7 @@
 layout: default
 title: Minilab 1
 ---
-# Introduction
+# Introduction <a id="minilab1_introduction>
 
 (Work in progress)
 
@@ -13,13 +13,13 @@ Some basic introduction to the physics goes here...
     <div class="caption" style="width: 800"> Example internal mixing profiles (top) and corresponding temperature gradients (bottom) for four different choices of covection boundary mixing (CBM): (a) Exponential diffusive overshoot, (b) step overshoot, (c) convective penetration, and (d) extended convective penetration. In the top panel, convective mixing is shown in grey, CBM is indicated in blue, while envelope mixing is shown in green. In the bottom panel the corresponding temperature gradients used by MESA ($\nabla_T$, orange) along with the adiabatic ($\nabla_{\rm ad}$, green) and radiative ($\nabla_{\rm rad}$, blue) temperature gradients are shown, with the convective core indicated by the grey region for reference. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2023Galax..11...56A/abstract">Anders & Pedersen (2023)</a>. </div>
 </div>
 
-# Aims
+# Aims <a id="minilab1_aims>
 
 **MESA aims:** In this Minilab you will learn how to look up relevant parameters to include in your MESA `inlist`, how to load a starting model and whether or not it cares about the initial mass and chemical composition that you use in your inlist, and how to use `pgstar`.
 
 **Science aims:** To get an understanding how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and the g-mode asymptotic period spacing, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
 
-# Minilab 1
+# Minilab 1  <a id="minilab1_lab1>
 
 **Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0).
 
@@ -289,7 +289,7 @@ The convective core mass (<code>mass_conv_core</code>), helium core mass (<code>
 When finding the values at <code>center_h1 &sim; 0.35</code> just select the ones that are closest to this value.
 </p></details></hint>
 
-## Bonus exercise: Combining multiple pgstar plots in one window
+## Bonus exercise: Combining multiple pgstar plots in one window  <a id="minilab1_bonus>
 
 Currently, when running MESA you have four `pgstar` windows open at once. This is starting to get a bit busy. MESA actually has options for including multiple `pgstar` plots in the same window! For this bonus exercise, we will do just that. To get our (currently) four `pgstar` windows into one window, we'll make use of a so-called grid. You can activate a total of nine such grids, and each grid can contain multiple plots. Today, we'll only use one grid.
 <br>

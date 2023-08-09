@@ -5,7 +5,7 @@ permalink: /
 ---
 
 
-<img src="./images/OB_star_interior.001.png" alt="OB_interior"  width="50%" >
+<img src="./images/OB_star_interior.001.png" alt="OB_interior"  width="30%" >
 
 # Before getting started
 

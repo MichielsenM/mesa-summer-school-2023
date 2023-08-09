@@ -200,7 +200,7 @@ Currently, it looks like the diffusive mixing coefficient is only being changed 
 
 <task><details>
 <summary>Task 6</summary><p>
-If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code>profile_columns.list</code> from <code>$MESA_DIR/star/defaults/</code> to your <code>SPB_maxilab</code> work directory. Make sure that <code>brunt_N2</code>, <br> <code>brunt_N2_structure_term</code>, <code>brunt_N2_composition_term</code>, and <code>log_D_mix</code> are included as output. Then add the following to <code>inlist_pgstar</code>:
+If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code>profile_columns.list</code> from <code>$MESA_DIR/star/defaults/</code> to your <code>SPB_maxilab</code> work directory. Make sure that <code>brunt_N2</code>, <br> <code>brunt_N2_structure_term</code>, <code>brunt_N2_composition_term</code>, and <code>log_D_mix</code> are included as output. Then add the following to <code>inlist_pgstar</code>:<br>
 
 <code>Profile_Panels1_win_flag = .true.</code><br> 
 <code>Profile_Panels1_num_panels = 3</code><br>
@@ -264,14 +264,20 @@ The parameter used to set the minimum mixing value is called <code>min_D_mix</co
 
 You should now see the envelope mixing, i.e. minimum mixing, appears as an orange line in your <code>pgstar</code> mixing window. 
 
+<div style="align: left; text-align:center;">
+    <img src="images/mixing_env_v3_000250.png" width="100%" /> 
+</div>
+<br>
+
 So far we have been completely overwriting the mixing profile throughout the star to a constant value, even inside the convective regions. So even though we are telling <code>MESA</code> to do something silly, it is still running and trying to find a solution! What we want to do is only change the mixing profile in the radiative envelope, i.e. avoid regions where we have convective mixing and overshoot mixing.<br> 
 
 <task><details>
 <summary>Task 8</summary><p>
 Modify your <code>my_other_D_mix</code> subroutine to only change the mixing profile when no convective or diffusive overshoot mixing is happening. You can do so using an <code>if</code> statement inside your <code>do</code> loop.
 </p></details></task>
+<br>
 
-In Fortran, <code>if</code> statements are written in the format
+In `Fortran`, <code>if</code> statements are written in the format
 
 <div class="filetext-title"> if statements </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -293,7 +299,8 @@ end do
 </pre></p></div>
 
 <code>Fortran</code> has three logical operators: <code>.and.</code>, <code>.or.</code>, and <code>.not.</code><br> 
-Additional useful comparison operators are given in the table below
+
+Additional useful comparison operators are given in the table below.
 
 
  <table>
@@ -348,6 +355,7 @@ Declare a new integer parameter <code>k0</code> inside your <code>my_other_D_mix
 <summary> Hint </summary><p>
 Use the ``<code>if</code> condition then do something and exit <code>do</code>-loop'' example given above for the first <code>do</code>-loop and set <code>(a condition)</code> to <code>(s% D_mix(s% nz - k) .lt. 1d4)</code> and the <code>Do something</code> to <code>k0 = s% nz - k</code>. Then in the second <code>do</code>-loop change <code>do k=1, s% nz</code> to <code>do k=1, k0</code>.
 </p></details></hint>
+<br>
 
 <task><details>
 <summary>Task 10</summary><p>
@@ -358,6 +366,7 @@ As a bonus, look up what the inlist control parameter <code>x_ctrl</code> does. 
 <summary> Hint </summary><p>
 You want to set <code>x_ctrl(1) = 1d4</code> inside <code>inlist_project</code> under <code>&controls</code> and then call it in <code>run_star_extras.f90</code> using <code>s% x_ctrl(1)</code>.
 </p></details></hint>
+<br>
 
 Once you have made the above changes then run <code>MESA</code>. The current version of your <code>my_other_D_mix</code> subroutine should look something like this
 

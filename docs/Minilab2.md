@@ -352,19 +352,19 @@ Currently, the profile file you have been using is likely very different from th
 
 <task><details>
 <summary>Task 10</summary><p>
-Check what value of `center_h1` that your `profile2.data` file corresponds to. How different is your value to the rest of the people at your table?
+Check what value of <code>center_h1</code> that your <code>profile2.data</code> file corresponds to. How different is your value to the rest of the people at your table?
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-Look for the value of `center_h1` in the header at the top of your `profile2.data` file.
+Look for the value of <code>center_h1</code> in the header at the top of your <code>profile2.data</code> file.
 </p></details></hint>
 
-Ideally when you are comparing period spacing patterns you want to make sure that you are comparing them for the same core hydrogen mass fraction X<sub>c</sub>. You can do so by decreasing the <code>MESA</code> time step around a specific value of X<sub>c</sub> that you are interested in and then tell <code>MESA</code> to save a profile when you get close to this value. This is something you would do inside your `run_star_extras.f90`. For now we will take a simpler approach, and instead decrease the time step as we approach core hydrogen exhaustion and then save a profile when <code>MESA</code> is terminated. <br>
+Ideally when you are comparing period spacing patterns you want to make sure that you are comparing them for the same core hydrogen mass fraction $X_{\rm c}$ X<sub>c</sub>. You can do so by decreasing the <code>MESA</code> time step around a specific value of $X_{\rm c}$ X<sub>c</sub> that you are interested in and then tell <code>MESA</code> to save a profile when you get close to this value. This is something you would do inside your `run_star_extras.f90`. For now we will take a simpler approach, and instead decrease the time step as we approach core hydrogen exhaustion and then save a profile when <code>MESA</code> is terminated. <br>
 
 <task><details>
 <summary>Task 11</summary><p>
-In your <code>inlist_project</code> file specify under <code>&star_job</code> that <code>MESA</code> has to output a profile when it terminates and name this profile `final_profile.data`. Under <code>&controls</code>, add the following two parameters: <code>delta_lg_XH_cntr_max = -1</code> and <code>delta_lg_XH_cntr_limit = 0.05</code>. Run <code>MESA</code> again.
+In your <code>inlist_project</code> file specify under <code>&star_job</code> that <code>MESA</code> has to output a profile when it terminates and name this profile <code>final_profile.data</code>. Under <code>&controls</code>, add the following two parameters: <code>delta_lg_XH_cntr_max = -1</code> and <code>delta_lg_XH_cntr_limit = 0.05</code>. Run <code>MESA</code> again.
 </p></details></task>
 
 <hint><details>
@@ -372,17 +372,20 @@ In your <code>inlist_project</code> file specify under <code>&star_job</code> th
 The two parameters you have to add in <code>&star_job</code> are: <code>write_profile_when_terminate = .true.</code> and <code>filename_for_profile_when_terminate = 'LOGS/4Msun_#fov/final_profile.data'</code>.
 </p></details></hint>
 
+<br>
 <task><details>
 <summary>Task 12</summary><p>
-Modify the two parameters `file` and `summary_file` in your <code>gyre.in</code> file to use your new <code>final_profile.data</code> file and rename the output summary file <code>final_summary_#fov.txt</code>. Also set <code>n_freq = 1000</code>. Then rerun <code>GYRE</code>.
+Modify the two parameters <code>file</code> and <code>summary_file</code> in your <code>gyre.in</code> file to use your new <code>final_profile.data</code> file and rename the output summary file <code>final_summary_#fov.txt</code>. Also set <code>n_freq = 1000</code>. Then rerun <code>GYRE</code>.
 </p></details></task>
+<br>
 
-Once you have your `final_summary_#fov.txt` share it with your TA. They have a <code>python</code> script available to plot all of the period spacing patterns together and just need your `final_summary_#fov.txt` file. If you want to have a go at using these scripts to plot it yourself, you can get them from [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0). Make sure to check out the `notes.txt` file first.<br> 
+Once you have your `final_summary_#fov.txt` share it with your TA. They have a <code>python</code> script available to plot all of the period spacing patterns together and just need your `final_summary_#fov.txt` file. If you want to have a go at using these scripts to plot it yourself, you can get them from [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0). Make sure to check out the `notes.txt` file first or follow the instructions for the TAs at the bottom of the [home page](https://michielsenm.github.io/mesa-summer-school-2023/).<br> 
 
 <task><details>
 <summary>Task 13</summary><p>
 Compare the period spacing patterns for the four different overshooting parameters. How are they different/similar?
 </p></details></task>
+<br>
 
 ## Bonus exercise 1: Varying GYRE input parameters
 

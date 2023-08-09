@@ -7,7 +7,8 @@ permalink: /
 
 <img src="./images/OB_star_interior.001.png" alt="OB_interior"  width="30%" >
 
-# Before getting started
+# Before getting started <a id="home_before_started"></a>
+
 
 In the following `MESA` lab exercises, you will see different text boxes and colours appearing at different times. <br>
 Text boxes with black background will provide either some terminal commands or terminal output from your `MESA` and `GYRE` runs.
@@ -52,7 +53,7 @@ Finally, today's round of `MESA` lab exercises consists of two minilabs and one 
 We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 
 
-# For the TAs
+# For the TAs <a id="home_for_TA"></a>
 For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the `GYRE` output summary files that the students create. The students are more than welcome to try this out themselves as well, but as a baseline the TAs should be able to do this for them to avoid wasting too much time getting the tools to work. The plotting tools that we are providing for this are written for `python`. There are two options for how to plot the patterns. You can either use a provided `Jupyter Notebook` or command line `python script`. Jupyter notebook and python script for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.
 
 By clicking on the link above, you will see a number of different files including a `notes.txt` file with instructions first on how to install the relevant `conda` environment using the provided `patterns_py.yml`, and then how to use the `Jupyter Notebook` (`Plotting period spacing patterns.ipynb`) or `python script` (`plot_pattern_script.py`) to plot the patterns. We repeat these instructions below for your convenience, starting with installing the `conda` enviroment `patterns_py` using your terminal. Note that these instructions assume that you already have `Anaconda` [installed](https://docs.anaconda.com/free/anaconda/install/).

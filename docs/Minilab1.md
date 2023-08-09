@@ -4,6 +4,8 @@ title: Minilab 1
 ---
 # Introduction
 
+(Work in progress)
+
 Some basic introduction to the physics goes here...
 
 <div style="align: left; text-align:center;">

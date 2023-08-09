@@ -4,6 +4,8 @@ title: Minilab 2
 ---
 # Introduction
 
+(Work in progress)
+
 # Aims
 
 **MESA + GYRE aims:** In this `MESA` lab you will learn how to run `GYRE` outside of `MESA`, what additional parameters are needed in your `MESA` `inlist` to generate files needed as input in `GYRE`, and how to construct a `GYRE inlist`. 
@@ -387,7 +389,7 @@ Compare the period spacing patterns for the four different overshooting paramete
 </p></details></task>
 <br>
 
-As an example of what the period spacing patterns might look like we show below the period spacing patterns calculated from the `final_summary_0.01fov.txt` (blue) and `profile2_summary.txt` (orange) files assuming $f_{\rm ov} = 0.01$.
+As an example of what the period spacing patterns might look like we show below the period spacing patterns calculated from the `final_summary_0.01fov.txt` (blue) and `profile2_summary.txt` (orange) `GYRE` output files assuming $f_{\rm ov} = 0.01$.
 
 <div style="align: left; text-align:center;">
     <img src="images/example_patterns.png" width="100%" /> 

@@ -2,7 +2,7 @@
 layout: default
 title: Minilab 1
 ---
-# Introduction <a id="minilab1_introduction"></a>
+# Introduction <a id="minilab1_intro"></a>
 
 (Work in progress)
 

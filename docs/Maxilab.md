@@ -2,7 +2,7 @@
 layout: default
 title: Maxilab
 ---
-# Introduction <a id="maxilab_introduction"></a>
+# Introduction <a id="maxilab_intro"></a>
 (Work in progress)
 
 <div style="align: left; text-align:center;">

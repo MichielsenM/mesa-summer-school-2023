@@ -149,7 +149,7 @@ The setup of the different sections (i.e. namelists) that we need to include in 
 
 <task><details>
 <summary>Task 3</summary><p>
-Create a <code>gyre.in</code> file and include the namelist sections `&constants`, `&model`, `&rot`, `&mode`, `&osc`, `&num`, `&scan`, `&grid`,  `&ad_output`, and `&nad_output` as shown above.
+Create a <code>gyre.in</code> file and include the namelist sections <code>&constants</code>, <code>&model</code>, <code>&rot</code>, <code>&mode</code>, <code>&osc</code>, <code>&num</code>, <code>&scan</code>, <code>&grid</code>, <code>&ad_output</code>, and <code>&nad_output</code> as shown above.
 </p></details></task>
 
 Now that we have included the relevant namelist sections for this <code>MESA</code> lab, we will start by telling <code>GYRE</code> which model (`file`) it should use for the computations. When doing so, we also need to tell <code>GYRE</code> that this input model is an evolutionary model read from an external file (`model_type`) that was calculated by <code>MESA</code> (`file_format`). As a start, lets use `profile2.data.GYRE` as an input file.<br>
@@ -162,7 +162,7 @@ In the <code>&model</code> namelist section, include the parameters:<br>
 <code>file_format = 'MESA'</code>
 </p></details></task>
 
-Make sure you use your chosen value of _f_<sub>ov</sub> in place of #. Other possible options for how to set these parameters as well as which additional parameters you can add to the `&model` section are listed under [Stellar Model Parameters](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/model-params.html).
+Make sure you use your chosen value of $f_{\rm ov}$ in place of `#`. Other possible options for how to set these parameters as well as which additional parameters you can add to the `&model` section are listed under [Stellar Model Parameters](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/model-params.html).
 
 Next, lets setup the [&osc](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/osc-params.html) and [&num](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/num-params.html) namelist sections.<br>
 
@@ -171,7 +171,7 @@ Next, lets setup the [&osc](https://gyre.readthedocs.io/en/stable/ref-guide/inpu
 In the <code>&osc</code> namelist section set the outer boundary parameter <code>outer_bound = 'VACUUM'</code> and the inner boundary parameter <code>inner_bound = 'REGULAR'</code>. These determine the outer and inner boundary conditions of the model when calculating the oscillations. In <code>&num</code> tell <code>GYRE</code> to use the 4th-order Gauss-Legendre Magnus solver for initial-value integrations <code>'MAGNUS_GL4'</code> using the <code>diff_scheme</code> parameter.
 </p></details></task>
 
-Once we have our numerics and model specifications, we now want to tell <code>GYRE</code> which oscillations to compute. We will do so using the two namelist sections [&mode](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/mode-params.html) and [&scan](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/scan-params.html). For this <code>MESA</code> lab we will focus on dipole prograde (&#8467;=1, _m_=1) modes with radial orders between -1 and -80. Note that by convention, we use negative radial orders for g-modes and positive radial orders for p-modes. In principle, it doesn't matter what we are setting _m_ to be as long as we are fulfilling _m_ = -&#8467;, ..., &#8467;. This is because we are currently not including rotation in our <code>GYRE</code> computations, so all of the _m_ = -&#8467;, ..., &#8467; modes for the same &#8467; and _n_ value would have the same frequency. To include rotation, we would have to include another namelist section in our <code>GYRE</code> inlist file called [&rot](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/rot-params.html). You will see more on this during the <code>MESA</code> lab sessions on Thursday.<br>
+Once we have our numerics and model specifications, we now want to tell <code>GYRE</code> which oscillations to compute. We will do so using the two namelist sections [&mode](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/mode-params.html) and [&scan](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/scan-params.html). For this <code>MESA</code> lab we will focus on dipole prograde ($\ell =1, m=1$) (&#8467;=1, _m_=1) modes with radial orders between -1 and -80. Note that by convention, we use negative radial orders for g-modes and positive radial orders for p-modes. In principle, it doesn't matter what we are setting $m$ _m_ to be as long as we are fulfilling $m = -\ell, \dots, \ell$ _m_ = -&#8467;, ..., &#8467;. This is because we are currently not including rotation in our <code>GYRE</code> computations, so all of the $m = -\ell, \dots, \ell$ _m_ = -&#8467;, ..., &#8467; modes for the same $\ell$ &#8467; and $n$ _n_ value would have the same frequency. To include rotation, we would have to include additional parameters in the [&rot](https://gyre.readthedocs.io/en/stable/ref-guide/input-files/rot-params.html) namelist section  in our <code>GYRE</code> inlist file as rotation is turned off by default. You will see more on this during the <code>MESA</code> lab sessions on Thursday.<br>
 
 <task><details>
 <summary>Task 6</summary><p>

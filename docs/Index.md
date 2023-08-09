@@ -5,7 +5,7 @@ permalink: /
 ---
 
 
-<img src="./images/OB_star_interior.001.png" alt="OB_interior" >
+<img src="./images/OB_star_interior.001.png" alt="OB_interior"  width="50%" >
 
 # Before getting started
 
@@ -55,3 +55,62 @@ We hope you all have fun and please don't hesitate to ask your TA for help!<br>
 # For the TAs
 For Minilab 2 and the Maxilab, the TAs will be responsible for plotting the period spacing patterns based on the `GYRE` output summary files that the students create. The students are more than welcome to try this out themselves as well, but as a baseline the TAs should be able to do this for them to avoid wasting too much time getting the tools to work. The plotting tools that we are providing for this are written for `python`. There are two options for how to plot the patterns. You can either use a provided `Jupyter Notebook` or command line `python script`. Jupyter notebook and python script for plotting the period spacing patterns is available [here](https://www.dropbox.com/sh/w53woz0m3l5axbq/AAC05hnNlPx6Hn_-VitieZcda?dl=0) along with associated conda environment.
 
+By clicking on the link above, you will see a number of different files including a `notes.txt` file with instructions first on how to install the relevant `conda` environment using the provided `patterns_py.yml`, and then how to use the `Jupyter Notebook` (`Plotting period spacing patterns.ipynb`) or `python script` (`plot_pattern_script.py`) to plot the patterns. We repeat these instructions below for your convenience, starting with installing the `conda` enviroment `patterns_py` using your terminal. Note that these instructions assume that you already have `Anaconda` [installed](https://docs.anaconda.com/free/anaconda/install/).
+
+<div class="terminal-title"> Installing conda environment option 1 </div> 
+<div class="terminal">
+  <p>conda env create -f patterns_py.yml</p>
+</div>
+
+If for some reason this does not work, then you can also install this environtment manually instead
+
+<div class="terminal-title"> Installing conda environment option 2 </div> 
+<div class="terminal">
+  <p>conda create --name patterns_py numpy matplotlib pandas jupyter</p>
+</div>
+
+Once the environment is installed you can activate it using
+
+<div class="terminal-title"> Activating the conda environment <code>patterns_py</code> </div> 
+<div class="terminal">
+  <p>conda activate patterns_py</p>
+</div>
+
+Afterwards you can activate the `Jupyter Notebook` through the terminal using
+
+<div class="terminal-title"> Activating Jupyter Notebook </div> 
+<div class="terminal">
+  <p>jupyter notebook</p>
+</div>
+
+after navigating to where you saved the files in the link. This should automatically open a new tab in your browser where you just have to click on the file `Plotting period spacing patterns.ipynb` to look at and modify the notebook. 
+
+A quicker way of plotting the patterns is to use the script `plot_pattern_script.py` which requires the same `conda` environment to be activated. Remember that you only need to activate the `conda` environment once. The script takes as input first a name for the saved figure and then up to 10 GYRE summary files. In other words the structure for running the script in the terminal is as follows: `python plot_pattern_script.py my_figure_file_name.png summary_file1.txt summary_file2.txt`. You can plot a specific example using the provided files in the same link using the following
+
+<div class="terminal-title"> Example use of <code>plot_pattern_script.py</code> </div> 
+<div class="terminal">
+  <p>python plot_pattern_script.py example_period_spacing_patterns.png example_gyre_file.txt example_gyre_file2.txt </p>
+</div>
+
+For this particular example the generated figure `example_period_spacing_patterns.png` should look like this
+
+<div style="align: left; text-align:center;">
+    <img src="images/example_period_spacing_patterns.png" width="700" /> 
+</div>
+<br>
+
+whereas if you also include the third example pattern `example_gyre_file3.txt` then the figure should look like this:
+
+<div style="align: left; text-align:center;">
+    <img src="images/example_period_spacing_patterns_v2.png" width="700" /> 
+</div>
+<br>
+
+**For sharing the `GYRE` summary files within your group** we recommend creating a separate chat in the MESA Summer School 2023 Slack workspace with the members in your group/table.
+
+Once you are done with the all of the plotting, you can deactivate the conda environment using:
+
+<div class="terminal-title"> Deactivating the conda environment <code>patterns_py</code> </div> 
+<div class="terminal">
+  <p>conda deactivate</p>
+</div>

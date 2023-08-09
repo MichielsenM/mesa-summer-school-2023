@@ -6,6 +6,11 @@ title: Minilab 2
 
 (Work in progress)
 
+<div style="align: left; text-align:center;">
+    <img src="images/HRD_X_dP.png" width="100%" /> 
+    <div class="caption" style="width: 800"> Comparison between the hydrogen mass fraction profiles (b) and period spacing patterns (c) obtained at three different main-sequence evolutionary stages as indicated by the three round symbols on the evolutionary track in panel (a). Credit: May G. Pedersen. </div>
+</div>
+
 # Aims
 
 **MESA + GYRE aims:** In this `MESA` lab you will learn how to run `GYRE` outside of `MESA`, what additional parameters are needed in your `MESA` `inlist` to generate files needed as input in `GYRE`, and how to construct a `GYRE inlist`. 

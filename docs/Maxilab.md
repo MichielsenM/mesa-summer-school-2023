@@ -21,7 +21,7 @@ For this Maxilab we will now start digging into our <code>run_star_extras.f90</c
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
-cp -r SPB_minilab_2 SPB_maxilab
+cp -r SPB_minilab_2 SPB_maxilab<br>
 cd SPB_maxilab
 </p></div>
 
@@ -122,7 +122,7 @@ Next we need to tell <code>MESA</code> to use our new subroutine <code>my_other_
 
 <task><details>
 <summary>Task 3</summary><p>
-In <code>inlist_project</code> add the line<br> <code>use_other_D_mix = .true.</code><br> under the <code>&controls</code> section. In <code>run_star_extras.f90</code> add the line<br> <code>s% other_D_mix => my_other_D_mix</code><br> at the end of the <code>extras_controls</code> subroutine. Then compile (<code>./mk</code>) and run (<code>./rn</code>) <code>MESA</code>. Does anything happen to your mixing <code>pgstar</code> window?
+In <code>inlist_project</code> add the line  <code>use_other_D_mix = .true.</code> under the <code>&controls</code> section. In <code>run_star_extras.f90</code> add the line <code>s% other_D_mix => my_other_D_mix</code> at the end of the <code>extras_controls</code> subroutine. Then compile (<code>./mk</code>) and run (<code>./rn</code>) <code>MESA</code>. Does anything happen to your mixing <code>pgstar</code> window?
 </p></details></task>
 
 Currently, nothing new is actually happening to the mixing profile in <code>MESA</code> because we haven't asked <code>MESA</code> to change it yet. This makes it difficult to tell if <code>MESA</code> is actually calling our new subroutine <code>my_other_D_mix</code>. To check this, we can add a print statement to <code>my_other_D_mix</code>.<br> 
@@ -179,7 +179,7 @@ As seen in the output above, there is indeed a parameter in <code>MESA</code> ca
       end subroutine my_other_D_mix
 </pre></p></div>
 
-Notice that we a running a <code>do</code> loop from the outermost cell (<code>k=1</code>) to the inner mesh grid point (<code>s% nz</code>) and changing the value of <code>D_mix</code> throughout the stellar model. <br>
+Notice that we a running a <code>do</code> loop from the outermost cell (<code>k=1</code>) to the inner mesh grid point (<code>s% nz</code>) and changing the value of <code>D_mix</code> throughout the stellar model. Also notice that we have to include the line `type (star_info), pointer :: s` to access the internal parameters in `MESA` related to the `star` module.<br>
 
 <task><details>
 <summary>Task 5</summary><p>

@@ -2,7 +2,7 @@
 layout: default
 title: Minilab 2
 ---
-# Introduction
+# Introduction <a id="minilab2_intro"></a>
 
 (Work in progress)
 
@@ -11,13 +11,13 @@ title: Minilab 2
     <div class="caption" style="width: 800"> Comparison between the hydrogen mass fraction profiles (b) and period spacing patterns (c) obtained at three different main-sequence evolutionary stages as indicated by the three round symbols on the evolutionary track in panel (a). Credit: May G. Pedersen. </div>
 </div>
 
-# Aims
+# Aims <a id="minilab2_aims"></a>
 
 **MESA + GYRE aims:** In this `MESA` lab you will learn how to run `GYRE` outside of `MESA`, what additional parameters are needed in your `MESA` `inlist` to generate files needed as input in `GYRE`, and how to construct a `GYRE inlist`. 
 
 **Science aims:** Investigating what effect convective boundary mixing has on period spacing patterns of SPB stars.
 
-# Minilab 2
+# Minilab 2 <a id="minilab2_lab"></a>
 
 **Minilab 1 solution:** [download](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0)<br>
 **Minilab 2 solution:** [download](https://www.dropbox.com/scl/fi/lqdxtngsl5wa14m1afntl/SPB_minilab2_solutions.zip?rlkey=qayxo5g5tdk7wm014tstw5npe&dl=0)<br>
@@ -402,7 +402,7 @@ As an example of what the period spacing patterns might look like we show below 
 <br>
 
 
-## Bonus exercise 1: Varying GYRE input parameters
+## Bonus exercise 1: Varying GYRE input parameters <a id="minilab2_bonus1"></a>
 
 Currently, when you run <code>GYRE</code> you should see that all modes have $n_{\rm pg} = -n_{\rm g}$  and all g-modes between $n_{\rm g} = 3$ and $80$ are being output. The exact output will change depending on how you setup your <code>GYRE</code> inlist. For this bonus exercise we are going to investigate what happens when we change the parameters: `freq_min`, `freq_max`, `grid_type`, `n_freq`, and `summary_item_list`.<br>
 
@@ -444,7 +444,7 @@ Now before moving on to the next exercises, make sure you reset the parameters i
 <code>grid_type = 'INVERSE'</code><br>
 <code>summary_item_list = 'l,m,n_p,n_g,n_pg,freq'</code>
 
-## Bonus exercise 2: Resolution impact on period spacing patterns
+## Bonus exercise 2: Resolution impact on period spacing patterns <a id="minilab2_bonus2"></a>
 
 So far, aside from additional time step resolution near the end of the main-sequence evolution, we have been using the default mesh grid and time step resolution in <code>MESA</code>. The period spacing patterns are very sensitive to the profile of the Brunt-Vaisala frequency, as it determines where the g-modes can propagate and how they get trapped near the core as a chemical gradient is developed when the convective core contracts. Therefore, if we want to model them we have to make sure that the Brunt-Vaisala frequency profile is converged. Remember that when using <code>MESA</code> for any type of science, **it is always important to test if your models are converged!**
 

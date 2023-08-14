@@ -84,7 +84,7 @@ All it is really doing right now is reading the contents of the <code>standard_r
 Replace the line <code>include 'standard_run_star_extras.inc'</code> in <code>run_star_extras.f90</code> with the contents of <code>$MESA_DIR/star/job/standard_run_star_extras.inc</code>. Then do a <code>./clean</code> and <code>./mk</code> in your working directory (not in the <code>src</code> directory) to check that everything is working as it should.
 </p></details></task>
 
-If in doubt, your new <code>run_star_extras.f90</code> should look like [this](https://www.dropbox.com/s/lqo86zd66sriziz/run_star_extras.f90?dl=0).<br>
+If in doubt, your new <code>run_star_extras.f90</code> should look like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/tree/main/solutions/run_star_extras.f90" target="_blank"> this</a>.<br>
 
 Whenever we make changes to <code>run_star_extras.f90</code>, we have to use <code>./mk</code> to make sure that the new changes are included in our <code>MESA</code> runs. Doing this often will make it easier to identify the source of any errors associated with our changes to <code>run_star_extras.f90</code> that might pop up when we try to recompile our <code>MESA</code> work directory.
 

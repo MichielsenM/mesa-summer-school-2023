@@ -10,7 +10,7 @@ Some basic introduction to the physics goes here...
 
 <div style="align: left; text-align:center;">
     <img src="images/CBM_gradT_4panels.png" width="100%" /> 
-    <div class="caption" style="width: 800"> Example internal mixing profiles (top) and corresponding temperature gradients (bottom) for four different choices of covection boundary mixing (CBM): (a) Exponential diffusive overshoot, (b) step overshoot, (c) convective penetration, and (d) extended convective penetration. In the top panel, convective mixing is shown in grey, CBM is indicated in blue, while envelope mixing is shown in green. In the bottom panel the corresponding temperature gradients used by MESA ($\nabla_T$, orange) along with the adiabatic ($\nabla_{\rm ad}$, green) and radiative ($\nabla_{\rm rad}$, blue) temperature gradients are shown, with the convective core indicated by the grey region for reference. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2023Galax..11...56A/abstract">Anders & Pedersen (2023)</a>. </div>
+    <div class="caption" style="width: 800"> Example internal mixing profiles (top) and corresponding temperature gradients (bottom) for four different choices of covection boundary mixing (CBM): (a) Exponential diffusive overshoot, (b) step overshoot, (c) convective penetration, and (d) extended convective penetration. In the top panel, convective mixing is shown in grey, CBM is indicated in blue, while envelope mixing is shown in green. In the bottom panel the corresponding temperature gradients used by MESA ($\nabla_T$, orange) along with the adiabatic ($\nabla_{\rm ad}$, green) and radiative ($\nabla_{\rm rad}$, blue) temperature gradients are shown, with the convective core indicated by the grey region for reference. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2023Galax..11...56A/abstract" target="_blank" >Anders & Pedersen (2023)</a>. </div>
 </div>
 
 # Aims <a id="minilab1_aims"></a>
@@ -22,7 +22,6 @@ Some basic introduction to the physics goes here...
 # Minilab 1  <a id="minilab1_lab"></a>
 
 **Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip)
-<!-- (https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0). -->
 
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 
@@ -62,7 +61,8 @@ As `MESA` is running, you will notice that two `pgstar` windows show up. One is 
   </div>
 </div>
 
-Both of these `pgstar` windows are the default windows being shown in `MESA` when you copy the `$MESA_DIR/star/work` directory. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found [here](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#). 
+Both of these `pgstar` windows are the default windows being shown in `MESA` when you copy the `$MESA_DIR/star/work` directory. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#" target="_blank"> here</a>. 
+
 
 <task><details>
 <summary>Task 2</summary><p>
@@ -72,7 +72,7 @@ Modify your <code>inlist_pgstar</code> file until you are satisfied with the siz
 <hint><details>
 <summary> Hint </summary><p>
 The two <code>pgstar</code> plotting windows are called <code>HR window</code> 
-(<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window">documentation</a>) and <code>TRho Profile Window</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window">documentation</a>). The names of the parameters that you should be varying are: <code>HR_win_width</code>, <code>HR_win_aspect_ratio</code>, <code>TRho_Profile_win_width</code>, and <code>TRho_Profile_win_aspect_ratio</code>. These are already included in <code>inlist_pgstar</code> by default.
+(<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#hr-window" target="_blank">documentation</a>) and <code>TRho Profile Window</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#trho-profile-window" target="_blank">documentation</a>). The names of the parameters that you should be varying are: <code>HR_win_width</code>, <code>HR_win_aspect_ratio</code>, <code>TRho_Profile_win_width</code>, and <code>TRho_Profile_win_aspect_ratio</code>. These are already included in <code>inlist_pgstar</code> by default.
 </p></details></hint>
 
 While we don't recommend using figures generated with `pgstar` in papers, these figures are very useful both for troubleshooting and making sure that `MESA` is doing what we expect it to do. This will become more clear in the Maxilab once we start to include our own custom mixing profiles in `MESA`. 
@@ -110,16 +110,17 @@ Now that the `pgstar` windows are on the right scale, we will focus on the `inli
 / ! end of controls namelist
 </pre></p></div>
 
-You can find the `&star_job` documentation [here](https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html), while the corresponding documentation website for the `&controls` parameters are located [here](https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html). If you want to have a look at the inlist used to create the starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0), but you don't need it to do these `MESA` labs.
+You can find the `&star_job` documentation <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html" target="_blank"> here</a>, while the corresponding documentation website for the `&controls` parameters are located <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html" target="_blank"> here</a>. If you want to have a look at the inlist used to create the starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0), but you don't need it to do these `MESA` labs.
+
 
 <task><details>
 <summary>Task 3</summary><p>
-Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/scl/fi/qeymz61jtjn306qlwhck8/SPB_ZAMS_Y0.28_Z0.02.mod?rlkey=6yskp62mgt9zbjfm3kjl0g1nl&dl=0">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <code>pgstar</code> output, then try to evolve the star.
+Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/scl/fi/qeymz61jtjn306qlwhck8/SPB_ZAMS_Y0.28_Z0.02.mod?rlkey=6yskp62mgt9zbjfm3kjl0g1nl&dl=0" target="_blank">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <code>pgstar</code> output, then try to evolve the star.
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
-The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (<code>&star_job</code>) and <code>stop_near_zams</code>(<code>&controls</code>), while two additional parameters (<code>load_saved_model</code> and <code>load_model_filename</code>) have to be included in <code>&star_job</code> to load the <code>SPB_ZAMS_Y0.28_Z0.02.mod</code> file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <code>inlist_pgstar</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#abundance-window">documentation</a>).
+The parameters that need to be changed are <code>create_pre_main_sequence_model</code> (<code>&star_job</code>) and <code>stop_near_zams</code>(<code>&controls</code>), while two additional parameters (<code>load_saved_model</code> and <code>load_model_filename</code>) have to be included in <code>&star_job</code> to load the <code>SPB_ZAMS_Y0.28_Z0.02.mod</code> file. To plot the abundance window, add <code>Abundance_win_flag = .true.</code> to <code>inlist_pgstar</code> (<a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#abundance-window" target="_blank">documentation</a>).
 </p></details></hint>
 
 As `MESA` is running, you should now see a third `pgstar` window appear, showing the abundance profiles as a function of mass. The x-axis is color coded according to the internal mixing taking place in different regions of the star, and matches that being shown in the `TRho_profile` window. If you are unhappy with the size of this window, you can change in the size and aspect ratios of it in `inlist_pgstar` using the parameters `Abundance_win_width` and `Abundance_win_aspect_ratio`. 
@@ -143,20 +144,20 @@ The parameters that need to be added in <code>inlist_project</code> are <code>ch
 
 <hint><details>
 <summary> Hint </summary><p>
-Prior to changing the network, you can find out what the name of the default nuclear network is by running <code>MESA</code> and looking at the terminal output. Alternatively, you can look at the parameter <code>default_net_name</code> in the <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html#nuclear-reaction-controls">nuclear networks controls</a> section of the <code>controls</code> documentation webpage.
+Prior to changing the network, you can find out what the name of the default nuclear network is by running <code>MESA</code> and looking at the terminal output. Alternatively, you can look at the parameter <code>default_net_name</code> in the <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html#nuclear-reaction-controls" target="_blank">nuclear networks controls</a> section of the <code>controls</code> documentation webpage.
 </p></details></hint>
 
-Next we are going to change the name of the `LOGS` directory where the `MESA` output `history.data` and `profile#.data` files gets saved in preparation of varying the convective boundary mixing of the star without overwriting previous `MESA` calculations. We will also relax the composition of the star to match the Galactic standard measured from B-type stars in the solar neighbourhood (<a href="https://ui.adsabs.harvard.edu/abs/2012A%26A...539A.143N/abstract">Nieve & Przybilla 2012</a>; <a href="https://ui.adsabs.harvard.edu/abs/2013EAS....63...13P/abstract">Przybilla et al. 2013</a>), change the opacity tables to the OP tables calculate for the metal mixture of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a> to match the initial metal mixture used in our starting model `SPB_ZAMS_Y0.28_Z0.02.mod` for the sake of consistency, and increase the frequency at which the history output is saved to the `history.data` file. 
+Next we are going to change the name of the `LOGS` directory where the `MESA` output `history.data` and `profile#.data` files gets saved in preparation of varying the convective boundary mixing of the star without overwriting previous `MESA` calculations. We will also relax the composition of the star to match the Galactic standard measured from B-type stars in the solar neighbourhood (<a href="https://ui.adsabs.harvard.edu/abs/2012A%26A...539A.143N/abstract" target="_blank">Nieve & Przybilla 2012</a>; <a href="https://ui.adsabs.harvard.edu/abs/2013EAS....63...13P/abstract" target="_blank">Przybilla et al. 2013</a>), change the opacity tables to the OP tables calculate for the metal mixture of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A" target="_blank">Asplund et al. (2009)</a> to match the initial metal mixture used in our starting model `SPB_ZAMS_Y0.28_Z0.02.mod` for the sake of consistency, and increase the frequency at which the history output is saved to the `history.data` file. 
 
 The choice of opacity tables and metal mixtures is particularly important when we try to predict which oscillations get excited by the $\kappa$-mechanism (i.e. opacity or heat mechanism), which depending on the type of pulsating star operates in the partial ionization zones of hydrogen, helium, or iron-group elements. In the case of SPB stars, the g-mode oscillations are excited by the $\kappa$-mechanism operating in the partial inization zone of the iron-group elements, also known as the iron opacity bump or $Z$ bump. The choice of the metal mixture determines how the mass fractions of the metal isotopes (i.e. anything other than hydrogen and helium) are distributed, and highly impacts the opacities in the iron bump as demonstrated in the figure below. 
 
 <div style="align: left; text-align:center;">
     <img src="images/opacities.jpeg" width="600" /> 
-    <div class="caption" style="width: 600"> Example Rosseland mean opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the opacity contribution of iron (red dashed) and both iron and nickle (full black) to the Rosseland mean opacity by 75% clearly show an increase in the opacity in the partial ionization zone of iron-group elements at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract">Morraveji (2016)</a>.</div>
+    <div class="caption" style="width: 600"> Example Rosseland mean opacity $\kappa$ versus temperature profiles for a $10M_\odot$ star, with convective regions indicated by the vertical blue-purple zones. A default <code>MESA</code> opacity profile is shown in dashed blue. Corresponding opacity profiles resulting from increasing the opacity contribution of iron (red dashed) and both iron and nickle (full black) to the Rosseland mean opacity by 75% clearly show an increase in the opacity in the partial ionization zone of iron-group elements at around $\log T\sim 5.3$. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2016MNRAS.455L..67M/abstract" target="_blank">Morraveji (2016)</a>.</div>
 </div>
 
-The choice of opacities and metal mixtures will also modify the predicted oscillation frequencies (see, e.g., Figure 3 of <a href="https://ui.adsabs.harvard.edu/abs/2015A%26A...580A..27M/abstract">Morraveji et al. (2015)</a>). While new metal mixtures closer to the ones by [Grevesse & Sauval (1998)](https://ui.adsabs.harvard.edu/abs/1998SSRv...85..161G/abstract) than <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a> have recently been found by [Magg et al. (2022)](https://ui.adsabs.harvard.edu/abs/2022A%26A...661A.140M/abstract), the correpsonding opacities in the Z-bump derived for the [Grevesse & Sauval (1998)](https://ui.adsabs.harvard.edu/abs/1998SSRv...85..161G/abstract) metal mixture are lower than those using <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a>. Given the general need for higher opacities in the Z-bump from nickle required to explain the number of excited modes in both $\beta$ Cep and SPB stars (e.g. [Walczak et al. (2019)](https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.3544W/abstract) and[Szewczuk et al. (2022)](https://ui.adsabs.harvard.edu/abs/2022MNRAS.511.1529S/abstract)), the metal mixture of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a> is used in these MESA lab exercises.
-More detailed studies of mode excitation is outside the scope of these `MESA` labs and we refer instead to previous `MESA` labs by Rich Townsend and Radek Smolec from the [2019](https://cococubed.com/mesa_summer_schools/mesa_summer_school_2019/) and [2021](https://cococubed.com/mesa_summer_schools/mesa_summer_school_2021/index.html) MESA Summer Schools. 
+The choice of opacities and metal mixtures will also modify the predicted oscillation frequencies (see, e.g., Figure 3 of <a href="https://ui.adsabs.harvard.edu/abs/2015A%26A...580A..27M/abstract" target="_blank">Morraveji et al. (2015)</a>). While new metal mixtures closer to the ones by <a href="https://ui.adsabs.harvard.edu/abs/1998SSRv...85..161G/abstract" target="_blank"> Grevesse & Sauval (1998)</a> than <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A" target="_blank" >Asplund et al. (2009)</a> have recently been found by <a href="https://ui.adsabs.harvard.edu/abs/2022A%26A...661A.140M/abstract" target="_blank"> Magg et al. (2022)</a>, the correpsonding opacities in the Z-bump derived for the <a href="https://ui.adsabs.harvard.edu/abs/1998SSRv...85..161G/abstract" target="_blank"> Grevesse & Sauval (1998)</a> metal mixture are lower than those using <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A" target="_blank">Asplund et al. (2009)</a>. Given the general need for higher opacities in the Z-bump from nickle required to explain the number of excited modes in both $\beta$ Cep and SPB stars (e.g. <a href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.3544W/abstract" target="_blank"> Walczak et al. (2019)</a> and <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.511.1529S/abstract" target="_blank"> Szewczuk et al. (2022)</a>), the metal mixture of <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A" target="_blank">Asplund et al. (2009)</a> is used in these MESA lab exercises.
+More detailed studies of mode excitation is outside the scope of these `MESA` labs and we refer instead to previous `MESA` labs by Rich Townsend and Radek Smolec from the <a href="https://cococubed.com/mesa_summer_schools/mesa_summer_school_2019/" target="_blank"> 2019</a> and <a href="https://cococubed.com/mesa_summer_schools/mesa_summer_school_2021/index.html" target="_blank"> 2021</a> MESA Summer Schools. 
 
 <br>
 <task><details>
@@ -166,7 +167,7 @@ Make the following additional changes to <code>inlist_project</code>. The text i
 <ul>
 <li> Change the output LOGS directory to <code>LOGS/4Msun_0fov</code> (<code>&controls</code>). </li>
 <li> Relax the composition to $X=0.71$, $Y=0.276$, and $Z=0.014$ (<code>&star_job</code>, <code>&kap</code>, and <code>&controls</code>). In <code>&controls</code> add the following two parameters: <code>relax_dY = 0.001</code> and <code>relax_dlnZ = 1d-2</code>. These latter two parameters determine how quickly the composition is relaxed to the new desired values of $Y$ and $Z$. </li>
-<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A">Asplund et al. (2009)</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>, <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/kap.html">documentation</a>) equal to 0.014 so the base metallicity of the opacity tables match the new value of $Z$. </li>
+<li> Use the OP opacity tables for the <a href="https://ui.adsabs.harvard.edu/abs/2009ARA&A..47..481A" target="_blank">Asplund et al. (2009)</a>  metal mixture (<code>&kap</code>) and make sure to also set the <code>Zbase</code> parameter (<code>&kap</code>, <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/kap.html" target="_blank">documentation</a>) equal to 0.014 so the base metallicity of the opacity tables match the new value of $Z$. </li>
 <li> Set <code>pgstar</code> to pause before terminating (<code>&star_job</code>). </li>
 <li> Output history data at every time step instead of every fifth time step (<code>&controls</code>).</li>
 </ul>
@@ -230,7 +231,7 @@ Zoom in on the MS evolutionary track of the start in the <code>pgstar</code> HR 
 
 <hint><details>
 <summary> Hint </summary><p>
-Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</code>, <code>HR_logL_min</code>, and <code>HR_logL_max</code> in <code>inlist_pgstar</code>. You can do this on the fly while <code>MESA</code> is running. Look up "Mixing window" in the <code>MESA</code> <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#mixing-window">documentation</a>. The parameter you want to add to <code>inlist_pgstar</code> is <code>Mixing_win_flag</code>.
+Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</code>, <code>HR_logL_min</code>, and <code>HR_logL_max</code> in <code>inlist_pgstar</code>. You can do this on the fly while <code>MESA</code> is running. Look up "Mixing window" in the <code>MESA</code> <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#mixing-window" target="_blank">documentation</a>. The parameter you want to add to <code>inlist_pgstar</code> is <code>Mixing_win_flag</code>.
 </p></details></hint>
 <br>
 
@@ -273,7 +274,7 @@ and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20<
 Run <code>MESA</code> and answer/do the following:
 </p>
 <ul>
-<li> In the  <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=713862144">Google spreadsheet</a> note down your name and choice of $f_{\rm ov}$, as well as $m_{\rm He, core}$, $\tau_{\rm TAMS}$, and $X(^{14}{\rm N})_{\rm surf}$ at TAMS. </li>
+<li> In the  <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=713862144" target="_blank">Google spreadsheet</a> note down your name and choice of $f_{\rm ov}$, as well as $m_{\rm He, core}$, $\tau_{\rm TAMS}$, and $X(^{14}{\rm N})_{\rm surf}$ at TAMS. </li>
 <li> Find the value of $\Pi_{\ell=1}$ and $m_{\rm cc}$ at <code>center_h1 &sim; 0.35</code> (i.e. halfway through core hydrogen burning) and add these to the Google spreadsheet.</li>
 <li> How do these values change for different values of $f_{\rm ov}$?</li>
 </ul>
@@ -302,7 +303,7 @@ Add the relevant inlist settings to <code>inlist_pgstar</code> to create a grid 
 
 <hint><details>
 <summary> Hint </summary><p>
-You'll find the relevant settings under the <code>Grid</code> section of the <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#grid">documentation</a>.
+You'll find the relevant settings under the <code>Grid</code> section of the <code>pgstar</code> <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#grid" target="_blank">documentation</a>.
 </p></details></hint>
 <br>
 

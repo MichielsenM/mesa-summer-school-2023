@@ -576,7 +576,7 @@ Following the example above, modify your <code>run_star_extras.f90</code> to inc
 </p></details></task>
 <br>
 
-Once you have updated your <code>run_star_extras.f90</code> you can also keep track of how these ratios change throughout the evolution of the star by including a [history panels <code>pgstar</code>](https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#history-panels) window.<br>
+Once you have updated your <code>run_star_extras.f90</code> you can also keep track of how these ratios change throughout the evolution of the star by including a <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#history-panels" target="_blank">history panels <code>pgstar</code></a> window.<br>
 
 <task><details>
 <summary>Task 13</summary><p>
@@ -610,7 +610,7 @@ Now we have our <code>MESA</code> setup done for the Maxilab and it is time to v
 In this final task of the Maxilab, there are four of your inlist parameters that you will have to change/vary. Those are: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. The steps you have to take are as follows:
 
 <ul>
-    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left most column. </li>
+    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148" target="_blank">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left most column. </li>
     <li> Change <code>log_directory</code> to be of the format <code>'LOGS/4Msun_0.01fov_#Denv0_#n'</code> and also change the parameter <code>filename_for_profile_when_terminate</code> accordingly. </li>
     <li> Set <code>overshoot_f(1) = 0.01</code> </li>
     <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen $D_{\rm env,0}$ and $n$. </li>

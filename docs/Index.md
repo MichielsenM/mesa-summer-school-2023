@@ -27,7 +27,7 @@ Text inside file or example fortran coding snippets go here.
 </p></div>
 
 
-Aside from the two types of text boxes, there are three different types of coloured text that you will need to pay attention to. <a href="https://docs.mesastar.org/en/release-r23.05.1/" target="_blank"> Text of this colour can be clicked</a> and will either take you to a website in a new tab or give you downloadable content that you need for the exercise, including solutions to Minilab 1, Minilab 2, and the Maxilab. The remaining two types of text colours correspond to specific tasks that you have to complete and some useful hints along the way, click on them to expand the task or hint.
+Aside from the two types of text boxes, there are three different types of coloured text that you will need to pay attention to. <a href="https://docs.mesastar.org/en/release-r23.05.1/" target="_blank"> Text of this colour can be clicked</a> and will either take you to a website or give you downloadable content that you need for the exercise, including solutions to Minilab 1, Minilab 2, and the Maxilab. The remaining two types of text colours correspond to specific tasks that you have to complete and some useful hints along the way, click on them to expand the task or hint.
 
 <task><details>
 <summary>Task 0</summary><p>

@@ -19,8 +19,8 @@ title: Minilab 2
 
 # Minilab 2 <a id="minilab2_lab"></a>
 
-**Minilab 1 solution:** [download](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0)<br>
-**Minilab 2 solution:** [download](https://www.dropbox.com/scl/fi/lqdxtngsl5wa14m1afntl/SPB_minilab2_solutions.zip?rlkey=qayxo5g5tdk7wm014tstw5npe&dl=0)<br>
+**Minilab 1 solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip)<br>
+**Minilab 2 solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab2_solutions.zip)<br>
 
 **For the TAs:** Additional instructions for plotting period spacing patterns are available at the bottom of the [home page](https://michielsenm.github.io/mesa-summer-school-2023/). We expect you to be in charge of plotting these patterns to avoid having the students spend time on trying to get the provided scripts to work. Should they have extra time available, however, they are more than welcome to try out the scripts themselves as well.<br><br>
 
@@ -63,7 +63,7 @@ make
 
 If the installation went smoothly, then now we should be able to run <code>GYRE</code> outside of <code>MESA</code>!<br>
 
-Let's start by creating a new <code>MESA</code> work directory by copying the one we created for Minilab 1. If you were unable to complete Minilab 1, then you can download the solution from [here](https://www.dropbox.com/s/5szt19kappiv2sd/SPB_minilab1_solutions.zip?dl=0).
+Let's start by creating a new <code>MESA</code> work directory by copying the one we created for Minilab 1. If you were unable to complete Minilab 1, then you can download the solution from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip).
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>

@@ -110,12 +110,12 @@ Now that the `pgstar` windows are on the right scale, we will focus on the `inli
 / ! end of controls namelist
 </pre></p></div>
 
-You can find the `&star_job` documentation <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html" target="_blank"> here</a>, while the corresponding documentation website for the `&controls` parameters are located <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html" target="_blank"> here</a>. If you want to have a look at the inlist used to create the starting model, you can download it from [here](https://www.dropbox.com/s/elxoxppd67ojmtz/inlist_ZAMS_Y0.28_Z0.02?dl=0), but you don't need it to do these `MESA` labs.
+You can find the `&star_job` documentation <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/star_job.html" target="_blank"> here</a>, while the corresponding documentation website for the `&controls` parameters are located <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html" target="_blank"> here</a>. If you want to have a look at the inlist used to create the starting model, you can look at and download it <a href="https://github.com/MichielsenM/mesa-summer-school-2023/tree/main/solutions/inlist_ZAMS_Y0.28_Z0.02" target="_blank"> here</a>, but you don't need it to do these `MESA` labs.
 
 
 <task><details>
 <summary>Task 3</summary><p>
-Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://www.dropbox.com/scl/fi/qeymz61jtjn306qlwhck8/SPB_ZAMS_Y0.28_Z0.02.mod?rlkey=6yskp62mgt9zbjfm3kjl0g1nl&dl=0" target="_blank">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <code>pgstar</code> output, then try to evolve the star.
+Modify the <code>&star_job</code> and <code>&controls</code> sections of <code>inlist_project</code> to start the evolution at the ZAMS by loading in the provided ZAMS model <a href="https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_ZAMS_Y0.28_Z0.02.mod">SPB_ZAMS_Y0.28_Z0.02.mod</a> for a $4\,$M$_\odot$ star and stop the evolution when the core <sup>1</sup>H mass fraction drops below 0.001. Also include an abundance window to the <code>pgstar</code> output, then try to evolve the star.
 </p></details></task>
 
 <hint><details>

@@ -111,43 +111,33 @@ The setup of the different sections (i.e. namelists) that we need to include in 
 <div class="filetext-title"> gyre.in </div> 
 <div class="filetext"><p><pre class="pre-filetext">
 &constants
-    (some specification)
 /
 
 &model
-    (some specification)
 /
 
 &rot
-    (some specification)
 /
 
 &mode
-    (some specification)
 /
 
 &osc
-    (some specification)
 /
 
 &num
-    (some specification)
 /
 
 &scan
-    (some specification)
 /
 
 &grid
-    (some specification)
 /
 
 &ad_output
-    (some specification)
 /
 
 &nad_output
-    (some specification)
 /
 </pre></p></div>
 

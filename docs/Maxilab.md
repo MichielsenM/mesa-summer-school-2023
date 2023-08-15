@@ -120,26 +120,26 @@ As you can see, the <code>other_d_mix.f90</code> file itself contains some infor
 
 <task><details>
 <summary>Task 2</summary><p>
-Copy the subroutine <code>null_other_D_mix</code> from <code>other_d_mix.f90</code> and place it right after the line <code>end subroutine extras_controls</code> in your <code>run_star_extras.f90</code>. Rename the <code>null_other_D_mix</code> subroutine to <code>my_other_D_mix</code>. Do <code>./mk</code> to make sure you didn't make any mistakes.
+Copy the subroutine <code>null_other_D_mix</code> from <code>other_d_mix.f90</code> and place it right after the line <code>end subroutine extras_controls</code> in your <code>run_star_extras.f90</code>. Rename the <code>null_other_D_mix</code> subroutine to <code>IGW_D_mix</code>. Do <code>./mk</code> to make sure you didn't make any mistakes.
 </p></details></task>
 
-Next we need to tell <code>MESA</code> to use our new subroutine <code>my_other_D_mix</code>.<br>
+Next we need to tell <code>MESA</code> to use our new subroutine <code>IGW_D_mix</code>.<br>
 
 <task><details>
 <summary>Task 3</summary><p>
-In <code>inlist_project</code> add the line  <code>use_other_D_mix = .true.</code> under the <code>&controls</code> section. In <code>run_star_extras.f90</code> add the line <code>s% other_D_mix => my_other_D_mix</code> at the end of the <code>extras_controls</code> subroutine. Then compile (<code>./mk</code>) and run (<code>./rn</code>) <code>MESA</code>. Does anything happen to your mixing <code>pgstar</code> window?
+In <code>inlist_project</code> add the line  <code>use_other_D_mix = .true.</code> under the <code>&controls</code> section. In <code>run_star_extras.f90</code> add the line <code>s% other_D_mix => IGW_D_mix</code> at the end of the <code>extras_controls</code> subroutine. Then compile (<code>./mk</code>) and run (<code>./rn</code>) <code>MESA</code>. Does anything happen to your mixing <code>pgstar</code> window?
 </p></details></task>
 <br>
 
-Currently, nothing new is actually happening to the mixing profile in <code>MESA</code> because we haven't asked <code>MESA</code> to change it yet. This makes it difficult to tell if <code>MESA</code> is actually calling our new subroutine <code>my_other_D_mix</code>. To check this, we can add a print statement to <code>my_other_D_mix</code>.<br> 
+Currently, nothing new is actually happening to the mixing profile in <code>MESA</code> because we haven't asked <code>MESA</code> to change it yet. This makes it difficult to tell if <code>MESA</code> is actually calling our new subroutine <code>IGW_D_mix</code>. To check this, we can add a print statement to <code>IGW_D_mix</code>.<br> 
 
 <task><details>
 <summary>Task 4</summary><p>
-Add the line <code>print *, 'I am using my_other_D_mix'</code> to your <code>my_other_D_mix</code> subroutine inside <code>run_star_extras.f90</code>. Recompile and run <code>MESA</code>, then check the terminal output to see if the line <code>'I am using my_other_D_mix'</code> starts to show up.
+Add the line <code>print *, 'I am using IGW_D_mix'</code> to your <code>IGW_D_mix</code> subroutine inside <code>run_star_extras.f90</code>. Recompile and run <code>MESA</code>, then check the terminal output to see if the line <code>'I am using IGW_D_mix'</code> starts to show up.
 </p></details></task>
 <br>
 
-Now that we know that <code>MESA</code> is actually calling our <code>my_other_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Lets try to see if this is a parameter that actually exists in <code>MESA</code>.
+Now that we know that <code>MESA</code> is actually calling our <code>IGW_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Lets try to see if this is a parameter that actually exists in <code>MESA</code>.
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
@@ -164,11 +164,11 @@ star/private/mix_info.f90:  s% D_mix(k) = s% min_D_mix
 ...
 </pre></p></div>
 
-As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Lets try to use this in our <code>my_other_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. In order to do so, we first have to let our <code>my_other_D_mix</code> subroutine have access to the information in <code>star_info</code> and define an integer <code>k</code> for run a `do loop` over. In order for this to work, your <code>my_other_D_mix</code> subroutine should look something like this
+As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Lets try to use this in our <code>IGW_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. In order to do so, we first have to let our <code>IGW_D_mix</code> subroutine have access to the information in <code>star_info</code> and define an integer <code>k</code> for run a `do loop` over. In order for this to work, your <code>IGW_D_mix</code> subroutine should look something like this
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
-      subroutine my_other_D_mix(id, ierr)
+      subroutine IGW_D_mix(id, ierr)
          integer, intent(in) :: id
          integer, intent(out) :: ierr
          type (star_info), pointer :: s
@@ -177,20 +177,20 @@ As seen in the output above, there is indeed a parameter in <code>MESA</code> ca
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
 
-         print *, 'I am using my_other_D_mix'
+         print *, 'I am using IGW_D_mix'
          
          do k=1, s% nz
             s% D_mix(k) = 
          end do
 
-      end subroutine my_other_D_mix
+      end subroutine IGW_D_mix
 </pre></p></div>
 
 Notice that we a running a <code>do</code> loop from the outermost cell (<code>k=1</code>) to the inner mesh grid point (<code>s% nz</code>) and changing the value of <code>D_mix</code> throughout the stellar model. Also notice that we have to include the line `type (star_info), pointer :: s` to access the internal parameters in `MESA` related to the `star` module.<br>
 
 <task><details>
 <summary>Task 5</summary><p>
-Implement the changes to your <code>my_other_D_mix</code> subroutine listed above and set the diffusive mixing coefficient <code>D_mix</code> to be 10<sup>4</sup> throughout the star. Recompile and run <code>MESA</code>. What happens to your <code>pgstar</code> mixing window?
+Implement the changes to your <code>IGW_D_mix</code> subroutine listed above and set the diffusive mixing coefficient <code>D_mix</code> to be 10<sup>4</sup> throughout the star. Recompile and run <code>MESA</code>. What happens to your <code>pgstar</code> mixing window?
 </p></details></task>
 <br>
 
@@ -278,7 +278,7 @@ So far we have been completely overwriting the mixing profile throughout the sta
 
 <task><details>
 <summary>Task 8</summary><p>
-Modify your <code>my_other_D_mix</code> subroutine to only change the mixing profile when no convective or diffusive overshoot mixing is happening. You can do so using an <code>if</code> statement inside your <code>do</code> loop.
+Modify your <code>IGW_D_mix</code> subroutine to only change the mixing profile when no convective or diffusive overshoot mixing is happening. You can do so using an <code>if</code> statement inside your <code>do</code> loop.
 </p></details></task>
 <br>
 
@@ -356,11 +356,11 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-We want to get rid of this discontinuity by modifying our <code>my_other_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
 
 <task><details>
 <summary>Task 9</summary><p>
-Declare a new integer parameter <code>k0</code> inside your <code>my_other_D_mix</code> subroutine. This parameter will define the first cell number where <code>D_mix < 10<sup>4</sup></code> when going from the core to the surface. Add an additional <code>do</code>-loop before your first one and use an <code>if</code> statement to find the value of <code>k0</code>. Then modify your second <code>do</code>-loop to run to <code>k0</code> instead of <code>s% nz</code> and change the diffusive mixing coefficient to 10<sup>4</sup> if the region is not convective. Likewise set the <code>mixing_type=7</code>.
+Declare a new integer parameter <code>k0</code> inside your <code>IGW_D_mix</code> subroutine. This parameter will define the first cell number where <code>D_mix < 10<sup>4</sup></code> when going from the core to the surface. Add an additional <code>do</code>-loop before your first one and use an <code>if</code> statement to find the value of <code>k0</code>. Then modify your second <code>do</code>-loop to run to <code>k0</code> instead of <code>s% nz</code> and change the diffusive mixing coefficient to 10<sup>4</sup> if the region is not convective. Likewise set the <code>mixing_type=7</code>.
 </p></details></task>
 
 <hint><details>
@@ -380,11 +380,11 @@ You want to set <code>x_ctrl(1) = 1d4</code> inside <code>inlist_project</code> 
 </p></details></hint>
 <br>
 
-Once you have made the above changes then run <code>MESA</code>. The current version of your <code>my_other_D_mix</code> subroutine should look something like this
+Once you have made the above changes then run <code>MESA</code>. The current version of your <code>IGW_D_mix</code> subroutine should look something like this
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
-subroutine my_other_D_mix(id, ierr)
+subroutine IGW_D_mix(id, ierr)
     integer, intent(in) :: id
     integer, intent(out) :: ierr
     type (star_info), pointer :: s
@@ -393,7 +393,7 @@ subroutine my_other_D_mix(id, ierr)
     call star_ptr(id, s, ierr)
     if (ierr /= 0) return
          
-    print *, 'I am using my_other_D_mix'
+    print *, 'I am using IGW_D_mix'
          
     ! Find k0
     do k=1, s% nz
@@ -411,7 +411,7 @@ subroutine my_other_D_mix(id, ierr)
       endif
     end do
          
-end subroutine my_other_D_mix
+end subroutine IGW_D_mix
 </pre></p></div>
 <br>
 
@@ -423,7 +423,7 @@ The corresponding `pgstar` mixing window should look like this:
 <br>
 
 
-With the current version of our <code>my_other_D_mix</code> subroutine we could achieve the exact same result by just varying the parameter <code>min_D_mix</code> inside <code>inlist_project</code>. Now as a final step, we are going to change the envelope mixing profile to be a function of the density profile using 
+With the current version of our <code>IGW_D_mix</code> subroutine we could achieve the exact same result by just varying the parameter <code>min_D_mix</code> inside <code>inlist_project</code>. Now as a final step, we are going to change the envelope mixing profile to be a function of the density profile using 
 
 \begin{equation}
     D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
@@ -434,7 +434,7 @@ In this equation $D_{\rm env, 0}$  corresponds to <code>x_ctrl(1)</code>. $n$ is
 
 <task><details>
 <summary>Task 11</summary><p>
-Set $n=0.5$  and $D_{\rm env, 0} = 100$, then implement the equation above in your <code>my_other_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
+Set $n=0.5$  and $D_{\rm env, 0} = 100$, then implement the equation above in your <code>IGW_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
 </p></details></task>
 
 <hint><details>

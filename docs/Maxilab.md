@@ -186,7 +186,7 @@ As seen in the output above, there is indeed a parameter in <code>MESA</code> ca
       end subroutine IGW_D_mix
 </pre></p></div>
 
-Notice that we a running a <code>do</code> loop from the outermost cell (<code>k=1</code>) to the inner mesh grid point (<code>s% nz</code>) and changing the value of <code>D_mix</code> throughout the stellar model. Also notice that we have to include the line `type (star_info), pointer :: s` to access the internal parameters in `MESA` related to the `star` module.<br>
+Notice that we a running a <code>do</code> loop from the outermost cell (<code>k=1</code>) to the inner mesh grid point (<code>s% nz</code>) and changing the value of <code>D_mix</code> throughout the stellar model. Also notice that we have to include the line `type (star_info), pointer :: s` to access the internal parameters in `MESA` related to the `star` module. Note that by adding this line, we are declaring the `star_info` pointer to be `s%`. Any additional parameters that you would like to declare have to be included before both the `call star_ptr(id, s, ierr)` and `ierr = 0` lines, or `MESA` will start to complain.<br>
 
 <task><details>
 <summary>Task 5</summary><p>

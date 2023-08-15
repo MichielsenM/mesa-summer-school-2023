@@ -283,7 +283,7 @@ Run <code>MESA</code> and answer/do the following:
 
 <hint><details>
 <summary> Hint </summary><p>
-The convective core mass (<code>mass_conv_core</code>), helium core mass (<code>he_core_mass</code>), star age (<code>star_age</code>), and center <sup>1</sup>H mass fraction (<code>center_h1</code>) parameters are already included in the history output by default. The only additional ones you have to add are <code>surface_n14</code> and <code>delta_Pg</code>.
+The convective core mass (<code>mass_conv_core</code>), helium core mass (<code>he_core_mass</code>), star age (<code>star_age</code>), and center <sup>1</sup>H mass fraction (<code>center_h1</code>) parameters are already included in the history output by default. The only additional ones you have to add are <code>surface_n14</code> and <code>delta_Pg</code>. Note that the fomatting for adding center and surface abundaces inside the <code>history_columns.list</code> file is <code>center n14</code> and <code>surface n14</code>, but shows up as <code>center_n14</code> and <code>surface_n14</code> in your <code>history.data</code> file.
 </p></details></hint>
 
 <hint><details>

@@ -143,7 +143,7 @@ Now that we know that <code>MESA</code> is actually calling our <code>my_other_D
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
-cd $MESA_DIR
+cd $MESA_DIR <br>
 grep -rI D_mix star/private
 </p></div>
 

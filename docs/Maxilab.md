@@ -356,7 +356,7 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt.<br>
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile that we want to adopt. The solution to the following two tasks is provided below in case you get stuck.<br>
 
 <task><details>
 <summary>Task 9</summary><p>
@@ -389,15 +389,19 @@ subroutine IGW_D_mix(id, ierr)
     integer, intent(out) :: ierr
     type (star_info), pointer :: s
     integer :: k, k0
+    real(dp) :: D_env_0
     ierr = 0
     call star_ptr(id, s, ierr)
     if (ierr /= 0) return
          
     print *, 'I am using IGW_D_mix'
+
+    ! Set the value of D_env_0 according to s% x_ctrl(1)
+    D_env_0 = s% x_ctrl(1)
          
     ! Find k0
     do k=1, s% nz
-      if (s% D_mix(s% nz - k) .lt. s% x_ctrl(1)) then
+      if (s% D_mix(s% nz - k) .lt. D_env_0) then
         k0 = s% nz - k
         exit
       end if
@@ -406,7 +410,7 @@ subroutine IGW_D_mix(id, ierr)
     ! Change mixing profile in the envelope, avoiding convective zones
     do k=1, k0
       if (s% mixing_type(k) .ne. 1) then
-        s% D_mix(k) = s% x_ctrl(1)
+        s% D_mix(k) = D_env_0
         s% mixing_type(k) = 7
       endif
     end do

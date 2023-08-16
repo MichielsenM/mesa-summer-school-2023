@@ -369,7 +369,6 @@ We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code>
 
 \begin{equation}
     D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
-    \label{Eq:D_env}
 \end{equation}
 
 Note that for our current choice of constant evelope mixing, the equation above instead corresponds to 
@@ -457,7 +456,6 @@ With the current version of our <code>IGW_D_mix</code> subroutine we could achie
 
 \begin{equation}
     D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
-    \label{Eq:D_env}
 \end{equation}
 
 In this equation $D_{\rm env, 0}$  corresponds to <code>x_ctrl(1)</code>. $n$ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. $\rho (r)$ is the density and $\rho_0$ is the density at <code>k0</code>. <br>

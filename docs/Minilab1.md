@@ -34,7 +34,7 @@ In this Minilab 1, we will start constructing the `inlist` we need to study peri
 For good measure, let's make sure that the standard `MESA` inlist runs
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal">
-  <p>./clean & ./mk <br>
+  <p>./clean && ./mk <br>
   ./rn</p>
 </div>
 

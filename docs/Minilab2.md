@@ -69,7 +69,7 @@ Let's start by creating a new <code>MESA</code> work directory by copying the on
 <div class="terminal"><p>
 cp -r SPB_minilab_1 SPB_minilab_2 <br>
 cd SPB_minilab_2<br>
-./clean & ./mk
+./clean && ./mk
 </p></div>
 
 

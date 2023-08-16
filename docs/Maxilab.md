@@ -27,7 +27,8 @@ For this Maxilab we will now start digging into our <code>run_star_extras.f90</c
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
 cp -r SPB_minilab_2 SPB_maxilab<br>
-cd SPB_maxilab
+cd SPB_maxilab <br>
+./clean && ./mk
 </p></div>
 
 In both your <code>inlist_project</code> and <code>inlist_pgstar</code> files make sure that <code>mesh_delta_coeff = 1.0</code>, <code>time_delta_coeff = 1.0</code>, and that the associated <code>Profile_Panels1_file_prefix</code>, 

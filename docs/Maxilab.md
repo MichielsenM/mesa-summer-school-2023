@@ -366,7 +366,7 @@ We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code>
     \label{Eq:D_env}
 \end{equation}
 
-For these steps we need to locate the cell number where $D_{\rm env} (r) = D_{\rm env,0} = 10^4$. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
+For these steps we need to locate the cell number where `D_mix` is $10^4$, corresponding our current choice of constant envelope mixing $D_{\rm env} (r) = D_{\rm env,0} = 10^4$. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
 
 The solution to the following two tasks is provided below in case you get stuck.<br>
 

@@ -359,16 +359,23 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt. 
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt: 
 
 \begin{equation}
     D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
     \label{Eq:D_env}
 \end{equation}
 
-For these steps we need to locate the cell number where `D_mix` is $10^4$, corresponding our current choice of constant envelope mixing $D_{\rm env} (r) = D_{\rm env,0} = 10^4$. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
+Note that for our current choice of constant evelope mixing, the equation above instead corresponds to 
 
-The solution to the following two tasks is provided below in case you get stuck.<br>
+\begin{equation}
+    D_{\rm env} (r) = D_{\rm env, 0} = 10^4.
+    \label{Eq:const}
+\end{equation}
+
+For these steps we need to locate the first cell number where `D_mix` is less or equal to $10^4$ when going from the core to the surface of the stellar model. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
+
+The solution to the following task is provided below in case you get stuck.<br>
 
 <task><details>
 <summary>Task 9</summary><p>
@@ -450,7 +457,7 @@ With the current version of our <code>IGW_D_mix</code> subroutine we could achie
 In this equation $D_{\rm env, 0}$  corresponds to <code>x_ctrl(1)</code>. $n$ is another free parameter that we want to be able to set in our <code>inlist_project</code> file. $\rho (r)$ is the density and $\rho_0$ is the density at <code>k0</code>. <br>
 
 <task><details>
-<summary>Task 11</summary><p>
+<summary>Task 10</summary><p>
 Set $n=0.5$  and $D_{\rm env, 0} = 100$, then implement the equation above in your <code>IGW_D_mix</code> subroutine. Run both <code>MESA</code> and <code>GYRE</code>. How does this addition of envelope mixing change your period spacing pattern?
 </p></details></task>
 
@@ -588,7 +595,7 @@ end subroutine data_for_extra_history_columns
 <br>
 
 <task><details>
-<summary>Task 12</summary><p>
+<summary>Task 11</summary><p>
 Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.
 </p></details></task>
 <br>
@@ -596,7 +603,7 @@ Following the example above, modify your <code>run_star_extras.f90</code> to inc
 Once you have updated your <code>run_star_extras.f90</code> you can also keep track of how these ratios change throughout the evolution of the star by including a <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#history-panels" target="_blank">history panels <code>pgstar</code></a> window.<br>
 
 <task><details>
-<summary>Task 13</summary><p>
+<summary>Task 12</summary><p>
 Add the following to your <code>inlist_pgstar</code> file:<br>
 <code>History_Panels1_win_flag = .true.</code><br> 
 <code>History_Panels1_num_panels = 2</code><br> 
@@ -623,7 +630,7 @@ Your final `pgstar` `mixing` and `History_Panels1` windows should look something
 Now we have our <code>MESA</code> setup done for the Maxilab and it is time to vary some parameters and investigate the effect of envelope mixing on both the period spacing patterns and the surface abundances.<br>
 
 <task><details>
-<summary>Task 14</summary><p>
+<summary>Task 13</summary><p>
 In this final task of the Maxilab, there are four of your inlist parameters that you will have to change/vary. Those are: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. The steps you have to take are as follows:
 
 <ul>

@@ -359,7 +359,9 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt. For these steps we need to locate the cell number where $D_{\rm env,0} = 10^4$. The solution to the following two tasks is provided below in case you get stuck.<br>
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt. For these steps we need to locate the cell number where $D_{\rm env,0} = 10^4$. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
+
+The solution to the following two tasks is provided below in case you get stuck.<br>
 
 <task><details>
 <summary>Task 9</summary><p>

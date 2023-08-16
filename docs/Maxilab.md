@@ -367,11 +367,13 @@ To modify the <code>IGW_D_mix</code> subroutine in <code>run_star_extras.f90</co
 
 <strong>Define the <code>k0</code> parameter:</strong> Within the <code>IGW_D_mix</code> subroutine, declare a new integer parameter named <code>k0</code>. This will represent the first cell where <code>D_mix</code> is less than 10<sup>4</sup> as you progress from the core to the surface.<br><br>
 
-**Identify the Value of k0:** Before the existing loop, implement a new loop that iterates from <code>1</code> to <code>s% nz</code>. Within this loop, check if the value of <code>D_mix</code> at position <code>(s% nz - k)</code> is less than </code>s% x_ctrl(1)</code>. If true, set <code>k0</code> to <code>s% nz - k</code> and exit the loop.<br><br>
+<strong>Identify the Value of k0:</strong> Before the existing loop, implement a new loop that iterates from <code>1</code> to <code>s% nz</code>. Within this loop, check if the value of <code>D_mix</code> at position <code>(s% nz - k)</code> is less than <code>s% x_ctrl(1)</code>. If true, set <code>k0</code> to <code>s% nz - k</code> and exit the loop.<br><br>
 
-**Modify the Mixing Profile:** Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective (i.e., not 1), you update the <code>D_mix</code> to <code>s% x_ctrl(1)</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
+<strong>Modify the Mixing Profile:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective (i.e., not 1), you update the <code>D_mix</code> to <code>s% x_ctrl(1)</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
 
-**Parameterize the Discontinuity Value:** Instead of hardcoding the value of 10<sup>4</sup>, use the <code>x_ctrl</code> control parameter. Under the <code>&controls</code> section in <code>inlist_project</code>, set <code>x_ctrl(1)</code> to <code>1d4</code>. This allows the value to be altered without needing to modify the <code>run_star_extras.f90</code> file directly. You can then use this value in your subroutine by referencing <code>s% x_ctrl(1)</code>.<br>
+<strong>Parameterize the Discontinuity Value:</strong> Instead of hardcoding the value of 10<sup>4</sup>, use the <code>x_ctrl</code> control parameter. Under the <code>&controls</code> section in <code>inlist_project</code>, set <code>x_ctrl(1)</code> to <code>1d4</code>. This allows the value to be altered without needing to modify the <code>run_star_extras.f90</code> file directly. You can then use this value in your subroutine by referencing <code>s% x_ctrl(1)</code>.<br><br>
+
+With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
 </p></details></task>
 
 With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.

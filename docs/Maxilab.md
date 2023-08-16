@@ -359,7 +359,14 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt. For these steps we need to locate the cell number where $D_{\rm env,0} = 10^4$. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt. 
+
+\begin{equation}
+    D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
+    \label{Eq:D_env}
+\end{equation}
+
+For these steps we need to locate the cell number where $D_{\rm env,0} = 10^4$. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
 
 The solution to the following two tasks is provided below in case you get stuck.<br>
 
@@ -367,38 +374,22 @@ The solution to the following two tasks is provided below in case you get stuck.
 <summary>Task 9</summary><p>
 To modify the <code>IGW_D_mix</code> subroutine in <code>run_star_extras.f90</code> to ensure the discontinuity is removed, follow these steps:<br><br>
 
+<strong>Define the <code>D_env_0</code> parameter:</strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision <code>real(dp)</code> parameter named <code>D_env_0</code>. This corresponds to the $D_{\rm env, 0}$ in the equation above. Note that for our current setup we simply have $D_{\rm env} (r) = D_{\rm env, 0} = 10^4$, corresponding to a constant envelope mixing at $10^4$.<br><br>
+
 <strong>Define the <code>k0</code> parameter:</strong> Within the <code>IGW_D_mix</code> subroutine, declare a new integer parameter named <code>k0</code>. This will represent the first cell where <code>D_mix</code> is less than 10<sup>4</sup> as you progress from the core to the surface.<br><br>
 
-<strong>Identify the Value of k0:</strong> Before the existing loop, implement a new loop that iterates from <code>1</code> to <code>s% nz</code>. Within this loop, check if the value of <code>D_mix</code> at position <code>(s% nz - k)</code> is less than <code>s% x_ctrl(1)</code>. If true, set <code>k0</code> to <code>s% nz - k</code> and exit the loop.<br><br>
+<strong>Identify the value of k0:</strong> Before the existing loop, implement a new loop that iterates from <code>1</code> to <code>s% nz</code>. Within this loop, check if the value of <code>D_mix</code> at position <code>(s% nz - k)</code> is less than <code>D_env_0</code>. If true, set <code>k0</code> to <code>s% nz - k</code> and exit the loop.<br><br>
 
-<strong>Modify the Mixing Profile:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective (i.e., not 1), you update the <code>D_mix</code> to <code>s% x_ctrl(1)</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
+<strong>Modify the mixing profile:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective (i.e., not 1), you update the <code>D_mix</code> to <code>D_env_0</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
 
-<strong>Parameterize the Discontinuity Value:</strong> Instead of hardcoding the value of 10<sup>4</sup>, use the <code>x_ctrl</code> control parameter. Under the <code>&controls</code> section in <code>inlist_project</code>, set <code>x_ctrl(1)</code> to <code>1d4</code>. This allows the value to be altered without needing to modify the <code>run_star_extras.f90</code> file directly. You can then use this value in your subroutine by referencing <code>s% x_ctrl(1)</code>.<br><br>
-
-With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
-</p></details></task>
+<strong>Parameterize the discontinuity value:</strong> Instead of hardcoding the value of <code>D_env_0</code> to be 10<sup>4</sup>, use the <code>x_ctrl</code> control parameter. Under the <code>&controls</code> section in <code>inlist_project</code>, set <code>x_ctrl(1)</code> to <code>1d4</code>. This allows the value to be altered without needing to modify the <code>run_star_extras.f90</code> file directly. You can then use this value in your subroutine by referencing <code>s% x_ctrl(1)</code>. Do so by setting <code>D_env_0 = s% x_ctrl(1)</code> before your <code>do</code>-loops.<br><br>
 
 With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
-
-<task><details>
-<summary>Task 9</summary><p>
-Declare a new integer parameter <code>k0</code> inside your <code>IGW_D_mix</code> subroutine. This parameter will define the first cell number where <code>D_mix < 10<sup>4</sup></code> when going from the core to the surface. Add an additional <code>do</code>-loop before your first one and use an <code>if</code> statement to find the value of <code>k0</code>. Then modify your second <code>do</code>-loop to run to <code>k0</code> instead of <code>s% nz</code> and change the diffusive mixing coefficient to 10<sup>4</sup> if the region is not convective. Likewise set the <code>mixing_type=7</code>.
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
 Use the "<code>if</code> condition then do something and exit <code>do</code>-loop" example given above for the first <code>do</code>-loop and set <code>(a condition)</code> to <code>(s% D_mix(s% nz - k) .lt. 1d4)</code> and the <code>Do something</code> to <code>k0 = s% nz - k</code>. Then in the second <code>do</code>-loop change <code>do k=1, s% nz</code> to <code>do k=1, k0</code>.
-</p></details></hint>
-<br>
-
-<task><details>
-<summary>Task 10</summary><p>
-As a bonus, look up what the inlist control parameter <code>x_ctrl</code> does. Use this to set 10<sup>4</sup> value in the envelope inside your <code>inlist_project</code> instead of <code>run_star_extras.f90</code>. This will allow us to vary this parameter without having to change <code>run_star_extras.f90</code> every time.
-</p></details></task>
-
-<hint><details>
-<summary> Hint </summary><p>
-You want to set <code>x_ctrl(1) = 1d4</code> inside <code>inlist_project</code> under <code>&controls</code> and then call it in <code>run_star_extras.f90</code> using <code>s% x_ctrl(1)</code>.
 </p></details></hint>
 <br>
 

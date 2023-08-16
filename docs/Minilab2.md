@@ -203,7 +203,7 @@ In the <code>&grid</code> namelist section, include the parameters:<br>
 Now our last step is to tell <code>GYRE</code> what to output using <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html" target="_blank"> &ad_output</a>. There are two types of output files to consider: the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files" target="_blank"> summary</a> and <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html" target="_blank"> detail</a> output files. The `summary` files provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, degree $\ell$, and azimuthal order $m$ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial ($\xi_r$) and horizontal ($\xi_h$) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
 
 <task><details>
-<summary>Task 8</summary><p>
+<summary>Task 9</summary><p>
 In the <code>&ad_output</code> namelist section, include the parameters:<br> 
 <code>summary_file = './LOGS/4Msun_#fov/profile2_summary.txt'</code><br>
 <code>summary_file_format = 'TXT'</code><br>

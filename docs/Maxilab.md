@@ -31,6 +31,8 @@ cd SPB_maxilab <br>
 ./clean && ./mk
 </p></div>
 
+Also delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 2.
+
 In both your <code>inlist_project</code> and <code>inlist_pgstar</code> files make sure that <code>mesh_delta_coeff = 1.0</code>, <code>time_delta_coeff = 1.0</code>, and that the associated <code>Profile_Panels1_file_prefix</code>, 
 
 <code>filename_for_profile_when_terminate</code>, and <code>log_directory</code> parameters are changed accordingly.<br>
@@ -140,7 +142,7 @@ Add the line <code>print *, 'I am using IGW_D_mix'</code> to your <code>IGW_D_mi
 </p></details></task>
 <br>
 
-Now that we know that <code>MESA</code> is actually calling our <code>IGW_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Lets try to see if this is a parameter that actually exists in <code>MESA</code>.
+Now that we know that <code>MESA</code> is actually calling our <code>IGW_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Lets try to see if this is a parameter that actually exists in <code>MESA</code>. Note that to get back to the previous directory that you were in, you can use the command `cd -` in the terminal.
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>

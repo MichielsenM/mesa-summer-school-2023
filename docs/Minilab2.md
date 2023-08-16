@@ -72,6 +72,7 @@ cd SPB_minilab_2<br>
 ./clean && ./mk
 </p></div>
 
+Also delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 1.
 
 Before we run <code>GYRE</code> we have to first tell <code>MESA</code> to output profiles in a format that <code>GYRE</code> can read as input. We can do so by modifying the <code>&controls</code> section of <code>inlist_project</code>. These controls are called <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html#controls-for-output" target="_blank"> controls for output</a> in the <code>MESA</code> documentation.<br>
 

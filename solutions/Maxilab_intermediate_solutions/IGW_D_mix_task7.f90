@@ -7,7 +7,7 @@
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
 
-         print *, 'I am using IGW_D_mix'
+         write(*,*) 'I am using IGW_D_mix'
          
          do k=1, s% nz
             s% D_mix(k) = 1d4

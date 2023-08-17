@@ -28,7 +28,7 @@ title: Maxilab
 **Minilab 2 solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab2_solutions.zip)<br>
 **Maxilab solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_maxilab_solutions.zip)
 
-For this Maxilab we will now start digging into our <code>run_star_extras.f90</code> file and make changes both to the <code>MESA</code> output as well as change the mixing profile used in the radiative envelope. Once again we will start by copying and renaming our Minilab 2 work directory. If you were unable to complete Minilab 2, then you can download the solution from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab2_solutions.zip).
+For this Maxilab we will now start digging into our <code>run_star_extras.f90</code> file and make changes both to the <code>MESA</code> output as well as change the mixing profile used in the radiative envelope. Once again, we will start by copying and renaming our Minilab 2 work directory. If you were unable to complete Minilab 2, then you can download the solution from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab2_solutions.zip).
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
@@ -39,7 +39,7 @@ cd SPB_maxilab <br>
 
 Also delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 2.
 
-In both your <code>inlist_project</code> and <code>inlist_pgstar</code> files make sure that <code>mesh_delta_coeff = 1.0</code>, <code>time_delta_coeff = 1.0</code>, and that the associated <code>Profile_Panels1_file_prefix</code>, 
+If you worked on the bonus exercises in minilab 2, change both your <code>inlist_project</code> and <code>inlist_pgstar</code> files to make sure that <code>mesh_delta_coeff = 1.0</code>, <code>time_delta_coeff = 1.0</code>, and that the associated <code>Profile_Panels1_file_prefix</code>, 
 
 <code>filename_for_profile_when_terminate</code>, and <code>log_directory</code> parameters are changed accordingly.<br>
 
@@ -144,7 +144,7 @@ Currently, nothing new is actually happening to the mixing profile in <code>MESA
 
 <task><details>
 <summary>Task 4</summary><p>
-Add the line <code>print *, 'I am using IGW_D_mix'</code> to your <code>IGW_D_mix</code> subroutine inside <code>run_star_extras.f90</code>. Recompile and run <code>MESA</code>, then check the terminal output to see if the line <code>'I am using IGW_D_mix'</code> starts to show up.
+Add the line <code>write(*,*) 'I am using IGW_D_mix'</code> to your <code>IGW_D_mix</code> subroutine inside <code>run_star_extras.f90</code>. Recompile and run <code>MESA</code>, then check the terminal output to see if the line <code>'I am using IGW_D_mix'</code> starts to show up.
 </p></details></task>
 <br>
 
@@ -186,7 +186,7 @@ As seen in the output above, there is indeed a parameter in <code>MESA</code> ca
          call star_ptr(id, s, ierr)
          if (ierr /= 0) return
 
-         print *, 'I am using IGW_D_mix'
+         write(*,*) 'I am using IGW_D_mix'
          
          do k=1, s% nz
             s% D_mix(k) = 
@@ -214,7 +214,7 @@ Currently, it looks like the diffusive mixing coefficient is only being changed 
 
 <task><details>
 <summary>Task 6</summary><p>
-If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code>profile_columns.list</code> from <code>$MESA_DIR/star/defaults/</code> to your <code>SPB_maxilab</code> work directory. Make sure that <code>brunt_N2</code>, <br> <code>brunt_N2_structure_term</code>, <code>brunt_N2_composition_term</code>, and <code>log_D_mix</code> are included as output. Then add the following to <code>inlist_pgstar</code>:<br>
+If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code>profile_columns.list</code> from <code>$MESA_DIR/star/defaults/</code> to your <code>SPB_maxilab</code> work directory. This file works like the <code>history_columns.list</code> that we modified in Minilab 1. Make sure that <code>brunt_N2</code>, <br> <code>brunt_N2_structure_term</code>, <code>brunt_N2_composition_term</code>, and <code>log_D_mix</code> are included as output. Then add the following to <code>inlist_pgstar</code>:<br>
 
 <code>Profile_Panels1_win_flag = .true.</code><br> 
 <code>Profile_Panels1_num_panels = 3</code><br>
@@ -235,7 +235,7 @@ If you haven't done so already in bonus exercise 1 of Minilab 2, then copy <code
 </p></details></task>
 <br>
 
-Your `Profile_Panels1` `pgstar` window should look something like this:
+As a reminder you can adjust <code>Profile_Panels1_win_width</code> and <code>Profile_Panels1_win_aspect_ratios</code> to change the size of the plot on your screen. Your `Profile_Panels1` `pgstar` window should look something like this:
 
 <div style="align: left; text-align:center;">
     <img src="images/profile_panels1_1.0mdc_1.0tdc_env_v2_000250.png" width="100%" /> 
@@ -282,6 +282,8 @@ You should now see the envelope mixing, i.e. minimum mixing, appears as an orang
     <img src="images/mixing_env_v3_000250.png" width="100%" /> 
 </div>
 <br>
+
+If in doubt, your inlist should look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/inlist_task7" target="_blank"> this</a>, your inlist_pgstar should look like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/inlist_pgstar_task7" target="_blank"> this</a>, and the subroutine <code>IGW_D_mix</code> should look like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/IGW_D_mix_task7.f90" target="_blank"> this</a>. If you've gotten stuck feel free to copy and paste these intermediate solutions. 
 
 So far we have been completely overwriting the mixing profile throughout the star to a constant value, even inside the convective regions. So even though we are telling <code>MESA</code> to do something silly, it is still running and trying to find a solution! What we want to do is only change the mixing profile in the radiative envelope, i.e. avoid regions where we have convective mixing and overshoot mixing.<br> 
 

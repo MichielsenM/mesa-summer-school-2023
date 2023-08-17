@@ -20,14 +20,6 @@
     Profile_Panels1_file_width = 20
     Profile_Panels1_file_aspect_ratio = 0.75
 
-    History_Panels1_win_flag = .true.
-    History_Panels1_win_width = 20
-    History_Panels1_num_panels = 2
-    History_Panels1_yaxis_name(1) = 'current_to_zams_surf_n14'
-    History_Panels1_other_yaxis_name(1) = 'current_to_zams_surf_he4'
-    History_Panels1_yaxis_name(2) = 'current_to_zams_surf_c12'
-    History_Panels1_other_yaxis_name(2) = 'current_to_zams_surf_o16'
-
 
   ! add mixing window
     Mixing_win_flag = .true.

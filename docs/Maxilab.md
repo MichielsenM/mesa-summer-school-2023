@@ -292,6 +292,10 @@ So far we have been completely overwriting the mixing profile throughout the sta
 Modify your <code>IGW_D_mix</code> subroutine to only change the mixing profile when no convective or diffusive overshoot mixing is happening. You can do so using an <code>if</code> statement inside your <code>do</code> loop.
 </p></details></task>
 <br>
+<hint><details>
+<summary> Hint </summary><p>
+    Rember you can use <code>s% mixing_type(k),</code> to determine if/what type of mixing is occuring. A value of 1 corresponds to convective mixing, and a value of 2 corresponds to overshoot mixing. 
+</p></details></hint>
 
 In `Fortran`, <code>if</code> statements are written in the format
 

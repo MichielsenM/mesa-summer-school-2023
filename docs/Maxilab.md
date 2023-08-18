@@ -377,10 +377,10 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 This discontinuity around is a problem.  
 
 Before we deal with this, feel free to pause, stretch a bit, and drink some water if you need to. The next two tasks are tricky so check in with your energy levels and remaining time to decide what difficulty level feels right for you:<br>
-I’m up for a challenge: try to implement the procedure described in the text without looking at the task or the hint <br>
-Just get me started: The task below gives a suggested series of steps <br>
-Walk me through it: The hint details how to implement each suggested step <br>
-Show me how its done: Jump directly to the solutions below <br>
+<strong>I’m up for a challenge:</strong> try to implement the procedure described in the text without looking at the task or the hint <br>
+<strong>Just get me started:</strong> The task below gives a suggested series of steps <br>
+<strong>Walk me through it:</strong> The hint details how to implement each suggested step <br>
+<strong>Show me how its done:</strong> Jump directly to the solutions below <br>
 
 We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value, which we'll call $D_{\rm env, 0}$. To accomplish this, we need to find the first zone number where `D_mix` is less than or equal to $10^4$ when going from the core to the surface of the stellar model. Reminder that this is backward of how `MESA` indexes arrays, where 1 is the surface and `s% nz` is the center. We also want to make sure that we aren't overwriting any subsurface convection zones that might show up, so we will only modify `s% D_mix` in regions with no convection. 
 
@@ -390,13 +390,12 @@ Additionally, it would also be nice to be able to change this value, $D_{\rm env
 
 <task><details>
 <summary>Task 9</summary><p>
-
-1. To modify the IGW_D_mix subroutine in `run_star_extras.f90` follow these steps: 
-2. Declare the `D_env_0` parameter 
-3. Parameterize the `D_env_0` using `x_ctrl(1)` 
-4. Declare the `k0` parameter  
-5. Identify the value of `k0`
-6. Iterate from the surface of the star to `k0` and change `s% D_mix(k)` the mixing profile only when there is no convection occuring
+To modify the IGW_D_mix subroutine in `run_star_extras.f90` follow these steps: <br>
+1. Declare the `D_env_0` parameter <br>
+2. Parameterize the `D_env_0` using `x_ctrl(1)` <br>
+3. Declare the `k0` parameter  <br>
+4. Identify the value of `k0` <br>
+5. Iterate from the surface of the star to `k0` and change `s% D_mix(k)` the mixing profile only when there is no convection occuring<br>
 
 With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
 </p></details></task>

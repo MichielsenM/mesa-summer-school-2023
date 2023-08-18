@@ -492,12 +492,13 @@ To implement this mixing profile we need to make several more modifications to o
 <summary> Hint </summary><p>
 To implement this mixing profile we need to make several more modifications to our <code>IGW_D_mix</code> subroutine. <br>
 
-<strong>Declare the variable <code>n</code>: </strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision variable <code>real(dp)</code> named <code>n</code>. <br>
-<strong>Set <code>n</code> using <code>x_ctrl(2)</code>:</strong> In <code>inlist_project</code>, set <code>x_ctrl(2)</code> to <code>0.5</code>, also set <code>x_ctrl(1) to 100</code>. In the <code>IGW_D_mix</code> subroutine set <code>n = s% x_ctrl(2)</code> after the line that sets <code>D_env_0</code><br>
-<strong>Find the variable that stores density: </strong>Search <code>$MESA_DIR/star/public/star_data/star_data_step_work.inc</code> for 'density' to find the variable name that stores the density.<br>
-<strong>Declare a new variable <code>rho0</code> and set it in the loop that finds <code>k0</code>:</strong> Declare a new real double precision variable <code>real(dp)</code> named <code>rho0</code> at the begining of <code>IGW_D_mix</code>. After the line that sets <code>k0 = s% nz - k</code> set <code>rho0 = s% Rho(k0)</code><br>
-<strong>Implement the new mixing profile: </strong> Change the line that sets <code>s% D_mix(k)</code>to <code>s% D_mix(k) = D_env_0*pow((s% rho(k) / rho0),-1*n)</code>.  NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br>
-<strong>Compile and run</strong> Do <code>./mk</code> and <code>./rn</code> and see what has changed with our new mixing scheme <br>
+<strong>Declare the variable <code>n</code>: </strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision variable <code>real(dp)</code> named <code>n</code>. <br><br>
+<strong>Set <code>n</code> using <code>x_ctrl(2)</code>:</strong> In <code>inlist_project</code>, set <code>x_ctrl(2)</code> to <code>0.5</code>, also set <code>x_ctrl(1) to 100</code>. In the <code>IGW_D_mix</code> subroutine set <code>n = s% x_ctrl(2)</code> after the line that sets <code>D_env_0</code><br><br>
+<strong>Find the variable that stores density: </strong>Search <code>$MESA_DIR/star/public/star_data/star_data_step_work.inc</code> for 'density' to find the variable name that stores the density.<br><br>
+<strong>Declare a new variable <code>rho0</code> and set it in the loop that finds <code>k0</code>:</strong> Declare a new real <br>double precision variable <code>real(dp)</code> named <code>rho0</code> at the begining of <code>IGW_D_mix</code>. After the line that sets <code>k0 = s% nz - k</code> set <code>rho0 = s% Rho(k0)</code><br>
+<strong>Implement the new mixing profile: </strong> Change the line that sets <code>s% D_mix(k)</code>to <code>s% D_mix(k) = D_env_0*pow((s% rho(k) / rho0),-1*n)</code>. <br>
+NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br><br>
+<strong>Compile and run</strong> Do <code>./mk</code> and <code>./rn</code> and see what has changed with our new mixing scheme <br><br>
 </p></details></hint>
 
 At this point your `IGW_D_mix subroutine should look like this: 
@@ -671,7 +672,7 @@ end subroutine data_for_extra_history_columns
 
 <task><details>
 <summary>Task 11</summary><p>
-Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.
+Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.<br><br>
 Ideally, you should try and implement at least one history column by yourself but if you are stuck or running low on time, feel free to use the completed <code>run_star_extras.f90</code> file <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/run_star_extras.f90" target="_blank"> here</a>.
 </p></details></task>
 <br>
@@ -715,8 +716,8 @@ In this final task of the Maxilab, there are four parameters in <code>inlist_pro
     <li> Set <code>overshoot_f(1) = 0.01</code> </li>
     <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen $D_{\rm env,0}$ and $n$. </li>
     <li> Run <code>MESA</code>. </li>
-    <li> Update your <code>gyre.in</code> file to point to the correct input file (with the <code>file</code> parameter in the <code>&model</code> section) and to output the correct file name (using <code>summary_file</code> in the <code>&ad_output</code> section). Then run <code>GYRE</code> as in minilab 2: <code>$GYRE_DIR/bin/gyre gyre.in</code>.</li>
     <li> Check your output <code>history.data</code> file and note down the last recorded value of <code>current_to_zams_surf_he4</code>, <code>current_to_zams_surf_c12</code>, <code>current_to_zams_surf_n14</code>, and <code>current_to_zams_surf_o16</code> in the corresponding columns <code>tams_to_zams_surface_he4</code>, <code>tams_to_zams_surface_c12</code>, <code>tams_to_zams_surface_n14</code>, and <code>tams_to_zams_surface_o16</code> in the Google spreadsheet. </li>
+    <li> Update your <code>gyre.in</code> file to point to the correct input file (with the <code>file</code> parameter in the <code>&model</code> section) and to output the correct file name (using <code>summary_file</code> in the <code>&ad_output</code> section). Then run <code>GYRE</code> as in minilab 2: <code>$GYRE_DIR/bin/gyre gyre.in</code>.</li>
     <li> Have your TA plot the corresponding period spacing pattern. </li>
     <li> Congratulate yourself on getting though this lab!</li>
     <li> If you still have time, you can repeat this task with another set of $D_{\rm env,0}$ and $n$ values.</li>

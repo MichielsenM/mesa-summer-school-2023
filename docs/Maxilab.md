@@ -708,23 +708,21 @@ Now we have our <code>MESA</code> setup done for the Maxilab and it is time to v
 
 <task><details>
 <summary>Task 13</summary><p>
-In this final task of the Maxilab, there are four of your inlist parameters that you will have to change/vary. Those are: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. The steps you have to take are as follows:
+In this final task of the Maxilab, there are four parameters in <code>inlist_project</code> that you will have to change/vary: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. Additionallly you will need to update the <code>file</code> and <code>sumary_file</code> parameters in your <code>gyre.in</code> file. The steps you have to take are as follows:
 
 <ul>
     <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148" target="_blank">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left most column. </li>
     <li> Change <code>log_directory</code> to be of the format <code>'LOGS/4Msun_0.01fov_#Denv0_#n'</code> and also change the parameter <code>filename_for_profile_when_terminate</code> accordingly. </li>
     <li> Set <code>overshoot_f(1) = 0.01</code> </li>
     <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen $D_{\rm env,0}$ and $n$. </li>
-    <li> Run <code>MESA</code> then <code>GYRE</code>. </li>
+    <li> Run <code>MESA</code>. </li>
+    <li> Update your <code>gyre.in</code> file to point to the correct input file (with the <code>file</code> parameter in the <code>&model</code> section) and to output the correct file name (using <code>summary_file</code> in the <code>&ad_output</code> section). Then run <code>GYRE</code> as in minilab 2: <code>$GYRE_DIR/bin/gyre gyre.in</code>.</li>
     <li> Check your output <code>history.data</code> file and note down the last recorded value of <code>current_to_zams_surf_he4</code>, <code>current_to_zams_surf_c12</code>, <code>current_to_zams_surf_n14</code>, and <code>current_to_zams_surf_o16</code> in the corresponding columns <code>tams_to_zams_surface_he4</code>, <code>tams_to_zams_surface_c12</code>, <code>tams_to_zams_surface_n14</code>, and <code>tams_to_zams_surface_o16</code> in the Google spreadsheet. </li>
     <li> Have your TA plot the corresponding period spacing pattern. </li>
+    <li> Congratulate yourself on getting though this lab!</li>
+    <li> If you still have time, you can repeat this task with another set of $D_{\rm env,0}$ and $n$ values.</li>
 </ul>
 </p></details></task>
 
-<hint><details>
-<summary> Hint </summary><p>
-Remember that you will also have you update your <code>gyre.in</code> file for the new LOGS directory names.
-</p></details></hint>
-<br>
 
 As you are adding in your parameters in the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of $D_{\rm env,0}$ do you start to see a change in the surface abundances? How does this depend on the choice of $n$?

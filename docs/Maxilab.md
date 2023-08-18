@@ -673,6 +673,7 @@ end subroutine data_for_extra_history_columns
 <task><details>
 <summary>Task 11</summary><p>
 Following the example above, modify your <code>run_star_extras.f90</code> to include the ratios of the current to initial ZAMS mass fraction of <sup>4</sup>He, <sup>12</sup>C, <sup>14</sup>N, and <sup>16</sup>O to your output <code>history.data</code> file. Compile and run <code>MESA</code> to make sure your modifications work.
+Ideally, you should try and implement at least one history column by yourself but if you are stuck or running low on time, feel free to use the completed <code>run_star_extras.f90</code> file <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/run_star_extras.f90" target="_blank"> here</a>.
 </p></details></task>
 <br>
 

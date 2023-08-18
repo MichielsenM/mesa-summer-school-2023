@@ -173,7 +173,10 @@ star/private/mix_info.f90:  s% D_mix(k) = s% min_D_mix
 ...
 </pre></p></div>
 
-As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Lets try to use this in our <code>IGW_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. In order to do so, we first have to let our <code>IGW_D_mix</code> subroutine have access to the information in <code>star_info</code> and define an integer <code>k</code> for run a `do loop` over. In order for this to work, your <code>IGW_D_mix</code> subroutine should look something like this
+As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Remember that you can look up the variables contained in the `star_info` structure (typically `s%` in `MESA`) by searching the files contained in `$MESA_DIR/star_data/public`. Lets try to use this in our <code>IGW_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. 
+We declare the variable `s% ` using the line `type (star_info), pointer :: s`. To access the data stored in the `star_info` structure during a run we have to include the line `call star_ptr(id, s, ierr)`.  Returning to our diffusive mixing coefficient, `s% D_mix` is an array that stores the diffusion mixing coefficient at each zone of the star. The total number of zones of the star used by `MESA` is stored in the variable `s% nz`. In `MESA` the zones are stored from surface to center, thus `s% D_mix(1)` is the surface value of `D_mix` and `s% D_mix(s% nz)` is the center value. We want to set `s% D_mix`  for every part of the star. We can do this by using a `do loop` to iterate over an integer `k`, which we have to declare at the beginning of the subroutine. 
+
+In order to do so, we first have to let our <code>IGW_D_mix</code> subroutine have access to the information in <code>star_info</code> and define an integer <code>k</code> for run a `do loop` over. In order for this to work, your <code>IGW_D_mix</code> subroutine should look something like this
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -194,9 +197,6 @@ As seen in the output above, there is indeed a parameter in <code>MESA</code> ca
 
       end subroutine IGW_D_mix
 </pre></p></div>
-
-Remember that you can look up the variables contained in the `star_info` structure (typically `s%` in `MESA`) by searching the files contained in `$MESA_DIR/star_data/public`. We declare the variable `s% ` using the line `type (star_info), pointer :: s`. To access the data stored in the `star_info` structure during a run we have to include the line `call star_ptr(id, s, ierr)`. Note that any new variables must be declared before any lines of code, ie before both `call star_ptr(id, s, ierr)` and `ierr = 0`. Returning to our diffusive mixing coefficient, `s% D_mix` is an array that stores the diffusion mixing coefficient at each zone of the star. The total number of zones of the star used by `MESA` is stored in the variable `s% nz`. In `MESA` the zones are stored from surface to center, thus `s% D_mix(1)` is the surface value of `D_mix` and `s% D_mix(s% nz)` is the center value. We want to set `s% D_mix`  for every part of the star. We can do this by using a `do loop` to iterate over an integer `k`. 
-
 
 <task><details>
 <summary>Task 5</summary><p>
@@ -286,17 +286,7 @@ You should now see the envelope mixing, i.e. minimum mixing, appears as an orang
 
 If in doubt, your inlist should look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/inlist_task7" target="_blank"> this</a>, your inlist_pgstar should look like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/inlist_pgstar_task7" target="_blank"> this</a>, and the subroutine <code>IGW_D_mix</code> should look like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Maxilab_intermediate_solutions/IGW_D_mix_task7.f90" target="_blank"> this</a>. If you've gotten stuck feel free to copy and paste these intermediate solutions. 
 
-So far we have been completely overwriting the mixing profile throughout the star to a constant value, even inside the convective regions. So even though we are telling <code>MESA</code> to do something silly, it is still running and trying to find a solution! What we want to do is only change the mixing profile in the radiative envelope, i.e. avoid regions where we have convective mixing and overshoot mixing.<br> 
-
-<task><details>
-<summary>Task 8</summary><p>
-Modify your <code>IGW_D_mix</code> subroutine to only change the mixing profile when no convective or diffusive overshoot mixing is happening. You can do so using an <code>if</code> statement inside your <code>do</code> loop.
-</p></details></task>
-<br>
-<hint><details>
-<summary> Hint </summary><p>
-    Rember you can use <code>s% mixing_type(k),</code> to determine if/what type of mixing is occuring. A value of 1 corresponds to convective mixing, and a value of 2 corresponds to overshoot mixing. 
-</p></details></hint>
+So far we have been completely overwriting the mixing profile throughout the star to a constant value, even inside the convective regions. So even though we are telling <code>MESA</code> to do something silly, it is still running and trying to find a solution! What we want to do is only change the mixing profile in the radiative envelope, i.e. avoid regions where we have convective mixing and overshoot mixing. We can do this using an `if` statement<br> 
 
 In `Fortran`, <code>if</code> statements are written in the format
 
@@ -365,6 +355,18 @@ Additional useful comparison operators are given in the table below.
 
 Knowing these will be useful in the following steps as well and whenever you want to add things to your <code>run_star_extras.f90</code> in general. 
 
+
+<task><details>
+<summary>Task 8</summary><p>
+Modify your <code>IGW_D_mix</code> subroutine to only change the mixing profile when no convective or diffusive overshoot mixing is happening. You can do so using an <code>if</code> statement inside your <code>do</code> loop.
+</p></details></task>
+<br>
+<hint><details>
+<summary> Hint </summary><p>
+    Rember you can use <code>s% mixing_type(k),</code> to determine if/what type of mixing is occuring. A value of 1 corresponds to convective mixing, and a value of 2 corresponds to overshoot mixing. 
+</p></details></hint>
+
+
 Notice that right now there is a discontinuity in our mixing profile when we go from overshoot to minimum mixing. 
 
 <div style="align: left; text-align:center;">
@@ -372,25 +374,35 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value. We will do so in a bit of a round-about way to prepare us for the actual envelope mixing profile from internal gravity waves mentioned in the introduction that we want to adopt: 
+This discontinuity around is a problem.  
 
-\begin{equation}
-    D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
-\end{equation}
+Before we deal with this, feel free to pause, stretch a bit, and drink some water if you need to. The next two tasks are tricky so check in with your energy levels and remaining time to decide what difficulty level feels right for you:<br>
+I’m up for a challenge: try to implement the procedure described in the text without looking at the task or the hint <br>
+Just get me started: The task below gives a suggested series of steps <br>
+Walk me through it: The hint details how to implement each suggested step <br>
+Show me how its done: Jump directly to the solutions below <br>
 
-Note that for our current choice of constant evelope mixing, the equation above instead corresponds to 
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value, which we'll call $D_{\rm env, 0}$. To accomplish this, we need to find the first zone number where `D_mix` is less than or equal to $10^4$ when going from the core to the surface of the stellar model. Reminder that this is backward of how `MESA` indexes arrays, where 1 is the surface and `s% nz` is the center. We also want to make sure that we aren't overwriting any subsurface convection zones that might show up, so we will only modify `s% D_mix` in regions with no convection. 
 
-\begin{equation}
-    D_{\rm env} (r) = D_{\rm env, 0} = 10^4.
-    \label{Eq:const}
-\end{equation}
+Additionally, it would also be nice to be able to change this value, $D_{\rm env, 0}$, from the inlist, rather than having it hard coded in run_star_extras (which requires us to re-compile MESA every time we make a change). 
 
-For these steps we need to locate the first cell number where `D_mix` is less or equal to $10^4$ when going from the core to the surface of the stellar model. Note that in `MESA`, the cell index `1` refers to the outermost cell of the model, whereas `nz` refers to the cell number of the center of the model. 
 
-The solution to the following task is provided below in case you get stuck.<br>
 
 <task><details>
 <summary>Task 9</summary><p>
+
+1. To modify the IGW_D_mix subroutine in `run_star_extras.f90` follow these steps: 
+2. Declare the `D_env_0` parameter 
+3. Parameterize the `D_env_0` using `x_ctrl(1)` 
+4. Declare the `k0` parameter  
+5. Identify the value of `k0`
+6. Iterate from the surface of the star to `k0` and change `s% D_mix(k)` the mixing profile only when there is no convection occuring
+
+With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
+</p></details></task>
+
+<hint><details>
+<summary> Hint </summary><p>
 To modify the <code>IGW_D_mix</code> subroutine in <code>run_star_extras.f90</code> to ensure the discontinuity is removed, follow these steps:<br><br>
 
 <strong>Define the <code>D_env_0</code> parameter:</strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision <code>real(dp)</code> parameter named <code>D_env_0</code>. This corresponds to the $D_{\rm env, 0}$ in the equation above. Note that for our current setup we simply have $D_{\rm env} (r) = D_{\rm env, 0} = 10^4$, corresponding to a constant envelope mixing at $10^4$.<br><br>
@@ -401,14 +413,10 @@ To modify the <code>IGW_D_mix</code> subroutine in <code>run_star_extras.f90</co
 
 <strong>Identify the value of <code>k0</code>:</strong> Before the existing loop, implement a new loop that iterates from <code>1</code> to <code>s% nz</code>. Within this loop, check if the value of <code>D_mix</code> at position <code>(s% nz - k)</code> is less than <code>D_env_0</code>. If true, set <code>k0</code> to <code>s% nz - k</code> and exit the loop.<br><br>
 
-<strong>Modify the mixing profile:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective (i.e., not 1), you update the <code>D_mix</code> to <code>D_env_0</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
+<strong>Iterate from the surface of the star to `k0` and change `s% D_mix(k)` the mixing profile only when there is no convection occuring:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective (i.e., not 1), you update the <code>D_mix</code> to <code>D_env_0</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
 
 With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
-</p></details></task>
 
-<hint><details>
-<summary> Hint </summary><p>
-Use the "<code>if</code> condition then do something and exit <code>do</code>-loop" example given above for the first <code>do</code>-loop and set <code>(a condition)</code> to <code>(s% D_mix(s% nz - k) .lt. 1d4)</code> and the <code>Do something</code> to <code>k0 = s% nz - k</code>. Then in the second <code>do</code>-loop change <code>do k=1, s% nz</code> to <code>do k=1, k0</code>.
 </p></details></hint>
 <br>
 
@@ -426,7 +434,7 @@ subroutine IGW_D_mix(id, ierr)
     call star_ptr(id, s, ierr)
     if (ierr /= 0) return
          
-    print *, 'I am using IGW_D_mix'
+    write(*,*) 'I am using IGW_D_mix'
 
     ! Set the value of D_env_0 according to s% x_ctrl(1)
     D_env_0 = s% x_ctrl(1)

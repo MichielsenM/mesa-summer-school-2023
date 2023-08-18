@@ -195,7 +195,8 @@ As seen in the output above, there is indeed a parameter in <code>MESA</code> ca
       end subroutine IGW_D_mix
 </pre></p></div>
 
-Notice that we a running a <code>do</code> loop from the outermost cell (<code>k=1</code>) to the inner mesh grid point (<code>s% nz</code>) and changing the value of <code>D_mix</code> throughout the stellar model. Also notice that we have to include the line `type (star_info), pointer :: s` to access the internal parameters in `MESA` related to the `star` module. Note that by adding this line, we are declaring the `star_info` pointer to be `s%`. Any additional parameters that you would like to declare have to be included before both the `call star_ptr(id, s, ierr)` and `ierr = 0` lines, or `MESA` will start to complain.<br>
+Remember that you can look up the variables contained in the `star_info` structure (typically `s%` in `MESA`) by searching the files contained in `$MESA_DIR/star_data/public`. We declare the variable `s% ` using the line `type (star_info), pointer :: s`. To access the data stored in the `star_info` structure during a run we have to include the line `call star_ptr(id, s, ierr)`. Note that any new variables must be declared before any lines of code, ie before both `call star_ptr(id, s, ierr)` and `ierr = 0`. Returning to our diffusive mixing coefficient, `s% D_mix` is an array that stores the diffusion mixing coefficient at each zone of the star. The total number of zones of the star used by `MESA` is stored in the variable `s% nz`. In `MESA` the zones are stored from surface to center, thus `s% D_mix(1)` is the surface value of `D_mix` and `s% D_mix(s% nz)` is the center value. We want to set `s% D_mix`  for every part of the star. We can do this by using a `do loop` to iterate over an integer `k`. 
+
 
 <task><details>
 <summary>Task 5</summary><p>

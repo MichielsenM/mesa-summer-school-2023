@@ -483,18 +483,21 @@ To implement this mixing profile we need to make several more modifications to o
 2. Set <code>n</code> using <code>x_ctrl(2)</code> to <code>0.5</code><br>
 3. Set <code>D_env_0</code> = 100 <br>
 4. Find the variable in <code>star_info</code> that stores density: (see <code>$MESA_DIR/star/public/star_data/star_data_step_work.inc</code>) <br>
-5. Implement the new mixing profile NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br>
-6. Compile and run
+5. Declare a new variable <code>rho0</code> and set it in the loop that finds <code>k0</code> 
+6. Implement the new mixing profile NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br>
+7. Compile and run
 </p></details></task>
 
 <hint><details>
 <summary> Hint </summary><p>
 To implement this mixing profile we need to make several more modifications to our <code>IGW_D_mix</code> subroutine. <br>
 
-<strong>Declare the variable <code>n</code>: </strong> Within the ‘IGW_D_mix’ subroutine, declare a new real double precision variable <code>real(dp)</code> named <code>n</code>. <br>
+<strong>Declare the variable <code>n</code>: </strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision variable <code>real(dp)</code> named <code>n</code>. <br>
 <strong>Set <code>n</code> using <code>x_ctrl(2)</code>:</strong> In <code>inlist_project</code>, set <code>x_ctrl(2)</code> to <code>0.5</code>, also set <code>x_ctrl(1) to 100</code>. In the <code>IGW_D_mix</code> subroutine set <code>n = s% x_ctrl(2)</code> after the line that sets <code>D_env_0</code><br>
 <strong>Find the variable that stores density: </strong>Search <code>$MESA_DIR/star/public/star_data/star_data_step_work.inc</code> for 'density' to find the variable name that stores the density.<br>
-<strong>Implement the new mixing profile: </strong> Change the line that sets <code>s% D_mix(k)</code>to use the equation given above. NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br>
+<strong>Declare a new variable <code>rho0</code> and set it in the loop that finds <code>k0</code>:</strong> Declare a new real double precision variable <code>real(dp)</code> named <code>rho0</code> at the begining of <code>IGW_D_mix</code>. After the line that sets <code>k0 = s% nz - k</code> set <code>rho0 = s% Rho(k0)<code>
+
+<strong>Implement the new mixing profile: </strong> Change the line that sets <code>s% D_mix(k)</code>to <code>s% D_mix(k) = D_env_0*pow((s% rho(k) / rho0),-1*n)</code>.  NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br>
 <strong>Compile and run</strong> Do <code>./mk</code> and <code>./rn</code> and see what has changed with our new mixing scheme <br>
 </p></details></hint>
 

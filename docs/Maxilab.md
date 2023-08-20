@@ -18,7 +18,7 @@ title: Maxilab
 
 # Aims <a id="maxilab_aims"></a>
 
-**MESA:** In this `MESA` lab you will learn how implement your own mixing profile in `MESA` using the `other_D_mix` hook in `run_star_extras.f90`, as well has how to add additional output to your `history.data` file that is not available as a default option in `history_columns.list`.
+**MESA:** In this `MESA` lab you will learn how to implement your own mixing profile in `MESA` using the `other_D_mix` hook in `run_star_extras.f90`, as well as how to add additional output to your `history.data` file that is not available as a default option in `history_columns.list`.
 
 **Science aims:** In this Maxilab, you will learn how different shapes on the envelope mixing profiles from internal gravity waves impacts both the period spacing patterns on SPB stars and their surface abundances.
 
@@ -37,7 +37,7 @@ cd SPB_maxilab <br>
 ./clean && ./mk
 </p></div>
 
-Also delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 2.
+Also, delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 2.
 
 If you worked on the bonus exercises in minilab 2, change both your <code>inlist_project</code> and <code>inlist_pgstar</code> files to make sure that <code>mesh_delta_coeff = 1.0</code>, <code>time_delta_coeff = 1.0</code>, and that the associated <code>Profile_Panels1_file_prefix</code>, 
 
@@ -97,7 +97,7 @@ If in doubt, your new <code>run_star_extras.f90</code> should look like <a href=
 
 Whenever we make changes to <code>run_star_extras.f90</code>, we have to use <code>./mk</code> to make sure that the new changes are included in our <code>MESA</code> runs. Doing this often will make it easier to identify the source of any errors associated with our changes to <code>run_star_extras.f90</code> that might pop up when we try to recompile our <code>MESA</code> work directory.
 
-When we want to make changes to different physical or numerical aspects of <code>MESA</code>, the various <code>other hooks</code> located in <code>$MESA_DIR/star/other</code> directory makes it easy to do so inside <code>run_star_extras.f90</code> without having to directly make changes to the <code>MESA</code> source code. It also allows us to do so, without having to apply such changes to all future <code>MESA</code> projects that we do using our installed <code>MESA</code> version. Instructions on how to use these <code>other hooks</code> are given in the <code>$MESA_DIR/star/other/README</code> file. Here we will walk you through how to make changes to the internal diffusive mixing profile using the <code>other_d_mix.f90</code> hook. Lets start by having a look at what this file looks like.
+When we want to make changes to different physical or numerical aspects of <code>MESA</code>, the various <code>other hooks</code> located in <code>$MESA_DIR/star/other</code> directory makes it easy to do so inside <code>run_star_extras.f90</code> without having to directly make changes to the <code>MESA</code> source code. It also allows us to do so, without having to apply such changes to all future <code>MESA</code> projects that we do using our installed <code>MESA</code> version. Instructions on how to use these <code>other hooks</code> are given in the <code>$MESA_DIR/star/other/README</code> file. Here we will walk you through how to make changes to the internal diffusive mixing profile using the <code>other_d_mix.f90</code> hook. Let's start by having a look at what this file looks like.
 
 <div class="filetext-title"> $MESA_DIR/star/other/other_d_mix.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -125,7 +125,7 @@ When we want to make changes to different physical or numerical aspects of <code
       end module other_D_mix
 </pre></p></div>
 
-As you can see, the <code>other_d_mix.f90</code> file itself contains some information on what we need to do to include the <code>other_d_mix</code> hook in our <code>MESA</code> runs, but it doesn't actually tell use which parameter we need to modify using the other hook to change the mixing profile. We will get back to this parameter later and focus now on including the <code>other_d_mix</code> hook.<br>
+As you can see, the <code>other_d_mix.f90</code> file itself contains some information on what we need to do to include the <code>other_d_mix</code> hook in our <code>MESA</code> runs, but it doesn't actually tell us which parameter we need to modify using the other hook to change the mixing profile. We will get back to this parameter later and focus now on including the <code>other_d_mix</code> hook.<br>
 
 <task><details>
 <summary>Task 2</summary><p>
@@ -148,7 +148,7 @@ Add the line <code>write(*,*) 'I am using IGW_D_mix'</code> to your <code>IGW_D_
 </p></details></task>
 <br>
 
-Now that we know that <code>MESA</code> is actually calling our <code>IGW_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Lets try to see if this is a parameter that actually exists in <code>MESA</code>. Note that to get back to the previous directory that you were in, you can use the command `cd -` in the terminal.
+Now that we know that <code>MESA</code> is actually calling our <code>IGW_D_mix</code> subroutine, we need to figure out which parameter we have to modify to change the mixing profile. Figuring this out is not always straightforward if we only go by the information available inside the <code>other hooks</code>, and may require some digging into the <code>MESA</code> setup. The name of the subroutine <code>null_other_D_mix</code> inside <code>other_d_mix.f90</code> does give us the hint that it might be called <code>D_mix</code>. Let's try to see if this is a parameter that actually exists in <code>MESA</code>. Note that to get back to the previous directory that you were in, you can use the command `cd -` in the terminal.
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
@@ -175,7 +175,7 @@ star/private/mix_info.f90:  s% D_mix(k) = s% min_D_mix
 
 As seen in the output above, there is indeed a parameter in <code>MESA</code> called <code>D_mix</code> that we should be able to access using the <code>star_info</code> pointer <code>s%</code>. Remember that you can look up the variables contained in the `star_info` structure by searching the files contained in `$MESA_DIR/star_data/public`. For quantities that vary throughout the star, the corresponding variable in the <code>star_info</code> structure is an array where each element corresponds to a zone in the star. You can think of each zone as being a shell around a given radius in the star. So for example <code>s% T(100)</code> would give the temperature of the 100th zone, whereas <code>s% r(100)</code> would give the radius of the 100th zone. The total number of zones of the star is stored in the variable <code>s% nz</code>. <code>MESA</code> stores the zones are stored from surface to center, so in the case of <code>D_mix</code>, <code>s% D_mix(1)</code> is the surface value of <code>D_mix</code> and <code>s% D_mix(s% nz)<code> is the center value.
 
-Lets try to use this in our <code>IGW_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. We declare the variable <code>s</code> using the line <code>type (star_info), pointer :: s</code>. To access the data stored in the <code>star_info</code> structure during a run we have to include the line <code>call star_ptr(id, s, ierr)</code>.  We want to set <code>s% D_mix</code> for every part of the star. We can do this by using a do to iterate over an integer <code>k</code>, which we have to declare at the beginning of the subroutine.
+Let's try to use this in our <code>IGW_D_mix</code> subroutine and change the diffusive mixing coefficient to be some fixed value throughout the star. We declare the variable <code>s</code> using the line <code>type (star_info), pointer :: s</code>. To access the data stored in the <code>star_info</code> structure during a run we have to include the line <code>call star_ptr(id, s, ierr)</code>.  We want to set <code>s% D_mix</code> for every part of the star. We can do this by using a do to iterate over an integer <code>k</code>, which we have to declare at the beginning of the subroutine.
 
 Putting everything together your <code>IGW_D_mix</code> subroutine should look something like this:
 
@@ -212,7 +212,7 @@ At this stage, your `pgstar` mixing window should look like this:
 </div>
 <br>
 
-Currently, it looks like the diffusive mixing coefficient is only being changed inside the convective core and the overshooting region, and is now constant in both regions. Let's double check if anything is happening to the profile in the radiative envelope.<br>
+Currently, it looks like the diffusive mixing coefficient is only being changed inside the convective core and the overshooting region, and is now constant in both regions. Let's double-check if anything is happening to the profile in the radiative envelope.<br>
 
 <task><details>
 <summary>Task 6</summary><p>
@@ -265,7 +265,7 @@ integer, parameter :: leftover_convective_mixing = 9
 ...
 </pre></p></div>
 
-All of these integer values for the different mixing types are contained within the <code>s% mixing_type(:)</code> parameter. In other words, a region where <code>s% mixing_type(k) = 1</code> has convective mixing. For now, lets set the envelope mixing to correspond to the minimum mixing, i.e. <code>s% mixing_type(k) = 7</code>. To do so, we first have to activate the minimum mixing in <code>MESA</code>.<br>
+All of these integer values for the different mixing types are contained within the <code>s% mixing_type(:)</code> parameter. In other words, a region where <code>s% mixing_type(k) = 1</code> has convective mixing. For now, let's set the envelope mixing to correspond to the minimum mixing, i.e. <code>s% mixing_type(k) = 7</code>. To do so, we first have to activate the minimum mixing in <code>MESA</code>.<br>
 
 <task><details>
 <summary>Task 7</summary><p>
@@ -364,7 +364,7 @@ Modify your <code>IGW_D_mix</code> subroutine to only change the mixing profile 
 <br>
 <hint><details>
 <summary> Hint </summary><p>
-    Rember you can use <code>s% mixing_type(k)</code> to determine if/what type of mixing is occuring. A value of 1 corresponds to convective mixing, and a value of 2 corresponds to overshoot mixing. So to apply changes to the envelope of the star we need to check that <code>s% mixing_type(k)</code> doesn't equal <code>1</code> or <code>2</code>. 
+    Rember you can use <code>s% mixing_type(k)</code> to determine if/what type of mixing is occurring. A value of 1 corresponds to convective mixing, and a value of 2 corresponds to overshoot mixing. So to apply changes to the envelope of the star we need to check that <code>s% mixing_type(k)</code> doesn't equal <code>1</code> or <code>2</code>. 
 </p></details></hint>
 
 
@@ -383,9 +383,9 @@ Before we deal with this, feel free to pause, stretch a bit, and drink some wate
 <strong>Walk me through it:</strong> The hint details how to implement each suggested step <br>
 <strong>Show me how its done:</strong> Jump directly to the solutions below <br>
 
-We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value, which we'll call $D_{\rm env, 0}$ . To accomplish this, we need to find the first zone numbe, which we'll call `k0`,r where `D_mix` is less than or equal to $10^4$ when going from the core to the surface of the stellar model. Reminder that this is backward of how `MESA` indexes arrays, where 1 is the surface and `s% nz` is the center. We also want to make sure that we aren't overwriting any subsurface convection zones that might show up, so we will only modify `s% D_mix` in regions with no convection. 
+We want to get rid of this discontinuity by modifying our <code>IGW_D_mix</code> subroutine to automatically change the diffusive mixing coefficient to 10<sup>4</sup> when the original diffusive mixing profile drops below this value, which we'll call $D_{\rm env, 0}$. To accomplish this, we need to find the first zone number, which we'll call `k0`,r where `D_mix` is less than or equal to $10^4$ when going from the core to the surface of the stellar model. A reminder that this is backward of how `MESA` indexes arrays, where 1 is the surface and `s% nz` is the center. We also want to make sure that we aren't overwriting any subsurface convection zones that might show up, so we will only modify `s% D_mix` in regions with no convection. 
 
-Additionally, it would also be nice to be able to change this value, $D_{\rm env, 0}$ , from the inlist, rather than having it hard coded in run_star_extras (which requires us to re-compile MESA every time we make a change). 
+Additionally, it would also be nice to be able to change this value, $D_{\rm env, 0}$, from the inlist, rather than having it hard coded in run_star_extras (which requires us to re-compile MESA every time we make a change). 
 
 
 
@@ -405,7 +405,7 @@ With these modifications, your subroutine will automatically adjust the diffusiv
 <summary> Hint </summary><p>
 To modify the <code>IGW_D_mix</code> subroutine in <code>run_star_extras.f90</code> to ensure the discontinuity is removed, follow these steps:<br><br>
 
-<strong>Define the <code>D_env_0</code> parameter:</strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision <code>real(dp)</code> parameter named <code>D_env_0</code>. This corresponds to the $D_{\rm env, 0}$ in the equation above. Note that for our current setup we simply have $D_{\rm env} (r) = D_{\rm env, 0} = 10^4$, corresponding to a constant envelope mixing at $10^4$.<br><br>
+<strong>Define the <code>D_env_0</code> parameter:</strong> Within the <code>IGW_D_mix</code> subroutine, declare a new real double precision <code>real(dp)</code> parameter named <code>D_env_0</code>. This corresponds to the $D_{\rm env, 0}$ in the equation above. Note that for our current setup, we simply have $D_{\rm env} (r) = D_{\rm env, 0} = 10^4$, corresponding to a constant envelope mixing at $10^4$.<br><br>
 
 <strong>Parameterize the discontinuity value:</strong> Instead of hardcoding the value of <code>D_env_0</code> to be 10<sup>4</sup>, use the <code>x_ctrl</code> control parameter. Under the <code>&controls</code> section in <code>inlist_project</code>, set <code>x_ctrl(1)</code> to <code>1d4</code>. This allows the value to be altered without needing to modify the <code>run_star_extras.f90</code> file directly. You can then use this value in your subroutine by referencing <code>s% x_ctrl(1)</code>. Do so by setting <code>D_env_0 = s% x_ctrl(1)</code> before your <code>do</code>-loops in your <code>IGW_D_mix</code> subroutine.<br><br>
 
@@ -413,7 +413,7 @@ To modify the <code>IGW_D_mix</code> subroutine in <code>run_star_extras.f90</co
 
 <strong>Identify the value of <code>k0</code>:</strong> Before the existing loop, implement a new loop that iterates from <code>1</code> to <code>s% nz</code>. Within this loop, check if the value of <code>D_mix</code> at position <code>(s% nz - k)</code> is less than <code>D_env_0</code>. If true, set <code>k0</code> to <code>s% nz - k</code> and exit the loop.<br><br>
 
-<strong>Iterate from the surface of the star to <code>k0</code> and change <code>s% D_mix(k)</code> the mixing profile only when there is no convection occuring:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective using an <code>if</code> statement with the following condition: <code>s% mixing_type(k) != 1</code> and then update the <code>D_mix</code> to <code>D_env_0</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
+<strong>Iterate from the surface of the star to <code>k0</code> and change <code>s% D_mix(k)</code> the mixing profile only when there is no convection occurring:</strong> Adjust your existing loop to iterate from <code>1</code> to <code>k0</code>. Within this loop, ensure that if the mixing type isn't convective using an <code>if</code> statement with the following condition: <code>s% mixing_type(k) != 1</code> and then update the <code>D_mix</code> to <code>D_env_0</code> and set the <code>mixing_type</code> to <code>7</code>.<br><br>
 
 With these modifications, your subroutine will automatically adjust the diffusive mixing coefficient when the original profile dips below the threshold, removing any discontinuity.
 
@@ -473,7 +473,7 @@ With the current version of our <code>IGW_D_mix</code> subroutine we could achie
     D_{\rm env} (r) = D_{\rm env, 0} \left[\frac{\rho (r)}{\rho_{0}} \right]^{-n}.
 \end{equation}
 
-In this equation, $D_{\rm env, 0}$ corresponds to the diffusion coefficient at the bottom of the stellar envelope, which we’ve already defined using `x_ctrl(1)` in the previous step. For this step we’ll use a value of $D_{\rm env, 0} = 100$.  $n$ is another free parameter that we want to be able to set in our `inlist_project`, we can do this using the variable `x_ctrl(2)`. Let’s use $n=0.5$ for now. $\rho(r)$ is the density at the radius $r$ , and $\rho_0$ is the density at `k0`. This new mixing profile applies in the same region as our previous tasks, so we can still use our existing 
+In this equation, $D_{\rm env, 0}$ corresponds to the diffusion coefficient at the bottom of the stellar envelope, which we’ve already defined using `x_ctrl(1)` in the previous step. For this step, we’ll use a value of $D_{\rm env, 0} = 100$.  $n$ is another free parameter that we want to be able to set in our `inlist_project`, we can do this using the variable `x_ctrl(2)`. Let’s use $n=0.5$ for now. $\rho(r)$ is the density at the radius $r$ , and $\rho_0$ is the density at `k0`. This new mixing profile applies in the same region as our previous tasks, so we can still use our existing 
 `do` loop and `if` statement.
 
 
@@ -503,7 +503,7 @@ NOTE: while you can use the Fortran <code>**</code> operator to raise something 
 <strong>Compile and run</strong> Do <code>./mk</code> and <code>./rn</code> and see what has changed with our new mixing scheme <br><br>
 </p></details></hint>
 
-At this point your `IGW_D_mix subroutine should look like this: 
+At this point, your `IGW_D_mix subroutine should look like this: 
 
 <div class="filetext-title"> run_star_extras.f90 </div> 
 <div class="filetext"><p><pre class="pre-filetext">
@@ -598,7 +598,7 @@ contains
 </pre></p></div>
 <br>
 
-In this way, <code>run_star_extras.f90</code> will recognise this parameter everywhere without us having to declare it again. Currently we haven't given this new parameter <code>initial_surface_he4</code> a value. To do so, we want to get the initial surface <sup>4</sup>He value before <code>MESA</code> starts taking any time steps. We can do so in the subroutine <code>extras_startup</code>
+In this way, <code>run_star_extras.f90</code> will recognise this parameter everywhere without us having to declare it again. Currently, we haven't given this new parameter <code>initial_surface_he4</code> a value. To do so, we want to get the initial surface <sup>4</sup>He value before <code>MESA</code> starts taking any time steps. We can do so in the subroutine <code>extras_startup</code>
 
 <br>
 <div class="filetext-title"> run_star_extras.f90 </div> 
@@ -710,10 +710,10 @@ Now we have our <code>MESA</code> setup done for the Maxilab and it is time to v
 
 <task><details>
 <summary>Task 13</summary><p>
-In this final task of the Maxilab, there are four parameters in <code>inlist_project</code> that you will have to change/vary: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. Additionallly you will need to update the <code>file</code> and <code>sumary_file</code> parameters in your <code>gyre.in</code> file. The steps you have to take are as follows:
+In this final task of the Maxilab, there are four parameters in <code>inlist_project</code> that you will have to change/vary: <code>filename_for_profile_when_terminate</code>, <code>log_directory</code>, <code>x_ctrl(1)</code>, and <code>x_ctrl(2)</code>. Additionally, you will need to update the <code>file</code> and <code>sumary_file</code> parameters in your <code>gyre.in</code> file. The steps you have to take are as follows:
 
 <ul>
-    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148" target="_blank">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left most column. </li>
+    <li> Go to the <a href="https://docs.google.com/spreadsheets/d/1KrAoaLLOtSo-p8H_E2XO77FEUni6PugNR7jKK6_I71c/edit#gid=1105905148" target="_blank">Google spreadsheet</a> and claim a $D_{\rm env,0}$ and $n$ value by putting your name down in the left-most column. </li>
     <li> Change <code>log_directory</code> to be of the format <code>'LOGS/4Msun_0.01fov_#Denv0_#n'</code> and also change the parameter <code>filename_for_profile_when_terminate</code> accordingly. </li>
     <li> Set <code>overshoot_f(1) = 0.01</code> </li>
     <li> Set <code>x_ctrl(1)</code> and <code>x_ctrl(2)</code> to your chosen $D_{\rm env,0}$ and $n$. </li>
@@ -721,10 +721,10 @@ In this final task of the Maxilab, there are four parameters in <code>inlist_pro
     <li> Check your output <code>history.data</code> file and note down the last recorded value of <code>current_to_zams_surf_he4</code>, <code>current_to_zams_surf_c12</code>, <code>current_to_zams_surf_n14</code>, and <code>current_to_zams_surf_o16</code> in the corresponding columns <code>tams_to_zams_surface_he4</code>, <code>tams_to_zams_surface_c12</code>, <code>tams_to_zams_surface_n14</code>, and <code>tams_to_zams_surface_o16</code> in the Google spreadsheet. </li>
     <li> Update your <code>gyre.in</code> file to point to the correct input file (with the <code>file</code> parameter in the <code>&model</code> section) and to output the correct file name (using <code>summary_file</code> in the <code>&ad_output</code> section). Then run <code>GYRE</code> as in minilab 2: <code>$GYRE_DIR/bin/gyre gyre.in</code>.</li>
     <li> Have your TA plot the corresponding period spacing pattern. </li>
-    <li> Congratulate yourself on getting though this lab!</li>
+    <li> Congratulate yourself on getting through this lab!</li>
     <li> If you still have time, you can repeat this task with another set of $D_{\rm env,0}$ and $n$ values.</li>
 </ul>
 </p></details></task>
 
 
-As you are adding in your parameters in the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of $D_{\rm env,0}$ do you start to see a change in the surface abundances? How does this depend on the choice of $n$?
+As you are adding your parameters to the Google spreadsheet, keep an eye on how the plots for the different mass fractions are changing. At what value of $D_{\rm env,0}$ do you start to see a change in the surface abundances? How does this depend on the choice of $n$?

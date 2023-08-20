@@ -1,0 +1,53 @@
+&constants
+/
+
+&model
+file = './LOGS/4Msun_0.01fov/final_profile.data.GYRE' 
+model_type = 'EVOL' 
+file_format = 'MESA' 
+/
+
+&rot
+/
+
+&mode
+l = 1
+m = 1 
+n_pg_min = -80
+n_pg_max = -1 
+/
+
+&osc
+outer_bound = 'VACUUM' 
+inner_bound = 'REGULAR'
+/
+
+&num
+diff_scheme = 'MAGNUS_GL4'
+/
+
+&scan
+grid_type = 'INVERSE' 
+freq_frame = 'INERTIAL' 
+freq_min = 0.05 
+freq_max = 5 
+freq_min_units = 'CYC_PER_DAY' 
+freq_max_units = 'CYC_PER_DAY' 
+n_freq = 1000 
+/
+
+&grid
+w_osc = 10 
+w_exp = 2
+w_ctr = 10
+/
+
+&ad_output
+summary_file = './LOGS/4Msun_0.01fov/final_summary_0.01fov.txt' 
+summary_file_format = 'TXT' 
+summary_item_list = 'l,m,n_p,n_g,n_pg,freq'
+freq_units = 'CYC_PER_DAY'
+/
+
+&nad_output
+/

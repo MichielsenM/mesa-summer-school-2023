@@ -53,7 +53,7 @@ Once the path to <code>GYRE</code> has been set, we need to first source our bas
 source $HOME/.zshrc
 </p></div>
 
-When initally installing `MESA`, the `GYRE` code should also have been compiled automatically. However, if this turns out not to be the case for you (will become clear once you start trying to run `GYRE`) then you will have to complete the following two steps in your terminal to compile `GYRE` using `make` inside your `GYRE` directory. 
+When initially installing `MESA`, the `GYRE` code should also have been compiled automatically. However, if this turns out not to be the case for you (this will become clear once you start trying to run `GYRE`) then you will have to complete the following two steps in your terminal to compile `GYRE` using `make` inside your `GYRE` directory. 
 
 <div class="terminal-title"> Terminal commands </div> 
 <div class="terminal"><p>
@@ -72,7 +72,7 @@ cd SPB_minilab_2<br>
 ./clean && ./mk
 </p></div>
 
-Also delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 1.
+Also, delete the current contents of your `LOGS` directory to avoid confusion with previous models from minilab 1.
 
 Before we run <code>GYRE</code> we have to first tell <code>MESA</code> to output profiles in a format that <code>GYRE</code> can read as input. We can do so by modifying the <code>&controls</code> section of <code>inlist_project</code>. These controls are called <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/controls.html#controls-for-output" target="_blank"> controls for output</a> in the <code>MESA</code> documentation.<br>
 
@@ -93,20 +93,21 @@ The parameters that have to be added are: <code>write_pulse_data_with_profile</c
 
 <task><details>
 <summary>Task 2</summary><p>
-Amongst the people at your table, distribute the following values for the overshooting parameter <code>overshoot_f(1)</code> and use that in your <code>inlist_project</code>: 0.01, 0.02, 0.03, and 0.04. Likewise change your <code>log_directory</code> parameter <code>LOGS/4Msun_#fov</code> to match the new value of the overshooting parameter. Then run <code>MESA</code>.
+Amongst the people at your table, distribute the following values for the overshooting parameter <code>overshoot_f(1)</code> and use that in your <code>inlist_project</code>: 0.01, 0.02, 0.03, and 0.04. Likewise, change your <code>log_directory</code> parameter <code>LOGS/4Msun_#fov</code> to match the new value of the overshooting parameter. Then run <code>MESA</code>.
 </p></details></task>
 
-When <code>MESA</code> is done running you should see that you now have additional output files in your `LOGS/4Msun_#fov` directory with a 'GYRE' extension, one for each of your <code>MESA</code> output <code>profile#.data</code> files of the format <code>profile#.data.GYRE</code>. It is these <code>profile#.data.GYRE</code> files that we need to use as input for the <code>GYRE</code> computations, where we use <code>GYRE</code> to calculate the associated theoretical oscillations for our <code>profile#.data</code> model. We note that as an alternative, the `GSM` format is another pulsation data format that is written specifically for `GYRE` and uses a `HDF5-based format` instead of the `plain-text format` that we get by using `'GYRE'` for the `pulse_data_format` parameter in `inlist_project`.  
+Your <code>inlist_project</code> should now look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab2_intermediate_solutions/inlist_project_task2" target="_blank"> this</a>.
+When <code>MESA</code> is done running you should see that you now have additional output files in your `LOGS/4Msun_#fov` directory with a 'GYRE' extension, one for each of your <code>MESA</code> output <code>profile#.data</code> files of the format <code>profile#.data.GYRE</code>. It is these <code>profile#.data.GYRE</code> files that we need to use as input for the <code>GYRE</code> computations, where we use <code>GYRE</code> to calculate the associated theoretical oscillations for our <code>profile#.data</code> model. We note that as an alternative, the `GSM` format is another pulsation data format that is written specifically for `GYRE` and uses an `HDF5-based format` instead of the `plain-text format` that we get by using `'GYRE'` for the `pulse_data_format` parameter in `inlist_project`.  
 
 Just like <code>MESA</code>, <code>GYRE</code> also has an inlist file that we have to either create or modify. Information on how to construct such a file is given on the
-<a href="https://gyre.readthedocs.io/en/stable/" target="_blank"> <code>GYRE</code> documentation website</a>. As a starting point, lets create an empty <code>GYRE</code> input file called <code>gyre.in</code> inside our <code>MESA</code> work directory using your favourite text editor.
+<a href="https://gyre.readthedocs.io/en/stable/" target="_blank"> <code>GYRE</code> documentation website</a>. As a starting point, let's create an empty <code>GYRE</code> input file called <code>gyre.in</code> inside our <code>MESA</code> work directory using your favourite text editor.
 
 <div class="terminal-title"> Terminal commands - example </div> 
 <div class="terminal"><p>
 nano gyre.in
 </p></div>
 
-The setup of the different sections (i.e. namelists) that we need to include in <code>gyre.in</code> is the same as for your <code>MESA</code> <code>inlist_project</code> file, i.e. a section starts with <code>&name</code> and ends with <code>/</code>. As a minimum, we want to include the input model specifications (`&model`), which oscillation modes to compute (`&mode`), information on the inner and outer boundary of the model (`&osc`), which numerical solver to use (`&num`), how to scan the frequency region of interest (`&scan`), include an oscillatory weight parameter for the spatial grid (`&grid`), and what to output (`&ad_output` and `&nad_output`). More information on how to set these up are given in the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files.html" target="_blank"> Namelist Input Files</a> section on the <code>GYRE</code> documentation website. In addition to the above mentioned namelist sections, <code>GYRE</code> also requires the physical constants to be defined in `&constants` as well as specifying the rotation setup (`&rot`). We are just going to use the default values for these. 
+The setup of the different sections (i.e. namelists) that we need to include in <code>gyre.in</code> is the same as for your <code>MESA</code> <code>inlist_project</code> file, i.e. a section starts with <code>&name</code> and ends with <code>/</code>. As a minimum, we want to include the input model specifications (`&model`), which oscillation modes to compute (`&mode`), information on the inner and outer boundary of the model (`&osc`), which numerical solver to use (`&num`), how to scan the frequency region of interest (`&scan`), include an oscillatory weight parameter for the spatial grid (`&grid`), and what to output (`&ad_output` and `&nad_output`). More information on how to set these up is given in the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files.html" target="_blank"> Namelist Input Files</a> section on the <code>GYRE</code> documentation website. In addition to the above-mentioned namelist sections, <code>GYRE</code> also requires the physical constants to be defined in `&constants` as well as specifying the rotation setup (`&rot`). We are just going to use the default values for these. 
 
 
 <div class="filetext-title"> gyre.in </div> 
@@ -166,7 +167,7 @@ Next, lets setup the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/in
 In the <code>&osc</code> namelist section set the outer boundary parameter <code>outer_bound = 'VACUUM'</code> and the inner boundary parameter <code>inner_bound = 'REGULAR'</code>. These determine the outer and inner boundary conditions of the model when calculating the oscillations. In <code>&num</code> tell <code>GYRE</code> to use the 4th-order Gauss-Legendre Magnus solver for initial-value integrations <code>'MAGNUS_GL4'</code> using the <code>diff_scheme</code> parameter.
 </p></details></task>
 
-Once we have our numerics and model specifications, we now want to tell <code>GYRE</code> which oscillations to compute. We will do so using the two namelist sections <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/mode-params.html" target="_blank"> &mode</a> and <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/scan-params.html" target="_blank"> &scan</a>. For this <code>MESA</code> lab we will focus on dipole prograde ($\ell =1, m=1$) modes with radial orders between $-1$ and $-80$. Note that by convention, we use negative radial orders for g-modes and positive radial orders for p-modes. In principle, it doesn't matter what we are setting $m$ to be as long as we are fulfilling $m = -\ell, \dots, \ell$. This is because we are currently not including rotation in our <code>GYRE</code> computations, so all of the $m = -\ell, \dots, \ell$ modes for the same $\ell$ and $n$ value would have the same frequency. To include rotation, we would have to include additional parameters in the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/rot-params.html" target="_blank"> &rot</a> namelist section  in our <code>GYRE</code> inlist file as rotation is turned off by default. You will see more on this during the <code>MESA</code> lab sessions on Thursday. For now we stick to using ($\ell =1, m=1$) as these are the modes most commonly detected in SPB stars.<br>
+Once we have our numerics and model specifications, we now want to tell <code>GYRE</code> which oscillations to compute. We will do so using the two namelist sections <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/mode-params.html" target="_blank"> &mode</a> and <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/scan-params.html" target="_blank"> &scan</a>. For this <code>MESA</code> lab we will focus on dipole prograde ($\ell =1, m=1$) modes with radial orders between $-1$ and $-80$. Note that by convention, we use negative radial orders for g-modes and positive radial orders for p-modes. In principle, it doesn't matter what we are setting $m$ to be as long as we are fulfilling $m = -\ell, \dots, \ell$. This is because we are currently not including rotation in our <code>GYRE</code> computations, so all of the $m = -\ell, \dots, \ell$ modes for the same $\ell$ and $n$ value would have the same frequency. To include rotation, we would have to include additional parameters in the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/rot-params.html" target="_blank"> &rot</a> namelist section  in our <code>GYRE</code> inlist file as rotation is turned off by default. You will see more on this during the <code>MESA</code> lab sessions on Thursday. For now, we stick to using ($\ell =1, m=1$) as these are the modes most commonly detected in SPB stars.<br>
 
 <task><details>
 <summary>Task 6</summary><p>
@@ -201,7 +202,7 @@ In the <code>&grid</code> namelist section, include the parameters:<br>
 <code>w_ctr = 10</code>
 </p></details></task>
 
-Now our last step is to tell <code>GYRE</code> what to output using <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html" target="_blank"> &ad_output</a>. There are two types of output files to consider: the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files" target="_blank"> summary</a> and <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html" target="_blank"> detail</a> output files. The `summary` files provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, degree $\ell$, and azimuthal order $m$ values, whereas the `detail` files provides additional information on each one of the calculated modes such as their radial ($\xi_r$) and horizontal ($\xi_h$) displacements as a function of the radius coordinate. You therefore get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
+Now our last step is to tell <code>GYRE</code> what to output using <a href="https://gyre.readthedocs.io/en/stable/ref-guide/input-files/output-params.html" target="_blank"> &ad_output</a>. There are two types of output files to consider: the <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/summary-files.html#summary-files" target="_blank"> summary</a> and <a href="https://gyre.readthedocs.io/en/stable/ref-guide/output-files/detail-files.html" target="_blank"> detail</a> output files. The `summary` file provides an overview of the <code>GYRE</code> calculations for all considered modes, such as their frequencies, degree $\ell$, and azimuthal order $m$ values, whereas the `detail` files provide additional information on each one of the calculated modes such as their radial ($\xi_r$) and horizontal ($\xi_h$) displacements as a function of the radius coordinate. You, therefore, get one detail file per calculated mode. In this <code>MESA</code> lab, we are only interested in the `summary` files.<br>
 
 <task><details>
 <summary>Task 9</summary><p>
@@ -212,7 +213,7 @@ In the <code>&ad_output</code> namelist section, include the parameters:<br>
 <code>freq_units = 'CYC_PER_DAY'</code>
 </p></details></task>
 
-Did you notice that we will only be asking <code>GYRE</code> to output the adiabatic solutions (`&ad_output`) to the oscillation equations? We choose to do so here for a couple of reasons. The first and most important one is because it is faster and for this <code>MESA</code> lab, we are not going to look into which modes are excited which would require us to find the non-adiabatic solutions (`&nad_output`). The second reason is that we generally observe more modes that what are predicted to be excited by the standard opacity tables in <code>MESA</code>. We note that changing from adiabatic to nonadiabatic calculations will not result in any significant changes to the output oscillation frequencies, but is required in order to determine which modes are predicted to be excited.
+Did you notice that we will only be asking <code>GYRE</code> to output the adiabatic solutions (`&ad_output`) to the oscillation equations? We choose to do so here for a couple of reasons. The first and most important one is because it is faster and for this <code>MESA</code> lab, we are not going to look into which modes are excited which would require us to find the non-adiabatic solutions (`&nad_output`). The second reason is that we generally observe more modes than what are predicted to be excited by the standard opacity tables in <code>MESA</code>. We note that changing from adiabatic to nonadiabatic calculations will not result in any significant changes to the output oscillation frequencies, but is required in order to determine which modes are predicted to be excited.
 
 If you have done everything correctly, then your <code>gyre.in</code> file should now look something like this
 
@@ -346,11 +347,11 @@ Root Solving
 
 Notice that at the very beginning, <code>GYRE</code> is telling us that we are using <code>GYRE</code> version 7.0. Just like <code>MESA</code>, <code>GYRE</code> namelist parameters and sections can change between <code>GYRE</code> versions. Make sure you are always referring to the <code>GYRE</code> documentation for the <code>GYRE</code> version that you are using.
 
-Currently, the profile file you have been using is likely very different from the one of other people at your table. This is because they will be at different core hydrogen mass fractions. <br>
+Currently, the profile file you have been using is likely very different from the one of the other people at your table. This is because they will be at different core hydrogen mass fractions. <br>
 
 <task><details>
 <summary>Task 10</summary><p>
-Check what value of <code>center_h1</code> that your <code>profile2.data</code> file corresponds to. How different is your value to the rest of the people at your table?
+Check what value of <code>center_h1</code> your <code>profile2.data</code> file corresponds to. How different is your value to the rest of the people at your table?
 </p></details></task>
 
 <hint><details>
@@ -358,7 +359,7 @@ Check what value of <code>center_h1</code> that your <code>profile2.data</code> 
 Look for the value of <code>center_h1</code> in the header at the top of your <code>profile2.data</code> file.
 </p></details></hint>
 
-Ideally when you are comparing period spacing patterns you want to make sure that you are comparing them for the same core hydrogen mass fraction $X_{\rm c}$. You can do so by decreasing the <code>MESA</code> time step around a specific value of $X_{\rm c}$ that you are interested in and then tell <code>MESA</code> to save a profile when you get close to this value. This is something you would do inside your `run_star_extras.f90`. For now we will take a simpler approach, and instead decrease the time step as we approach core hydrogen exhaustion and then save a profile when <code>MESA</code> is terminated. <br>
+Ideally when you are comparing period spacing patterns you want to make sure that you are comparing them for the same core hydrogen mass fraction $X_{\rm c}$. You can do so by decreasing the <code>MESA</code> time step around a specific value of $X_{\rm c}$ that you are interested in and then tell <code>MESA</code> to save a profile when you get close to this value. This is something you would do inside your `run_star_extras.f90`. For now, we will take a simpler approach, and instead decrease the time step as we approach core hydrogen exhaustion and then save a profile when <code>MESA</code> is terminated. <br>
 
 <task><details>
 <summary>Task 11</summary><p>
@@ -377,6 +378,7 @@ Modify the two parameters <code>file</code> and <code>summary_file</code> in you
 </p></details></task>
 <br>
 
+Your <code>inlist_project</code> should now look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab2_intermediate_solutions/inlist_project_task12" target="_blank"> this</a> and your <code>gyre.in</code> something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab2_intermediate_solutions/gyre.in_task12"> this</a>.
 Once you have your `final_summary_#fov.txt` share it with your TA. They have a <code>python</code> script available to plot all of the period spacing patterns together and just need your `final_summary_#fov.txt` file. If you want to have a go at using these scripts to plot it yourself, you can get them from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/jupyter_notebook.zip). Make sure to check out the `notes.txt` file first or follow the instructions for the TAs at the bottom of the <a href="https://michielsenm.github.io/mesa-summer-school-2023/" target="_blank"> home page</a>.<br> 
 
 <task><details>
@@ -439,7 +441,7 @@ Now before moving on to the next exercises, make sure you reset the parameters i
 
 So far, aside from additional time step resolution near the end of the main-sequence evolution, we have been using the default mesh grid and time step resolution in <code>MESA</code>. The period spacing patterns are very sensitive to the profile of the Brunt-Vaisala frequency, as it determines where the g-modes can propagate and how they get trapped near the core as a chemical gradient is developed when the convective core contracts. Therefore, if we want to model them we have to make sure that the Brunt-Vaisala frequency profile is converged. Remember that when using <code>MESA</code> for any type of science, **it is always important to test if your models are converged!**
 
-For this bonus exercise we are going to play around with the two parameters `mesh_delta_coeff` and `time_delta_coeff` and see how they change the Brunt-Vaisala frequency profile.<br>
+For this bonus exercise, we are going to play around with the two parameters `mesh_delta_coeff` and `time_delta_coeff` and see how they change the Brunt-Vaisala frequency profile.<br>
 
 <task><details>
 <summary>Task B2.1</summary><p>

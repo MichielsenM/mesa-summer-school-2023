@@ -239,7 +239,7 @@ The final input parameters we want to add to `inlist_project` are related to the
 
 $$D_{\rm ov} (r) = D_0 \exp \left(\frac{-2 \left[r-r_0\right]}{f_{\rm ov} H_{\rm p,0}} \right)$$
 
-This type of mixing is one out of two overshoot mixing schemes that have been implemented in `MESA`. $D_0$ is the diffusive mixing coefficient at $r_0 = r_{\rm cc} - f_0 H_{\rm p,cc}$ , i.e. at a step of $f_0 H_{\rm p,cc}$  inside the convective core boundary at radius coordinate $r_{\rm cc}$. This step is required because the diffusive mixing coefficient for the convective zone approaches zero at the core boundary. $H_{\rm p,0}$ is the pressure scale height at $r_0$, $H_{\rm p, cc}$ is the pressure scale height at $r_{\rm cc}$, and $f_{\rm ov}$ is the overshoot parameter. For this exercise, we will fix $f_0 = 0.002$  and vary $f_{\rm ov}$ from 0.005 to 0.04.
+This type of mixing is one out of two overshoot mixing schemes that have been implemented in `MESA`. $D_0$ is the diffusive mixing coefficient at $r_0 = r_{\rm cc} - f_0 H_{\rm p,cc}$ , i.e. at a step of $f_0 H_{\rm p,cc}$  inside the convective core boundary at radius coordinate $r_{\rm cc}$. This step is required because the diffusive mixing coefficient for the convective zone approaches zero at the core boundary. $H_{\rm p,0}$ is the pressure scale height at $r_0$, $H_{\rm p, cc}$ is the pressure scale height at $r_{\rm cc}$, $f_{\rm ov}$ is the overshoot parameter, and $f_0$ is a numerical parameter which is typically fixed at a value smaller than $f_{\rm ov}$. For this exercise, we will fix $f_0 = 0.002$  and vary $f_{\rm ov}$ from 0.005 to 0.04.
 
 
 <task><details>
@@ -269,7 +269,7 @@ Now that we have the desired physics included in our `MESA` inlists, it is time 
 
 <task><details>
 <summary>Task 9</summary><p>
-Copy <code>history_columns.list</code> from <code>$MESA_DIR/star/defaults</code> to <code>SPB_minilab_1</code>. Make sure that the following parameters are included in <code>history_columns.list</code>: <code>mass_conv_core</code>, <code>he_core_mass</code>, <code>surface_n14</code>, <code>center_h1</code>,
+Copy <code>history_columns.list</code> from <code>$MESA_DIR/star/defaults</code> to <code>SPB_minilab_1</code>. Make sure that the following parameters are included in <code>history_columns.list</code>: <code>mass_conv_core</code>, <code>he_core_mass</code>, <code>surface n14</code>, <code>center h1</code>,
 and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> to your <code>inlist_project</code> file under <code>&controls</code>.
 Run <code>MESA</code> and answer/do the following:
 </p>
@@ -283,7 +283,7 @@ Run <code>MESA</code> and answer/do the following:
 
 <hint><details>
 <summary> Hint </summary><p>
-The convective core mass (<code>mass_conv_core</code>), helium core mass (<code>he_core_mass</code>), star age (<code>star_age</code>), and center <sup>1</sup>H mass fraction (<code>center_h1</code>) parameters are already included in the history output by default. The only additional ones you have to add are <code>surface_n14</code> and <code>delta_Pg</code>. Note that the formatting for adding center and surface abundances inside the <code>history_columns.list</code> file is <code>center n14</code> and <code>surface n14</code>, but shows up as <code>center_n14</code> and <code>surface_n14</code> in your <code>history.data</code> file.
+The convective core mass (<code>mass_conv_core</code>), helium core mass (<code>he_core_mass</code>), star age (<code>star_age</code>), and center <sup>1</sup>H mass fraction (<code>center_h1</code>) parameters are already included in the history output by default. The only additional ones you have to add are <code>surface n14</code> and <code>delta_Pg</code>. Note that the formatting for adding center and surface abundances inside the <code>history_columns.list</code> file is <code>center n14</code> and <code>surface n14</code>, but shows up as <code>center_n14</code> and <code>surface_n14</code> in your <code>history.data</code> file.
 </p></details></hint>
 
 <hint><details>

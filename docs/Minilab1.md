@@ -275,7 +275,7 @@ Now that we have the desired physics included in our `MESA` inlists, it is time 
 <task><details>
 <summary>Task 9</summary><p>
 Copy <code>history_columns.list</code> from <code>$MESA_DIR/star/defaults</code> to <code>SPB_minilab_1</code>. Make sure that the following parameters are included in <code>history_columns.list</code>: <code>mass_conv_core</code>, <code>he_core_mass</code>, <code>surface n14</code>, <code>center h1</code>,
-and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> to your <code>inlist_project</code> file under <code>&controls</code>.
+and <code>delta_Pg</code>. Also add the parameter <code>delta_Pg_mode_freq = 20</code> (see details below) to your <code>inlist_project</code> file under <code>&controls</code>.
 Run <code>MESA</code> and answer/do the following:
 </p>
 <ul>
@@ -285,6 +285,13 @@ Run <code>MESA</code> and answer/do the following:
 </ul>
 </details></task>
 
+<details>
+<summary><code>delta_Pg_mode_freq</code> clarification </summary>
+The asymptotic period spacing is given by the integral over the region in which a g-mode can propagate.
+Hence you need a specific mode frequency in mind when you do this calculation, because above a certain radius, your
+mode frequency is much larger than both the Brunt-Vaisala and Lamb frequencies and hence your g-mode is evanescent there.
+This <code>delta_Pg_mode_freq</code> allows you to pick a frequency which in turn will determine the integration limits.
+</details>
 
 <hint><details>
 <summary> Hint </summary><p>

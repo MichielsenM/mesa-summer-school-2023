@@ -189,6 +189,8 @@ Concerning figuring out how to set the <code>kap_file_prefix</code> parameter, y
 </p></details></hint>
 <br>
 
+If in doubt, your <code>inlist_project</code> should now look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab1_intermediate_solutions/inlist_project_task5" target="_blank"> this</a>.
+
 Once you have implemented the changes above, delete the contents of your current `LOGS` directory. Then try to run `MESA` and see if all the implemented changes work as they should. If you tried to change the two parameters `initial_z` and `initial_y` to match the new compositions, you would see in the terminal output that `MESA` is ignoring these changes. You may also see that although the parameter `initial_mass = 15` is still set in the `inlist_project` file, then this choice of initial mass is also being ignored. As a reminder, the mass of the loaded model is $4M_\odot$.
 
 <div class="terminal-title"> Terminal output </div> 
@@ -235,6 +237,8 @@ Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</co
 </p></details></hint>
 <br>
 
+If in doubt, your <code>inlist_pgstar</code> should look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab1_intermediate_solutions/inlist_pgstar_task4" target="_blank"> this</a>.
+
 The final input parameters we want to add to `inlist_project` are related to the convective boundary mixing. For this exercise, we will only consider exponential diffusive overshoot on top of the hydrogen-burning convective core: 
 
 $$D_{\rm ov} (r) = D_0 \exp \left(\frac{-2 \left[r-r_0\right]}{f_{\rm ov} H_{\rm p,0}} \right)$$
@@ -258,6 +262,7 @@ The parameters to be added to <code>&controls</code> in <code>inlist_project</co
 Include <code>overshoot_D_min = 1d-2</code> in <code>inlist_project</code> (<code>&controls</code>). What happens to the mixing profile shown in your mixing window? What is the default value of <code>overshoot_D_min</code>?
 </p></details></task>
 
+(If in doubt, your <code>inlist_project</code> should now look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab1_intermediate_solutions/inlist_project_task8" target="_blank"> this</a>.)<br>
 Your final `pgstar` mixing window should end up looking something like this depending on your choice of $f_{\rm ov}$:
 
 <div style="align: left; text-align:center;">

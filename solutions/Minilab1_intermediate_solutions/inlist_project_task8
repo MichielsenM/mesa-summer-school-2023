@@ -1,0 +1,100 @@
+! inlist for minilab 1 of Asteroseimsology of early type stars Mesa Summer School 2023
+
+&star_job
+  ! see star/defaults/star_job.defaults
+
+  ! begin with a pre-main sequence model
+    create_pre_main_sequence_model = .false.
+  
+  ! load a saved model 
+    load_saved_model = .true.
+    load_model_filename = 'SPB_ZAMS_Y0.28_Z0.02.mod'
+    
+  ! display on-screen plots
+    pgstar_flag = .true.
+    
+  ! Nuclear network 
+    change_net = .true.
+    new_net_name = 'pp_cno_extras_o18_ne22.net'
+    
+  ! relax initial composition 
+   relax_Y = .true. 
+   new_Y = 0.276
+
+   relax_Z = .true. 
+   new_Z = 0.014
+   
+/ ! end of star_job namelist
+
+
+&eos
+  ! eos options
+  ! see eos/defaults/eos.defaults
+
+/ ! end of eos namelist
+
+
+&kap
+  ! kap options
+  ! see kap/defaults/kap.defaults
+  use_Type2_opacities = .true.
+
+  ! Change opacity tables 
+  kap_file_prefix = 'OP_a09_nans_removed_by_hand' 
+
+  Zbase = 0.014
+  
+/ ! end of kap namelist
+
+
+&controls
+  ! see star/defaults/controls.defaults
+
+  ! change intial composition 
+    relax_dY = 0.001 
+    relax_dlnZ = 1d-2 
+    
+  ! when to stop
+
+    ! stop when the star nears ZAMS (Lnuc/L > 0.99)
+    Lnuc_div_L_zams_limit = 0.99d0
+    stop_near_zams = .false.
+
+    ! stop when the center mass fraction of h1 drops below this limit
+    xa_central_lower_limit_species(1) = 'h1'
+    xa_central_lower_limit(1) = 1d-3
+
+  ! wind
+
+  ! atmosphere
+
+  ! rotation
+
+  ! element diffusion
+
+  ! mlt
+
+  ! mixing
+   overshoot_scheme(1) = 'exponential' 
+   overshoot_zone_type(1) = 'burn_H' 
+   overshoot_zone_loc(1) = 'core' 
+   overshoot_bdy_loc(1) = 'top'
+  
+   overshoot_f0(1) = 0.002 
+   overshoot_f(1) = 0.01 !Or your value here 
+
+   overshoot_D_min = 1d-2 
+   
+  ! timesteps
+
+  ! mesh
+
+  ! solver
+     ! options for energy conservation (see MESA V, Section 3)
+     energy_eqn_option = 'dedt'
+     use_gold_tolerances = .true.
+
+  ! output
+    log_directory = 'LOGS/4Msun_0.01fov'!Or your fov value here 
+    history_interval = 1
+/ ! end of controls namelist

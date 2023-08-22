@@ -237,7 +237,7 @@ Modify the four input parameters <code>HR_logT_min</code>, <code>HR_logT_max</co
 </p></details></hint>
 <br>
 
-If in doubt, your <code>inlist_pgstar</code> should look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab1_intermediate_solutions/inlist_pgstar_task4" target="_blank"> this</a>.
+If in doubt, your <code>inlist_pgstar</code> should look something like <a href="https://github.com/MichielsenM/mesa-summer-school-2023/blob/main/solutions/Minilab1_intermediate_solutions/inlist_pgstar_task6" target="_blank"> this</a>.
 
 The final input parameters we want to add to `inlist_project` are related to the convective boundary mixing. For this exercise, we will only consider exponential diffusive overshoot on top of the hydrogen-burning convective core: 
 

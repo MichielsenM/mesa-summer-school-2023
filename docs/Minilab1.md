@@ -15,7 +15,7 @@ From the comparison of observations to stellar models we know that standard 1D s
 Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes of their mixing profiles as well as their thermal structure. Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the periods of the g-mode oscillations are given by
 
 \begin{equation}
-    P \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},
+    P_{\ell, n} \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},
 \end{equation}
 
 where $\ell$ is the degree of the oscillation, $n$ is the radial order, $\Pi_0$ is the assymptotic period spacing, which we could also write as $\Pi_\ell= \Pi_0/\sqrt{\ell (\ell +1)}$, and $N$ is the Brunt-Vaisala frequency.

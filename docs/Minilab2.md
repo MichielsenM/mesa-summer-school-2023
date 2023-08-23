@@ -4,7 +4,17 @@ title: Minilab 2
 ---
 # Introduction <a id="minilab2_intro"></a>
 
-(Work in progress)
+In the previous minilab we had a look at how varying the extent of the exponential diffusive overshoot region changes the asymptotic period spacing of dipole ($\ell=1$) modes, $\Pi_{\ell=1}$. An even better option for studying CBM is using the individual g-mode oscillation periods of the stars, and study the changes in the morphology of their **period spacing patterns**. Such patterns are constructed by calculating the period differences $\Delta P$ between modes of the same degree $\ell$ and azimuthal order $m$ and consecutive in $n$, and then plotting these differences as a function of the oscillation periods. For a chemically homogeneous, non-rotating star we expect these patterns to be homogenous as
+
+\begin{equation}
+  \Delta P \approx P_{2} - P_{1} \approx P_{3} - P_{2} \approx \dots \approx P_{n} - P_{n-1} \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}}.
+\end{equation}
+
+<div style="align: left; text-align:center;">
+    <img src="images/dP_config.jpeg" width="80%" /> 
+</div>
+
+As the star evolves on the main-sequence and consumes hydrogen in its core, 
 
 <div style="align: left; text-align:center;">
     <img src="images/HRD_X_dP.png" width="900" /> 

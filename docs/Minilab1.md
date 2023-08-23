@@ -4,24 +4,33 @@ title: Minilab 1
 ---
 # Introduction <a id="minilab1_intro"></a>
 
-(Work in progress)
-
-Some basic introduction to the physics goes here...
+From the comparison of observations to stellar models we know that standard 1D stellar models systematically underestimate the sizes of the convective cores of intermediate- and high-mass stars. This has major consequences for the predicted evolution of the stars as larger convective core sizes translates to more fuel being available during core-hydrogen burning, leading to both longer main-sequence lifetimes and larger helium cores. One way to try to account for this is to introduce additional **convective boundary mixing (CBM)** beyond the Schwarzschild boundary of the convective core. Such CBM is referred to as overshooting when it only modifies the chemical structure of the star ($\nabla_{\rm T} = \nabla_{\rm rad}$), and penetrative when it modifies both the chemical and thermal structure ($\nabla_{\rm T} = \nabla_{\rm ad}$). Four examples of what such different CBM might look like are shown in the figure below. We note that in `MESA` "only" exponential diffusive overshooting (a) and step overshoot (b) are included as standard options. 
 
 <div style="align: left; text-align:center;">
     <img src="images/CBM_gradT_4panels.png" width="100%" /> 
     <div class="caption" style="width: 800"> Example internal mixing profiles (top) and corresponding temperature gradients (bottom) for four different choices of convection boundary mixing (CBM): (a) Exponential diffusive overshoot, (b) step overshoot, (c) convective penetration, and (d) extended convective penetration. In the top panel, convective mixing is shown in grey, CBM is indicated in blue, and envelope mixing is shown in green. In the bottom panel the corresponding temperature gradients used by MESA ($\nabla_T$, orange) along with the adiabatic ($\nabla_{\rm ad}$, green) and radiative ($\nabla_{\rm rad}$, blue) temperature gradients are shown, with the convective core indicated by the grey region for reference. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2023Galax..11...56A/abstract" target="_blank" >Anders & Pedersen (2023)</a>. </div>
 </div>
+<br>
+
+Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes of their mixing profiles as well as their thermal structure. Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the periods of the g-mode oscillations are given by
+
+\begin{equation}
+    P_{\ell, n} \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},
+\end{equation}
+
+where $\ell$ is the degree of the oscillation, $n$ is the radial order, $\Pi_0$ is the assymptotic period spacing, which we could also write as $\Pi_\ell= \Pi_0/\sqrt{\ell (\ell +1)}$, and $N$ is the Brunt-Vaisala frequency.
+
+In this minilab we are going to take a closer look at the CBM assuming an exponential diffusive overshooting profile (panel a if the figure above), where the extent of the CBM region is determined through the free parameter $f_{\rm ov}$ (see further details below), and investigate the dependence of the main-sequence lifetimes, core masses, surface abundances, and $\Pi_\ell$ on the choice of $f_{\rm ov}$.
 
 # Aims <a id="minilab1_aims"></a>
 
 **MESA aims:** In this Minilab you will learn how to look up relevant parameters to include in your MESA `inlist`, how to load a starting model and whether or not it cares about the initial mass and chemical composition that you use in your inlist, and how to use `pgstar`.
 
-**Science aims:** To get an understanding of how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and the g-mode asymptotic period spacing, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
+**Science aims:** To get an understanding of how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and $\Pi_\ell$, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
 
 # Minilab 1  <a id="minilab1_lab"></a>
 
-**Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip)
+**Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip). Please also note that we strongly encourage you to take advantage of the provided hints in all of the `MESA` labs! 
 
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 

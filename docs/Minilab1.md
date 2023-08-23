@@ -300,6 +300,7 @@ The asymptotic period spacing is given by the integral over the region in which 
 Hence you need a specific mode frequency in mind when you do this calculation, because above a certain radius, your
 mode frequency is much larger than both the Brunt-Vaisala and Lamb frequencies and hence your g-mode is evanescent there.
 This <code>delta_Pg_mode_freq</code> allows you to pick a frequency which in turn will determine the integration limits.
+Note that if you want to use asymptotic period spacing values in a scientific publication, you might want to write some functionality in the <code>run_star_extras.f90</code> to calculate the values yourself instead.
 </details>
 
 <hint><details>

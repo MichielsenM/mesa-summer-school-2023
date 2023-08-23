@@ -20,11 +20,13 @@ Asteroseismology provides a powerful tool for probing not only the sizes of the 
 
 where $\ell$ is the degree of the oscillation, $n$ is the radial order, $\Pi_0$ is the assymptotic period spacing, which we could also write as $\Pi_\ell= \Pi_0/\sqrt{\ell (\ell +1)}$, and $N$ is the Brunt-Vaisala frequency.
 
+In this minilab we are going to take a closer look at the CBM assuming an exponential diffusive overshooting profile (panel a if the figure above), where the extent of the CBM region is determined through the free parameter $f_{\rm ov}$ (see further details below), and investigate the dependence of the main-sequence lifetimes, core masses, surface abundances, and $\Pi_\ell$ on the choice of $f_{\rm ov}$.
+
 # Aims <a id="minilab1_aims"></a>
 
 **MESA aims:** In this Minilab you will learn how to look up relevant parameters to include in your MESA `inlist`, how to load a starting model and whether or not it cares about the initial mass and chemical composition that you use in your inlist, and how to use `pgstar`.
 
-**Science aims:** To get an understanding of how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and the g-mode asymptotic period spacing, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
+**Science aims:** To get an understanding of how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and $\Pi_\ell$, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
 
 # Minilab 1  <a id="minilab1_lab"></a>
 

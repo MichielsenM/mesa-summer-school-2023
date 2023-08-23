@@ -11,7 +11,7 @@ In the previous minilab we had a look at how varying the extent of the exponenti
 \end{equation}
 
 <div style="align: left; text-align:center;">
-    <img src="images/dP_config.jpeg" width="100%" /> 
+    <img src="images/dP_config.jpeg" width="80%" /> 
 </div>
 
 As the star evolves on the main-sequence and consumes hydrogen in its core, 

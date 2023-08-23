@@ -4,7 +4,7 @@ title: Minilab 2
 ---
 # Introduction <a id="minilab2_intro"></a>
 
-(Work in progress)
+In the previous minilab we had a look at how varying the extent of the exponential diffusive overshoot region changes the asymptotic period spacing of dipole ($\ell=1$) modes, $\Pi_{\ell=1}$. An even better option for studying CBM is using the individual g-mode oscillation periods of the stars, and study the changes in the morphology of their **period spacing patterns**. Such patterns are constructed by calculating the period differences between modes of the same degree $\ell$ and azimuthal order $m$ and consecuritive in $n$.
 
 <div style="align: left; text-align:center;">
     <img src="images/HRD_X_dP.png" width="900" /> 

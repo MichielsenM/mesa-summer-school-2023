@@ -20,7 +20,7 @@ Asteroseismology provides a powerful tool for probing not only the sizes of the 
 
 where $\ell$ is the degree of the oscillation, $n$ is the radial order, $\Pi_0$ is the assymptotic period spacing, which we could also write as $\Pi_\ell= \Pi_0/\sqrt{\ell (\ell +1)}$, and $N$ is the Brunt-Vaisala frequency.
 
-In this minilab we are going to take a closer look at the CBM assuming an exponential diffusive overshooting profile (panel a if the figure above), where the extent of the CBM region is determined through the free parameter $f_{\rm ov}$ (see further details below), and investigate the dependence of the main-sequence lifetimes, core masses, surface abundances, and $\Pi_\ell$ on the choice of $f_{\rm ov}$.
+In this minilab we are going to take a closer look at the CBM assuming an exponential diffusive overshooting profile (panel a if the figure above), where the extent of the CBM region is determined through the free parameter $f_{\rm ov}$ (see further details below), and investigate the dependence of the main-sequence lifetimes, core masses, surface abundances, and $\Pi_\ell$ on the choice of $f_{\rm ov}$ for a $4\,{\rm M}_\odot$ SPB star. 
 
 # Aims <a id="minilab1_aims"></a>
 

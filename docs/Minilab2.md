@@ -11,15 +11,17 @@ In the previous minilab we had a look at how varying the extent of the exponenti
 \end{equation}
 
 <div style="align: left; text-align:center;">
-    <img src="images/dP_config.jpeg" width="80%" /> 
+    <img src="images/dP_config.jpeg" width="90%" /> 
 </div>
 
-As the star evolves on the main-sequence and consumes hydrogen in its core, 
+As the star evolves on the main-sequence and consumes hydrogen in its core, the chemical profile of the star is no longer homogenous. Instead a chemical gradient is developed as the convective core contracts during the main-sequence evolution, which traps the oscillations and gives rise to dips in the period spacing pattern as demonstrated in the figure below.
 
 <div style="align: left; text-align:center;">
     <img src="images/HRD_X_dP.png" width="900" /> 
     <div class="caption" style="width: 800"> Comparison between the hydrogen mass fraction profiles (b) and period spacing patterns (c) obtained at three different main-sequence evolutionary stages as indicated by the three round symbols on the evolutionary track in panel (a). Credit: May G. Pedersen. </div>
 </div>
+
+As internal mixing changes this gradient, it likewise results in changes in the morphology of the period spacing pattern. In this minilab we are going to study these changes to the patterns from exponential diffusive overshooting for a terminal age main-sequence $4\,{\rm M}_\odot$ SPB star. In order to calculate the stellar oscillations, we are going to use the stellar oscillation code `GYRE` which is included as part of the `MESA` installation.
 
 # Aims <a id="minilab2_aims"></a>
 

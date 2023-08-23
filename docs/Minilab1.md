@@ -18,7 +18,7 @@ Asteroseismology provides a powerful tool for probing not only the sizes of the 
     P \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},
 \end{equation}
 
-where $\ell$ is the degree of the oscillation and corresponds to the number of surface nodes of the oscillation, $n$ is the radial order and the number of interior nodes of the oscillation, $\Pi_0$ is the assymptotic period spacing, and $N$ is the Brunt-Vaisala frequency.
+where $\ell$ is the degree of the oscillation and corresponds to the number of surface nodes of the oscillation, $n$ is the radial order and the number of interior nodes of the oscillation, $\Pi_0$ is the assymptotic period spacing, which we could also write as $\Pi_\ell= \Pi_0/sqrt{\ell (\ell +1)}$, and $N$ is the Brunt-Vaisala frequency.
 
 # Aims <a id="minilab1_aims"></a>
 

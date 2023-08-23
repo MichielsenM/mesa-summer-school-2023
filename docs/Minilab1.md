@@ -10,8 +10,15 @@ From the comparison of observations to stellar models we know that standard 1D s
     <img src="images/CBM_gradT_4panels.png" width="100%" /> 
     <div class="caption" style="width: 800"> Example internal mixing profiles (top) and corresponding temperature gradients (bottom) for four different choices of convection boundary mixing (CBM): (a) Exponential diffusive overshoot, (b) step overshoot, (c) convective penetration, and (d) extended convective penetration. In the top panel, convective mixing is shown in grey, CBM is indicated in blue, and envelope mixing is shown in green. In the bottom panel the corresponding temperature gradients used by MESA ($\nabla_T$, orange) along with the adiabatic ($\nabla_{\rm ad}$, green) and radiative ($\nabla_{\rm rad}$, blue) temperature gradients are shown, with the convective core indicated by the grey region for reference. Credit: <a href="https://ui.adsabs.harvard.edu/abs/2023Galax..11...56A/abstract" target="_blank" >Anders & Pedersen (2023)</a>. </div>
 </div>
+<br>
 
-Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes of their mixing profiles as well as their thermal structure. Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. 
+Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes of their mixing profiles as well as their thermal structure. Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the period of the g-mode oscillations are given by
+
+\begin{equation}
+    P \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},
+\end{equation}
+
+where $\ell$ is the degree of the oscillation and corresponds to the number of surface nodes of the oscillation, $n$ is the radial order and the number of interior nodes of the oscillation, $\Pi_0$ is the assymptotic period spacing, and $N$ is the Brunt-Vaisala frequency.
 
 # Aims <a id="minilab1_aims"></a>
 

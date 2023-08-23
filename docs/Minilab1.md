@@ -4,9 +4,8 @@ title: Minilab 1
 ---
 # Introduction <a id="minilab1_intro"></a>
 
-(Work in progress)
+From the comparison of observations to stellar models we know that standard 1D stellar models systematically underestimate the sizes of the convective cores of intermediate- and high-mass stars. This has major consequences for the predicted evolution of the stars as larger convective core sizes translates to more fuel being available during core-hydrogen burning, leading to both longer main-sequence lifetimes and larger helium cores. One way to try to account for this is to introduce additional **convective boundary mixing (CBM)** beyond the Schwarzschild boundary of the convective core. Such CBM is referred to as overshooting when it only modifies the chemical structure of the star ($\nabla_{\rm T} = \nabla_{\rm rad}$), and penetrative when it modifies both the chemical and thermal structure ($\nabla_{\rm T} = \nabla_{\rm ad}$) of the stellar model. Four examples of what such different CBM mixing might look like are shown in the figure below. We note that in `MESA` only exponential diffusive overshooting (a) and step overshoot (b) are included as standard options.
 
-Some basic introduction to the physics goes here...
 
 <div style="align: left; text-align:center;">
     <img src="images/CBM_gradT_4panels.png" width="100%" /> 
@@ -21,7 +20,7 @@ Some basic introduction to the physics goes here...
 
 # Minilab 1  <a id="minilab1_lab"></a>
 
-**Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip)
+**Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip). Please also note that we strongly encourage you to take advantage of the provided hints in all of the `MESA` labs! 
 
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory
 

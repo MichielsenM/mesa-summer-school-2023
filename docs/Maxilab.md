@@ -7,7 +7,7 @@ title: Maxilab
 While convective boundary mixing effectively enhances the convective core, additional mixing processes taking place in the envelope of the star such as rotational mixing can likewise bring renewed fuel to the stellar core. Unlike the CBM, as you will have seen in minilab 1, the envelope mixing can also influence the surface abundances of the star provided that it is sufficiently efficient. More specifically, the surface abundance of nitrogen and helium will increase as excess nitrogen produced by the CNO cycle and helium ashes are transported from the core to the surface, while the surface abundances of carbon and oxygen will decrease. These surface abundances therefore also serve as tracers of internal mixing. One way to study this is to plot the surface abundances as a function of the rotation rate of the star in a so called Hunter diagram. One such diagram is shown below for a sample of B-type stars in the LMC.
 
 <div style="align: left; text-align:center;">
-    <img src="images/Hunter_diagram_LMC_2.png" width="100%" /> 
+    <img src="images/Hunter_diagram_LMC_2.png" width="80%" /> 
     <div class="caption" style="width: 800"> A Hunter diagram showing the surface nitrogen abundance as a function of $v \sin i$ of a sample of B-type stars in the LMC. The black dashed line shows the predicted trend from population synthesis studies. Reproduced from 
     <a href="https://ui.adsabs.harvard.edu/abs/2011A%26A...530A.116B/abstract" target="_blank" >Brott et al. (2011)</a>. </div>
 </div>

@@ -62,10 +62,10 @@ As `MESA` is running, you will notice that two `pgstar` windows show up. One is 
 <div class="row">
   <div style="align: left; text-align:center;">
       <div class="column">
-        <img src="images/hr_000205.png" width="500" />
+        <img src="images/hr_000205.png" width="50%" />
       </div>
       <div class="column">
-        <img src="images/trho_profile_000205.png" width="500" />
+        <img src="images/trho_profile_000205.png" width="50%" />
       </div>
   </div>
 </div>
@@ -224,11 +224,11 @@ Once your new `inlist_project` is working, the next step is to start including c
 <div class="row">
   <div style="align: left; text-align:center;">
       <div class="column">
-        <img src="images/hr_v2_000285.png" width="500" />
+        <img src="images/hr_v2_000285.png" width="50%" />
         <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
       </div>
       <div class="column">
-        <img src="images/hr_v3_000285.png" width="500" />
+        <img src="images/hr_v3_000285.png" width="50%" />
         <div class="caption" style="width: 500"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
       </div>
   </div>

@@ -12,7 +12,7 @@ From the comparison of observations to stellar models we know that standard 1D s
 </div>
 <br>
 
-Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes of their mixing profiles as well as their thermal structure. Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the periods of the g-mode oscillations are given by
+Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes [(Pedersen et al. 2018)](https://ui.adsabs.harvard.edu/abs/2018A%26A...614A.128P/abstract) of their mixing profiles as well as their thermal structure [(Michielsen et al. 2019)](https://ui.adsabs.harvard.edu/abs/2019A%26A...628A..76M/abstract). Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the periods of the g-mode oscillations are given by
 
 \begin{equation}
     P_{\ell, n} \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},

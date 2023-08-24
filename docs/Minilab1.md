@@ -59,21 +59,9 @@ If everything is running as it should (if not, ask your TA for help!) then it is
 
 As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile of the star, also indicating convective and other (non-)mixing regions by the colour of the profile, at what combined central densities and temperatures nuclear burning is taking place (part of the white dashed lines), the amount of generated energy (yellow, orange, and red outline of the profile), etc.
 
-<div class="row">
-  <div style="align: left; text-align:center;">
-      <div class="column">
-        <img src="images/hr_000205.png" width="100%" />
-      </div>
-      <div class="column">
-        <img src="images/trho_profile_000205.png" width="100%" />
-      </div>
-  </div>
-</div>
-
 <div style="align: left; text-align:center;">
     <img src="images/hr_000205.png" width="90%" /> 
 </div>
-<br>
 
 <div style="align: left; text-align:center;">
     <img src="images/trho_profile_000205.png" width="90%" /> 
@@ -242,18 +230,6 @@ Once your new `inlist_project` is working, the next step is to start including c
         <div class="caption" style="width: 500"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
       </div>
   </div>
-</div>
-<br>
-
-<div style="align: left; text-align:center;">
-    <img src="images/hr_v2_000285.png" width="100%" /> 
-    <div class="caption" style="width: 800"> <code>HR window</code> before modifying x- and y-axes limits.</div>
-</div>
-<br>
-
-<div style="align: left; text-align:center;">
-    <img src="images/hr_v3_000285.png" width="100%" /> 
-    <div class="caption" style="width: 800"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
 </div>
 <br>
 

@@ -62,21 +62,21 @@ As `MESA` is running, you will notice that two `pgstar` windows show up. One is 
 <div class="row">
   <div style="align: left; text-align:center;">
       <div class="column">
-        <img src="images/hr_000205.png" width="70%" />
+        <img src="images/hr_000205.png" width="90%" />
       </div>
       <div class="column">
-        <img src="images/trho_profile_000205.png" width="70%" />
+        <img src="images/trho_profile_000205.png" width="90%" />
       </div>
   </div>
 </div>
 
 <div style="align: left; text-align:center;">
-    <img src="images/hr_000205.png" width="100%" /> 
+    <img src="images/hr_000205.png" width="90%" /> 
 </div>
 <br>
 
 <div style="align: left; text-align:center;">
-    <img src="images/trho_profile_000205.png" width="100%" /> 
+    <img src="images/trho_profile_000205.png" width="90%" /> 
 </div>
 <br>
 

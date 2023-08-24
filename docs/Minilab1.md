@@ -30,6 +30,9 @@ In this minilab we are going to take a closer look at the CBM assuming an expone
 
 # Minilab 1  <a id="minilab1_lab"></a>
 
+**Warning!** These `MESA` labs have been put together with both low time and spatial resolution for the sake of having the models be completed within a sensible timeframe for the summer school. Before any of these steps or result can be used in any type of actual science case, carrying out a convergence study is crucial!
+<br>
+
 **Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip). Please also note that we strongly encourage you to take advantage of the provided hints in all of the `MESA` labs! 
 
 In this Minilab 1, we will start constructing the `inlist` we need to study period spacing patterns in SPB stars and investigate the effect of convective boundary mixing on the asymptotic period spacing $\Pi_0$, the convective core mass $m_{\rm cc}$, and the helium core mass $m_{\rm He, core}$ obtained at the terminal-age main sequence (TAMS). As a first step, when starting a new project with `MESA`, we copy and rename the `$MESA_DIR/star/work` directory

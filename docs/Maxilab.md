@@ -36,6 +36,9 @@ This type of mixing is not included as one of the options in `MESA`, but there a
 
 # Maxilab <a id="maxilab_lab"></a>
 
+**Warning!** These `MESA` labs have been put together with both low time and spatial resolution for the sake of having the models be completed within a sensible timeframe for the summer school. Before any of these steps or result can be used in any type of actual science case, carrying out a convergence study is crucial!
+<br>
+
 **Minilab 2 solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab2_solutions.zip)<br>
 **Maxilab solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_maxilab_solutions.zip)
 

@@ -4,9 +4,6 @@ title: Home
 permalink: /
 ---
 
-
-<img src="./images/OB_star_interior.001.png" alt="OB_interior"  width="30%" >
-
 # Before getting started <a id="home_before_started"></a>
 
 

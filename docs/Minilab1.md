@@ -70,6 +70,16 @@ As `MESA` is running, you will notice that two `pgstar` windows show up. One is 
   </div>
 </div>
 
+<div style="align: left; text-align:center;">
+    <img src="images/hr_000205.png" width="100%" /> 
+</div>
+<br>
+
+<div style="align: left; text-align:center;">
+    <img src="images/trho_profile_000205.png" width="100%" /> 
+</div>
+<br>
+
 Both of these `pgstar` windows are the default windows being shown in `MESA` when you copy the `$MESA_DIR/star/work` directory. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#" target="_blank"> here</a>. 
 
 
@@ -225,7 +235,7 @@ Once your new `inlist_project` is working, the next step is to start including c
   <div style="align: left; text-align:center;">
       <div class="column">
         <img src="images/hr_v2_000285.png" width="50%" />
-        <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+        <div class="caption" style="width: 500"> <code>HR window</code> before modifying x- and y-axes limits.</div>
       </div>
       <div class="column">
         <img src="images/hr_v3_000285.png" width="50%" />
@@ -234,6 +244,19 @@ Once your new `inlist_project` is working, the next step is to start including c
   </div>
 </div>
 <br>
+
+<div style="align: left; text-align:center;">
+    <img src="images/hr_v2_000285.png" width="100%" /> 
+    <div class="caption" style="width: 800"> <code>HR window</code> before modifying x- and y-axes limits.</div>
+</div>
+<br>
+
+<div style="align: left; text-align:center;">
+    <img src="images/hr_v3_000285.png" width="100%" /> 
+    <div class="caption" style="width: 800"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
+</div>
+<br>
+
 
 <task><details>
 <summary>Task 6</summary><p>

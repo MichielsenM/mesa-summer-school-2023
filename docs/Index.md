@@ -6,9 +6,6 @@ permalink: /
 
 # Before getting started <a id="home_before_started"></a>
 
-**Warning!** These `MESA` labs have been put together with both low time and spatial resolution for the sake of having the models be completed within a sensible timeframe for the summer school. Before any of these steps or result can be used in any type of actual science case, carrying out a convergence study is crucial!
-<br>
-
 In the following `MESA` lab exercises, you will see different text boxes and colours appearing at different times. <br>
 
 Text boxes with black background will provide either some terminal commands or terminal output from your `MESA` and `GYRE` runs.

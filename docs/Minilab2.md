@@ -155,7 +155,8 @@ The setup of the different sections (i.e. namelists) that we need to include in 
 /
 
 &nad_output
-/
+/ 
+
 </pre></p></div>
 
 <task><details>
@@ -287,7 +288,8 @@ If you have done everything correctly, then your <code>gyre.in</code> file shoul
 /
 
 &nad_output
-/
+/  
+
 </pre></p></div>
 
 With our <code>gyre.in</code> file now setup and ready we can now run <code>GYRE</code>!

@@ -483,7 +483,7 @@ To implement this mixing profile we need to make several more modifications to o
 1. Declare the variable <code>n</code> <br>
 2. Set <code>n</code> using <code>x_ctrl(2)</code> to <code>0.5</code><br> and change <code>x_ctrl(1)</code> to 100
 3. Set <code>D_env_0</code> = 100 <br>
-4. Find the variable in <code>star_info</code> that stores density: (see <code>$MESA_DIR/star/public/star_data/star_data_step_work.inc</code>) <br>
+4. Find the variable in <code>star_info</code> that stores density: (see <code>$MESA_DIR/star_data/public/star_data_step_work.inc</code>) <br>
 5. Declare a new variable <code>rho0</code> and set it in the loop that finds <code>k0</code> 
 6. Implement the new mixing profile <br>
 NOTE: while you can use the Fortran <code>**</code> operator to raise something to a power, it is better to use the built-in function <code>pow(value, exponent)</code>. You can find all the math functions built-in to <code>MESA</code> in <code>$MESA_DIR/math/public/math_lib_crmath.f90</code> <br>

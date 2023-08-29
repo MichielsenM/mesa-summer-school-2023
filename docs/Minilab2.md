@@ -4,22 +4,24 @@ title: Minilab 2
 ---
 # Introduction <a id="minilab2_intro"></a>
 
-In the previous minilab we had a look at how varying the extent of the exponential diffusive overshoot region changes the asymptotic period spacing of dipole ($\ell=1$) modes, $\Pi_{\ell=1}$. An even better option for studying CBM is using the individual g-mode oscillation periods of the stars, and study the changes in the morphology of their **period spacing patterns**. Such patterns are constructed by calculating the period differences $\Delta P$ between modes of the same degree $\ell$ and azimuthal order $m$ and consecutive in $n$, and then plotting these differences as a function of the oscillation periods. For a chemically homogeneous, non-rotating star we expect these patterns to be homogenous as
+In the previous minilab we had a look at how varying the extent of the exponential diffusive overshoot region changes the asymptotic period spacing of dipole ($\ell=1$) modes, $\Pi_{\ell=1}$. An even better option for studying CBM is using the individual g-mode oscillation periods of the stars, and study the changes in the morphology of their **period spacing patterns**. Such patterns are constructed by calculating the period differences $\Delta P$ between modes of the same degree $\ell$ and azimuthal order $m$ and consecutive radial orders $n$, and then plotting these differences as a function of the oscillation periods. For a chemically homogeneous, non-rotating star we expect these patterns to be homogenous as
 
 \begin{equation}
   \Delta P \approx P_{2} - P_{1} \approx P_{3} - P_{2} \approx \dots \approx P_{n} - P_{n-1} \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}}.
 \end{equation}
 
 <div style="align: left; text-align:center;">
-    <img src="images/dP_config.jpeg" width="80%" /> 
+    <img src="images/dP_config.jpeg" width="90%" /> 
 </div>
 
-As the star evolves on the main-sequence and consumes hydrogen in its core, 
+As the star evolves on the main-sequence and consumes hydrogen in its core, the chemical profile of the star is no longer homogenous. Instead a chemical gradient is developed as the convective core contracts during the main-sequence evolution, which traps the oscillations and gives rise to dips in the period spacing pattern as demonstrated in the figure below.
 
 <div style="align: left; text-align:center;">
     <img src="images/HRD_X_dP.png" width="900" /> 
     <div class="caption" style="width: 800"> Comparison between the hydrogen mass fraction profiles (b) and period spacing patterns (c) obtained at three different main-sequence evolutionary stages as indicated by the three round symbols on the evolutionary track in panel (a). Credit: May G. Pedersen. </div>
 </div>
+
+As internal mixing changes this gradient, it likewise results in changes in the morphology of the period spacing pattern. In this minilab we are going to study these changes to the patterns from exponential diffusive overshooting for a terminal age main-sequence $4\,{\rm M}_\odot$ SPB star. In order to calculate the stellar oscillations, we are going to use the stellar oscillation code `GYRE` which is included as part of the `MESA` installation.
 
 # Aims <a id="minilab2_aims"></a>
 
@@ -28,6 +30,9 @@ As the star evolves on the main-sequence and consumes hydrogen in its core,
 **Science aims:** Investigating what effect convective boundary mixing has on period spacing patterns of SPB stars.
 
 # Minilab 2 <a id="minilab2_lab"></a>
+
+**Warning!** These `MESA` labs have been put together with both low time and spatial resolution for the sake of having the models be completed within a sensible timeframe for the summer school. Before any of these steps or result can be used in any type of actual science case, carrying out a convergence study is crucial!
+<br>
 
 **Minilab 1 solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip)<br>
 **Minilab 2 solution:** [download](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab2_solutions.zip)<br>
@@ -150,7 +155,8 @@ The setup of the different sections (i.e. namelists) that we need to include in 
 /
 
 &nad_output
-/
+/ 
+
 </pre></p></div>
 
 <task><details>
@@ -282,7 +288,8 @@ If you have done everything correctly, then your <code>gyre.in</code> file shoul
 /
 
 &nad_output
-/
+/  
+
 </pre></p></div>
 
 With our <code>gyre.in</code> file now setup and ready we can now run <code>GYRE</code>!

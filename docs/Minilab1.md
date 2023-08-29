@@ -12,7 +12,7 @@ From the comparison of observations to stellar models we know that standard 1D s
 </div>
 <br>
 
-Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes of their mixing profiles as well as their thermal structure. Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the periods of the g-mode oscillations are given by
+Asteroseismology provides a powerful tool for probing not only the sizes of the CBM regions but also the shapes [(Pedersen et al. 2018)](https://ui.adsabs.harvard.edu/abs/2018A%26A...614A.128P/abstract) of their mixing profiles as well as their thermal structure [(Michielsen et al. 2019)](https://ui.adsabs.harvard.edu/abs/2019A%26A...628A..76M/abstract). Stars oscillating in gravity (g) modes are of particular interest, as these modes are highly sensitive to the near core regions of the stars. In these `MESA` labs we will focus on one such type of oscillator known as Slowly Pulsating B (SPB) stars, which are main-sequence B-type stars with masses between $3-10\,{\rm M}_\odot$ and oscillate in g-modes with periods between $0.5-5\,{\rm d}$. For a non-rotating, chemically homogeneous star the periods of the g-mode oscillations are given by
 
 \begin{equation}
     P_{\ell, n} \approx \frac{\Pi_0}{\sqrt{\ell (\ell +1)}} n, \qquad \Pi_0 = 2\pi \left(\int \frac{N}{r} {\rm d}r \right)^{-1},
@@ -20,7 +20,7 @@ Asteroseismology provides a powerful tool for probing not only the sizes of the 
 
 where $\ell$ is the degree of the oscillation, $n$ is the radial order, $\Pi_0$ is the assymptotic period spacing, which we could also write as $\Pi_\ell= \Pi_0/\sqrt{\ell (\ell +1)}$, and $N$ is the Brunt-Vaisala frequency.
 
-In this minilab we are going to take a closer look at the CBM assuming an exponential diffusive overshooting profile (panel a if the figure above), where the extent of the CBM region is determined through the free parameter $f_{\rm ov}$ (see further details below), and investigate the dependence of the main-sequence lifetimes, core masses, surface abundances, and $\Pi_\ell$ on the choice of $f_{\rm ov}$.
+In this minilab we are going to take a closer look at the CBM assuming an exponential diffusive overshooting profile (panel a if the figure above), where the extent of the CBM region is determined through the free parameter $f_{\rm ov}$ (see further details below), and investigate the dependence of the main-sequence lifetimes, core masses, surface abundances, and $\Pi_\ell$ on the choice of $f_{\rm ov}$ for a $4\,{\rm M}_\odot$ SPB star. 
 
 # Aims <a id="minilab1_aims"></a>
 
@@ -29,6 +29,9 @@ In this minilab we are going to take a closer look at the CBM assuming an expone
 **Science aims:** To get an understanding of how convective boundary mixing in the form of exponential diffusive overshoot impacts the core masses (convective and helium), age, surface abundance of nitrogen, and $\Pi_\ell$, as well as the dependence of these parameters on the size of the overshooting region set by the parameter $f_{\rm ov}$.
 
 # Minilab 1  <a id="minilab1_lab"></a>
+
+**Warning!** These `MESA` labs have been put together with both low time and spatial resolution for the sake of having the models be completed within a sensible timeframe for the summer school. Before any of these steps or result can be used in any type of actual science case, carrying out a convergence study is crucial!
+<br>
 
 **Solution:** In case you get stuck at any point during the exercises, then you can download the solution to minilab 1 from [here](https://raw.githubusercontent.com/MichielsenM/mesa-summer-school-2023/main/solutions/SPB_minilab1_solutions.zip). Please also note that we strongly encourage you to take advantage of the provided hints in all of the `MESA` labs! 
 
@@ -59,16 +62,14 @@ If everything is running as it should (if not, ask your TA for help!) then it is
 
 As `MESA` is running, you will notice that two `pgstar` windows show up. One is an HR diagram showing the evolutionary track of the star, with its current effective temperature and luminosity indicated by a red circle. The second window shows the current internal temperature versus density profile of the star, also indicating convective and other (non-)mixing regions by the colour of the profile, at what combined central densities and temperatures nuclear burning is taking place (part of the white dashed lines), the amount of generated energy (yellow, orange, and red outline of the profile), etc.
 
-<div class="row">
-  <div style="align: left; text-align:center;">
-      <div class="column">
-        <img src="images/hr_000205.png" width="500" />
-      </div>
-      <div class="column">
-        <img src="images/trho_profile_000205.png" width="500" />
-      </div>
-  </div>
+<div style="align: left; text-align:center;">
+    <img src="images/hr_000205.png" width="90%" /> 
 </div>
+
+<div style="align: left; text-align:center;">
+    <img src="images/trho_profile_000205.png" width="90%" /> 
+</div>
+<br>
 
 Both of these `pgstar` windows are the default windows being shown in `MESA` when you copy the `$MESA_DIR/star/work` directory. Depending on your laptop/desktop these windows might appear small and difficult to read. Fortunately, `MESA` provides a variety of parameters that we can use to make changes to the default `pgstar` windows, including their sizes. We can do so within the file `inlist_pgstar`. The `pgstar` documentation can be found <a href="https://docs.mesastar.org/en/release-r23.05.1/reference/pgstar.html#" target="_blank"> here</a>. 
 
@@ -224,16 +225,17 @@ Once your new `inlist_project` is working, the next step is to start including c
 <div class="row">
   <div style="align: left; text-align:center;">
       <div class="column">
-        <img src="images/hr_v2_000285.png" width="500" />
-        <div class="caption" style="width: 500"> New <code>HR window</code> before modifying x- and y-axes limits.</div>
+        <img src="images/hr_v2_000285.png" width="100%" />
+        <div class="caption" style="width: 500"> <code>HR window</code> before modifying x- and y-axes limits.</div>
       </div>
       <div class="column">
-        <img src="images/hr_v3_000285.png" width="500" />
+        <img src="images/hr_v3_000285.png" width="100%" />
         <div class="caption" style="width: 500"> Example new <code>HR window</code> after modifying x- and y-axes limits.</div>
       </div>
   </div>
 </div>
 <br>
+
 
 <task><details>
 <summary>Task 6</summary><p>

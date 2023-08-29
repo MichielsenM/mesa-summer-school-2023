@@ -4,13 +4,10 @@ title: Home
 permalink: /
 ---
 
-
-<img src="./images/OB_star_interior.001.png" alt="OB_interior"  width="30%" >
-
 # Before getting started <a id="home_before_started"></a>
 
-
 In the following `MESA` lab exercises, you will see different text boxes and colours appearing at different times. <br>
+
 Text boxes with black background will provide either some terminal commands or terminal output from your `MESA` and `GYRE` runs.
 
 <div class="terminal-title"> Terminal commands or output </div> 

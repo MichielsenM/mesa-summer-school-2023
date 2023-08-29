@@ -389,7 +389,7 @@ Notice that right now there is a discontinuity in our mixing profile when we go 
 </div>
 <br>
 
-This discontinuity around is a problem.  
+This discontinuity around a problem.  
 
 Before we deal with this, feel free to pause, stretch a bit, and drink some water if you need to. The next two tasks are tricky so check in with your energy levels and remaining time to decide what difficulty level feels right for you:<br>
 <strong>I’m up for a challenge:</strong> try to implement the procedure described in the text without looking at the task or the hint <br>
